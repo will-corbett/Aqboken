@@ -32,8 +32,13 @@ npm test             # unit tests (engine + every drill's questions)
 npm run check        # type checks
 npm run data:fetch   # once: the Kazakh Wiktionary extract (38 MB) into data-raw/
 npm run data:check   # the Wiktionary check
-npm run build        # dist/, with 404.html for GitHub Pages
+npm run build        # dist/: the app plus a prerendered HTML file for every page, sitemap.xml, 404.html
 ```
+
+## Deploy
+
+Every push to `main` runs `.github/workflows/deploy.yml`: type checks, unit tests, the Wiktionary check, the build,
+then GitHub Pages: https://will-corbett.github.io/Korti/
 
 ## Licences
 

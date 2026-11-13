@@ -11,6 +11,7 @@
   import WordsTheme from './components/WordsTheme.svelte';
   import { loadSettings, saveSettings, type Settings } from './lib/settings.ts';
   import { href, navigate, parsePath, type Route } from './lib/router.ts';
+  import { pageTitle } from './lib/pageMeta.ts';
   import { createRound, score, type Round } from './lib/queue.ts';
   import { drawer, pool, type Question } from './lib/questions.ts';
   import { mulberry32 } from './lib/rng.ts';
@@ -40,8 +41,7 @@
     else root.dataset.theme = settings.theme;
   });
   $effect(() => {
-    const t = route.page === 'learn' && route.topic ? topicById(route.topic)?.title : route.page === 'drill' && route.mode ? `${topicById(route.mode)?.title ?? ''} drill` : { home: '', learn: 'Learn', drill: 'Drill', vocabulary: 'Vocabulary', settings: 'Settings', about: 'About' }[route.page];
-    document.title = t ? `${t} · Körti` : 'Körti · Learn Kazakh';
+    document.title = pageTitle(route);
   });
 
   function applyRoute(next: Route) {

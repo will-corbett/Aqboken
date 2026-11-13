@@ -43,8 +43,15 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   <suffix>) and `::drill <mode>`. Links: `[text](learn:id)`, `drill:id`, `vocabulary:id`. Cyrillic in the text is
   shown in the reader's script automatically.
 - Pages under `/Korti/` (`src/shared/site.ts`): `/`, `/learn/`, `/learn/<topic>/`, `/drill/`, `/drill/<topic>/`,
-  `/vocabulary/`, `/vocabulary/<theme>/`, `/settings/`, `/about/`. No prerendering yet: the build copies index.html to
-  404.html so deep links work on GitHub Pages.
+  `/vocabulary/`, `/vocabulary/<theme>/`, `/settings/`, `/about/`. Titles in `src/lib/pageMeta.ts` (app and
+  prerender share them).
+- Prerendering (`scripts/prerender.ts`, run by `npm run build` after `vite build`): every page gets its own
+  `index.html` with title, description, canonical address and its text as plain HTML (Learn pages with their tables
+  of forms), plus `sitemap.xml` and `404.html` (the bare app). Drill and settings pages are noindex. A new page type
+  needs a case there. Submit the sitemap in Google Search Console (a project site can't have its own robots.txt).
+- Deploy: every push to `main` runs `.github/workflows/deploy.yml`: type checks, unit tests, the Wiktionary check
+  (extract cached per month; report uploaded as an artifact), build, then GitHub Pages
+  (https://will-corbett.github.io/Korti/, repo will-corbett/Korti). A stuck Pages deployment is retried once.
 - Tests: `tests/unit/kazakh.test.ts` (textbook forms, Latin), `tests/unit/questions.test.ts` (every drill and settings
   variant builds well-formed questions whose answers are accepted, in Cyrillic and Latin).
 

@@ -1,0 +1,84 @@
+# Check the Kazakh against Wiktionary, run every check, and deploy the static site to GitHub Pages.
+name: Build, test and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+
+      # The Kazakh Wiktionary extract (38 MB, kaikki.org) is cached per month, so the check runs against a fresh
+      # copy once a month and otherwise against the same file.
+      - name: Month for the source cache
+        id: month
+        run: echo "month=$(date -u +%Y-%m)" >> "$GITHUB_OUTPUT"
+      - id: raw
+        uses: actions/cache@v6
+        with:
+          path: data-raw
+          key: data-raw-${{ steps.month.outputs.month }}
+      - if: steps.raw.outputs.cache-hit != 'true'
+        run: npm run data:fetch
+      - name: Check the Kazakh against Wiktionary
+        run: npm run data:check
+      - name: Upload the Wiktionary report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: wiktionary-check
+          path: reports/wiktionary-check.md
+
+      - run: npm run build
+
+      - uses: actions/upload-pages-artifact@v5
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url || steps.retry.outputs.page_url }}
+    steps:
+      # GitHub Pages sometimes leaves a deployment stuck; a fresh attempt usually gets through (as in Krotik).
+      - id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 180000
+      - name: Wait before retrying
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 15
+      - id: retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 600000
