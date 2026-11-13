@@ -27,8 +27,8 @@
   <label class="opt"><input type="checkbox" checked={settings.progress} onchange={(e) => onprogress((e.currentTarget as HTMLInputElement).checked)} /> Keep my progress</label>
 </section>
 <section class="card">
-  <h2>Theme</h2>
-  <select bind:value={settings.theme}>
+  <h2 id="theme-h">Theme</h2>
+  <select bind:value={settings.theme} aria-labelledby="theme-h">
     <option value="aqboken">Aqböken</option>
     <option value="system">System</option>
     <option value="light">Light</option>

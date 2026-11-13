@@ -139,6 +139,11 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
 - Deploy: every push to `main` runs `.github/workflows/deploy.yml`: type checks, unit tests, the Wiktionary check
   (extract cached per month; report uploaded as an artifact), build, then GitHub Pages
   (https://will-corbett.github.io/Aqboken/, repo will-corbett/Aqboken). A stuck Pages deployment is retried once.
+- Browser tests (`npm run e2e`, Playwright, `tests/e2e/`, desktop + phone; first time `npx playwright install
+  chromium`): every page opens with no console errors and no sideways scroll; drill flows (typed, choices, self-marked,
+  build, fix, script switch); search, grammar test, progress/my words, reading; axe accessibility scans (WCAG 2.1 AA)
+  of every kind of page in the aqboken, light and dark themes. CI runs them before every deploy. Wide tables scroll
+  inside a focusable, labelled region (`.table-scroll`).
 - Tests: `tests/unit/kazakh.test.ts` (textbook forms, Latin), `tests/unit/questions.test.ts` (every drill and settings
   variant builds well-formed questions whose answers are accepted, in Cyrillic and Latin).
 

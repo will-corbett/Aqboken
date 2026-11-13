@@ -26,7 +26,8 @@
       {:else if b.type === 'p'}<p>{@html b.html}</p>
       {:else if b.type === 'ul'}<ul>{#each b.items as it, ii (ii)}<li>{@html it}</li>{/each}</ul>
       {:else if b.type === 'table'}
-        <div class="table-scroll">
+        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+<div class="table-scroll" tabindex="0" role="region" aria-label="Table (scroll sideways if it is wider than the screen)">
           <table class="forms">
             <thead><tr>{#each b.head as h, hi (hi)}<th>{@html h}</th>{/each}</tr></thead>
             <tbody>{#each b.rows as r, ri (ri)}<tr>{#each r as c, ci (ci)}<td>{@html c}</td>{/each}</tr>{/each}</tbody>

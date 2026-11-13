@@ -31,7 +31,8 @@
         {#if due.length}<button class="btn primary" onclick={onreview}>Review the {due.length} due</button>{/if}
       </p>
       <p class="muted small">Right first time, a word comes back later each time ({INTERVALS.join(', ')} days); missed, it comes back tomorrow.</p>
-      <div class="table-scroll">
+      <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+<div class="table-scroll" tabindex="0" role="region" aria-label="Table (scroll sideways if it is wider than the screen)">
         <table class="forms">
           <thead><tr><th>Word</th><th>Meaning</th><th>Next review</th><th>Step</th><th></th></tr></thead>
           <tbody>

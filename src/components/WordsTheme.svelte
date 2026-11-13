@@ -27,7 +27,8 @@
       <span class="muted small mine">{inMine} of {t.words.length} in <a href={href({ page: 'progress' })}>my words</a></span>
     {/if}
   </div>
-  <div class="table-scroll">
+  <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+<div class="table-scroll" tabindex="0" role="region" aria-label="Table (scroll sideways if it is wider than the screen)">
     <table class="forms words">
       <thead><tr><th>Kazakh</th><th>Meaning</th><th>Forms</th></tr></thead>
       <tbody>

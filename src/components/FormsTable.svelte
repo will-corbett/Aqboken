@@ -59,7 +59,8 @@
   const ruleTable = $derived(kind === 'rule' ? (SUFFIX as Record<string, Record<string, readonly [string, string]>>)[words[0] ?? ''] : undefined);
 </script>
 
-<div class="table-scroll">
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+<div class="table-scroll" tabindex="0" role="region" aria-label="Table (scroll sideways if it is wider than the screen)">
   {#if kind === 'plural' || kind === 'question'}
     <table class="forms">
       <thead><tr><th>Word</th><th>Meaning</th><th>{kind === 'plural' ? 'Plural' : 'Question'}</th></tr></thead>

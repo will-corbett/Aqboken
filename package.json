@@ -24,9 +24,12 @@
     "review": "tsx scripts/review-report.ts",
     "links:check": "tsx scripts/check-links.ts",
     "data:fetch-reading": "tsx scripts/fetch-reading.ts",
-    "data:reading": "tsx scripts/build-reading.ts"
+    "data:reading": "tsx scripts/build-reading.ts",
+    "e2e": "playwright test"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.0",
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@tsconfig/svelte": "^5.0.9",
     "@types/node": "^22.20.5",
