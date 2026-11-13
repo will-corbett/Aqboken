@@ -17,6 +17,10 @@ export interface Settings {
   /** Opt-in progress (src/lib/progress.ts). */
   progress: boolean;
   betaNoteHidden: boolean;
+  /** The learning path you follow (Paths page, home page). */
+  pathLevel: 'A1' | 'A2' | 'B1';
+  /** Has opened the guide or started a drill: the home page's big “new here?” card becomes a link. */
+  guideSeen: boolean;
   alphabet: { direction: 'toLatin' | 'toCyrillic' };
   cases: { cases: Case[]; number: 'sg' | 'pl' | 'both' };
   possessive: { persons: PossPerson[] };
@@ -51,6 +55,8 @@ export function defaults(): Settings {
     keyboard: false,
     progress: false,
     betaNoteHidden: false,
+    pathLevel: 'A1',
+    guideSeen: false,
     alphabet: { direction: 'toLatin' },
     cases: { cases: CASES.filter((c) => c !== 'nom'), number: 'sg' },
     possessive: { persons: [...POSS_PERSONS] },

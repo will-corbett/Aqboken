@@ -14,6 +14,8 @@ export type Route =
   | { page: 'vocabulary'; theme?: string }
   | { page: 'settings' }
   | { page: 'progress' }
+  | { page: 'start' }
+  | { page: 'paths' }
   | { page: 'about' };
 
 export function parsePath(pathname: string): Route {
@@ -30,6 +32,10 @@ export function parsePath(pathname: string): Route {
       return { page: 'settings' };
     case 'progress':
       return { page: 'progress' };
+    case 'start':
+      return { page: 'start' };
+    case 'paths':
+      return { page: 'paths' };
     case 'about':
       return { page: 'about' };
     default:
@@ -51,6 +57,10 @@ export function pathOf(r: Route): string {
       return 'settings/';
     case 'progress':
       return 'progress/';
+    case 'start':
+      return 'start/';
+    case 'paths':
+      return 'paths/';
     case 'about':
       return 'about/';
   }

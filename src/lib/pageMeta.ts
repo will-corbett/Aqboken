@@ -17,6 +17,10 @@ export function pageTitle(r: Route): string {
       return 'Settings · Aqböken';
     case 'progress':
       return 'Your progress · Aqböken';
+    case 'start':
+      return 'Start here: a beginner’s guide to Kazakh · Aqböken';
+    case 'paths':
+      return 'Learning paths A1–B1 · Aqböken';
     case 'about':
       return 'About and sources · Aqböken';
   }

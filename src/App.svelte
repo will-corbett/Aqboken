@@ -18,6 +18,8 @@
   import { clearProgress, loadProgress, recordRound, saveProgress, today, type Progress } from './lib/progress.ts';
   import { addWords, clearWords, dueWords, loadWords, review as scheduleWords, saveWords, type MyWords } from './lib/mywords.ts';
   import ProgressPage from './components/ProgressPage.svelte';
+  import StartPage from './components/StartPage.svelte';
+  import PathsPage from './components/PathsPage.svelte';
   import { ALL_WORDS } from './data/words.ts';
   import { isMode, topicById } from './lib/topics.ts';
   import { SITE_BASE } from './shared/site.ts';
@@ -56,6 +58,7 @@
       if (next.mode && isMode(next.mode)) settings.mode = next.mode;
     }
     route = next;
+    if (next.page === 'start') settings.guideSeen = true;
     window.scrollTo({ top: 0 });
   }
   $effect(() => {
@@ -103,6 +106,7 @@
     round = createRound(qs);
     screen = 'drill';
     if (!practice) settings.lastDrill = s.mode;
+    settings.guideSeen = true;
     window.scrollTo({ top: 0 });
   }
 
@@ -167,7 +171,7 @@
     settings.script = s;
   }
 
-  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about' || route.page === 'progress');
+  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about' || route.page === 'progress' || route.page === 'start' || route.page === 'paths');
   const navItems: [Route['page'], string][] = [
     ['learn', 'Learn'],
     ['drill', 'Drill'],
@@ -205,7 +209,7 @@
 
   <main id="main" class:narrow>
     {#if route.page === 'home'}
-      <Home {settings} oncontinue={continueDrill} due={due.length} onreview={reviewDue} />
+      <Home {settings} {progress} {myWords} oncontinue={continueDrill} due={due.length} onreview={reviewDue} ongotit={() => (settings.guideSeen = true)} />
     {:else if route.page === 'learn' && route.topic}
       <LearnPage topic={route.topic} {settings} />
     {:else if route.page === 'learn' || (route.page === 'drill' && !route.mode)}
@@ -216,6 +220,10 @@
       <WordsIndex script={settings.script} />
     {:else if route.page === 'settings'}
       <SettingsPage bind:settings onprogress={setProgress} />
+    {:else if route.page === 'start'}
+      <StartPage {settings} />
+    {:else if route.page === 'paths'}
+      <PathsPage bind:settings {progress} {myWords} />
     {:else if route.page === 'progress'}
       <ProgressPage {settings} {progress} {myWords} {due} onprogress={setProgress} onremove={removeWord} onreview={reviewDue} />
     {:else if route.page === 'about'}
@@ -234,6 +242,8 @@
   </main>
 
   <footer class="foot">
+    <a class="btn quiet" href={href({ page: 'start' })}>Start here</a>
+    <a class="btn quiet" href={href({ page: 'paths' })}>Learning paths</a>
     <a class="btn quiet" href={href({ page: 'progress' })}>Your progress</a>
     <a class="btn quiet" href={href({ page: 'settings' })}>Settings</a>
     <a class="btn quiet" href={href({ page: 'about' })}>About &amp; sources</a>

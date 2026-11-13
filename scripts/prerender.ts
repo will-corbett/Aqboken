@@ -11,6 +11,7 @@ import { parse, type Block } from '../src/lib/markdown.ts';
 import { pageTitle } from '../src/lib/pageMeta.ts';
 import { href, pathOf, type Route } from '../src/lib/router.ts';
 import { GROUPS, TOPICS } from '../src/lib/topics.ts';
+import { PATHS } from '../src/lib/paths.ts';
 import { CASE_NAME } from '../src/lib/labels.ts';
 import { ALPHABET } from '../src/lib/questions.ts';
 import { ALL_WORDS, THEMES } from '../src/data/words.ts';
@@ -160,6 +161,8 @@ const pages: Page[] = [
   { route: { page: 'drill' }, description: 'Drills for every Kazakh grammar topic.', body: `<h1>Drills</h1>${topicList}`, index: false },
   { route: { page: 'vocabulary' }, description: `${ALL_WORDS.length} everyday Kazakh words in ${THEMES.length} themes, with their forms and practice both ways round.`, body: `<h1>Vocabulary</h1>${themeList}`, index: true },
   { route: { page: 'settings' }, description: 'Aqböken settings: script, keyboard, progress and theme.', body: '<h1>Settings</h1>', index: false },
+  { route: { page: 'start' }, description: 'Start learning Kazakh: what’s on Aqböken, your first hour, how the drills work, and Cyrillic or Latin.', body: '<h1>Start here</h1><p>Aqböken teaches Kazakh to English speakers, from the first letters to B1: short lessons with tables of forms, drills for every lesson, vocabulary by theme, and learning paths for A1, A2 and B1.</p>', index: true },
+  { route: { page: 'paths' }, description: 'Learning paths for Kazakh at A1, A2 and B1: lessons, drills and vocabulary themes in a recommended order.', body: `<h1>Learning paths</h1>${PATHS.map((p) => `<h2>${esc(p.title)}</h2><p>${esc(p.intro)}</p><ol>${p.steps.map((s) => `<li>${s.kind === 'topic' ? a(TOPICS.find((t) => t.id === s.id)!.learn ? { page: 'learn', topic: s.id } : { page: 'drill', mode: s.id }, esc(TOPICS.find((t) => t.id === s.id)!.title)) : a({ page: 'vocabulary', theme: s.id }, `Words: ${esc(THEMES.find((t) => t.id === s.id)!.title)}`)}: ${esc(s.why)}</li>`).join('')}</ol>`).join('')}`, index: true },
   { route: { page: 'progress' }, description: 'Your progress on Aqböken, kept only in your browser.', body: '<h1>Your progress</h1>', index: false },
   {
     route: { page: 'about' },
