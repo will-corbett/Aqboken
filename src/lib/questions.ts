@@ -569,11 +569,14 @@ function range0(a: number, b: number): number[] {
 
 // ─── Vocabulary ────────────────────────────────────────────────────────────────────────────────────────────
 
+/** Each word once, even if two chosen themes list it. */
+const uniqueWords = (ws: Word[]) => ws.filter((w, i) => ws.findIndex((x) => x.kk === w.kk) === i);
+
 const meaningItems = (en: string) => en.split(/[;,]/).map((x) => x.replace(/\(.*?\)/g, '').trim().toLowerCase()).filter(Boolean);
 
 export function vocabQs(s: Settings, rng: Rng, words?: Word[]): Question[] {
   const ids = s.vocab.themes.length ? s.vocab.themes : THEMES.map((t) => t.id);
-  const pool = words ?? THEMES.filter((t) => ids.includes(t.id)).flatMap((t) => t.words);
+  const pool = uniqueWords(words ?? THEMES.filter((t) => ids.includes(t.id)).flatMap((t) => t.words));
   return pool.map((w) => {
     if (s.vocab.direction === 'recognise') {
       const mine = new Set(meaningItems(w.en));
@@ -630,7 +633,7 @@ export function speakText(q: Question): string | undefined {
 
 function listenQs(s: Settings, rng: Rng): Question[] {
   const ids = s.listen.themes.length ? s.listen.themes : THEMES.map((t) => t.id);
-  const words = THEMES.filter((t) => ids.includes(t.id)).flatMap((t) => t.words);
+  const words = uniqueWords(THEMES.filter((t) => ids.includes(t.id)).flatMap((t) => t.words));
   if (s.listen.kind === 'dictation') {
     return words.map((w) => ({
       key: `listen:${w.kk}`,

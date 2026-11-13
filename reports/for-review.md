@@ -361,6 +361,254 @@ Our word lists, by theme. Please check the spelling, the meaning, and whether it
 | W282 | қағаз | paper | |
 | W283 | хат | letter | |
 
+### Clothes (Киім), A2
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W284 | киім | clothes | |
+| W285 | көйлек | dress; shirt | |
+| W286 | жейде | shirt | |
+| W287 | белдемше | skirt | |
+| W288 | шалбар | trousers | |
+| W289 | күрте | jacket | |
+| W290 | шапан | chapan (long robe) | |
+| W291 | етік | boots | |
+| W292 | аяқ киім | shoes | |
+| W293 | бас киім | hat, headwear | |
+| W294 | қалпақ | felt hat | |
+| W295 | қолғап | gloves | |
+| W296 | шұлық | sock | |
+| W297 | орамал | scarf; towel | |
+| W298 | сөмке | bag | |
+| W299 | қалта | pocket | |
+| W300 | түйме | button | |
+
+### Shopping and money (Сауда), A2
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W301 | сауда | trade, shopping | |
+| W302 | баға | price | |
+| W303 | теңге | tenge (money of Kazakhstan) | |
+| W304 | тиын | tiyn (1/100 tenge) | |
+| W305 | тауар | goods | |
+| W306 | касса | till, cash desk | |
+| W307 | чек | receipt | |
+| W308 | карточка | card | |
+| W309 | өлшем | size | |
+| W310 | сатып алу | to buy | |
+| W311 | төлеу | to pay | |
+| W312 | айырбастау | to exchange | |
+| W313 | тұру | to cost; to stand | |
+
+### Health (Денсаулық), A2
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W314 | денсаулық | health | |
+| W315 | ауру | illness; ill | |
+| W316 | дәрі | medicine | |
+| W317 | дәріхана | pharmacy | |
+| W318 | емхана | clinic | |
+| W319 | ем | treatment, cure | |
+| W320 | тұмау | cold, flu | |
+| W321 | жөтел | cough | |
+| W322 | жара | wound | |
+| W323 | науқас | patient; sick person | |
+| W324 | дене | body | |
+| W325 | қан | blood | |
+| W326 | асқазан | stomach | |
+| W327 | сау | healthy, well | |
+| W328 | ауыру | to be ill; to hurt | |
+
+### Seasons and weather (Жыл мезгілдері), A2
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W329 | көктем | spring | |
+| W330 | жаз | summer | |
+| W331 | күз | autumn | |
+| W332 | қыс | winter | |
+| W333 | мезгіл | season; time | |
+| W334 | тұман | fog | |
+| W335 | мұз | ice | |
+| W336 | бұршақ | hail; pea | |
+| W337 | найзағай | lightning | |
+| W338 | жапырақ | leaf | |
+| W339 | шөп | grass | |
+| W340 | температура | temperature | |
+| W341 | салқын | cool | |
+| W342 | ашық | clear, sunny; open | |
+| W343 | бұлтты | cloudy | |
+| W344 | жаңбырлы | rainy | |
+
+### Months and dates (Айлар), A1
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W345 | қаңтар | January | |
+| W346 | ақпан | February | |
+| W347 | наурыз | March | |
+| W348 | сәуір | April | |
+| W349 | мамыр | May | |
+| W350 | маусым | June | |
+| W351 | шілде | July | |
+| W352 | тамыз | August | |
+| W353 | қыркүйек | September | |
+| W354 | қазан | October; cauldron | |
+| W355 | қараша | November | |
+| W356 | желтоқсан | December | |
+| W357 | күнтізбе | calendar | |
+| W358 | мереке | holiday, festival | |
+| W359 | туған күн | birthday | |
+
+### Free time (Бос уақыт), A2
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W360 | спорт | sport | |
+| W361 | футбол | football | |
+| W362 | доп | ball | |
+| W363 | ойын | game | |
+| W364 | кино | cinema, film | |
+| W365 | музыка | music | |
+| W366 | ән | song | |
+| W367 | би | dance | |
+| W368 | сурет | picture, photo | |
+| W369 | саяхат | travel, journey | |
+| W370 | демалыс | rest; holiday | |
+| W371 | серуен | walk, stroll | |
+| W372 | театр | theatre | |
+| W373 | мұражай | museum | |
+| W374 | домбыра | dombra (two-stringed lute) | |
+| W375 | жүгіру | to run | |
+| W376 | ән айту | to sing | |
+| W377 | сурет салу | to draw | |
+| W378 | демалу | to rest | |
+
+### Feelings and character (Сезім мен мінез), B1
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W379 | сезім | feeling | |
+| W380 | мінез | character, temper | |
+| W381 | қуаныш | joy | |
+| W382 | қайғы | grief, sorrow | |
+| W383 | махаббат | love | |
+| W384 | бақыт | happiness; luck | |
+| W385 | күлкі | laughter | |
+| W386 | қайғылы | sad, sorrowful | |
+| W387 | ашулы | angry | |
+| W388 | мейірімді | kind | |
+| W389 | ақылды | clever | |
+| W390 | жалқау | lazy | |
+| W391 | еңбекқор | hard-working | |
+| W392 | батыл | brave | |
+| W393 | сенімді | reliable | |
+| W394 | қорқақ | cowardly | |
+| W395 | ренжу | to be offended | |
+| W396 | көңілді | cheerful | |
+| W397 | шаршаңқы | tired | |
+| W398 | күлу | to laugh | |
+| W399 | жылау | to cry | |
+| W400 | шаршау | to get tired | |
+| W401 | ұнау | to please, to be liked | |
+
+### Work (Жұмыс), B1
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W402 | мамандық | profession | |
+| W403 | жалақы | salary, wages | |
+| W404 | кәсіп | occupation, trade | |
+| W405 | жиналыс | meeting | |
+| W406 | зауыт | factory | |
+| W407 | компания | company | |
+| W408 | бастық | boss, manager | |
+| W409 | қызмет | service; job | |
+| W410 | еңбек | work, labour | |
+| W411 | тапсырма | task, assignment | |
+| W412 | зейнеткер | pensioner | |
+| W413 | жоспар | plan | |
+| W414 | табыс | income; success | |
+| W415 | бастау | to begin | |
+| W416 | бітіру | to finish | |
+| W417 | кешігу | to be late | |
+| W418 | жіберу | to send | |
+
+### Travelling abroad (Шетелге сапар), B1
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W419 | шетел | abroad, foreign country | |
+| W420 | ел | country; people | |
+| W421 | мемлекет | state, country | |
+| W422 | төлқұжат | passport | |
+| W423 | жүк | luggage, load | |
+| W424 | бағыт | direction, route | |
+| W425 | кесте | timetable | |
+| W426 | орын | seat, place | |
+| W427 | аудармашы | interpreter, translator | |
+| W428 | жақын | near | |
+| W429 | алыс | far | |
+| W430 | тура | straight on | |
+| W431 | сол жақ | the left (side) | |
+| W432 | оң жақ | the right (side) | |
+| W433 | ұшу | to fly | |
+| W434 | түсу | to get off; to go down | |
+| W435 | отыру | to sit; to get on (a bus) | |
+
+### More verbs (Етістіктер 2), A2
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W436 | есту | to hear | |
+| W437 | ұмыту | to forget | |
+| W438 | сену | to believe, to trust | |
+| W439 | іздеу | to look for | |
+| W440 | әкелу | to bring | |
+| W441 | көтеру | to lift, to raise | |
+| W442 | шешу | to solve; to take off | |
+| W443 | жөндеу | to repair | |
+| W444 | тазарту | to clean | |
+| W445 | көшу | to move (house) | |
+| W446 | қоңырау шалу | to phone | |
+| W447 | аудару | to translate | |
+| W448 | түсіндіру | to explain | |
+| W449 | дайындау | to prepare | |
+| W450 | қосу | to add; to switch on | |
+| W451 | сөндіру | to switch off, to put out | |
+| W452 | салу | to put; to build | |
+| W453 | тоқтау | to stop | |
+| W454 | өту | to pass, to cross | |
+| W455 | қалу | to stay | |
+| W456 | ояну | to wake up | |
+| W457 | қорғау | to protect | |
+| W458 | сақтау | to keep, to save | |
+| W459 | шақыру | to invite | |
+| W460 | қарсы алу | to meet (someone arriving) | |
+
+### At the table (Дастарқан басында), A2
+
+| # | Kazakh | Meaning | Comment |
+|---|---|---|---|
+| W461 | дастарқан | tablecloth; spread of food | |
+| W462 | кесе | cup, bowl | |
+| W463 | қасық | spoon | |
+| W464 | шанышқы | fork | |
+| W465 | пышақ | knife | |
+| W466 | тәрелке | plate | |
+| W467 | бесбармақ | beshbarmak (meat and noodles) | |
+| W468 | қазы | kazy (horse-meat sausage) | |
+| W469 | палау | pilaf | |
+| W470 | шұбат | shubat (camel’s milk) | |
+| W471 | айран | ayran (yoghurt drink) | |
+| W472 | құрт | kurt (dried cheese balls) | |
+| W473 | бұрыш | pepper; corner | |
+| W474 | тамақтану | to eat (a meal) | |
+| W475 | тою | to be full (after eating) | |
+| W476 | дәмді | tasty | |
+
 ## 2. Kazakh in the lessons
 
 Every line of the Learn pages that contains Kazakh, with its English. Tables of forms are made by the rules and not listed (they are checked against Wiktionary).
@@ -597,6 +845,7 @@ Every line of the Learn pages that contains Kazakh, with its English. Tables of 
 | T36 | сұраулық | grammar term: сұраулық шылау, the question particle. | |
 | T37 | тыңдалым | listening (as a language skill). | |
 | T38 | мамандықтар | мамандық (profession) + the plural -тар. | |
+| T39 | мезгілдері | мезгіл (season) + -дер + -і: жыл мезгілдері, the seasons of the year. | |
 
 ## 4. Drill questions and explanations
 
@@ -604,147 +853,147 @@ A sample of each drill: the task, the prompt, the hint, the expected answer, and
 
 ### Vowel harmony (https://will-corbett.github.io/Aqboken/drill/harmony/)
 
-- **D1** Which is right? (plural): *көз* (eye) → **көздер**. көз: its last vowel, ө, is a front vowel (so е/і in the ending). So көздер, not көздар.
-- **D2** Which is right? (to (dative)): *туыс* (relative) → **туысқа**. туыс: its last vowel, ы, is a back vowel (so а/ы in the ending). So туысқа, not туыске.
-- **D3** Which is right? (to (dative)): *тіл* (language; tongue) → **тілге**. тіл: its last vowel, і, is a front vowel (so е/і in the ending). So тілге, not тілға.
-- **D4** Which is right? (in / at (locative)): *күріш* (rice) → **күріште**. күріш: its last vowel, і, is a front vowel (so е/і in the ending). So күріште, not күрішта.
-- **D5** Which is right? (plural): *түйе* (camel) → **түйелер**. түйе: its last vowel, е, is a front vowel (so е/і in the ending). So түйелер, not түйелар.
-- **D6** Which is right? (to (dative)): *қызметкер* (employee) → **қызметкерге**. қызметкер: its last vowel, е, is a front vowel (so е/і in the ending). So қызметкерге, not қызметкерға.
+- **D1** Which is right? (in / at (locative)): *жүрек* (heart) → **жүректе**. жүрек: its last vowel, е, is a front vowel (so е/і in the ending). So жүректе, not жүректа.
+- **D2** Which is right? (in / at (locative)): *мұғалім* (teacher) → **мұғалімде**. мұғалім: its last vowel, і, is a front vowel (so е/і in the ending). So мұғалімде, not мұғалімда.
+- **D3** Which is right? (to (dative)): *қарындас* (younger sister (of a man)) → **қарындасқа**. қарындас: its last vowel, а, is a back vowel (so а/ы in the ending). So қарындасқа, not қарындаске.
+- **D4** Which is right? (in / at (locative)): *пәтер* (flat, apartment) → **пәтерде**. пәтер: its last vowel, е, is a front vowel (so е/і in the ending). So пәтерде, not пәтерда.
+- **D5** Which is right? (in / at (locative)): *би* (dance) → **биде**. би: its last vowel, и, is a front vowel (so е/і in the ending). So биде, not бида.
+- **D6** Which is right? (to (dative)): *әнші* (singer) → **әншіге**. әнші: its last vowel, і, is a front vowel (so е/і in the ending). So әншіге, not әншіға.
 
 ### Plurals (https://will-corbett.github.io/Aqboken/drill/plural/)
 
-- **D7** Make it plural: *әріптес* (colleague) → **әріптестер**. әріптес ends in с, a voiceless consonant, and its last vowel, е, is a front vowel (so е/і in the ending): -тер. әріптестер.
-- **D8** Make it plural: *арқа* (back) → **арқалар**. арқа ends in а, a vowel, and its last vowel, а, is a back vowel (so а/ы in the ending): -лар. арқалар.
-- **D9** Make it plural: *мешіт* (mosque) → **мешіттер**. мешіт ends in т, a voiceless consonant, and its last vowel, і, is a front vowel (so е/і in the ending): -тер. мешіттер.
-- **D10** Make it plural: *велосипед* (bicycle) → **велосипедтер**. велосипед ends in д, which is said voiceless at the end of a word, and its last vowel, е, is a front vowel (so е/і in the ending): -тер. велосипедтер.
-- **D11** Make it plural: *қонақ* (guest) → **қонақтар**. қонақ ends in қ, a voiceless consonant, and its last vowel, а, is a back vowel (so а/ы in the ending): -тар. қонақтар.
-- **D12** Make it plural: *оқушы* (pupil, schoolchild) → **оқушылар**. оқушы ends in ы, a vowel, and its last vowel, ы, is a back vowel (so а/ы in the ending): -лар. оқушылар.
+- **D7** Make it plural: *орыс* (a Russian) → **орыстар**. орыс ends in с, a voiceless consonant, and its last vowel, ы, is a back vowel (so а/ы in the ending): -тар. орыстар.
+- **D8** Make it plural: *мереке* (holiday, festival) → **мерекелер**. мереке ends in е, a vowel, and its last vowel, е, is a front vowel (so е/і in the ending): -лер. мерекелер.
+- **D9** Make it plural: *әже* (grandmother) → **әжелер**. әже ends in е, a vowel, and its last vowel, е, is a front vowel (so е/і in the ending): -лер. әжелер.
+- **D10** Make it plural: *кино* (cinema, film) → **кинолар**. кино ends in о, a vowel, and its last vowel, о, is a back vowel (so а/ы in the ending): -лар. кинолар.
+- **D11** Make it plural: *сүт* (milk) → **сүттер**. сүт ends in т, a voiceless consonant, and its last vowel, ү, is a front vowel (so е/і in the ending): -тер. сүттер.
+- **D12** Make it plural: *қызмет* (service; job) → **қызметтер**. қызмет ends in т, a voiceless consonant, and its last vowel, е, is a front vowel (so е/і in the ending): -тер. қызметтер.
 
 ### “I am …” (https://will-corbett.github.io/Aqboken/drill/copula/)
 
-- **D13** “I am …”: сіз · you (polite): *сатушы* (shop assistant, seller); сіз ___. → **сатушысыз**. With сіз the ending is always -сыз; its last vowel, ы, is a back vowel (so а/ы in the ending). Сіз сатушысыз.
-- **D14** “I am …”: біз · we: *көрші* (neighbour); біз ___. → **көршіміз**. көрші ends in і, a vowel, so -міз; its last vowel, і, is a front vowel (so е/і in the ending). Біз көршіміз.
-- **D15** “I am …”: мен · I: *инженер* (engineer); мен ___. → **инженермін**. инженер ends in р, a sonorant (р, й, у, и), so -мін; its last vowel, е, is a front vowel (so е/і in the ending). Мен инженермін.
-- **D16** “I am …”: сіз · you (polite): *студент* (student); сіз ___. → **студентсіз**. With сіз the ending is always -сіз; its last vowel, е, is a front vowel (so е/і in the ending). Сіз студентсіз.
-- **D17** “I am …”: ол · he, she: *жақсы* (good); ол ___. → **жақсы**. With ол (he, she) there is no ending: Ол жақсы.
-- **D18** “I am …”: ол · he, she: *әнші* (singer); ол ___. → **әнші**. With ол (he, she) there is no ending: Ол әнші.
+- **D13** “I am …”: сен · you (friend): *қызметкер* (employee); сен ___. → **қызметкерсің**. With сен the ending is always -сің; its last vowel, е, is a front vowel (so е/і in the ending). Сен қызметкерсің.
+- **D14** “I am …”: ол · he, she: *мұғалім* (teacher); ол ___. → **мұғалім**. With ол (he, she) there is no ending: Ол мұғалім.
+- **D15** “I am …”: сіз · you (polite): *қазақ* (a Kazakh); сіз ___. → **қазақсыз**. With сіз the ending is always -сыз; its last vowel, а, is a back vowel (so а/ы in the ending). Сіз қазақсыз.
+- **D16** “I am …”: біз · we: *орыс* (a Russian); біз ___. → **орыспыз**. орыс ends in с, a voiceless consonant, so -пыз; its last vowel, ы, is a back vowel (so а/ы in the ending). Біз орыспыз.
+- **D17** “I am …”: мен · I: *жас* (young); мен ___. → **жаспын**. жас ends in с, a voiceless consonant, so -пын; its last vowel, а, is a back vowel (so а/ы in the ending). Мен жаспын.
+- **D18** “I am …”: сен · you (friend): *жазушы* (writer); сен ___. → **жазушысың**. With сен the ending is always -сың; its last vowel, ы, is a back vowel (so а/ы in the ending). Сен жазушысың.
 
 ### My, your, his (https://will-corbett.github.io/Aqboken/drill/possessive/)
 
-- **D19** Possessive: біз · we: *теледидар* (television); hint “our television”; біздің ___ → **теледидарымыз**. теледидар ends in a consonant, so the ending starts with a vowel; its last vowel, а, is a back vowel (so а/ы in the ending): біздің теледидарымыз.
-- **D20** Possessive: сіз · you (polite): *қыз* (daughter; girl); hint “your daughter”; сіздің ___ → **қызыңыз**. қыз ends in a consonant, so the ending starts with a vowel; its last vowel, ы, is a back vowel (so а/ы in the ending): сіздің қызыңыз.
-- **D21** Possessive: мен · I: *қымыз* (kumis (fermented mare’s milk)); hint “my kumis”; менің ___ → **қымызым**. қымыз ends in a consonant, so the ending starts with a vowel; its last vowel, ы, is a back vowel (so а/ы in the ending): менің қымызым.
-- **D22** Possessive: сіз · you (polite): *көл* (lake); hint “your lake”; сіздің ___ → **көліңіз**. көл ends in a consonant, so the ending starts with a vowel; its last vowel, ө, is a front vowel (so е/і in the ending): сіздің көліңіз.
-- **D23** Possessive: сіз · you (polite): *жолаушы* (passenger); hint “your passenger”; сіздің ___ → **жолаушыңыз**. жолаушы ends in a vowel, so the short ending; its last vowel, ы, is a back vowel (so а/ы in the ending): сіздің жолаушыңыз.
-- **D24** Possessive: мен · I: *өзен* (river); hint “my river”; менің ___ → **өзенім**. өзен ends in a consonant, so the ending starts with a vowel; its last vowel, е, is a front vowel (so е/і in the ending): менің өзенім.
+- **D19** Possessive: ол · he, she: *аудармашы* (interpreter, translator); hint “his / her interpreter”; оның ___ → **аудармашысы**. аудармашы ends in a vowel, so the short ending; its last vowel, ы, is a back vowel (so а/ы in the ending): оның аудармашысы.
+- **D20** Possessive: ол · he, she: *қыз* (daughter; girl); hint “his / her daughter”; оның ___ → **қызы**. қыз ends in a consonant, so the ending starts with a vowel; its last vowel, ы, is a back vowel (so а/ы in the ending): оның қызы.
+- **D21** Possessive: ол · he, she: *күн* (day; sun); hint “his / her day”; оның ___ → **күні**. күн ends in a consonant, so the ending starts with a vowel; its last vowel, ү, is a front vowel (so е/і in the ending): оның күні.
+- **D22** Possessive: ол · he, she: *сүт* (milk); hint “his / her milk”; оның ___ → **сүті**. сүт ends in a consonant, so the ending starts with a vowel; its last vowel, ү, is a front vowel (so е/і in the ending): оның сүті.
+- **D23** Possessive: мен · I: *хат* (letter); hint “my letter”; менің ___ → **хатым**. хат ends in a consonant, so the ending starts with a vowel; its last vowel, а, is a back vowel (so а/ы in the ending): менің хатым.
+- **D24** Possessive: мен · I: *бақыт* (happiness; luck); hint “my happiness”; менің ___ → **бақытым**. бақыт ends in a consonant, so the ending starts with a vowel; its last vowel, ы, is a back vowel (so а/ы in the ending): менің бақытым.
 
 ### The seven cases (https://will-corbett.github.io/Aqboken/drill/cases/)
 
-- **D25** Dative (Барыс): to, towards, for: *адам* (person); hint “to the person” → **адамға**. Dative (to, towards, for): адам ends in м, a nasal (м, н, ң), and its last vowel, а, is a back vowel (so а/ы in the ending). So -ға: адамға.
-- **D26** Locative (Жатыс): in, at, on: *май* (butter; oil); hint “in / at the butter” → **майда**. Locative (in, at, on): май ends in й, a sonorant (р, й, у, и), and its last vowel, а, is a back vowel (so а/ы in the ending). So -да: майда.
-- **D27** Instrumental (Көмектес): with, by: *жер* (earth, land); hint “with / by the earth” → **жермен**. Instrumental (with, by): жер ends in р, a sonorant (р, й, у, и), and the instrumental ending never changes its vowel. So -мен: жермен.
-- **D28** Genitive (Ілік): of, ’s: *аурухана* (hospital); hint “of the hospital” → **аурухананың**. Genitive (of, ’s): аурухана ends in а, a vowel, and its last vowel, а, is a back vowel (so а/ы in the ending). So -ның: аурухананың.
-- **D29** Accusative (Табыс): the (definite object): *жүргізуші* (driver); hint “the driver (as the object: I see the driver)” → **жүргізушіні**. Accusative (the (definite object)): жүргізуші ends in і, a vowel, and its last vowel, і, is a front vowel (so е/і in the ending). So -ні: жүргізушіні.
-- **D30** Genitive (Ілік): of, ’s: *ас үй* (kitchen); hint “of the kitchen” → **ас үйдің**. Genitive (of, ’s): ас үй ends in й, a sonorant (р, й, у, и), and its last vowel, ү, is a front vowel (so е/і in the ending). So -дің: ас үйдің.
+- **D25** Genitive (Ілік): of, ’s: *мезгіл* (season; time); hint “of the season” → **мезгілдің**. Genitive (of, ’s): мезгіл ends in л, and its last vowel, і, is a front vowel (so е/і in the ending). So -дің: мезгілдің.
+- **D26** Dative (Барыс): to, towards, for: *мұғалім* (teacher); hint “to the teacher” → **мұғалімге**. Dative (to, towards, for): мұғалім ends in м, a nasal (м, н, ң), and its last vowel, і, is a front vowel (so е/і in the ending). So -ге: мұғалімге.
+- **D27** Locative (Жатыс): in, at, on: *ас үй* (kitchen); hint “in / at the kitchen” → **ас үйде**. Locative (in, at, on): ас үй ends in й, a sonorant (р, й, у, и), and its last vowel, ү, is a front vowel (so е/і in the ending). So -де: ас үйде.
+- **D28** Instrumental (Көмектес): with, by: *орыс* (a Russian); hint “with / by the Russian” → **орыспен**. Instrumental (with, by): орыс ends in с, a voiceless consonant, and the instrumental ending never changes its vowel. So -пен: орыспен.
+- **D29** Instrumental (Көмектес): with, by: *чек* (receipt); hint “with / by the receipt” → **чекпен**. Instrumental (with, by): чек ends in к, a voiceless consonant, and the instrumental ending never changes its vowel. So -пен: чекпен.
+- **D30** Ablative (Шығыс): from, out of: *белдемше* (skirt); hint “from the skirt” → **белдемшеден**. Ablative (from, out of): белдемше ends in е, a vowel, and its last vowel, е, is a front vowel (so е/і in the ending). So -ден: белдемшеден.
 
 ### In my house, to your friend (https://will-corbett.github.io/Aqboken/drill/posscases/)
 
-- **D31** Dative (to, towards, for) of “оның …”: *сұрақ* (question); hint “to his/her question”; оның ___ → **сұрағына**. First the possessive: оның сұрағы. Then after the 3rd-person possessive, the case ending takes н: -на: сұрағына.
-- **D32** Locative (in, at, on) of “менің …”: *қарындас* (younger sister (of a man)); hint “in / at my younger sister”; менің ___ → **қарындасымда**. First the possessive: менің қарындасым. Then қарындасым ends in м, a nasal (м, н, ң), so the locative is -да: қарындасымда.
-- **D33** Locative (in, at, on) of “оның …”: *аурухана* (hospital); hint “in / at his/her hospital”; оның ___ → **ауруханасында**. First the possessive: оның ауруханасы. Then after the 3rd-person possessive, the case ending takes н: -нда: ауруханасында.
-- **D34** Dative (to, towards, for) of “біздің …”: *тамақ* (food; meal); hint “to our food”; біздің ___ → **тамағымызға**. First the possessive: біздің тамағымыз. Then тамағымыз ends in з, a voiced з or ж, so the dative is -ға: тамағымызға.
-- **D35** Locative (in, at, on) of “оның …”: *су* (water); hint “in / at his/her water”; оның ___ → **суында**. First the possessive: оның суы. Then after the 3rd-person possessive, the case ending takes н: -нда: суында.
-- **D36** Dative (to, towards, for) of “біздің …”: *банк* (bank); hint “to our bank”; біздің ___ → **банкімізге**. First the possessive: біздің банкіміз. Then банкіміз ends in з, a voiced з or ж, so the dative is -ге: банкімізге.
+- **D31** Dative (to, towards, for) of “менің …”: *мемлекет* (state, country); hint “to my state”; менің ___ → **мемлекетіме**. First the possessive: менің мемлекетім. Then after -м and -ң of “my”/“your”, the dative is just -е: мемлекетіме.
+- **D32** Ablative (from, out of) of “оның …”: *шапан* (chapan (long robe)); hint “from his/her chapan”; оның ___ → **шапанынан**. First the possessive: оның шапаны. Then after the 3rd-person possessive, the case ending takes н: -нан: шапанынан.
+- **D33** Locative (in, at, on) of “оның …”: *бастық* (boss, manager); hint “in / at his/her boss”; оның ___ → **бастығында**. First the possessive: оның бастығы. Then after the 3rd-person possessive, the case ending takes н: -нда: бастығында.
+- **D34** Ablative (from, out of) of “менің …”: *мектеп* (school); hint “from my school”; менің ___ → **мектебімнен**. First the possessive: менің мектебім. Then мектебім ends in м, a nasal (м, н, ң), so the ablative is -нен: мектебімнен.
+- **D35** Locative (in, at, on) of “менің …”: *дәптер* (exercise book); hint “in / at my exercise book”; менің ___ → **дәптерімде**. First the possessive: менің дәптерім. Then дәптерім ends in м, a nasal (м, н, ң), so the locative is -де: дәптерімде.
+- **D36** Ablative (from, out of) of “сенің …”: *шалбар* (trousers); hint “from your trousers”; сенің ___ → **шалбарыңнан**. First the possessive: сенің шалбарың. Then шалбарың ends in ң, a nasal (м, н, ң), so the ablative is -нан: шалбарыңнан.
 
 ### Postpositions (https://will-corbett.github.io/Aqboken/drill/postpositions/)
 
-- **D37** Before бұрын (before): *көше* (street); hint “before the street”; ___ бұрын → **көшеден**. бұрын takes the ablative: көшеден бұрын.
-- **D38** Before қарай (towards): *туыс* (relative); hint “towards the relative”; ___ қарай → **туысқа**. қарай takes the dative: туысқа қарай.
-- **D39** Before бірге (together with): *қағаз* (paper); hint “together with the paper”; ___ бірге → **қағазбен**. бірге takes the instrumental: қағазбен бірге.
-- **D40** Before қарсы (against, opposite): *әйел* (woman; wife); hint “against the woman”; ___ қарсы → **әйелге**. қарсы takes the dative: әйелге қарсы.
-- **D41** Before туралы (about): *қағаз* (paper); hint “about the paper”; ___ туралы → **қағаз**. туралы takes the plain form: қағаз туралы.
-- **D42** Before кейін (after): *әріптес* (colleague); hint “after the colleague”; ___ кейін → **әріптестен**. кейін takes the ablative: әріптестен кейін.
+- **D37** Before қарай (towards): *түн* (night); hint “towards the night”; ___ қарай → **түнге**. қарай takes the dative: түнге қарай.
+- **D38** Before арқылы (through, by way of): *уақыт* (time); hint “through the time”; ___ арқылы → **уақыт**. арқылы takes the plain form: уақыт арқылы.
+- **D39** Before қарсы (against, opposite): *кеш* (evening); hint “against the evening”; ___ қарсы → **кешке**. қарсы takes the dative: кешке қарсы.
+- **D40** Before қарсы (against, opposite): *аурухана* (hospital); hint “against the hospital”; ___ қарсы → **ауруханаға**. қарсы takes the dative: ауруханаға қарсы.
+- **D41** Before туралы (about): *қыз* (daughter; girl); hint “about the daughter”; ___ туралы → **қыз**. туралы takes the plain form: қыз туралы.
+- **D42** Before бұрын (before): *туыс* (relative); hint “before the relative”; ___ бұрын → **туыстан**. бұрын takes the ablative: туыстан бұрын.
 
 ### Pronouns in the cases (https://will-corbett.github.io/Aqboken/drill/pronouns/)
 
-- **D43** Ablative (Шығыс): from, out of: *біз* (we) → **бізден**. біз takes the regular ablative ending: бізден.
-- **D44** Ablative (Шығыс): from, out of: *олар* (they) → **олардан**. олар takes the regular ablative ending: олардан.
-- **D45** Dative (Барыс): to, towards, for: *ол* (he / she / it) → **оған**. The dative of мен, сен and ол changes the vowel: маған, саған, оған. Learn them as words.
-- **D46** Locative (Жатыс): in, at, on: *олар* (they) → **оларда**. олар takes the regular locative ending: оларда.
+- **D43** Accusative (Табыс): the (definite object): *сен* (you) → **сені**. сен takes the regular accusative ending: сені.
+- **D44** Locative (Жатыс): in, at, on: *біз* (we) → **бізде**. біз takes the regular locative ending: бізде.
+- **D45** Genitive (Ілік): of, ’s: *олар* (they) → **олардың**. олар takes the regular genitive ending: олардың.
+- **D46** Instrumental (Көмектес): with, by: *олар* (they) → **олармен**. олар takes the regular instrumental ending: олармен.
 - **D47** Locative (Жатыс): in, at, on: *сен* (you) → **сенде**. сен takes the regular locative ending: сенде.
-- **D48** Genitive (Ілік): of, ’s: *сен* (you) → **сенің**. мен and сен take the genitive -нің (менің, сенің) and build the instrumental on it: менімен, сенімен.
+- **D48** Ablative (Шығыс): from, out of: *біз* (we) → **бізден**. біз takes the regular ablative ending: бізден.
 
 ### Present tense (https://will-corbett.github.io/Aqboken/drill/present/)
 
-- **D49** Present: сіз · you (polite): *алу* (to take; to get); Сіз ___. → **аласыз**. The stem ал- ends in a consonant, so -а- comes before the ending: аласыз.
-- **D50** Present: мен · I: *беру* (to give); Мен ___. → **беремін**. The stem бер- ends in a consonant, so -е- comes before the ending: беремін.
-- **D51** Present: сіз · you (polite): *билеу* (to dance); Сіз ___. → **билейсіз**. The stem биле- ends in a vowel, so -й- comes before the ending: билейсіз.
-- **D52** Present: сен · you (friend): *үйрету* (to teach); Сен ___. → **үйретесің**. The stem үйрет- ends in a consonant, so -е- comes before the ending: үйретесің.
-- **D53** Present: сіз · you (polite): *сату* (to sell); Сіз ___. → **сатасыз**. The stem сат- ends in a consonant, so -а- comes before the ending: сатасыз.
-- **D54** Present: сіз · you (polite): *сұрау* (to ask); Сіз ___. → **сұрайсыз**. The stem сұра- ends in a vowel, so -й- comes before the ending: сұрайсыз.
+- **D49** Present: біз · we: *түсіну* (to understand); Біз ___. → **түсінеміз**. The stem түсін- ends in a consonant, so -е- comes before the ending: түсінеміз.
+- **D50** Present: ол · he, she: *ән айту* (to sing); Ол ___. → **ән айтады**. The stem ән айт- ends in a consonant, so -а- comes before the ending: ән айтады.
+- **D51** Present: ол · he, she: *сөйлеу* (to speak); Ол ___. → **сөйлейді**. The stem сөйле- ends in a vowel, so -й- comes before the ending: сөйлейді.
+- **D52** Present: мен · I: *жылау* (to cry); Мен ___. → **жылаймын**. The stem жыла- ends in a vowel, so -й- comes before the ending: жылаймын.
+- **D53** Present: сен · you (friend): *жабу* (to close); Сен ___. → **жабасың**. The stem жап- ends in a consonant, so -а- comes before the ending (the final п becomes б before a vowel): жабасың.
+- **D54** Present: сіз · you (polite): *қарау* (to look); Сіз ___. → **қарайсыз**. The stem қара- ends in a vowel, so -й- comes before the ending: қарайсыз.
 
 ### Past tense (https://will-corbett.github.io/Aqboken/drill/past/)
 
-- **D55** Past: біз · we: *тұру* (to stand; to live; to get up); Біз ___. → **тұрдық**. тұр- ends in р, a sonorant (р, й, у, и), so the past is -ды-; then the ending for біз: тұрдық.
-- **D56** Past: мен · I: *сөйлеу* (to speak); Мен ___. → **сөйледім**. сөйле- ends in е, a vowel, so the past is -ді-; then the ending for мен: сөйледім.
-- **D57** Past: ол · he, she: *беру* (to give); Ол ___. → **берді**. бер- ends in р, a sonorant (р, й, у, и), so the past is -ді-; then the ending for ол: берді.
-- **D58** Past: сен · you (friend): *алу* (to take; to get); Сен ___. → **алдың**. ал- ends in л, so the past is -ды-; then the ending for сен: алдың.
-- **D59** Past: біз · we: *оқу* (to read; to study); Біз ___. → **оқыдық**. оқы- ends in ы, a vowel, so the past is -ды-; then the ending for біз: оқыдық.
-- **D60** Past: біз · we: *келу* (to come); Біз ___. → **келдік**. кел- ends in л, so the past is -ді-; then the ending for біз: келдік.
+- **D55** Past: ол · he, she: *дайындау* (to prepare); Ол ___. → **дайындады**. дайында- ends in а, a vowel, so the past is -ды-; then the ending for ол: дайындады.
+- **D56** Past: ол · he, she: *билеу* (to dance); Ол ___. → **биледі**. биле- ends in е, a vowel, so the past is -ді-; then the ending for ол: биледі.
+- **D57** Past: біз · we: *алу* (to take; to get); Біз ___. → **алдық**. ал- ends in л, so the past is -ды-; then the ending for біз: алдық.
+- **D58** Past: сіз · you (polite): *ойлау* (to think); Сіз ___. → **ойладыңыз**. ойла- ends in а, a vowel, so the past is -ды-; then the ending for сіз: ойладыңыз.
+- **D59** Past: сіз · you (polite): *есту* (to hear); Сіз ___. → **естідіңіз**. есті- ends in і, a vowel, so the past is -ді-; then the ending for сіз: естідіңіз.
+- **D60** Past: сіз · you (polite): *сурет салу* (to draw); Сіз ___. → **сурет салдыңыз**. сурет сал- ends in л, so the past is -ды-; then the ending for сіз: сурет салдыңыз.
 
 ### Right now (https://will-corbett.github.io/Aqboken/drill/continuous/)
 
-- **D61** Right now: ол · he, she: *ойнау* (to play); Ол ___. → **ойнап жатыр**. ойна- ends in a vowel, so just -п: ойнап; then жатыр with the ending for ол: ойнап жатыр.
-- **D62** Right now: ол · he, she: *сөйлесу* (to talk (with someone)); Ол ___. → **сөйлесіп жатыр**. сөйлес- ends in a consonant, so -іп: сөйлесіп; then жатыр with the ending for ол: сөйлесіп жатыр.
-- **D63** Right now: сен · you (friend): *жасау* (to make, to do); Сен ___. → **жасап жатырсың**. жаса- ends in a vowel, so just -п: жасап; then жатыр with the ending for сен: жасап жатырсың.
-- **D64** Right now: біз · we: *шығу* (to go out, to come out); Біз ___. → **шығып жатырмыз**. шық- ends in a consonant, so -ып (and қ becomes ғ): шығып; then жатыр with the ending for біз: шығып жатырмыз.
-- **D65** Right now: мен · I: *алу* (to take; to get); Мен ___. → **алып жатырмын**. ал- ends in a consonant, so -ып: алып; then жатыр with the ending for мен: алып жатырмын.
-- **D66** Right now: сен · you (friend): *ашу* (to open); Сен ___. → **ашып жатырсың**. аш- ends in a consonant, so -ып: ашып; then жатыр with the ending for сен: ашып жатырсың.
+- **D61** Right now: мен · I: *жабу* (to close); Мен ___. → **жауып жатырмын**. жап- ends in п after a vowel, which becomes у before -ып: жауып; then жатыр with the ending for мен: жауып жатырмын.
+- **D62** Right now: мен · I: *жөндеу* (to repair); Мен ___. → **жөндеп жатырмын**. жөнде- ends in a vowel, so just -п: жөндеп; then жатыр with the ending for мен: жөндеп жатырмын.
+- **D63** Right now: мен · I: *көмектесу* (to help); Мен ___. → **көмектесіп жатырмын**. көмектес- ends in a consonant, so -іп: көмектесіп; then жатыр with the ending for мен: көмектесіп жатырмын.
+- **D64** Right now: мен · I: *күлу* (to laugh); Мен ___. → **күліп жатырмын**. күл- ends in a consonant, so -іп: күліп; then жатыр with the ending for мен: күліп жатырмын.
+- **D65** Right now: мен · I: *сөйлесу* (to talk (with someone)); Мен ___. → **сөйлесіп жатырмын**. сөйлес- ends in a consonant, so -іп: сөйлесіп; then жатыр with the ending for мен: сөйлесіп жатырмын.
+- **D66** Right now: сен · you (friend): *кию* (to put on, to wear); Сен ___. → **киіп жатырсың**. ки- ends in a consonant, so -іп: киіп; then жатыр with the ending for сен: киіп жатырсың.
 
 ### Going to (https://will-corbett.github.io/Aqboken/drill/future/)
 
-- **D67** Going to: мен · I: *тұру* (to stand; to live; to get up); Мен ___. → **тұрмақпын**. тұр- ends in р, a sonorant (р, й, у, и), so -мақ; then the “I am” ending for мен: тұрмақпын.
-- **D68** Going to: сіз · you (polite): *кию* (to put on, to wear); Сіз ___. → **кимексіз**. ки- ends in и, a sonorant (р, й, у, и), so -мек; then the “I am” ending for сіз: кимексіз.
-- **D69** Going to: ол · he, she: *жасау* (to make, to do); Ол ___. → **жасамақ**. жаса- ends in а, a vowel, so -мақ; then the “I am” ending for ол (none): жасамақ.
-- **D70** Going to: біз · we: *сұрау* (to ask); Біз ___. → **сұрамақпыз**. сұра- ends in а, a vowel, so -мақ; then the “I am” ending for біз: сұрамақпыз.
-- **D71** Going to: сіз · you (polite): *көмектесу* (to help); Сіз ___. → **көмектеспексіз**. көмектес- ends in с, a voiceless consonant, so -пек; then the “I am” ending for сіз: көмектеспексіз.
-- **D72** Going to: сіз · you (polite): *кіру* (to go in, to enter); Сіз ___. → **кірмексіз**. кір- ends in р, a sonorant (р, й, у, и), so -мек; then the “I am” ending for сіз: кірмексіз.
+- **D67** Going to: біз · we: *ауыру* (to be ill; to hurt); Біз ___. → **ауырмақпыз**. ауыр- ends in р, a sonorant (р, й, у, и), so -мақ; then the “I am” ending for біз: ауырмақпыз.
+- **D68** Going to: біз · we: *ренжу* (to be offended); Біз ___. → **ренжімекпіз**. ренжі- ends in і, a vowel, so -мек; then the “I am” ending for біз: ренжімекпіз.
+- **D69** Going to: сіз · you (polite): *жүру* (to walk, to go about); Сіз ___. → **жүрмексіз**. жүр- ends in р, a sonorant (р, й, у, и), so -мек; then the “I am” ending for сіз: жүрмексіз.
+- **D70** Going to: мен · I: *кету* (to leave, to go away); Мен ___. → **кетпекпін**. кет- ends in т, a voiceless consonant, so -пек; then the “I am” ending for мен: кетпекпін.
+- **D71** Going to: ол · he, she: *сөйлесу* (to talk (with someone)); Ол ___. → **сөйлеспек**. сөйлес- ends in с, a voiceless consonant, so -пек; then the “I am” ending for ол (none): сөйлеспек.
+- **D72** Going to: мен · I: *салу* (to put; to build); Мен ___. → **салмақпын**. сал- ends in л, so -мақ; then the “I am” ending for мен: салмақпын.
 
 ### Want to (https://will-corbett.github.io/Aqboken/drill/want/)
 
-- **D73** Want to: сен · you (friend): *сөйлесу* (to talk (with someone)); Сенің ___. → **сөйлескің келеді**. сөйлес- ends in с, a voiceless consonant, so -кі-; then the possessive for сен and келеді: сөйлескің келеді.
-- **D74** Want to: біз · we: *жүру* (to walk, to go about); Біздің ___. → **жүргіміз келеді**. жүр- ends in р, a sonorant (р, й, у, и), so -гі-; then the possessive for біз and келеді: жүргіміз келеді.
-- **D75** Want to: мен · I: *жүру* (to walk, to go about); Менің ___. → **жүргім келеді**. жүр- ends in р, a sonorant (р, й, у, и), so -гі-; then the possessive for мен and келеді: жүргім келеді.
-- **D76** Want to: мен · I: *сату* (to sell); Менің ___. → **сатқым келеді**. сат- ends in т, a voiceless consonant, so -қы-; then the possessive for мен and келеді: сатқым келеді.
-- **D77** Want to: біз · we: *шығу* (to go out, to come out); Біздің ___. → **шыққымыз келеді**. шық- ends in қ, a voiceless consonant, so -қы-; then the possessive for біз and келеді: шыққымыз келеді.
-- **D78** Want to: сіз · you (polite): *ішу* (to drink); Сіздің ___. → **ішкіңіз келеді**. іш- ends in ш, a voiceless consonant, so -кі-; then the possessive for сіз and келеді: ішкіңіз келеді.
+- **D73** Want to: ол · he, she: *көшу* (to move (house)); Оның ___. → **көшкісі келеді**. көш- ends in ш, a voiceless consonant, so -кі-; then the possessive for ол and келеді: көшкісі келеді.
+- **D74** Want to: сіз · you (polite): *тамақтану* (to eat (a meal)); Сіздің ___. → **тамақтанғыңыз келеді**. тамақтан- ends in н, a nasal (м, н, ң), so -ғы-; then the possessive for сіз and келеді: тамақтанғыңыз келеді.
+- **D75** Want to: сен · you (friend): *тыңдау* (to listen); Сенің ___. → **тыңдағың келеді**. тыңда- ends in а, a vowel, so -ғы-; then the possessive for сен and келеді: тыңдағың келеді.
+- **D76** Want to: сен · you (friend): *сурет салу* (to draw); Сенің ___. → **сурет салғың келеді**. сал- ends in л, so -ғы-; then the possessive for сен and келеді: сурет салғың келеді.
+- **D77** Want to: мен · I: *сөндіру* (to switch off, to put out); Менің ___. → **сөндіргім келеді**. сөндір- ends in р, a sonorant (р, й, у, и), so -гі-; then the possessive for мен and келеді: сөндіргім келеді.
+- **D78** Want to: мен · I: *сатып алу* (to buy); Менің ___. → **сатып алғым келеді**. ал- ends in л, so -ғы-; then the possessive for мен and келеді: сатып алғым келеді.
 
 ### Requests and commands (https://will-corbett.github.io/Aqboken/drill/imperative/)
 
 - **D79** Command or request: сен · you (friend): *жұмыс істеу* (to work); hint “(to a friend) work!”; (сен) ___ → **жұмыс істе**. to a friend, the bare stem is the command: жұмыс істе.
-- **D80** Command or request: сіз · you (polite): *айту* (to say, to tell); hint “(polite) please say”; (сіз) ___ → **айтыңыз**. polite: -ңыз after a vowel, -ыңыз/-іңіз after a consonant: айтыңыз.
-- **D81** Command or request: біз · we: *білу* (to know); hint “let’s know”; (біз) ___ → **білейік**. “let’s”: the present base + -йық/-ық (-йік/-ік): білейік.
-- **D82** Command or request: біз · we: *шығу* (to go out, to come out); hint “let’s go out”; (біз) ___ → **шығайық**. “let’s”: the present base + -йық/-ық (-йік/-ік) (қ becomes ғ before a vowel): шығайық.
-- **D83** Command or request: біз · we: *оқу* (to read; to study); hint “let’s read”; (біз) ___ → **оқиық**. “let’s”: the present base + -йық/-ық (-йік/-ік): оқиық.
-- **D84** Command or request: біз · we: *ашу* (to open); hint “let’s open”; (біз) ___ → **ашайық**. “let’s”: the present base + -йық/-ық (-йік/-ік): ашайық.
+- **D80** Command or request: біз · we: *есту* (to hear); hint “let’s hear”; (біз) ___ → **естиік**. “let’s”: the present base + -йық/-ық (-йік/-ік): естиік.
+- **D81** Command or request: біз · we: *жасау* (to make, to do); hint “let’s make”; (біз) ___ → **жасайық**. “let’s”: the present base + -йық/-ық (-йік/-ік): жасайық.
+- **D82** Command or request: ол · he, she: *үйрету* (to teach); hint “let him/her teach”; (ол) ___ → **үйретсін**. “let him/her”: -сын/-сін: үйретсін.
+- **D83** Command or request: мен · I: *түсу* (to get off; to go down); hint “let me get off”; (мен) ___ → **түсейін**. “let me”: the present base + -йын/-ын (-йін/-ін): түсейін.
+- **D84** Command or request: біз · we: *ішу* (to drink); hint “let’s drink”; (біз) ___ → **ішейік**. “let’s”: the present base + -йық/-ық (-йік/-ік): ішейік.
 
 ### Yes/no questions (https://will-corbett.github.io/Aqboken/drill/questions/)
 
-- **D85** Add the question particle: *Is this a lake?*; Бұл көл ___? → **ме**. көл ends in л, and its last vowel, ө, is a front vowel (so е/і in the ending): ме. Бұл көл ме?
-- **D86** Add the question particle: *Do you listen?*; Сен тыңдайсың ___? → **ба**. тыңдайсың ends in ң, a nasal (м, н, ң), and its last vowel, ы, is a back vowel (so а/ы in the ending): ба. Сен тыңдайсың ба?
-- **D87** Add the question particle: *Is this a minute?*; Бұл минут ___? → **па**. минут ends in т, a voiceless consonant, and its last vowel, у, is a back vowel (so а/ы in the ending): па. Бұл минут па?
-- **D88** Add the question particle: *Is this a table?*; Бұл үстел ___? → **ме**. үстел ends in л, and its last vowel, е, is a front vowel (so е/і in the ending): ме. Бұл үстел ме?
-- **D89** Add the question particle: *Do you come?*; Сіз келесіз ___? → **бе**. келесіз ends in з, a voiced з or ж, and its last vowel, і, is a front vowel (so е/і in the ending): бе. Сіз келесіз бе?
-- **D90** Add the question particle: *Is this a trip?*; Бұл сапар ___? → **ма**. сапар ends in р, a sonorant (р, й, у, и), and its last vowel, а, is a back vowel (so а/ы in the ending): ма. Бұл сапар ма?
+- **D85** Add the question particle: *Is this a spring?*; Бұл көктем ___? → **бе**. көктем ends in м, a nasal (м, н, ң), and its last vowel, е, is a front vowel (so е/і in the ending): бе. Бұл көктем бе?
+- **D86** Add the question particle: *Is this a winter?*; Бұл қыс ___? → **па**. қыс ends in с, a voiceless consonant, and its last vowel, ы, is a back vowel (so а/ы in the ending): па. Бұл қыс па?
+- **D87** Add the question particle: *Is this sugar?*; Бұл қант ___? → **па**. қант ends in т, a voiceless consonant, and its last vowel, а, is a back vowel (so а/ы in the ending): па. Бұл қант па?
+- **D88** Add the question particle: *Is this an exercise book?*; Бұл дәптер ___? → **ме**. дәптер ends in р, a sonorant (р, й, у, и), and its last vowel, е, is a front vowel (so е/і in the ending): ме. Бұл дәптер ме?
+- **D89** Add the question particle: *Is this a dombra?*; Бұл домбыра ___? → **ма**. домбыра ends in а, a vowel, and its last vowel, а, is a back vowel (so а/ы in the ending): ма. Бұл домбыра ма?
+- **D90** Add the question particle: *Is this a cold?*; Бұл тұмау ___? → **ма**. тұмау ends in у, a sonorant (р, й, у, и), and its last vowel, у, is a back vowel (so а/ы in the ending): ма. Бұл тұмау ма?
 
 ### Numbers (https://will-corbett.github.io/Aqboken/drill/numbers/)
 
-- **D91** Write the number in words: *31* → **отыз бір**. Numbers are said largest part first, each part a word: отыз + бір.
-- **D92** Write the number in words: *63* → **алпыс үш**. Numbers are said largest part first, each part a word: алпыс + үш.
-- **D93** Write the number in words: *44* → **қырық төрт**. Numbers are said largest part first, each part a word: қырық + төрт.
-- **D94** Write the number in words: *74* → **жетпіс төрт**. Numbers are said largest part first, each part a word: жетпіс + төрт.
-- **D95** Write the number in words: *47* → **қырық жеті**. Numbers are said largest part first, each part a word: қырық + жеті.
-- **D96** Write the number in words: *34* → **отыз төрт**. Numbers are said largest part first, each part a word: отыз + төрт.
+- **D91** Write the number in words: *98* → **тоқсан сегіз**. Numbers are said largest part first, each part a word: тоқсан + сегіз.
+- **D92** Write the number in words: *71* → **жетпіс бір**. Numbers are said largest part first, each part a word: жетпіс + бір.
+- **D93** Write the number in words: *12* → **он екі**. Numbers are said largest part first, each part a word: он + екі.
+- **D94** Write the number in words: *85* → **сексен бес**. Numbers are said largest part first, each part a word: сексен + бес.
+- **D95** Write the number in words: *23* → **жиырма үш**. Numbers are said largest part first, each part a word: жиырма + үш.
+- **D96** Write the number in words: *16* → **он алты**. Numbers are said largest part first, each part a word: он + алты.
 
 ## 5. Example sentences (from Tatoeba)
 
@@ -767,142 +1016,175 @@ Sentences written by Tatoeba volunteers, chosen by us as examples. Please flag a
 | S13 | аспан | Құс аспанда. | The bird is in the sky. | |
 | S14 | ат | Мынау - ат. | This is a name. | |
 | S15 | ата | Атамның қардай ақ шашы бар. | My grandfather has snowy white hair. | |
-| S16 | аурухана | Ауруханада бір апта жаттым. | I stayed in the hospital for a week. | |
-| S17 | ауыл | Менің үйім осы ауылда. | My house is in this village. | |
-| S18 | ашу | Өз мейрамханаңды ашқың келе ме? | Do you want to open up your own restaurant? | |
-| S19 | аяқ | Мен аяғымды жудым. | I washed my feet. | |
-| S20 | әдемі | Ол әдемі әйел. | She is a beautiful woman. | |
-| S21 | әйел | Мен әйел. | I am a woman. | |
-| S22 | әке | Ол менің әкем емес. | That is not my father. | |
-| S23 | бала | Шарап балалар үшін емес. | Wine is not for children. | |
-| S24 | бару | Сен қайда барасың? | Where are you going? | |
-| S25 | беру | Мен вазаны оған бердім. | I gave her the vase. | |
-| S26 | біз | Біз үйде тұрамыз. | We live in a house. | |
-| S27 | білу | Мен білмеймін. | I don't know. | |
-| S28 | бүгін | Бүгін Дүйсенбі. | Today is Monday. | |
-| S29 | бұл | Бұл не? | What is this? | |
-| S30 | дәптер | Менің дәптерім бар. | I have a notebook. | |
-| S31 | дәрігер | Мен дәрігермін. | I am a doctor. | |
-| S32 | дос | Менің досым әлі де солдат. | My friend is still a soldier. | |
-| S33 | дүйсенбі | Бүгін Дүйсенбі. | Today is Monday. | |
-| S34 | дүкен | Жақын жердегі дүкен қайда? | Where is the nearest store? | |
-| S35 | ертең | Ертең дүйсенбі. | Tomorrow is Monday. | |
-| S36 | есік | Есіктің артында не бар? | What's behind the door? | |
-| S37 | ет | Ет қаламаймын. | I don't want meat. | |
-| S38 | жабу | Есікті жап деп айтпадым ба саған? | Didn't I tell you to close the door? | |
-| S39 | жазу | Бұл сөйлемді кім жазды? | Who wrote this sentence? | |
-| S40 | жақсы | Рақмет, жақсы. | I'm fine, thank you. | |
-| S41 | жаңа | Жаңа жылыңызбен! | Happy New Year! | |
-| S42 | жаңбыр | Жаңбыр саулап құйып тұр. | It is raining cats and dogs. | |
-| S43 | жасау | Мен үшін қашан бір нәрсе жасап едің? | When have you ever done anything for me? | |
-| S44 | жасыл | Үйлер жап-жасыл ағаштарға бөленген. | Houses are surrounded by green trees. | |
-| S45 | жауап | Ол сұраққа жауап берді. | He answered the question. | |
-| S46 | жеміс | Бұл жеміс пе? | Is this fruit? | |
-| S47 | жер | Мен бұл жерде жалғызбын ба? | Am I alone here? | |
-| S48 | жеу | Мен ет жемеймін. | I don't eat meat. | |
-| S49 | жоқ | Жоқ. | No. | |
-| S50 | жуу | Мен аяғымды жудым. | I washed my feet. | |
-| S51 | жүзу | Том, өз көршісінің әуітінде жүзіп жатыр. | Tom is swimming in the neighbor's pool. | |
-| S52 | жүру | Шағалалар судың үстінде ұшып жүреді. | Seagulls fly over the water. | |
-| S53 | жұмыртқа | Бізге көбірек жұмыртқа керек. | We need more eggs. | |
-| S54 | жұмыс | Ол жұмысқа кірді. | He has got a job. | |
-| S55 | жыл | Жаңа жылыңызбен! | Happy New Year! | |
-| S56 | иә | Иә. | Yes. | |
-| S57 | инженер | Мен инженермін. | I am an engineer. | |
-| S58 | ит | Ит жүгіріп келе жатты. | A dog ran. | |
-| S59 | іні | Інім мектепке кетті. | My younger brother went to school. | |
-| S60 | істеу | Не істеп отырсың? | What are you doing? | |
-| S61 | ішу | Біз тым аз су ішеміз. | We drink too little water. | |
-| S62 | карта | Несие картасымен төлей аламын ба? | Can I pay by credit card? | |
-| S63 | келу | Ешкім келмеді. | Nobody came. | |
-| S64 | кету | Інім мектепке кетті. | My younger brother went to school. | |
-| S65 | кеш | Кеш жарық! | Good evening! | |
-| S66 | кешіріңіз | Кешіріңіз... | Sorry... | |
-| S67 | кілт | Кілт тұрып қалды. | The key is stuck. | |
-| S68 | кім | Мынау кім? | Who's this? | |
-| S69 | кіру | Ол жұмысқа кірді. | He has got a job. | |
-| S70 | кітап | Бұл кітап менікі. | This book is mine. | |
-| S71 | кішкентай | Том кішкентай кезінде астронавт болғысы келді. | Tom wanted to be an astronaut when he was young. | |
-| S72 | көлік | Менің үлкен көлігім бар. | I have a big car. | |
-| S73 | көмектесу | Көмектесіңдер! | Help! | |
-| S74 | көп | Олар көп сөйлесті. | They talked a lot. | |
-| S75 | көру | Не көрдің? | What did you watch? | |
-| S76 | көрші | Эльмира үнемі көршісімен ұрысып жүреді. | Elmira is always having a row with her neighbour. | |
-| S77 | көше | Бұл көшеде екі шіркеу бар. | There are two churches on this street. | |
-| S78 | күн | Қайырлы күн! | Good day! | |
-| S79 | күту | Тыста күтемін. | I will wait outside. | |
-| S80 | қазақ | Ол қазақ тілін білмейді. | He doesn't know the Kazakh language. | |
-| S81 | қазір | Қазір болмаса, енді қашан? | If not now, when? | |
-| S82 | қай | Қай гитара сенікі? | Which guitar is yours? | |
-| S83 | қайда | Газет қайда? | Where is the newspaper? | |
-| S84 | қала | Оның Токио қаласына кеткеніне сенімдімін. | I'm sure that he went to Tokyo. | |
-| S85 | қалай | Денсаулығыңыз қалай? | How is your health? | |
-| S86 | қант | Қант суда еритін. | Sugar is soluble in water. | |
-| S87 | қанша | Бұл суретте қанша қыз бар? | How many girls are there in this picture? | |
-| S88 | қашан | Қашан келдіңіз? | When did you come? | |
-| S89 | қиын | Бұл көптеген адамдар ойлағаннан да қиын. | It's harder than most people think. | |
-| S90 | қол | Сұрақ қою үшін қолын көтерді. | He raised his hand to ask a question. | |
-| S91 | құс | Құс аспанда. | The bird is in the sky. | |
-| S92 | қыз | Бұл менің қызым. | This is my daughter. | |
-| S93 | қысқа | Пароль қысқа. | The password is short. | |
-| S94 | мейрамхана | Өз мейрамханаңды ашқың келе ме? | Do you want to open up your own restaurant? | |
-| S95 | мектеп | Інім мектепке кетті. | My younger brother went to school. | |
-| S96 | мен | Мен әйел. | I am a woman. | |
-| S97 | минут | Мен он минут бойы күтіп тұра алмаймын. | I can't wait ten minutes. | |
-| S98 | мұғалім | Ол мұғалім. | He is a teacher. | |
-| S99 | мұрын | Құдай саған мұрын берген. | God gave you a nose. | |
-| S100 | мысық | Төрт мысығым бар. | I have four cats. | |
-| S101 | не | Не? | What? | |
-| S102 | неге | Неге? | Why? | |
-| S103 | ойлау | Ол бес жаста деп ойлаймын. | I think it is five years old. | |
-| S104 | ойнау | Мен күнде футбол ойнаймын. | I play football every day. | |
-| S105 | оқу | Оқы! | Study! | |
-| S106 | ол | Ол мұғалім. | He is a teacher. | |
-| S107 | олар | Олар қорқа ма? | Are they afraid? | |
-| S108 | оңай | Бұл мәселені шешу оңай емес. | This problem isn't easy to solve. | |
-| S109 | орыс | Балаларына орыс тілін үйретті. | He taught his children Russian. | |
-| S110 | отыру | Студенттер аудиторияда отыр ма? | Are the students sitting in the auditorium? | |
-| S111 | пісіру | Сенің тамақ пісіріп жатқаныңды көрдім. | I saw you cooking. | |
-| S112 | пойыз | Бұл пойыз мұнда тоқтамайды. | This train does not stop here. | |
-| S113 | рахмет | Рахмет! | Thanks! | |
-| S114 | сағат | Бұл сағат маған ұнайды. | I like this watch. | |
-| S115 | саябақ | Саябақта көп жануарлар бар. | There are lots of animals in the park. | |
-| S116 | сәлем | Сәлем. | Hello! | |
-| S117 | сен | Сен мені жеме. | Don't eat me. | |
-| S118 | сендер | Сендер қазақша сөйлейсіңдер ме? | Do you speak Kazakh? | |
-| S119 | сіз | Сіз кімсіз? | Who are you? | |
-| S120 | сіздер | Сіздер қазақша сөйлейсіздер ме? | Do you speak Kazakh? | |
-| S121 | сол | Сол түнде, Әсем бес ыдысты сындырды. | That night, Asem broke five dishes. | |
-| S122 | сөз | Бос сөз! | Nonsense! | |
-| S123 | сөйлесу | Олар көп сөйлесті. | They talked a lot. | |
-| S124 | сөйлеу | Голландша сөйлейсіз бе? | Do you speak Dutch? | |
-| S125 | студент | Ол студент емес. | He is not a student. | |
-| S126 | су | Су суық емес. | The water isn't cold. | |
-| S127 | суық | Су суық емес. | The water isn't cold. | |
-| S128 | сүю | Мен сені сүйемін. | I love you. | |
-| S129 | сұрақ | Ол сұраққа жауап берді. | He answered the question. | |
-| S130 | табу | Мен әлі жұмыс таппадым. | I still haven't found work. | |
-| S131 | тамақ | Бұл тамақ. | This is food. | |
-| S132 | таң | Қайырлы таң! | Good morning! | |
-| S133 | теледидар | Мен теледидар көремін. | I'm watching TV. | |
-| S134 | тіл | Тіліңді ұнатамын. | I like your language. | |
-| S135 | тоңазытқыш | Біз тоңазытқыш сатып ала аламыз. | We can buy a refrigerator. | |
-| S136 | түн | Қайырлы түн! | Goodnight! | |
-| S137 | тұру | Кілт тұрып қалды. | The key is stuck. | |
-| S138 | уақыт | Сіз бос уақытыңызда не істейсіз? | What do you do in your free time? | |
-| S139 | университет | Университет қайда? | Where is the university? | |
-| S140 | үй | Мамаң үйде ме? | Is your mother at home? | |
-| S141 | үйрену | Бүгін мектепте не үйрендің? | What did you learn at school today? | |
-| S142 | үйрету | Балаларына орыс тілін үйретті. | He taught his children Russian. | |
-| S143 | үлкен | Қазақстан өте үлкен ел. | Kazakhstan is a very large country. | |
-| S144 | үстел | Бізде төрткіл үстел бар. | We have a square table. | |
-| S145 | ұйықтау | Ұйықтайық. | Let's sleep. | |
-| S146 | ұшақ | Мен ұшақпен ұшпаймын | I don't fly. | |
-| S147 | хат | Анама хат жазып отырмын. | I am writing a letter to my mom. | |
-| S148 | шай | Сенің жігітіңе шай ұнай ма? | Does your boyfriend like tea? | |
-| S149 | шаш | Атамның қардай ақ шашы бар. | My grandfather has snowy white hair. | |
-| S150 | шығу | Тұрмысқа шығамын. | I'm getting married. | |
-| S151 | ыстық | Кофе ыстық па? | Is the coffee hot? | |
+| S16 | аудармашы | Маған аудармашы керек. | I need a translator. | |
+| S17 | аудару | Сөзді аударыңыз. | Translate the word. | |
+| S18 | аурухана | Ауруханада бір апта жаттым. | I stayed in the hospital for a week. | |
+| S19 | ауыл | Менің үйім осы ауылда. | My house is in this village. | |
+| S20 | ашу | Өз мейрамханаңды ашқың келе ме? | Do you want to open up your own restaurant? | |
+| S21 | аяқ | Мен аяғымды жудым. | I washed my feet. | |
+| S22 | әдемі | Ол әдемі әйел. | She is a beautiful woman. | |
+| S23 | әйел | Мен әйел. | I am a woman. | |
+| S24 | әке | Ол менің әкем емес. | That is not my father. | |
+| S25 | бала | Шарап балалар үшін емес. | Wine is not for children. | |
+| S26 | бару | Сен қайда барасың? | Where are you going? | |
+| S27 | беру | Мен вазаны оған бердім. | I gave her the vase. | |
+| S28 | біз | Біз үйде тұрамыз. | We live in a house. | |
+| S29 | білу | Мен білмеймін. | I don't know. | |
+| S30 | бүгін | Бүгін Дүйсенбі. | Today is Monday. | |
+| S31 | бұл | Бұл не? | What is this? | |
+| S32 | дайындау | Мен кейде кешкі ас дайындаймын. | I sometimes cook dinner. | |
+| S33 | дәптер | Менің дәптерім бар. | I have a notebook. | |
+| S34 | дәрігер | Мен дәрігермін. | I am a doctor. | |
+| S35 | дәріхана | Ол дәріханада жұмыс істейді. | He works in a pharmacy. | |
+| S36 | демалыс | Бүгін Томның демалыс күні. | Today is Tom's day off. | |
+| S37 | денсаулық | Денсаулығыңыз қалай? | How is your health? | |
+| S38 | дос | Менің досым әлі де солдат. | My friend is still a soldier. | |
+| S39 | дүйсенбі | Бүгін Дүйсенбі. | Today is Monday. | |
+| S40 | дүкен | Жақын жердегі дүкен қайда? | Where is the nearest store? | |
+| S41 | ел | Індет көп елді жайлады. | The rampant sickness spread to many countries. | |
+| S42 | ертең | Ертең дүйсенбі. | Tomorrow is Monday. | |
+| S43 | есік | Есіктің артында не бар? | What's behind the door? | |
+| S44 | есту | Бірдеңе естідің бе? | Did you hear something? | |
+| S45 | ет | Ет қаламаймын. | I don't want meat. | |
+| S46 | жабу | Есікті жап деп айтпадым ба саған? | Didn't I tell you to close the door? | |
+| S47 | жазу | Анама хат жазып отырмын. | I am writing a letter to my mom. | |
+| S48 | жақсы | Рақмет, жақсы. | I'm fine, thank you. | |
+| S49 | жақын | Жақын жердегі дүкен қайда? | Where is the nearest store? | |
+| S50 | жалақы | Мен көп жалақы алмаймын. | I'm not paid much. | |
+| S51 | жаңа | Жаңа жылыңызбен! | Happy New Year! | |
+| S52 | жаңбыр | Жаңбыр саулап құйып тұр. | It is raining cats and dogs. | |
+| S53 | жасау | Мен үшін қашан бір нәрсе жасап едің? | When have you ever done anything for me? | |
+| S54 | жасыл | Үйлер жап-жасыл ағаштарға бөленген. | Houses are surrounded by green trees. | |
+| S55 | жауап | Ол сұраққа жауап берді. | He answered the question. | |
+| S56 | жеміс | Бұл жеміс пе? | Is this fruit? | |
+| S57 | жер | Мен бұл жерде жалғызбын ба? | Am I alone here? | |
+| S58 | жеу | Мен ет жемеймін. | I don't eat meat. | |
+| S59 | жіберу | Оған хабарлама жібердім. | I sent a message to her. | |
+| S60 | жоқ | Жоқ. | No. | |
+| S61 | жуу | Мен аяғымды жудым. | I washed my feet. | |
+| S62 | жүгіру | Ит жүгіріп келе жатты. | A dog ran. | |
+| S63 | жүзу | Том, өз көршісінің әуітінде жүзіп жатыр. | Tom is swimming in the neighbor's pool. | |
+| S64 | жүру | Шағалалар судың үстінде ұшып жүреді. | Seagulls fly over the water. | |
+| S65 | жұмыртқа | Бізге көбірек жұмыртқа керек. | We need more eggs. | |
+| S66 | жұмыс | Ол жұмысқа кірді. | He has got a job. | |
+| S67 | жыл | Жаңа жылыңызбен! | Happy New Year! | |
+| S68 | зауыт | Шешем зауытта істейді. | My mom works in a factory. | |
+| S69 | иә | Иә. | Yes. | |
+| S70 | инженер | Мен инженермін. | I am an engineer. | |
+| S71 | ит | Ит жүгіріп келе жатты. | A dog ran. | |
+| S72 | іні | Інім мектепке кетті. | My younger brother went to school. | |
+| S73 | істеу | Не істеп отырсың? | What are you doing? | |
+| S74 | ішу | Біз тым аз су ішеміз. | We drink too little water. | |
+| S75 | карта | Несие картасымен төлей аламын ба? | Can I pay by credit card? | |
+| S76 | келу | Ешкім келмеді. | Nobody came. | |
+| S77 | кету | Інім мектепке кетті. | My younger brother went to school. | |
+| S78 | кеш | Кеш жарық! | Good evening! | |
+| S79 | кешіріңіз | Кешіріңіз... | Sorry... | |
+| S80 | кино | Менің хоббиім — тамақ пісіру және кино көру. | My hobbies are baking and watching movies. | |
+| S81 | кім | Мынау кім? | Who's this? | |
+| S82 | кіру | Ол жұмысқа кірді. | He has got a job. | |
+| S83 | кітап | Бұл кітап менікі. | This book is mine. | |
+| S84 | кішкентай | Том кішкентай кезінде астронавт болғысы келді. | Tom wanted to be an astronaut when he was young. | |
+| S85 | көлік | Менің үлкен көлігім бар. | I have a big car. | |
+| S86 | көмектесу | Көмектесіңдер! | Help! | |
+| S87 | көп | Олар көп сөйлесті. | They talked a lot. | |
+| S88 | көру | Не көрдің? | What did you watch? | |
+| S89 | көрші | Эльмира үнемі көршісімен ұрысып жүреді. | Elmira is always having a row with her neighbour. | |
+| S90 | көтеру | Сұрақ қою үшін қолын көтерді. | He raised his hand to ask a question. | |
+| S91 | көше | Бұл көшеде екі шіркеу бар. | There are two churches on this street. | |
+| S92 | күлкі | Мені күлкі қылғанды ұнатпаймын. | I don't like being laughed at. | |
+| S93 | күлу | Бәрі неге күліп жатыр? | Why is everybody laughing? | |
+| S94 | күн | Қайырлы күн! | Good day! | |
+| S95 | күту | Тыста күтемін. | I will wait outside. | |
+| S96 | қазақ | Ол қазақ тілін білмейді. | He doesn't know the Kazakh language. | |
+| S97 | қазір | Қазір болмаса, енді қашан? | If not now, when? | |
+| S98 | қай | Қай гитара сенікі? | Which guitar is yours? | |
+| S99 | қайда | Газет қайда? | Where is the newspaper? | |
+| S100 | қала | Оның Токио қаласына кеткеніне сенімдімін. | I'm sure that he went to Tokyo. | |
+| S101 | қалай | Денсаулығыңыз қалай? | How is your health? | |
+| S102 | қант | Қант суда еритін. | Sugar is soluble in water. | |
+| S103 | қанша | Бұл суретте қанша қыз бар? | How many girls are there in this picture? | |
+| S104 | қашан | Қашан келдіңіз? | When did you come? | |
+| S105 | қиын | Бұл көптеген адамдар ойлағаннан да қиын. | It's harder than most people think. | |
+| S106 | қол | Сұрақ қою үшін қолын көтерді. | He raised his hand to ask a question. | |
+| S107 | құс | Құс аспанда. | The bird is in the sky. | |
+| S108 | қыз | Бұл менің қызым. | This is my daughter. | |
+| S109 | қыс | Қыста жүзу сау адамдар үшін қауіпті емес. | Winter swimming isn't dangerous for healthy people. | |
+| S110 | махаббат | Қандай махаббат! | What love! | |
+| S111 | мейірімді | Алматылықтар, балалар үшін мейірімді қала жасайық! | People of Almaty, let us create a child-friendly city! | |
+| S112 | мейрамхана | Өз мейрамханаңды ашқың келе ме? | Do you want to open up your own restaurant? | |
+| S113 | мектеп | Інім мектепке кетті. | My younger brother went to school. | |
+| S114 | мен | Мен әйел. | I am a woman. | |
+| S115 | минут | Мен он минут бойы күтіп тұра алмаймын. | I can't wait ten minutes. | |
+| S116 | музыка | Музыка – құдайдың берген сыйы. | Music is a God given gift. | |
+| S117 | мұғалім | Ол мұғалім. | He is a teacher. | |
+| S118 | мұрын | Құдай саған мұрын берген. | God gave you a nose. | |
+| S119 | мысық | Төрт мысығым бар. | I have four cats. | |
+| S120 | не | Не? | What? | |
+| S121 | неге | Неге? | Why? | |
+| S122 | ойлау | Ол бес жаста деп ойлаймын. | I think it is five years old. | |
+| S123 | ойнау | Мен күнде футбол ойнаймын. | I play football every day. | |
+| S124 | оқу | Оқы! | Study! | |
+| S125 | ол | Ол мұғалім. | He is a teacher. | |
+| S126 | олар | Олар қорқа ма? | Are they afraid? | |
+| S127 | оңай | Бұл мәселені шешу оңай емес. | This problem isn't easy to solve. | |
+| S128 | орын | Ол қарт кісіге орынды берді. | He gave his place to an old man. | |
+| S129 | орыс | Балаларына орыс тілін үйретті. | He taught his children Russian. | |
+| S130 | отыру | Студенттер аудиторияда отыр ма? | Are the students sitting in the auditorium? | |
+| S131 | пісіру | Сенің тамақ пісіріп жатқаныңды көрдім. | I saw you cooking. | |
+| S132 | пойыз | Бұл пойыз мұнда тоқтамайды. | This train does not stop here. | |
+| S133 | рахмет | Рахмет! | Thanks! | |
+| S134 | сағат | Бұл сағат маған ұнайды. | I like this watch. | |
+| S135 | салқын | Оңтүстік полюс солтүстік полюстен әлдеқайда салқын. | The South Pole is a lot colder than the North Pole. | |
+| S136 | сау | Қыста жүзу сау адамдар үшін қауіпті емес. | Winter swimming isn't dangerous for healthy people. | |
+| S137 | саябақ | Саябақта көп жануарлар бар. | There are lots of animals in the park. | |
+| S138 | сәлем | Сәлем. | Hello! | |
+| S139 | сәуір | 25 сәуір - бүкіләлемдік безгекке қарсы күрес күні. | April 25th is World Malaria Day. | |
+| S140 | сендер | Сендер қазақша сөйлейсіңдер ме? | Do you speak Kazakh? | |
+| S141 | сенімді | Мен сенімдімін. | I'm confident. | |
+| S142 | сену | Не? Бұған сенбеймін! | What? I can't believe it! | |
+| S143 | сіз | Сіз кімсіз? | Who are you? | |
+| S144 | сіздер | Сіздер қазақша сөйлейсіздер ме? | Do you speak Kazakh? | |
+| S145 | сол | Сол түнде, Әсем бес ыдысты сындырды. | That night, Asem broke five dishes. | |
+| S146 | сөз | Бос сөз! | Nonsense! | |
+| S147 | сөйлесу | Олар көп сөйлесті. | They talked a lot. | |
+| S148 | сөйлеу | Голландша сөйлейсіз бе? | Do you speak Dutch? | |
+| S149 | студент | Ол студент емес. | He is not a student. | |
+| S150 | су | Су суық емес. | The water isn't cold. | |
+| S151 | сурет | Бұл суретте қанша қыз бар? | How many girls are there in this picture? | |
+| S152 | суық | Су суық емес. | The water isn't cold. | |
+| S153 | сүю | Мен сені сүйемін. | I love you. | |
+| S154 | сұрақ | Ол сұраққа жауап берді. | He answered the question. | |
+| S155 | табу | Мен әлі жұмыс таппадым. | I still haven't found work. | |
+| S156 | тамақ | Бұл тамақ. | This is food. | |
+| S157 | таң | Қайырлы таң! | Good morning! | |
+| S158 | теледидар | Мен теледидар көремін. | I'm watching TV. | |
+| S159 | тіл | Тіліңді ұнатамын. | I like your language. | |
+| S160 | тоқтау | Бұл пойыз мұнда тоқтамайды. | This train does not stop here. | |
+| S161 | тоңазытқыш | Біз тоңазытқыш сатып ала аламыз. | We can buy a refrigerator. | |
+| S162 | түн | Қайырлы түн! | Goodnight! | |
+| S163 | тұру | Біз үйде тұрамыз. | We live in a house. | |
+| S164 | уақыт | Сіз бос уақытыңызда не істейсіз? | What do you do in your free time? | |
+| S165 | университет | Университет қайда? | Where is the university? | |
+| S166 | үй | Мамаң үйде ме? | Is your mother at home? | |
+| S167 | үйрену | Бүгін мектепте не үйрендің? | What did you learn at school today? | |
+| S168 | үйрету | Балаларына орыс тілін үйретті. | He taught his children Russian. | |
+| S169 | үлкен | Қазақстан өте үлкен ел. | Kazakhstan is a very large country. | |
+| S170 | үстел | Бізде төрткіл үстел бар. | We have a square table. | |
+| S171 | ұйықтау | Ұйықтайық. | Let's sleep. | |
+| S172 | ұмыту | Мен бұл күнді ешқашан ұмытпаймын. | I will never forget this day. | |
+| S173 | ұнау | Бұл маған ұнап тұр. | I like it. | |
+| S174 | ұшақ | Мен ұшақпен ұшпаймын | I don't fly. | |
+| S175 | ұшу | Мен ұшақпен ұшпаймын | I don't fly. | |
+| S176 | футбол | Мен күнде футбол ойнаймын. | I play football every day. | |
+| S177 | хат | Анама хат жазып отырмын. | I am writing a letter to my mom. | |
+| S178 | шай | Сенің жігітіңе шай ұнай ма? | Does your boyfriend like tea? | |
+| S179 | шаршау | Мен шаршадым. | I'm tired. | |
+| S180 | шаш | Атамның қардай ақ шашы бар. | My grandfather has snowy white hair. | |
+| S181 | шетел | Келесі жылы демалысымды шетелде өткіземін. | I will spend my next year vacation abroad. | |
+| S182 | шешу | Бұл мәселені шешу оңай емес. | This problem isn't easy to solve. | |
+| S183 | шығу | Тұрмысқа шығамын. | I'm getting married. | |
+| S184 | ыстық | Кофе ыстық па? | Is the coffee hot? | |
 
 ## 6. Words Wiktionary doesn’t have
 
@@ -914,6 +1196,10 @@ We kept these because we believe they’re right; please confirm.
 - **жуу**: a basic verb (to wash) with no Wiktionary entry yet; stem жу-, present жуамын like other stems in -у.
 - **сөйлесу**: a basic verb (to talk with) with no Wiktionary entry yet; stem сөйлес-, regular.
 - **пісіру**: a basic verb (to cook) with no Wiktionary entry yet; stem пісір-, regular.
+- **ауыру**: a basic verb (to hurt, to be ill: басым ауырады) with no Wiktionary entry yet; stem ауыр-, regular.
+- **сатып алу**: to buy: сатып (the -ып form of сату, sell) + алу (take), the everyday verb; алу is in Wiktionary.
+- **әкелу**: a basic verb (to bring) with no Wiktionary entry yet; stem әкел-, regular.
+- **қоңырау шалу**: to phone: қоңырау (bell) + шалу (ring); қоңырау is in Wiktionary, шалу not yet.
 
 ## 7. Audio
 

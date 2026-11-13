@@ -12,6 +12,10 @@ export const NOT_IN_WIKTIONARY: Record<string, string> = {
   жуу: 'a basic verb (to wash) with no Wiktionary entry yet; stem жу-, present жуамын like other stems in -у.',
   сөйлесу: 'a basic verb (to talk with) with no Wiktionary entry yet; stem сөйлес-, regular.',
   пісіру: 'a basic verb (to cook) with no Wiktionary entry yet; stem пісір-, regular.',
+  ауыру: 'a basic verb (to hurt, to be ill: басым ауырады) with no Wiktionary entry yet; stem ауыр-, regular.',
+  'сатып алу': 'to buy: сатып (the -ып form of сату, sell) + алу (take), the everyday verb; алу is in Wiktionary.',
+  әкелу: 'a basic verb (to bring) with no Wiktionary entry yet; stem әкел-, regular.',
+  'қоңырау шалу': 'to phone: қоңырау (bell) + шалу (ring); қоңырау is in Wiktionary, шалу not yet.',
 };
 
 /**
@@ -19,6 +23,8 @@ export const NOT_IN_WIKTIONARY: Record<string, string> = {
  * a suffix that breaks the language's own rules), each with the reason.
  */
 export const WIKTIONARY_ERRORS: Record<string, string> = {
+  'сөмке|gen sg': 'Wiktionary has “сөмкедің”: a noun ending in a vowel takes -нің (сөмкенің), as in every other table.',
+  'сөмке|acc sg': 'Wiktionary has “сөмкеді”: a noun ending in a vowel takes -ні (сөмкені), as in every other table.',
   'немере|dat pl': 'Wiktionary has “немерелердге”, a typo: the dative plural is -ларға/-лерге (немерелерге), as in every other table.',
 };
 
@@ -44,6 +50,7 @@ export const LEARN_WORDS: Record<string, string> = {
   сұраулық: 'grammar term: сұраулық шылау, the question particle.',
   тыңдалым: 'listening (as a language skill).',
   мамандықтар: 'мамандық (profession) + the plural -тар.',
+  мезгілдері: 'мезгіл (season) + -дер + -і: жыл мезгілдері, the seasons of the year.',
 };
 
 /** Tatoeba sentences never shown as examples, by id, with the reason. */
@@ -69,6 +76,11 @@ export const TATOEBA_DENY: Record<number, string> = {
   11071397: 'ал- here is the auxiliary “can” (жей алмайсың).',
   437440: '“You are a toilet!”: an insult.',
   11062265: 'ал- here is the auxiliary “can” (жете аласың).',
+  1518392: 'ауыр here is the adjective “hard, heavy”, not ауыру (to hurt).',
+  1517404: 'Қазан here is the city of Kazan, not қазан (October; cauldron).',
+  8008660: 'қал- and тұр- here are auxiliaries (тұрып қалды, “got stuck”), not қалу or тұру.',
+  437364: 'an advertising slogan; өт- is an auxiliary in атап өт.',
+  11064451: '“I am the state”: a political quotation.',
 };
 
 /**
@@ -84,6 +96,7 @@ export const TATOEBA_AMBIGUOUS_FORMS: Record<string, string> = {
 /** Words given no Tatoeba example, with the reason. */
 export const TATOEBA_SKIP_WORDS: Record<string, string> = {
   алу: 'in these sentences ал- is nearly always the auxiliary “can” (тыныштала алмады), not “take”.',
+  қалу: 'in these sentences қал- is nearly always an auxiliary (болып қалды, “became”), not “stay”.',
 };
 
 /** The options a noun's forms are made with (from its entry in words.ts). */

@@ -4,13 +4,13 @@ Source: Kazakh Wiktionary entries from kaikki.org (`data-raw/kaikki-kazakh.jsonl
 
 ## Our word lists
 
-- 283 words; 0 without a Wiktionary entry of that part of speech.
+- 474 words; 0 without a Wiktionary entry of that part of speech.
 
-- 1 phrases checked word by word: жұмыс істеу.
-- Listed as not in Wiktionary (with reasons, src/data/exceptions.ts): 6.
-- Wiktionary errors set aside: немере|dat pl (Wiktionary has “немерелердге”, a typo: the dative plural is -ларға/-лерге (немерелерге), as in every other table.).
-- 159 of our 177 nouns have a Wiktionary declension table; 0 disagree.
-- 22 of our 44 verbs have a Wiktionary conjugation table; 0 disagree.
+- 7 phrases checked word by word: жұмыс істеу, бас киім, ән айту, сурет салу, сол жақ, оң жақ, қарсы алу.
+- Listed as not in Wiktionary (with reasons, src/data/exceptions.ts): 10.
+- Wiktionary errors set aside: сөмке|gen sg (Wiktionary has “сөмкедің”: a noun ending in a vowel takes -нің (сөмкенің), as in every other table.); сөмке|acc sg (Wiktionary has “сөмкеді”: a noun ending in a vowel takes -ні (сөмкені), as in every other table.); немере|dat pl (Wiktionary has “немерелердге”, a typo: the dative plural is -ларға/-лерге (немерелерге), as in every other table.).
+- 256 of our 302 nouns have a Wiktionary declension table; 0 disagree.
+- 35 of our 90 verbs have a Wiktionary conjugation table; 0 disagree.
 
 
 ## Kazakh in the Learn pages
@@ -19,7 +19,7 @@ Every word is in Wiktionary or made by the rules from our lists.
 
 ## The rules against every table
 
-- Nouns: 4617 tables, 60092 forms; 164 nouns (3.6%) have at least one form that differs.
+- Nouns: 4617 tables, 60092 forms; 163 nouns (3.5%) have at least one form that differs.
 - Verbs: 165 tables; 6 verbs (3.6%) have at least one form that differs. Forms compared: converb 165, present 1155, past 1155, want 1155, imperative 1155, intention 825.
 
 ### Noun differences (first 400)
