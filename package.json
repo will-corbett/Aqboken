@@ -20,7 +20,8 @@
     "audio:tts": "npm run audio:texts && python3 scripts/tts.py data-raw/piper",
     "audio:native": "tsx scripts/fetch-recordings.ts",
     "data:fetch-tatoeba": "mkdir -p data-raw/tatoeba && for f in kaz/kaz_sentences_detailed.tsv.bz2 kaz/kaz-eng_links.tsv.bz2 eng/eng_sentences.tsv.bz2; do curl -sSfL -o data-raw/tatoeba/$(basename $f) https://downloads.tatoeba.org/exports/per_language/$f; done",
-    "data:sentences": "tsx scripts/build-sentences.ts"
+    "data:sentences": "tsx scripts/build-sentences.ts",
+    "review": "tsx scripts/review-report.ts"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^7.3.1",

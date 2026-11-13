@@ -75,6 +75,7 @@ export function endingText(word: string): string {
   const w = word.replace(/[ьъ]+$/, '');
   const last = w[w.length - 1] ?? '';
   const cls = finalClass(word);
+  if (cls === 'K' && 'бвгдғ'.includes(last)) return `ends in ${last}, which is said voiceless at the end of a word`;
   return cls === 'L' ? 'ends in л' : `ends in ${last}, ${CLASS_TEXT[cls]}`;
 }
 

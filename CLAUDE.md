@@ -25,7 +25,11 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   form (clear Wiktionary errors go in `WIKTIONARY_ERRORS` with a reason); every Kazakh word in `content/learn` is a
   Wiktionary form, a form the rules make from our lists, or in `LEARN_WORDS` with a reason. Never add an exception
   just to make the check pass: fix the rule or the word.
-- Kazakh hasn't been reviewed by a native speaker yet (the beta note says so). Our own sentences stay short and
+- Kazakh hasn't been reviewed by a native speaker yet (the beta note says so). `npm run review` writes
+  `reports/for-review.md`: our words and meanings (W), every Kazakh line of the Learn pages (L), topic names and
+  grammar terms (T), sample drill questions with explanations (D), the Tatoeba examples (S), words Wiktionary lacks,
+  and an audio check. Regenerate it after content changes; apply a reviewer's corrections in the sources, never in
+  the report. Our own sentences stay short and
   pattern-based; don't write long Kazakh prose until a reviewer is available.
 
 - Audio (owner's decision 2026-11-13): open native recordings of Kazakh are rare (Wikimedia Commons had 142, 31 of
