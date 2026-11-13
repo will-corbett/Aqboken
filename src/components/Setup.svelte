@@ -23,7 +23,8 @@
       (settings.mode === 'past' && !settings.past.persons.length) ||
       (settings.mode === 'vocab' && !settings.vocab.themes.length) ||
       (settings.mode === 'listen' && !settings.listen.themes.length) ||
-      ((settings.mode === 'continuous' || settings.mode === 'future' || settings.mode === 'want' || settings.mode === 'imperative') && !settings[settings.mode].persons.length) ||
+      ((settings.mode === 'continuous' || settings.mode === 'future' || settings.mode === 'want' || settings.mode === 'imperative' || settings.mode === 'perfect' || settings.mode === 'habitual' || settings.mode === 'conditional' || settings.mode === 'can') && !settings[settings.mode].persons.length) ||
+      (settings.mode === 'time' && !settings.time.kinds.length) ||
       (settings.mode === 'posscases' && (!settings.posscases.persons.length || !settings.posscases.cases.length)),
   );
 </script>
@@ -86,7 +87,19 @@
       {@const m = settings.mode}
       {@render persons(settings[m].persons, PERSONS, (l) => (settings[m].persons = l))}
       {@render radios('Positive or negative', settings[m].polarity, [['pos', 'Positive'], ['neg', 'Negative'], ['both', 'Both']], (v) => (settings[m].polarity = v as 'pos'))}
-    {:else if settings.mode === 'continuous' || settings.mode === 'future' || settings.mode === 'want' || settings.mode === 'imperative'}
+    {:else if settings.mode === 'can'}
+      {@render persons(settings.can.persons, PERSONS, (l) => (settings.can.persons = l))}
+      {@render radios('Positive or negative', settings.can.polarity, [['pos', 'Can'], ['neg', 'Can’t'], ['both', 'Both']], (v) => (settings.can.polarity = v as 'pos'))}
+    {:else if settings.mode === 'time'}
+      <fieldset>
+        <legend>What to practise</legend>
+        <div class="opts">
+          {#each [['time', 'The time (07:30)'], ['at', 'At a time (at 07:30)'], ['ordinal', 'Ordinals (1st, 2nd …)'], ['date', 'Dates (25 December)']] as [k, label] (k)}
+            <label class="opt"><input type="checkbox" checked={settings.time.kinds.includes(k as 'time')} onchange={() => (settings.time.kinds = toggle(settings.time.kinds, k as 'time'))} /> {label}</label>
+          {/each}
+        </div>
+      </fieldset>
+    {:else if settings.mode === 'continuous' || settings.mode === 'future' || settings.mode === 'want' || settings.mode === 'imperative' || settings.mode === 'perfect' || settings.mode === 'habitual' || settings.mode === 'conditional'}
       {@const m = settings.mode}
       {@render persons(settings[m].persons, PERSONS, (l) => (settings[m].persons = l))}
     {:else if settings.mode === 'posscases'}

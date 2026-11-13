@@ -18,6 +18,7 @@ import {
   plural,
   possessive,
   present,
+  presentBase,
   presentNeg,
   questionParticle,
   voiceFinal,
@@ -28,6 +29,15 @@ import {
   intention,
   possessiveCase,
   want,
+  can,
+  comparative,
+  conditional,
+  habitualPast,
+  ordinalWords,
+  pastParticiple,
+  perfect,
+  timeWords,
+  COMPARATIVE_IRREGULAR,
   type PossPerson,
   type Case,
   type Harmony,
@@ -451,6 +461,101 @@ function imperativeQs(s: Settings): Question[] {
   });
 }
 
+function perfectQs(s: Settings): Question[] {
+  return verbForms('perfect', s.perfect.persons.length ? s.perfect.persons : ['1sg'], 'Have done', () => perfect, (v, p, form) => {
+    const stem = v.stem!.split(' ').at(-1)!;
+    const part = pastParticiple(stem);
+    return `${stem}- ${endingText(stem)}, so -${part.slice(stem.length)}: ${part}; then the “I am” ending for ${PRONOUN[p]}${p === '3' ? ' (none)' : ''}: ${form}.`;
+  }, withPronoun);
+}
+function habitualQs(s: Settings): Question[] {
+  return verbForms('habitual', s.habitual.persons.length ? s.habitual.persons : ['1sg'], 'Used to', () => habitualPast, (v, p, form) => {
+    const stem = v.stem!.split(' ').at(-1)!;
+    return `The present base ${presentBase(stem)}- (as in ${present(stem, '1sg')}) + -${harmonyOf(stem) === 'back' ? 'тын' : 'тін'}, then the “I am” ending for ${PRONOUN[p]}${p === '3' ? ' (none)' : ''}: ${form}.`;
+  }, withPronoun);
+}
+function conditionalQs(s: Settings): Question[] {
+  const IF: Record<Person, string> = { '1sg': 'if I …', '2sg': 'if you …', '2sgf': 'if you (polite) …', '3': 'if he/she …', '1pl': 'if we …', '2pl': 'if you (friends) …', '2plf': 'if you (polite, several) …' };
+  return verbForms('conditional', s.conditional.persons.length ? s.conditional.persons : ['1sg'], 'If', () => conditional, (v, p, form) => `stem + -${harmonyOf(v.stem!.split(' ').at(-1)!) === 'back' ? 'са' : 'се'} + the ending for ${PRONOUN[p]}${p === '3' ? ' (none)' : ''}: ${form}.`, (p) => [`(${PRONOUN[p]})`, '']).map((q) => {
+    const v = VERBS.find((x) => x.kk === q.prompt)!;
+    const p = q.key.split(':').at(-1) as Person;
+    return { ...q, cue: IF[p].replace('…', firstMeaning(v.en).replace(/^to /, '')) };
+  });
+}
+function canQs(s: Settings): Question[] {
+  const persons = s.can.persons.length ? s.can.persons : (['1sg'] as Person[]);
+  const pols = s.can.polarity === 'both' ? [false, true] : [s.can.polarity === 'neg'];
+  return pols.flatMap((neg) =>
+    verbForms('can', persons, neg ? 'Can’t' : 'Can', () => (stem, p) => can(stem, p, neg), (v, p, form) => {
+      const stem = v.stem!.split(' ').at(-1)!;
+      return `The -а/-е form ${presentBase(stem)} (as in ${present(stem, '1sg')}), then алу in the ${neg ? 'negative ' : ''}present for ${PRONOUN[p]}: ${form}.`;
+    }, withPronoun).map((q) => ({ ...q, key: `${q.key}:${neg ? 'neg' : 'pos'}` })),
+  );
+}
+
+function comparativeQs(): Question[] {
+  return ADJECTIVES.filter((a) => !a.kk.includes(' ')).map((a) => {
+    const form = comparative(a.kk);
+    const irr = COMPARATIVE_IRREGULAR[a.kk];
+    return {
+      key: `cmp:${a.kk}`,
+      mode: 'comparative' as const,
+      task: 'Make it comparative (“more …”, “-er”)',
+      prompt: a.kk,
+      promptLang: 'kk' as const,
+      gloss: a.en,
+      cue: `more ${firstMeaning(a.en)}`,
+      answer: form,
+      answerLang: 'kk' as const,
+      base: irr ? '' : finalClass(a.kk) === 'V' ? a.kk : voiceFinal(a.kk),
+      explain: irr
+        ? `${a.kk} is irregular: ${form} (from кіші, small).`
+        : finalClass(a.kk) === 'V'
+          ? `${a.kk} ends in a vowel, so -${form.slice(a.kk.length)}: ${form}.`
+          : `${a.kk} ends in a consonant, so -${harmonyOf(a.kk) === 'back' ? 'ырақ' : 'ірек'}${voiceFinal(a.kk) !== a.kk ? ` (and ${a.kk.at(-1)} becomes ${voiceFinal(a.kk).at(-1)})` : ''}: ${form}.`,
+    };
+  });
+}
+
+const MONTHS = ['қаңтар', 'ақпан', 'наурыз', 'сәуір', 'мамыр', 'маусым', 'шілде', 'тамыз', 'қыркүйек', 'қазан', 'қараша', 'желтоқсан'];
+const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const ordEn = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : (['th', 'st', 'nd', 'rd'][n % 10] ?? 'th')}`;
+
+function timeQs(s: Settings): Question[] {
+  const kinds = s.time.kinds.length ? s.time.kinds : (['time'] as const);
+  const out: Question[] = [];
+  const pad = (n: number) => String(n).padStart(2, '0');
+  for (const k of kinds) {
+    if (k === 'time' || k === 'at')
+      for (let h = 1; h <= 23; h++)
+        for (const m of [0, 30] as const) {
+          const form = timeWords(h, m, k === 'at');
+          out.push({
+            key: `time:${k}:${h}:${m}`,
+            mode: 'time',
+            task: k === 'at' ? 'At what time? Write it in words (“at …”)' : 'What time is it? Write it in words',
+            prompt: `${k === 'at' ? 'at ' : ''}${pad(h)}:${pad(m)}`,
+            promptLang: 'en',
+            answer: form,
+            answerLang: 'kk',
+            explain: `сағат + the hour${m === 30 ? ' + жарым (half)' : ''}${k === 'at' ? ', and “at” is the locative on the last word' : ''}: ${form}. Times are said on the 24-hour clock.`,
+          });
+        }
+    if (k === 'ordinal')
+      for (const n of [...Array.from({ length: 31 }, (_, i) => i + 1), 40, 50, 100]) {
+        const form = ordinalWords(n);
+        out.push({ key: `time:ord:${n}`, mode: 'time', task: 'Write the ordinal number', prompt: ordEn(n), promptLang: 'en', answer: form, answerLang: 'kk', explain: `${n} is ${numberWords(n)}; the last word takes the ordinal ending: ${form}.` });
+      }
+    if (k === 'date')
+      for (let m = 0; m < 12; m++)
+        for (const d of [1, 2, 3, 8, 10, 16, 22, 25, 30]) {
+          const form = `${ordinalWords(d)} ${MONTHS[m]}`;
+          out.push({ key: `time:date:${m}:${d}`, mode: 'time', task: 'Write the date in words', prompt: `${d} ${MONTHS_EN[m]}`, promptLang: 'en', answer: form, answerLang: 'kk', explain: `A date is the ordinal day, then the month: ${form}.` });
+        }
+  }
+  return out;
+}
+
 // ─── Possessive + case, postpositions ──
 
 function posscasesQs(s: Settings): Question[] {
@@ -623,7 +728,7 @@ export function speakText(q: Question): string | undefined {
   if (q.mode === 'alphabet') return undefined;
   if (q.listen) return q.listen;
   if (q.mode === 'questions') return `${q.frame![0]} ${q.answer}${q.frame![1]}`;
-  if (q.mode === 'imperative') return q.answer;
+  if (q.mode === 'imperative' || q.mode === 'conditional' || q.mode === 'time' || q.mode === 'comparative') return q.answer;
   if (q.mode === 'postpositions') return `${q.answer}${q.frame![1]}`;
   if (q.answerLang === 'kk') return q.frame ? `${q.frame[0]} ${q.answer}${q.frame[1]}`.trim() : q.answer;
   return q.promptLang === 'kk' ? q.prompt : undefined;
@@ -698,6 +803,18 @@ export function pool(mode: Mode, s: Settings, rng: Rng, words?: Word[]): Questio
       return posscasesQs(s);
     case 'postpositions':
       return postpositionQs();
+    case 'perfect':
+      return perfectQs(s);
+    case 'habitual':
+      return habitualQs(s);
+    case 'conditional':
+      return conditionalQs(s);
+    case 'can':
+      return canQs(s);
+    case 'comparative':
+      return comparativeQs();
+    case 'time':
+      return timeQs(s);
   }
 }
 

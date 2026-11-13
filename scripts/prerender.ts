@@ -39,6 +39,13 @@ import {
   intention,
   possessiveCase,
   want,
+  can,
+  comparative,
+  conditional,
+  habitualPast,
+  ordinalWords,
+  perfect,
+  timeWords,
   type Person,
 } from '../src/shared/kazakh.ts';
 import { toLatin } from '../src/shared/script.ts';
@@ -61,7 +68,7 @@ const table = (head: string[], rows: string[][], caption = '') =>
 /** The `::forms` tables as plain HTML (the app draws its own, with the endings highlighted). */
 function forms(kind: string, words: string[]): string {
   const motion = (inf: string) => !!ALL_WORDS.find((w) => w.kk === inf)?.motion;
-  const VERB: Record<string, (s: string, p: Person) => string> = { present, presentNeg, past, pastNeg, want, imperative, intention };
+  const VERB: Record<string, (s: string, p: Person) => string> = { present, presentNeg, past, pastNeg, want, imperative, intention, perfect, habitual: habitualPast, conditional, can: (st, p) => can(st, p), cannot: (st, p) => can(st, p, true) };
   switch (kind) {
     case 'plural':
       return table(['Word', 'Meaning', 'Plural'], words.map((w) => [kk(w), esc(en(w)), kk(plural(w, nounOptions(w)))]));
@@ -85,6 +92,15 @@ function forms(kind: string, words: string[]): string {
       return table(['Number', 'In words'], words.map((n) => [n, kk(numberWords(Number(n)))]));
     case 'alphabet':
       return table(['Cyrillic', 'Latin (2021)'], ALPHABET.map((c) => [kk(`${c.toUpperCase()} ${c}`), esc(toLatin(c.toUpperCase()) || '–')]));
+    case 'comparative':
+      return table(['Word', 'Meaning', 'Comparative'], words.map((w) => [kk(w), esc(en(w)), kk(comparative(w))]));
+    case 'ordinals':
+      return table(['Number', 'In words', 'Ordinal'], words.map((n) => [n, kk(numberWords(Number(n))), kk(ordinalWords(Number(n)))]));
+    case 'times':
+      return table(['Time', 'It is …', 'At …'], words.map((t) => {
+        const [h, m] = t.split(':').map(Number) as [number, number];
+        return [t, kk(timeWords(h, m === 30 ? 30 : 0)), kk(timeWords(h, m === 30 ? 30 : 0, true))];
+      }));
     case 'continuous':
       return table(['', ...words.map(kk)], PERSONS.map((p) => [kk(PRONOUN[p]), ...words.map((w) => kk(continuous(stemOf(w), p, { motion: motion(w) })))]));
     case 'posscases':

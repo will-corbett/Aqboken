@@ -149,6 +149,7 @@ export const THEMES: Theme[] = [
     n('нан', 'bread'),
     n('су', 'water'),
     n('шай', 'tea'),
+    n('кофе', 'coffee'),
     n('сүт', 'milk'),
     n('ет', 'meat'),
     n('балық', 'fish'),
@@ -534,6 +535,7 @@ export const THEMES: Theme[] = [
     v('отыру', 'отыр', 'to sit; to get on (a bus)', { dup: true }),
   ]),
   theme('verbs2', 'More verbs', 'Етістіктер 2', 'A2', 'Everyday verbs, the next forty: hearing, forgetting, bringing, cleaning…', () => [
+    v('болу', 'бол', 'to be, to become'),
     v('есту', 'есті', 'to hear'),
     v('ұмыту', 'ұмыт', 'to forget'),
     v('сену', 'сен', 'to believe, to trust'),

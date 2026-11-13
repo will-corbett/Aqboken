@@ -32,6 +32,11 @@ export interface Settings {
   want: { persons: Person[] };
   imperative: { persons: Person[] };
   posscases: { persons: PossPerson[]; cases: Case[] };
+  perfect: { persons: Person[] };
+  habitual: { persons: Person[] };
+  conditional: { persons: Person[] };
+  can: { persons: Person[]; polarity: 'pos' | 'neg' | 'both' };
+  time: { kinds: ('time' | 'at' | 'ordinal' | 'date')[] };
 }
 
 const KEY = 'aqboken.settings.v1';
@@ -61,6 +66,11 @@ export function defaults(): Settings {
     want: { persons: BASIC_PERSONS },
     imperative: { persons: ['1sg', '2sg', '2sgf', '3', '1pl'] },
     posscases: { persons: ['1sg', '2sg', '3', '1pl'], cases: ['dat', 'loc', 'abl'] },
+    perfect: { persons: BASIC_PERSONS },
+    habitual: { persons: BASIC_PERSONS },
+    conditional: { persons: BASIC_PERSONS },
+    can: { persons: BASIC_PERSONS, polarity: 'both' },
+    time: { kinds: ['time', 'at', 'ordinal', 'date'] },
   };
 }
 
@@ -82,7 +92,7 @@ export function loadSettings(): Settings {
     if (!s.vocab.themes.length) s.vocab.themes = d.vocab.themes;
     s.listen.themes = s.listen.themes.filter((id) => THEMES.some((t) => t.id === id));
     if (!s.listen.themes.length) s.listen.themes = d.listen.themes;
-    for (const k of ['copula', 'present', 'past', 'continuous', 'future', 'want', 'imperative'] as const) s[k].persons = s[k].persons.filter((p) => PERSONS.includes(p));
+    for (const k of ['copula', 'present', 'past', 'continuous', 'future', 'want', 'imperative', 'perfect', 'habitual', 'conditional', 'can'] as const) s[k].persons = s[k].persons.filter((p) => PERSONS.includes(p));
     return s;
   } catch {
     return d;

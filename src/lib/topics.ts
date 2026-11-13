@@ -1,5 +1,5 @@
 /** The one list of topics (Home, Learn index and Drill page all use it). Within a group: most basic first. */
-export type Mode = 'alphabet' | 'harmony' | 'plural' | 'copula' | 'possessive' | 'cases' | 'pronouns' | 'present' | 'past' | 'questions' | 'numbers' | 'vocab' | 'listen' | 'continuous' | 'future' | 'want' | 'imperative' | 'posscases' | 'postpositions';
+export type Mode = 'alphabet' | 'harmony' | 'plural' | 'copula' | 'possessive' | 'cases' | 'pronouns' | 'present' | 'past' | 'questions' | 'numbers' | 'vocab' | 'listen' | 'continuous' | 'future' | 'want' | 'imperative' | 'posscases' | 'postpositions' | 'perfect' | 'habitual' | 'conditional' | 'can' | 'comparative' | 'time';
 
 export interface Topic {
   id: Mode;
@@ -29,8 +29,14 @@ export const TOPICS: Topic[] = [
   { id: 'future', title: 'Going to', kk: 'Мақсатты келер шақ', group: 'Verbs', level: 'A2', blurb: 'Plans and intentions: бармақпын, оқымақпыз.', learn: true },
   { id: 'want', title: 'Want to', kk: 'Қалау рай', group: 'Verbs', level: 'A2', blurb: 'барғым келеді: “I want to go”, built with a possessive.', learn: true },
   { id: 'imperative', title: 'Requests and commands', kk: 'Бұйрық рай', group: 'Verbs', level: 'A2', blurb: 'бар! барыңыз! барайық! — telling, asking and suggesting.', learn: true },
+  { id: 'can', title: 'Can', kk: 'Қабілет', group: 'Verbs', level: 'A2', blurb: 'бара аламын “I can go”, бара алмаймын “I can’t”.', learn: true },
+  { id: 'perfect', title: 'Have done', kk: 'Бұрынғы өткен шақ', group: 'Verbs', level: 'A2–B1', blurb: 'барғанмын: “I have been (there)”, experience and results.', learn: true },
+  { id: 'habitual', title: 'Used to', kk: 'Ауыспалы өткен шақ', group: 'Verbs', level: 'B1', blurb: 'баратынмын: what you used to do.', learn: true },
+  { id: 'conditional', title: 'If', kk: 'Шартты рай', group: 'Verbs', level: 'B1', blurb: 'барсам, келсең: “if I go”, “if you come”.', learn: true },
+  { id: 'comparative', title: 'Bigger, better', kk: 'Салыстырмалы шырай', group: 'Adjectives', level: 'A2', blurb: 'үлкенірек, жақсырақ, and ең үлкен “the biggest”.', learn: true },
   { id: 'questions', title: 'Yes/no questions', kk: 'Сұраулық шылау', group: 'Sentences', level: 'A1', blurb: 'The particle ма/ме/ба/бе/па/пе: Бұл кітап па?', learn: true },
   { id: 'numbers', title: 'Numbers', kk: 'Сан есім', group: 'Numbers', level: 'A1', blurb: 'From бір to мың, and years: екі мың жиырма алты.', learn: true },
+  { id: 'time', title: 'Time and dates', kk: 'Уақыт пен күн', group: 'Numbers', level: 'A1–A2', blurb: 'сағат жеті жарым, бірінші мамыр: the clock, ordinals and dates.', learn: true },
   { id: 'listen', title: 'Listening', kk: 'Тыңдалым', group: 'Listening', level: 'A1–A2', blurb: 'Hear a word, then choose its meaning or write it down.', learn: false },
   { id: 'vocab', title: 'Vocabulary', kk: 'Сөздік', group: 'Words', level: 'A1–A2', blurb: 'The words of the Vocabulary themes, both ways round.', learn: false },
 ];

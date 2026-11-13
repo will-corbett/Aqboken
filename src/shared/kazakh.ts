@@ -181,7 +181,8 @@ const COPULA: Record<Person, ByClass | Pair> = {
   '2sg': ['сың', 'сің'],
   '2sgf': ['сыз', 'сіз'],
   '3': ['', ''],
-  '1pl': by(['мыз', 'міз'], ['мыз', 'міз'], ['мыз', 'міз'], ['мыз', 'міз'], ['быз', 'біз'], ['пыз', 'піз']),
+  // “we are”: -быз after м, н, ң as well as з, ж (мұғалімбіз; Wiktionary: барғанбыз), unlike “I am” (мұғаліммін).
+  '1pl': by(['мыз', 'міз'], ['мыз', 'міз'], ['мыз', 'міз'], ['быз', 'біз'], ['быз', 'біз'], ['пыз', 'піз']),
   '2pl': ['сыңдар', 'сіңдер'],
   '2plf': ['сыздар', 'сіздер'],
 };
@@ -428,3 +429,88 @@ export const POSTPOSITIONS: { word: string; case: Case; en: string }[] = [
   { word: 'бері', case: 'abl', en: 'since' },
   { word: 'бірге', case: 'ins', en: 'together with' },
 ];
+
+// ─── Participle tenses, conditional, “can” ──────────────────────────────────────────────────────────────────
+
+/** The -ған participle: барған, айтқан, келген, кеткен. */
+export function pastParticiple(stem: string, h: Harmony = harmonyOf(stem)): string {
+  const k = finalClass(stem) === 'K';
+  return stem + (h === 'back' ? (k ? 'қан' : 'ған') : k ? 'кен' : 'ген');
+}
+
+/** “Have done” (experience, result): -ған + “I am” ending: барғанмын, айтқансың, келген, барғанбыз. */
+export function perfect(stem: string, p: Person, o: VerbOptions = {}): string {
+  const h = o.harmony ?? harmonyOf(stem);
+  return copula(pastParticiple(stem, h), p, { harmony: h });
+}
+
+/** “Used to”: the present base + -тын/-тін + “I am” ending: баратынмын, оқитынсың, келетін. */
+export function habitualPast(stem: string, p: Person, o: VerbOptions = {}): string {
+  const h = o.harmony ?? harmonyOf(stem);
+  return copula(presentBase(stem, h) + (h === 'back' ? 'тын' : 'тін'), p, { harmony: h });
+}
+
+const COND_END: Record<Person, Pair> = {
+  '1sg': ['м', 'м'],
+  '2sg': ['ң', 'ң'],
+  '2sgf': ['ңыз', 'ңіз'],
+  '3': ['', ''],
+  '1pl': ['қ', 'к'],
+  '2pl': ['ңдар', 'ңдер'],
+  '2plf': ['ңыздар', 'ңіздер'],
+};
+/** “If”: stem + -са/-се + ending: барсам, келсең, айтса, оқысақ. */
+export function conditional(stem: string, p: Person, o: VerbOptions = {}): string {
+  const h = o.harmony ?? harmonyOf(stem);
+  const i = h === 'back' ? 0 : 1;
+  return stem + (h === 'back' ? 'са' : 'се') + COND_END[p][i];
+}
+
+/** “Can”: the -а/-е form + алу in the present: бара аламын, оқи аласың; negative: бара алмаймын. */
+export function can(stem: string, p: Person, neg = false, o: VerbOptions = {}): string {
+  const h = o.harmony ?? harmonyOf(stem);
+  return `${presentBase(stem, h)} ${neg ? presentNeg('ал', p) : present('ал', p)}`;
+}
+
+// ─── Comparatives ───────────────────────────────────────────────────────────────────────────────────────────
+
+/** Comparatives that don't follow the rule. */
+export const COMPARATIVE_IRREGULAR: Record<string, string> = { кішкентай: 'кішірек' };
+
+/**
+ * “-er”: -рақ/-рек after a vowel, -ырақ/-ірек after a consonant (a final п/к/қ voices): жақсырақ, үлкенірек,
+ * көбірек, ыстығырақ. Not in Wiktionary's tables: made by rule and listed for the native-speaker review.
+ */
+export function comparative(adj: string, h: Harmony = harmonyOf(adj)): string {
+  if (COMPARATIVE_IRREGULAR[adj]) return COMPARATIVE_IRREGULAR[adj]!;
+  const i = h === 'back' ? 0 : 1;
+  if (finalClass(adj) === 'V') return adj + (['рақ', 'рек'] as const)[i];
+  return voiceFinal(adj) + (['ырақ', 'ірек'] as const)[i];
+}
+
+// ─── Ordinals and the time ──────────────────────────────────────────────────────────────────────────────────
+
+/** Ordinals of the number words, as Wiktionary gives them (жиырма → жиырмасыншы and қырық → қырқыншы are irregular). */
+export const ORDINAL: Record<string, string> = {
+  нөл: 'нөлінші', бір: 'бірінші', екі: 'екінші', үш: 'үшінші', төрт: 'төртінші', бес: 'бесінші', алты: 'алтыншы',
+  жеті: 'жетінші', сегіз: 'сегізінші', тоғыз: 'тоғызыншы', он: 'оныншы', жиырма: 'жиырмасыншы', отыз: 'отызыншы',
+  қырық: 'қырқыншы', елу: 'елуінші', алпыс: 'алпысыншы', жетпіс: 'жетпісінші', сексен: 'сексенінші',
+  тоқсан: 'тоқсаныншы', жүз: 'жүзінші', мың: 'мыңыншы',
+};
+
+/** An ordinal: the last word of the number becomes ordinal: 25 → жиырма бесінші, 2026 → екі мың жиырма алтыншы. */
+export function ordinalWords(n: number): string {
+  const words = numberWords(n).split(' ');
+  words[words.length - 1] = ORDINAL[words.at(-1)!]!;
+  return words.join(' ');
+}
+
+/** The time on the 24-hour clock: 7:00 → сағат жеті, 7:30 → сағат жеті жарым; `at` → the locative (сағат жетіде). */
+export function timeWords(h: number, m: 0 | 30, at = false): string {
+  const hour = numberWords(h);
+  const base = m === 30 ? `${hour} жарым` : hour;
+  if (!at) return `сағат ${base}`;
+  const words = base.split(' ');
+  words[words.length - 1] = caseForm(words.at(-1)!, 'loc');
+  return `сағат ${words.join(' ')}`;
+}

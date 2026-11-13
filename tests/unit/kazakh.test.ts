@@ -163,3 +163,45 @@ describe('more verb forms', () => {
     expect(possessiveCase('дос', '1sg', 'ins')).toBe('досыммен');
   });
 });
+
+import { can, comparative, conditional, habitualPast, ordinalWords, perfect, timeWords } from '../../src/shared/kazakh.ts';
+describe('participle tenses, conditional, can, comparatives, ordinals, time', () => {
+  it('we are: -быз after м, н, ң', () => {
+    expect(copula('мұғалім', '1pl')).toBe('мұғалімбіз');
+    expect(copula('ағылшын', '1pl')).toBe('ағылшынбыз');
+    expect(copula('студент', '1pl')).toBe('студентпіз');
+    expect(copula('дәрігер', '1pl')).toBe('дәрігерміз');
+  });
+  it('perfect and habitual', () => {
+    expect(perfect('бар', '1sg')).toBe('барғанмын');
+    expect(perfect('бар', '1pl')).toBe('барғанбыз');
+    expect(perfect('айт', '3')).toBe('айтқан');
+    expect(perfect('кет', '1sg')).toBe('кеткенмін');
+    expect(habitualPast('бар', '1sg')).toBe('баратынмын');
+    expect(habitualPast('оқы', '3')).toBe('оқитын');
+    expect(habitualPast('ойна', '1pl')).toBe('ойнайтынбыз');
+  });
+  it('conditional', () => {
+    expect(['1sg', '2sg', '2sgf', '3', '1pl', '2pl', '2plf'].map((p) => conditional('тап', p as never))).toEqual(['тапсам', 'тапсаң', 'тапсаңыз', 'тапса', 'тапсақ', 'тапсаңдар', 'тапсаңыздар']);
+    expect(conditional('кел', '1pl')).toBe('келсек');
+  });
+  it('can', () => {
+    expect(can('бар', '1sg')).toBe('бара аламын');
+    expect(can('оқы', '2sg')).toBe('оқи аласың');
+    expect(can('сөйле', '1sg', true)).toBe('сөйлей алмаймын');
+  });
+  it('comparatives', () => {
+    expect(['жақсы', 'үлкен', 'көп', 'ыстық', 'кішкентай', 'жаңа'].map((a) => comparative(a))).toEqual(['жақсырақ', 'үлкенірек', 'көбірек', 'ыстығырақ', 'кішірек', 'жаңарақ']);
+  });
+  it('ordinals and time', () => {
+    expect(ordinalWords(1)).toBe('бірінші');
+    expect(ordinalWords(20)).toBe('жиырмасыншы');
+    expect(ordinalWords(25)).toBe('жиырма бесінші');
+    expect(ordinalWords(40)).toBe('қырқыншы');
+    expect(timeWords(7, 0)).toBe('сағат жеті');
+    expect(timeWords(7, 30)).toBe('сағат жеті жарым');
+    expect(timeWords(15, 0, true)).toBe('сағат он бесте');
+    expect(timeWords(10, 0, true)).toBe('сағат онда');
+    expect(timeWords(9, 30, true)).toBe('сағат тоғыз жарымда');
+  });
+});

@@ -4,13 +4,13 @@ Source: Kazakh Wiktionary entries from kaikki.org (`data-raw/kaikki-kazakh.jsonl
 
 ## Our word lists
 
-- 474 words; 0 without a Wiktionary entry of that part of speech.
+- 476 words; 0 without a Wiktionary entry of that part of speech.
 
 - 7 phrases checked word by word: жұмыс істеу, бас киім, ән айту, сурет салу, сол жақ, оң жақ, қарсы алу.
 - Listed as not in Wiktionary (with reasons, src/data/exceptions.ts): 10.
 - Wiktionary errors set aside: сөмке|gen sg (Wiktionary has “сөмкедің”: a noun ending in a vowel takes -нің (сөмкенің), as in every other table.); сөмке|acc sg (Wiktionary has “сөмкеді”: a noun ending in a vowel takes -ні (сөмкені), as in every other table.); немере|dat pl (Wiktionary has “немерелердге”, a typo: the dative plural is -ларға/-лерге (немерелерге), as in every other table.).
-- 256 of our 302 nouns have a Wiktionary declension table; 0 disagree.
-- 35 of our 90 verbs have a Wiktionary conjugation table; 0 disagree.
+- 256 of our 303 nouns have a Wiktionary declension table; 0 disagree.
+- 36 of our 91 verbs have a Wiktionary conjugation table; 0 disagree.
 
 
 ## Kazakh in the Learn pages
@@ -20,7 +20,7 @@ Every word is in Wiktionary or made by the rules from our lists.
 ## The rules against every table
 
 - Nouns: 4617 tables, 60092 forms; 163 nouns (3.5%) have at least one form that differs.
-- Verbs: 165 tables; 6 verbs (3.6%) have at least one form that differs. Forms compared: converb 165, present 1155, past 1155, want 1155, imperative 1155, intention 825.
+- Verbs: 165 tables; 6 verbs (3.6%) have at least one form that differs. Forms compared: converb 165, present 1155, past 1155, want 1155, imperative 1155, intention 825, perfect 1155, habitual past 1155, conditional 1155.
 
 ### Noun differences (first 400)
 
@@ -434,16 +434,23 @@ Every word is in Wiktionary or made by the rules from our lists.
 | қорқу | converb | қорығып | қорқып |
 | қорқу | present 1sg | қорығамын | қорқамын |
 | қорқу | imperative 1sg | қорығайын | қорқайын |
+| қорқу | habitual past 1sg | қорығатынмын | қорқатынмын |
 | қорқу | present 2sg | қорығасың | қорқасың |
+| қорқу | habitual past 2sg | қорығатынсың | қорқатынсың |
 | қорқу | present 2sgf | қорығасыз | қорқасыз |
 | қорқу | imperative 2sgf | қорығыңыз | қорқыңыз |
+| қорқу | habitual past 2sgf | қорығатынсыз | қорқатынсыз |
 | қорқу | present 3 | қорығады | қорқады |
+| қорқу | habitual past 3 | қорығатын | қорқатын |
 | қорқу | present 1pl | қорығамыз | қорқамыз |
 | қорқу | imperative 1pl | қорығайық | қорқайық |
+| қорқу | habitual past 1pl | қорығатынбыз | қорқатынбыз |
 | қорқу | present 2pl | қорығасыңдар | қорқасыңдар |
 | қорқу | imperative 2pl | қорығыңдар | қорқыңдар |
+| қорқу | habitual past 2pl | қорығатынсыңдар | қорқатынсыңдар |
 | қорқу | present 2plf | қорығасыздар | қорқасыздар |
 | қорқу | imperative 2plf | қорығыңыздар | қорқыңыздар |
+| қорқу | habitual past 2plf | қорығатынсыздар | қорқатынсыздар |
 | тану | imperative 1sg | таниын | танийын |
 | тану | intention 1sg | танымақпын | таныбақпын |
 | тану | intention 2sg | танымақсың | таныбақсың |
@@ -453,83 +460,125 @@ Every word is in Wiktionary or made by the rules from our lists.
 | тану | intention 1pl | танымақпыз | таныбақпыз |
 | қорлау | present 1sg | қорлаймын | қораймын |
 | қорлау | imperative 1sg | қорлайын | қорайын |
+| қорлау | habitual past 1sg | қорлайтынмын | қорайтынмын |
 | қорлау | present 2sg | қорлайсың | қорайсың |
+| қорлау | habitual past 2sg | қорлайтынсың | қорайтынсың |
 | қорлау | present 2sgf | қорлайсыз | қорайсыз |
+| қорлау | habitual past 2sgf | қорлайтынсыз | қорайтынсыз |
 | қорлау | present 3 | қорлайды | қорайды |
+| қорлау | habitual past 3 | қорлайтын | қорайтын |
 | қорлау | present 1pl | қорлаймыз | қораймыз |
 | қорлау | imperative 1pl | қорлайық | қорайық |
+| қорлау | habitual past 1pl | қорлайтынбыз | қорайтынбыз |
 | қорлау | present 2pl | қорлайсыңдар | қорайсыңдар |
+| қорлау | habitual past 2pl | қорлайтынсыңдар | қорайтынсыңдар |
 | қорлау | present 2plf | қорлайсыздар | қорайсыздар |
+| қорлау | habitual past 2plf | қорлайтынсыздар | қорайтынсыздар |
 | жоспарлау | present 1sg | жоспарлаймын | жоспараймын |
 | жоспарлау | imperative 1sg | жоспарлайын | жоспарайын |
+| жоспарлау | habitual past 1sg | жоспарлайтынмын | жоспарайтынмын |
 | жоспарлау | present 2sg | жоспарлайсың | жоспарайсың |
+| жоспарлау | habitual past 2sg | жоспарлайтынсың | жоспарайтынсың |
 | жоспарлау | present 2sgf | жоспарлайсыз | жоспарайсыз |
+| жоспарлау | habitual past 2sgf | жоспарлайтынсыз | жоспарайтынсыз |
 | жоспарлау | present 3 | жоспарлайды | жоспарайды |
+| жоспарлау | habitual past 3 | жоспарлайтын | жоспарайтын |
 | жоспарлау | present 1pl | жоспарлаймыз | жоспараймыз |
 | жоспарлау | imperative 1pl | жоспарлайық | жоспарайық |
+| жоспарлау | habitual past 1pl | жоспарлайтынбыз | жоспарайтынбыз |
 | жоспарлау | present 2pl | жоспарлайсыңдар | жоспарайсыңдар |
+| жоспарлау | habitual past 2pl | жоспарлайтынсыңдар | жоспарайтынсыңдар |
 | жоспарлау | present 2plf | жоспарлайсыздар | жоспарайсыздар |
+| жоспарлау | habitual past 2plf | жоспарлайтынсыздар | жоспарайтынсыздар |
 | сорысу | converb | сорысып | сорысп |
 | сорысу | present 1sg | сорысамын | сорысймын |
 | сорысу | past 1sg | сорыстым | сорысдым |
 | сорысу | want 1sg | сорысқым келеді | сорысғым келеді |
 | сорысу | imperative 1sg | сорысайын | сорысйын |
 | сорысу | intention 1sg | сорыспақпын | сорысмақпын |
+| сорысу | perfect 1sg | сорысқанмын | сорысғанмын |
+| сорысу | habitual past 1sg | сорысатынмын | сорысйтынмын |
 | сорысу | present 2sg | сорысасың | сорысйсың |
 | сорысу | past 2sg | сорыстың | сорысдың |
 | сорысу | want 2sg | сорысқың келеді | сорысғың келеді |
 | сорысу | intention 2sg | сорыспақсың | сорысмақсың |
+| сорысу | perfect 2sg | сорысқансың | сорысғансың |
+| сорысу | habitual past 2sg | сорысатынсың | сорысйтынсың |
 | сорысу | present 2sgf | сорысасыз | сорысйсыз |
 | сорысу | past 2sgf | сорыстыңыз | сорысдыңыз |
 | сорысу | want 2sgf | сорысқыңыз келеді | сорысғыңыз келеді |
 | сорысу | imperative 2sgf | сорысыңыз | сорысңыз |
 | сорысу | intention 2sgf | сорыспақсыз | сорысмақсыз |
+| сорысу | perfect 2sgf | сорысқансыз | сорысғансыз |
+| сорысу | habitual past 2sgf | сорысатынсыз | сорысйтынсыз |
 | сорысу | present 3 | сорысады | сорысйды |
 | сорысу | past 3 | сорысты | сорысды |
 | сорысу | want 3 | сорысқысы келеді | сорысғысы келеді |
 | сорысу | intention 3 | сорыспақ | сорысмақ |
+| сорысу | perfect 3 | сорысқан | сорысған |
+| сорысу | habitual past 3 | сорысатын | сорысйтын |
 | сорысу | present 1pl | сорысамыз | сорысймыз |
 | сорысу | past 1pl | сорыстық | сорысдық |
 | сорысу | want 1pl | сорысқымыз келеді | сорысғымыз келеді |
 | сорысу | imperative 1pl | сорысайық | сорысйық |
 | сорысу | intention 1pl | сорыспақпыз | сорысмақпыз |
+| сорысу | perfect 1pl | сорысқанбыз | сорысғанбыз |
+| сорысу | habitual past 1pl | сорысатынбыз | сорысйтынбыз |
 | сорысу | present 2pl | сорысасыңдар | сорысйсыңдар |
 | сорысу | past 2pl | сорыстыңдар | сорысдыңдар |
 | сорысу | want 2pl | сорысқыларың келеді | сорысғыларың келеді |
 | сорысу | imperative 2pl | сорысыңдар | сорысңдар |
+| сорысу | perfect 2pl | сорысқансыңдар | сорысғансыңдар |
+| сорысу | habitual past 2pl | сорысатынсыңдар | сорысйтынсыңдар |
 | сорысу | present 2plf | сорысасыздар | сорысйсыздар |
 | сорысу | past 2plf | сорыстыңыздар | сорысдыңыздар |
 | сорысу | want 2plf | сорысқыларыңыз келеді | сорысғыларыңыз келеді |
 | сорысу | imperative 2plf | сорысыңыздар | сорысңыздар |
+| сорысу | perfect 2plf | сорысқансыздар | сорысғансыздар |
+| сорысу | habitual past 2plf | сорысатынсыздар | сорысйтынсыздар |
 | қақау | converb | қақап | қақаып |
 | қақау | present 1sg | қақаймын | қақаамын |
 | қақау | past 1sg | қақадым | қақам |
 | қақау | want 1sg | қақағым келеді | қақам келеді |
 | қақау | imperative 1sg | қақайын | қақаайын |
 | қақау | intention 1sg | қақамақпын | қақапын |
+| қақау | perfect 1sg | қақағанмын | қақамын |
+| қақау | habitual past 1sg | қақайтынмын | қақаатынмын |
 | қақау | present 2sg | қақайсың | қақаасың |
 | қақау | past 2sg | қақадың | қақаң |
 | қақау | want 2sg | қақағың келеді | қақаң келеді |
 | қақау | intention 2sg | қақамақсың | қақасың |
+| қақау | perfect 2sg | қақағансың | қақасың |
+| қақау | habitual past 2sg | қақайтынсың | қақаатынсың |
 | қақау | present 2sgf | қақайсыз | қақаасыз |
 | қақау | past 2sgf | қақадыңыз | қақаңыз |
 | қақау | want 2sgf | қақағыңыз келеді | қақаңыз келеді |
 | қақау | imperative 2sgf | қақаңыз | қақаыңыз |
 | қақау | intention 2sgf | қақамақсыз | қақасыз |
+| қақау | perfect 2sgf | қақағансыз | қақасыз |
+| қақау | habitual past 2sgf | қақайтынсыз | қақаатынсыз |
 | қақау | present 3 | қақайды | қақаады |
 | қақау | past 3 | қақады | қақа |
 | қақау | want 3 | қақағысы келеді | қақасы келеді |
 | қақау | intention 3 | қақамақ | қақа |
+| қақау | perfect 3 | қақаған | қақа |
+| қақау | habitual past 3 | қақайтын | қақаатын |
 | қақау | present 1pl | қақаймыз | қақаамыз |
 | қақау | past 1pl | қақадық | қақа |
 | қақау | want 1pl | қақағымыз келеді | қақамыз келеді |
 | қақау | imperative 1pl | қақайық | қақаайық |
 | қақау | intention 1pl | қақамақпыз | қақапыз |
+| қақау | perfect 1pl | қақағанбыз | қақабыз |
+| қақау | habitual past 1pl | қақайтынбыз | қақаатынбыз |
 | қақау | present 2pl | қақайсыңдар | қақаасыңдар |
 | қақау | past 2pl | қақадыңдар | қақаңдар |
 | қақау | want 2pl | қақағыларың келеді | қақаларың келеді |
 | қақау | imperative 2pl | қақаңдар | қақаыңдар |
+| қақау | perfect 2pl | қақағансыңдар | қақасыңдар |
+| қақау | habitual past 2pl | қақайтынсыңдар | қақаатынсыңдар |
 | қақау | present 2plf | қақайсыздар | қақаасыздар |
 | қақау | past 2plf | қақадыңыздар | қақаңыздар |
 | қақау | want 2plf | қақағыларыңыз келеді | қақаларыңыз келеді |
 | қақау | imperative 2plf | қақаңыздар | қақаыңыздар |
+| қақау | perfect 2plf | қақағансыздар | қақасыздар |
+| қақау | habitual past 2plf | қақайтынсыздар | қақаатынсыздар |

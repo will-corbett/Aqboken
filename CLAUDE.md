@@ -68,10 +68,14 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   vowel loss), possessive + case (`possessiveCase`: dative -а/-е after -м/-ң), copula endings, question particle,
   present/past (+ negatives), the -ып converb (тап → тауып), “right now” (converb + жатыр; `motion` verbs бару/келу
   use -а/-е: бара жатыр), “want to” (-ғы + possessive + келеді), the imperative in all persons, the -мақ intention
-  future, postpositions with their cases (`POSTPOSITIONS`), numbers, pronoun declension.
+  future, postpositions with their cases (`POSTPOSITIONS`), the -ған “have done” (`perfect`) and -атын “used to”
+  (`habitualPast`) tenses, the -са conditional, “can” (-а/-е form + алу), comparatives (-рақ/-ырақ; rule only, no
+  Wiktionary data: listed in the review report), ordinals (`ORDINAL`, taken from Wiktionary's entries, irregulars
+  included), the time (24-hour, жарым, locative “at”), numbers, pronoun declension. “We are” is -быз after м/н/ң
+  as well as з/ж (мұғалімбіз; Wiktionary's -ған tables confirm it).
 - The Wiktionary check compares, for every verb table (~165): present, past, converb (from the renarrative), want
   (optative), imperative (Wiktionary's untagged "error-unrecognized-form" rows, in person order) and intention
-  (intentive; its 2nd plurals are skipped, Wiktionary repeats the singular). The Learn-page check also covers the
+  (intentive; its 2nd plurals are skipped, Wiktionary repeats the singular), perfect, habitual past and conditional. The Learn-page check also covers the
   Kazakh topic and theme names; grammar terms Wiktionary lacks are in `LEARN_WORDS` for the native-speaker review.
 - `src/data/words.ts` — themes and words (verbs with `stem`; noun options `harmony`, `noVoicing`, `possStem`,
   `possessed`, `noDrill`). Meanings are our own.

@@ -12,7 +12,7 @@
  */
 import { createReadStream, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createInterface } from 'node:readline';
-import { negativeStem, CASES, PERSONS, POSS_PERSONS, POSTPOSITIONS, PRONOUN_CASES, caseForm, continuous, converb, possessiveCase, copula, imperative, intention, numberWords, past, pastNeg, plural, possessive, present, presentNeg, want, type Case, type Person } from '../src/shared/kazakh.ts';
+import { ORDINAL, can, comparative, conditional, habitualPast, ordinalWords, perfect, timeWords, negativeStem, CASES, PERSONS, POSS_PERSONS, POSTPOSITIONS, PRONOUN_CASES, caseForm, continuous, converb, possessiveCase, copula, imperative, intention, numberWords, past, pastNeg, plural, possessive, present, presentNeg, want, type Case, type Person } from '../src/shared/kazakh.ts';
 import { ALL_WORDS, THEMES, type Word } from '../src/data/words.ts';
 import { TOPICS } from '../src/lib/topics.ts';
 import { LEARN_WORDS, NOT_IN_WIKTIONARY, WIKTIONARY_ERRORS, nounOptions } from '../src/data/exceptions.ts';
@@ -169,6 +169,9 @@ for (const [word, es] of entries) {
         ['optative', 'want', want],
         ['error-unrecognized-form', 'imperative', imperative],
         ['intentive', 'intention', intention],
+        ['perfect', 'perfect', perfect],
+        ['habitual', 'habitual past', habitualPast],
+        ['conditional', 'conditional', conditional],
       ] as const) {
         if (tense === 'intentive' && (p === '2pl' || p === '2plf')) continue;
         const f = e.forms.find((x) => has(x, tense, ...tags) && !(p === '1sg' && x.tags?.includes('plural')) && !(p === '1pl' && x.tags?.includes('singular')) && !(p === '3' && x.tags?.includes('plural')));
@@ -189,6 +192,9 @@ function caseTag(c: Case): string {
   return { nom: 'nominative', gen: 'genitive', dat: 'dative', acc: 'accusative', loc: 'locative', abl: 'ablative', ins: 'instrumental' }[c];
 }
 
+// ── 3b. Ordinals: every one we use is a Wiktionary headword ──
+const missingOrdinals = Object.values(ORDINAL).filter((o) => !(entries.get(o) ?? []).some((e) => e.pos === 'num'));
+
 // ── 4. The Kazakh in Learn pages ──
 // Every Kazakh word written in content/learn must be a Wiktionary headword or form, a form the rules make of a word
 // in our lists, or listed in exceptions.ts LEARN_WORDS with a reason.
@@ -196,6 +202,7 @@ const made = new Set<string>();
 const add = (f: string) => f.split(' ').forEach((t) => made.add(t.toLowerCase()));
 for (const w of ALL_WORDS) {
   add(w.kk);
+  if (w.pos === 'adj' || w.pos === 'adv') add(comparative(w.kk));
   if (w.pos === 'n' || w.pos === 'adj') {
     const o = nounOptions(w.kk);
     const pl = plural(w.kk, o);
@@ -207,7 +214,10 @@ for (const w of ALL_WORDS) {
     for (const p of PERSONS) add(copula(w.kk, p, o));
   }
   if (w.pos === 'v') {
-    for (const p of PERSONS) [present, presentNeg, past, pastNeg, want, imperative, intention].forEach((fn) => add(fn(w.stem!, p)));
+    for (const p of PERSONS) [present, presentNeg, past, pastNeg, want, imperative, intention, perfect, habitualPast, conditional].forEach((fn) => add(fn(w.stem!, p)));
+    for (const p of PERSONS) [can(w.stem!, p), can(w.stem!, p, true)].forEach(add);
+    // Negatives built on the negative stem: бармағанмын, бармасам, бармайтынмын.
+    for (const p of PERSONS) [perfect, conditional, habitualPast].forEach((fn) => add(fn(negativeStem(w.stem!), p)));
     for (const p of PERSONS) add(continuous(w.stem!, p, { motion: w.motion }));
     add(converb(w.stem!));
     // Negative imperatives: барма, бармаңыз.
@@ -215,7 +225,8 @@ for (const w of ALL_WORDS) {
   }
 }
 for (const forms of Object.values(PRONOUN_CASES)) Object.values(forms).forEach(add);
-for (let i = 0; i <= 1000; i++) add(numberWords(i));
+for (let i = 0; i <= 1000; i++) [numberWords(i), ordinalWords(i)].forEach(add);
+for (let h = 0; h < 24; h++) for (const m of [0, 30] as const) [timeWords(h, m), timeWords(h, m, true)].forEach(add);
 ['ма', 'ме', 'ба', 'бе', 'па', 'пе'].forEach(add);
 POSTPOSITIONS.forEach((pp) => add(pp.word));
 const unknownLearn = new Map<string, Set<string>>();
@@ -294,8 +305,9 @@ console.log(`Our words: ${ALL_WORDS.length}, missing from Wiktionary: ${missing.
 console.log(`Nouns: ${nounsChecked} tables, ${nounWordsWrong.size} differ (${pct(nounWordsWrong.size, nounsChecked)}%); ours checked ${ourNounsChecked.size}/${ourNouns.size}, failing ${new Set(ourNounFails.map((m) => m.word)).size}`);
 console.log(`Verb forms compared: ${JSON.stringify(formsChecked)}`);
 console.log(`Verbs: ${verbsChecked} tables, ${verbWordsWrong.size} differ (${pct(verbWordsWrong.size, verbsChecked)}%); ours checked ${ourVerbsChecked.size}/${ourVerbs.size}, failing ${new Set(ourVerbFails.map((m) => m.word)).size}`);
+console.log(`Ordinals: ${Object.keys(ORDINAL).length} in Wiktionary${missingOrdinals.length ? `, missing: ${missingOrdinals.join(', ')}` : ''}`);
 console.log(`Learn pages: ${unknownLearn.size} unknown words${unknownLearn.size ? ': ' + [...unknownLearn.keys()].join(', ') : ''}`);
 console.log('Report: reports/wiktionary-check.md');
 void ourKeys;
-const fail = missing.length + ourNounFails.length + ourVerbFails.length + unknownLearn.size;
+const fail = missing.length + ourNounFails.length + ourVerbFails.length + unknownLearn.size + missingOrdinals.length;
 process.exit(fail ? 1 : 0);

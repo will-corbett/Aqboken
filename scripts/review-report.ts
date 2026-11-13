@@ -4,7 +4,8 @@
  * content change. Items are numbered so comments can refer to them ("W12: …").
  */
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
-import { THEMES } from '../src/data/words.ts';
+import { ADJECTIVES, THEMES } from '../src/data/words.ts';
+import { comparative } from '../src/shared/kazakh.ts';
 import { LEARN_WORDS, NOT_IN_WIKTIONARY } from '../src/data/exceptions.ts';
 import { TOPICS } from '../src/lib/topics.ts';
 import { pool, type Question } from '../src/lib/questions.ts';
@@ -106,8 +107,16 @@ p();
 for (const [w, why] of Object.entries(NOT_IN_WIKTIONARY)) p(`- **${w}**: ${why}`);
 p();
 
+// ── Comparatives ──
+p('## 7. Comparatives (made by rule only)');
+p();
+p('Wiktionary has no comparative forms to check against, so these come from the rule (-рақ/-рек, -ырақ/-ірек) alone. Please mark any that are wrong or not used.');
+p();
+p(ADJECTIVES.map((a) => `${a.kk} → **${comparative(a.kk)}**`).join(' · '));
+p();
+
 // ── Audio ──
-p('## 7. Audio');
+p('## 8. Audio');
 p();
 p(`Most words and answers are read by a computer voice (it says so when it plays); 31 words have native recordings. Please listen to a few pages (e.g. ${SITE_URL}vocabulary/family/ and ${SITE_URL}drill/listen/) and say whether the computer voice is understandable and stresses words correctly, or misleads learners.`);
 p();

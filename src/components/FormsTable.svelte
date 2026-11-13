@@ -25,6 +25,13 @@
     intention,
     possessiveCase,
     want,
+    can,
+    comparative,
+    conditional,
+    habitualPast,
+    ordinalWords,
+    perfect,
+    timeWords,
     type Person,
   } from '../shared/kazakh.ts';
   import { APPROXIMATE, toLatin, type Script } from '../shared/script.ts';
@@ -39,7 +46,7 @@
   const en = (kk: string) => ALL_WORDS.find((w) => w.kk === kk)?.en ?? '';
   const stemOf = (inf: string) => ALL_WORDS.find((w) => w.kk === inf && w.pos === 'v')?.stem ?? inf.replace(/у$/, '');
   const motion = (inf: string) => !!ALL_WORDS.find((w) => w.kk === inf)?.motion;
-  const VERB_FN = { present, presentNeg, past, pastNeg, want, imperative, intention } as Record<string, (s: string, p: Person) => string>;
+  const VERB_FN = { present, presentNeg, past, pastNeg, want, imperative, intention, perfect, habitual: habitualPast, conditional, can: (st: string, p: Person) => can(st, p), cannot: (st: string, p: Person) => can(st, p, true) } as Record<string, (s: string, p: Person) => string>;
   const IMP_LABEL: Record<Person, string> = { '1sg': 'let me', '2sg': 'сен', '2sgf': 'сіз', '3': 'let him/her', '1pl': 'let’s', '2pl': 'сендер', '2plf': 'сіздер' };
   const RULE_ROWS: [string, string][] = [
     ['V', 'a vowel'],
@@ -115,6 +122,29 @@
         {/each}
       </tbody>
     </table>
+  {:else if kind === 'comparative'}
+    <table class="forms">
+      <thead><tr><th>Word</th><th>Meaning</th><th>Comparative</th></tr></thead>
+      <tbody>
+        {#each words as w (w)}<tr><td><Kz text={w} {script} /></td><td class="muted">{en(w)}</td><td><Kz text={comparative(w)} mark={w === 'кішкентай' ? '' : w} {script} /></td></tr>{/each}
+      </tbody>
+    </table>
+  {:else if kind === 'ordinals'}
+    <table class="forms">
+      <tbody>
+        {#each words as n (n)}<tr><th scope="row">{n}</th><td><Kz text={numberWords(Number(n))} {script} /></td><td><Kz text={ordinalWords(Number(n))} {script} /></td></tr>{/each}
+      </tbody>
+    </table>
+  {:else if kind === 'times'}
+    <table class="forms">
+      <thead><tr><th>Time</th><th>It is …</th><th>At …</th></tr></thead>
+      <tbody>
+        {#each words as t (t)}
+          {@const [h, m] = t.split(':').map(Number) as [number, number]}
+          <tr><th scope="row">{t}</th><td><Kz text={timeWords(h, m === 30 ? 30 : 0)} {script} /></td><td><Kz text={timeWords(h, m === 30 ? 30 : 0, true)} {script} /></td></tr>
+        {/each}
+      </tbody>
+    </table>
   {:else if kind === 'continuous'}
     <table class="forms">
       <thead><tr><th></th>{#each words as w (w)}<th><Kz text={w} {script} /> <span class="muted small">{en(w)}</span></th>{/each}</tr></thead>
@@ -164,7 +194,7 @@
         {#each PERSONS as p (p)}
           <tr>
             <th scope="row">{#if kind === 'imperative'}{IMP_LABEL[p]}{:else if kind === 'want'}<Kz text={{ '1sg': 'менің', '2sg': 'сенің', '2sgf': 'сіздің', '3': 'оның', '1pl': 'біздің', '2pl': 'сендердің', '2plf': 'сіздердің' }[p]} {script} />{:else}<Kz text={PRONOUN[p]} {script} />{/if}</th>
-            {#each words as w (w)}<td><Kz text={VERB_FN[kind]!(stemOf(w), p)} mark={stemOf(w)} {script} /></td>{/each}
+            {#each words as w (w)}<td><Kz text={VERB_FN[kind]!(stemOf(w), p)} mark={kind === 'can' || kind === 'cannot' ? '' : stemOf(w)} {script} /></td>{/each}
           </tr>
         {/each}
       </tbody>
