@@ -51,6 +51,7 @@ export const LEARN_WORDS: Record<string, string> = {
   тыңдалым: 'listening (as a language skill).',
   мамандықтар: 'мамандық (profession) + the plural -тар.',
   мезгілдері: 'мезгіл (season) + -дер + -і: жыл мезгілдері, the seasons of the year.',
+  құрау: 'to build, to put together: сөйлем құрау, building a sentence (the name of a drill).',
 };
 
 /** Tatoeba sentences never shown as examples, by id, with the reason. */

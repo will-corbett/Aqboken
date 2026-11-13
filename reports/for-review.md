@@ -906,6 +906,7 @@ Every line of the Learn pages that contains Kazakh, with its English. Tables of 
 | T47 | тыңдалым | listening (as a language skill). | |
 | T48 | мамандықтар | мамандық (profession) + the plural -тар. | |
 | T49 | мезгілдері | мезгіл (season) + -дер + -і: жыл мезгілдері, the seasons of the year. | |
+| T50 | құрау | to build, to put together: сөйлем құрау, building a sentence (the name of a drill). | |
 
 ## 4. Drill questions and explanations
 
