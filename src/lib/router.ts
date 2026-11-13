@@ -16,6 +16,8 @@ export type Route =
   | { page: 'progress' }
   | { page: 'start' }
   | { page: 'test' }
+  | { page: 'culture' }
+  | { page: 'search' }
   | { page: 'paths' }
   | { page: 'about' };
 
@@ -37,6 +39,10 @@ export function parsePath(pathname: string): Route {
       return { page: 'start' };
     case 'test':
       return { page: 'test' };
+    case 'culture':
+      return { page: 'culture' };
+    case 'search':
+      return { page: 'search' };
     case 'paths':
       return { page: 'paths' };
     case 'about':
@@ -64,6 +70,10 @@ export function pathOf(r: Route): string {
       return 'start/';
     case 'test':
       return 'test/';
+    case 'culture':
+      return 'culture/';
+    case 'search':
+      return 'search/';
     case 'paths':
       return 'paths/';
     case 'about':
@@ -72,7 +82,7 @@ export function pathOf(r: Route): string {
 }
 export const href = (r: Route): string => SITE_BASE + pathOf(r);
 
-/** Go to a page without reloading; ?seed= (reproducible rounds) carries over. */
+/** Go to a page without reloading; ?seed= (reproducible rounds) carries over unless the target has its own query. */
 export function navigate(target: string, replace = false): void {
   const url = new URL(target, location.href);
   const seed = new URLSearchParams(location.search).get('seed');

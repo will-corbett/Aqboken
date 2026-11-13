@@ -17,8 +17,8 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   on any failure). Run it after changing the rules, the word lists or a Learn page.
 
 ## Decisions (owner, 2026-11-13)
-- Scope: core v1 — Learn + drills for the basics, and Vocabulary themes. Reading, listening, a grammar test, paths,
-  search, culture come later.
+- Scope (2026-11-13): A1–B1 grammar and vocabulary, listening, a grammar test, learning paths, search and culture
+  links. Reading texts come later (they need a native speaker's review).
 - Script: Cyrillic by default, with a Cyrillic / Latin / Both switch in the header (`settings.script`). Latin = the
   April 2021 alphabet (`src/shared/script.ts`); loan-only letters (ё ц ч щ э ю я ъ ь) have no 2021 letter, so we write
   their sounds and say it's an approximation. Answers are accepted in either script (`sameAnswer`).
@@ -87,7 +87,8 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   <suffix>) and `::drill <mode>`. Links: `[text](learn:id)`, `drill:id`, `vocabulary:id`. Cyrillic in the text is
   shown in the reader's script automatically.
 - Pages under `/Aqboken/` (`src/shared/site.ts`): `/`, `/start/`, `/paths/`, `/learn/`, `/learn/<topic>/`, `/drill/`,
-  `/drill/<topic>/`, `/vocabulary/`, `/vocabulary/<theme>/`, `/progress/`, `/settings/`, `/about/`.
+  `/drill/<topic>/`, `/vocabulary/`, `/vocabulary/<theme>/`, `/test/`, `/culture/`, `/search/`, `/progress/`,
+  `/settings/`, `/about/`. Header menu: Learn, Drill, Vocabulary, Test, Culture, and the search button.
 - Start here (`StartPage.svelte`): the beginner's guide. The home page shows a big “New to Kazakh?” card until
   `settings.guideSeen` (opening the guide, starting a drill, or “Got it”), then a small link.
 - Grammar test (`/test/`, `src/lib/levelTest.ts`, `LevelTest.svelte`, in the header menu): 12 multiple-choice
@@ -95,6 +96,14 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   are only other real forms of the same word (`Question.others`) or a drill's own choices, never invented forms, so
   a drill without `others` can't feed the test. Reach a level with ≥9/12 there and ≥8/12 at each level below
   (`scoreTest`); every wrong answer explained; “Set my learning path to …”. In memory only. Grammar only, and says so.
+- Search (`/search/?q=`, `src/lib/search.ts`, header button or “/”): built in the browser from bundled data: lessons
+  (full text), drills, themes, every word with its meaning, culture links. Case and script ignored; a Kazakh query
+  also matches a word's forms (кітабымда → кітап). Nothing stored or sent; noindex. `tests/unit/search.test.ts`.
+- Culture (`/culture/`, `src/data/culture.ts`): hand-checked links only (no embeds), each the creator's or rights
+  holder's own site or channel (official YouTube channels confirmed from the organisation's own site: Kazakhfilm is
+  @kazakhfilmkz, linked from kazakhfilm.kz; look-alike handles are unofficial), nothing mainly political or news,
+  our own descriptions, a `note` on sign-up or payment, and `checked` dates. Each type has a suggested activity.
+  `npm run links:check` checks they still answer; re-check what a channel actually posts before adding it.
 - Learning paths (`src/lib/paths.ts`, `PathsPage.svelte`): A1, A2 and B1 routes of topic and theme steps, each with a
   why; `settings.pathLevel`. With progress on, a topic is ticked once drilled and a theme once half its words are in
   my words, and the home page shows “Your next step”. `tests/unit/paths.test.ts`: every step exists and isn't from a

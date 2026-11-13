@@ -20,6 +20,8 @@
   import ProgressPage from './components/ProgressPage.svelte';
   import StartPage from './components/StartPage.svelte';
   import LevelTest from './components/LevelTest.svelte';
+  import Culture from './components/Culture.svelte';
+  import SearchPage from './components/SearchPage.svelte';
   import PathsPage from './components/PathsPage.svelte';
   import { ALL_WORDS } from './data/words.ts';
   import { isMode, topicById } from './lib/topics.ts';
@@ -172,16 +174,27 @@
     settings.script = s;
   }
 
-  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about' || route.page === 'progress' || route.page === 'start' || route.page === 'paths' || route.page === 'test');
+  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about' || route.page === 'progress' || route.page === 'start' || route.page === 'paths' || route.page === 'test' || route.page === 'search');
   const navItems: [Route['page'], string][] = [
     ['learn', 'Learn'],
     ['drill', 'Drill'],
     ['vocabulary', 'Vocabulary'],
     ['test', 'Test'],
+    ['culture', 'Culture'],
   ];
+
+  function onWindowKey(e: KeyboardEvent) {
+    // "/" opens the search from anywhere, unless you're typing.
+    const typing = e.target instanceof HTMLElement && (e.target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName));
+    if (e.key === '/' && !typing && !e.ctrlKey && !e.metaKey && !e.altKey && route.page !== 'search') {
+      e.preventDefault();
+      navigate(href({ page: 'search' }));
+    }
+  }
 </script>
 
 <svelte:document onclick={onLinkClick} />
+<svelte:window onkeydown={onWindowKey} />
 
 <a class="skip" href="#main">Skip to content</a>
 <div class="shell">
@@ -195,6 +208,9 @@
         <a href={href({ page } as Route)} aria-current={route.page === page ? 'page' : undefined}>{label}</a>
       {/each}
     </nav>
+    <a class="btn quiet search-btn" href={href({ page: 'search' })} aria-label="Search the site" title="Search the site (press /)" aria-current={route.page === 'search' ? 'page' : undefined}
+      ><svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg></a
+    >
     <div class="script" role="group" aria-label="Script">
       {#each [['cyrl', 'Кирил'], ['latn', 'Latyn'], ['both', 'Both']] as [v, label] (v)}
         <button type="button" aria-pressed={settings.script === v} onclick={() => setScript(v as Script)} title={v === 'cyrl' ? 'Cyrillic' : v === 'latn' ? 'Latin (2021 alphabet)' : 'Cyrillic and Latin'}>{label}</button>
@@ -222,6 +238,10 @@
       <WordsIndex script={settings.script} />
     {:else if route.page === 'settings'}
       <SettingsPage bind:settings onprogress={setProgress} />
+    {:else if route.page === 'culture'}
+      <Culture />
+    {:else if route.page === 'search'}
+      {#key route}<SearchPage script={settings.script} />{/key}
     {:else if route.page === 'test'}
       <LevelTest bind:settings />
     {:else if route.page === 'start'}
@@ -321,8 +341,18 @@
     background: var(--primary-bg);
     color: var(--primary-text);
   }
-  .script {
+  .search-btn {
     margin-left: auto;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0 10px;
+    color: var(--text);
+  }
+  .search-btn[aria-current='page'] {
+    background: var(--primary-bg);
+    color: var(--primary-text);
+  }
+  .script {
     display: inline-flex;
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -347,12 +377,17 @@
     font-weight: 700;
   }
   @media (max-width: 560px) {
-    .script {
-      margin-left: 0;
+    .search-btn {
+      margin-left: auto;
     }
     .nav {
       order: 3;
       width: 100%;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+    .nav a {
+      padding: 6px 8px;
     }
   }
   main {
