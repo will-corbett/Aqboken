@@ -96,8 +96,11 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   variant builds well-formed questions whose answers are accepted, in Cyrillic and Latin).
 
 ## Conventions
-- Theme `korti` (default): sky blue fills (`--primary-bg` #2ec4dc, dark text), deep teal text accent #00586a, gold
-  #fec50c. Also system/light/dark. Logo: `public/brand/korti.svg`.
+- Theme `korti` (default), from the logo (a saiga antelope over the steppe): deep green #014336 for text accents and
+  button fills (cream text), sun gold #FDB93C only as fills and highlights (too light for text on cream), cream
+  #FAF1EB background. The dark theme uses the same family (green-black background, gold accent). Also system/light.
+  Logo files in `public/brand/` (korti-logo.webp for the home page; korti-32/128/180/192/512.png for icons, cut from
+  the original with rounded transparent corners).
 - Every answer is explained; a wrong typed form that is another form of the word is named ("which is the dative").
 - Accessibility as Krotik: keyboard flow (Enter, 1–n for choices), aria-live feedback, visible focus, no horizontal
   scroll at phone width, reduced motion respected.

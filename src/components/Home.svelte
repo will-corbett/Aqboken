@@ -9,6 +9,7 @@
 </script>
 
 <section class="hero">
+  <img class="hero-logo" src="{import.meta.env.BASE_URL}brand/korti-logo.webp" alt="Körti: a saiga antelope leaping over the steppe, under the sun and mountains" width="168" height="168" />
   <h1>Learn Kazakh, one ending at a time</h1>
   <p class="lead">Kazakh builds words from a stem and a chain of endings, and each ending follows a handful of sound rules. Körti explains the rules simply, shows them at work in tables, and drills them until they’re automatic.</p>
   <p class="greeting"><Kz text="Қош келдіңіз!" script={settings.script} /> <span class="muted">Welcome!</span></p>
@@ -55,6 +56,25 @@
 </section>
 
 <style>
+  .hero::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .hero-logo {
+    float: right;
+    width: 168px;
+    height: 168px;
+    margin: 0 0 12px 24px;
+    border-radius: 24px;
+  }
+  @media (max-width: 560px) {
+    .hero-logo {
+      width: 96px;
+      height: 96px;
+      margin-left: 12px;
+    }
+  }
   .hero h1 {
     font-size: clamp(1.7rem, 5vw, 2.4rem);
     margin: 8px 0 8px;
@@ -83,7 +103,7 @@
   .tile {
     color: var(--text);
     text-decoration: none;
-    border-top: 5px solid var(--primary-bg);
+    border-top: 5px solid var(--gold, var(--primary-bg));
   }
   .tile:hover {
     border-color: var(--accent);

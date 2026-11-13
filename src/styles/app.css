@@ -29,15 +29,15 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']):not([data-theme='korti']) {
-    --bg: #11151c;
-    --surface: #1a2029;
-    --surface-2: #212833;
-    --border: #333c4a;
-    --text: #e7eaf0;
-    --muted: #a6afbd;
-    --accent: #86a8ff;
-    --accent-text: #0d1424;
-    --accent-soft: #24304a;
+    --bg: #0b1a16;
+    --surface: #10261f;
+    --surface-2: #163129;
+    --border: #28473d;
+    --text: #f3ebe2;
+    --muted: #b3bdb6;
+    --accent: #fdb93c;
+    --accent-text: #0b1a16;
+    --accent-soft: #23362c;
     --correct: #6fd394;
     --correct-soft: #18301f;
     --wrong: #ff958a;
@@ -46,22 +46,22 @@
     --score-orange: #ffb36b;
     --score-yellow: #f2d14b;
     --score-green: #6fd394;
-    --mark: #5a4a12;
-    --focus: #86a8ff;
+    --mark: #5a4512;
+    --focus: #fdb93c;
     --shadow: none;
     color-scheme: dark;
   }
 }
 :root[data-theme='dark'] {
-  --bg: #11151c;
-  --surface: #1a2029;
-  --surface-2: #212833;
-  --border: #333c4a;
-  --text: #e7eaf0;
-  --muted: #a6afbd;
-  --accent: #86a8ff;
-  --accent-text: #0d1424;
-  --accent-soft: #24304a;
+  --bg: #0b1a16;
+  --surface: #10261f;
+  --surface-2: #163129;
+  --border: #28473d;
+  --text: #f3ebe2;
+  --muted: #b3bdb6;
+  --accent: #fdb93c;
+  --accent-text: #0b1a16;
+  --accent-soft: #23362c;
   --correct: #6fd394;
   --correct-soft: #18301f;
   --wrong: #ff958a;
@@ -70,29 +70,29 @@
   --score-orange: #ffb36b;
   --score-yellow: #f2d14b;
   --score-green: #6fd394;
-  --mark: #5a4a12;
-  --focus: #86a8ff;
+  --mark: #5a4512;
+  --focus: #fdb93c;
   --shadow: none;
   color-scheme: dark;
 }
 
 /*
- * Körti theme: steppe sky blue and sun gold (the colours of the Kazakh sky), on a pale, cool background.
- * The sky blue is too light for text on white, so it fills buttons and bars (with near-black text, 7:1);
- * links and small accent text use a deep teal (#00586a, 7:1 on the background).
+ * Körti theme, from the logo: deep steppe green #014336, sun gold #FDB93C, cream #FAF1EB. The green is dark enough
+ * for text and button fills on cream (11:1); the gold is too light for text on cream, so it only fills (with green
+ * text) and marks highlights.
  */
 :root[data-theme='korti'] {
-  --bg: #f4f9fa;
-  --surface: #ffffff;
-  --surface-2: #e8f3f5;
-  --border: #c8dfe4;
-  --text: #0b1d24;
-  --muted: #45585f;
-  --accent: #00586a;
-  --accent-text: #ffffff;
-  --accent-soft: #d3eef3;
-  --primary-bg: #2ec4dc;
-  --primary-text: #061a20;
+  --bg: #faf1eb;
+  --surface: #fffaf5;
+  --surface-2: #f3e7da;
+  --border: #e2d1bf;
+  --text: #0c241e;
+  --muted: #4f4b45;
+  --accent: #014336;
+  --accent-text: #faf1eb;
+  --accent-soft: #d9e8df;
+  --primary-bg: #014336;
+  --primary-text: #faf1eb;
   --correct: #1b6a35;
   --correct-soft: #e2f1e2;
   --wrong: #a8261a;
@@ -101,10 +101,11 @@
   --score-orange: #b54708;
   --score-yellow: #866400;
   --score-green: #1b6e37;
-  --mark: #fde9a6;
-  --gold: #fec50c;
-  --focus: #0b1d24;
-  --shadow: 0 1px 2px rgb(11 29 36 / 0.06), 0 4px 16px rgb(11 29 36 / 0.06);
+  --mark: #fde2a4;
+  --gold: #fdb93c;
+  --gold-text: #014336;
+  --focus: #014336;
+  --shadow: 0 1px 2px rgb(1 67 54 / 0.06), 0 4px 16px rgb(1 67 54 / 0.07);
   color-scheme: light;
 }
 

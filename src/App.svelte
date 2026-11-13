@@ -181,7 +181,7 @@
 <div class="shell">
   <header class="top">
     <a class="brand" href={href({ page: 'home' })} aria-label="Körti, home">
-      <img src="{import.meta.env.BASE_URL}brand/korti.svg" alt="" width="40" height="40" />
+      <img src="{import.meta.env.BASE_URL}brand/korti-128.png" alt="" width="44" height="44" />
       <span>Körti</span>
     </a>
     <nav class="nav" aria-label="Main">
