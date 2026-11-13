@@ -10,11 +10,12 @@ import { LEARN } from './learn.ts';
 import { href } from './router.ts';
 import { TOPICS } from './topics.ts';
 import { CULTURE } from '../data/culture.ts';
+import { TEXTS } from '../data/reading.ts';
 import { CASES, POSS_PERSONS, PERSONS, caseForm, plural, possessive, possessiveCase, present, past, presentNeg, pastNeg } from '../shared/kazakh.ts';
 import { toLatin } from '../shared/script.ts';
 
 export interface Hit {
-  kind: 'Lesson' | 'Drill' | 'Theme' | 'Word' | 'Culture';
+  kind: 'Lesson' | 'Drill' | 'Theme' | 'Word' | 'Culture' | 'Reading';
   title: string;
   kk?: string;
   detail: string;
@@ -58,6 +59,7 @@ function build(): Entry[] {
     const theme = THEMES.find((t) => t.id === w.theme)!;
     out.push({ kind: 'Word', title: w.kk, kk: w.kk, detail: `${w.en} · ${theme.title}`, href: href({ page: 'vocabulary', theme: w.theme }), text: fold(`${w.kk} ${w.en}`), forms: new Set([...forms].flatMap((f) => [f, toLatin(f).toLowerCase()])) });
   }
+  for (const t of TEXTS) out.push({ kind: 'Reading', title: t.en, kk: t.title, detail: `${t.level} · ${t.blurb}`, href: href({ page: 'reading', text: t.id }), text: fold(`${t.title} ${t.en} ${t.blurb}`) });
   for (const c of CULTURE) out.push({ kind: 'Culture', title: c.title, detail: `${c.type} · ${c.about}`, href: c.url, text: fold(`${c.title} ${c.type} ${c.about} ${c.topic}`) });
   return out;
 }

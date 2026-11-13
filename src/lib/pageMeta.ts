@@ -1,5 +1,6 @@
 /** Page titles and descriptions, shared by the app (document.title) and the prerender script. */
 import { themeById } from '../data/words.ts';
+import { textById } from '../data/reading.ts';
 import type { Route } from './router.ts';
 import { topicById } from './topics.ts';
 
@@ -17,6 +18,8 @@ export function pageTitle(r: Route): string {
       return 'Settings · Aqböken';
     case 'progress':
       return 'Your progress · Aqböken';
+    case 'reading':
+      return r.text && textById(r.text) ? `${textById(r.text)!.title} (${textById(r.text)!.en}) · Kazakh reading · Aqböken` : 'Read Kazakh: stories with every word explained · Aqböken';
     case 'culture':
       return 'Kazakh culture: courses, podcasts, films and books · Aqböken';
     case 'search':

@@ -18,6 +18,9 @@
 </ul>
 <p>Meanings, explanations and Learn pages are our own. A native speaker hasn’t yet reviewed the site: if something is wrong, please tell us.</p>
 
+<h2>Reading texts</h2>
+<p>The stories on the Reading page are by Ybyrai Altynsarin (1841–1889), from his Kazakh reader of 1879: public domain. The text is taken unchanged from <a href="https://wikisource.org" rel="noopener">Wikisource</a> (transcription CC BY-SA 4.0) at a fixed revision, except for a few clear typing slips, which each page lists. Every word is explained from our word lists, Wiktionary, the rules, or our own notes, and each explanation says which; our notes and the questions are our own and await a native speaker’s review.</p>
+
 <h2>Example sentences</h2>
 <p>Example sentences come from <a href="https://tatoeba.org" rel="noopener">Tatoeba</a> (CC BY 2.0 FR), each linked to its page and credited to its contributor. Tatoeba has few Kazakh sentences with English translations (about 620), so {Object.keys(SENTENCES).length} of our words have one. Every match was read: sentences where the word is used in another sense, or that are crude, unkind, political or misspelt, are left out. They are volunteers’ sentences, not checked by us for style.</p>
 

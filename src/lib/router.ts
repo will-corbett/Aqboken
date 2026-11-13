@@ -17,6 +17,7 @@ export type Route =
   | { page: 'start' }
   | { page: 'test' }
   | { page: 'culture' }
+  | { page: 'reading'; text?: string }
   | { page: 'search' }
   | { page: 'paths' }
   | { page: 'about' };
@@ -41,6 +42,8 @@ export function parsePath(pathname: string): Route {
       return { page: 'test' };
     case 'culture':
       return { page: 'culture' };
+    case 'reading':
+      return b ? { page: 'reading', text: b } : { page: 'reading' };
     case 'search':
       return { page: 'search' };
     case 'paths':
@@ -72,6 +75,8 @@ export function pathOf(r: Route): string {
       return 'test/';
     case 'culture':
       return 'culture/';
+    case 'reading':
+      return r.text ? `reading/${r.text}/` : 'reading/';
     case 'search':
       return 'search/';
     case 'paths':

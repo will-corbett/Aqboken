@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { PATHS, LEVELS, nextStep, stepDone } from '../../src/lib/paths.ts';
 import { THEMES, themeById } from '../../src/data/words.ts';
 import { TOPICS, topicById } from '../../src/lib/topics.ts';
+import { textById } from '../../src/data/reading.ts';
 
 const rank = (l: string) => ['A1', 'A2', 'B1'].indexOf(l.slice(0, 2));
 
@@ -10,7 +11,7 @@ describe('learning paths', () => {
   it('every step exists and is not from a later level', () => {
     for (const p of PATHS)
       for (const s of p.steps) {
-        const level = s.kind === 'topic' ? topicById(s.id)?.level : themeById(s.id)?.level;
+        const level = s.kind === 'topic' ? topicById(s.id)?.level : s.kind === 'reading' ? textById(s.id)?.level : themeById(s.id)?.level;
         expect(level, `${p.level}: ${s.kind} ${s.id}`).toBeTruthy();
         expect(rank(level!), `${p.level}: ${s.id} is ${level}`).toBeLessThanOrEqual(rank(p.level));
         expect(s.why.length).toBeGreaterThan(5);

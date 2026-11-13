@@ -3,6 +3,7 @@
   import { TOPICS, topicById } from '../lib/topics.ts';
   import { nextStep } from '../lib/paths.ts';
   import { themeById as theme } from '../data/words.ts';
+  import { textById } from '../data/reading.ts';
   import type { MyWords } from '../lib/mywords.ts';
   import type { Progress } from '../lib/progress.ts';
   import type { Settings } from '../lib/settings.ts';
@@ -65,6 +66,9 @@
       {@const tp = topicById(next.id)!}
       <p><strong>{tp.title}</strong>: {next.why}</p>
       <p>{#if tp.learn}<a class="btn primary" href={href({ page: 'learn', topic: next.id })}>Learn</a>{/if} <a class="btn" href={href({ page: 'drill', mode: next.id })}>Drill</a> <a class="btn quiet" href={href({ page: 'paths' })}>The whole path</a></p>
+    {:else if next.kind === 'reading'}
+      <p><strong>Read: {textById(next.id)?.en}</strong>: {next.why}</p>
+      <p><a class="btn primary" href={href({ page: 'reading', text: next.id })}>Read it</a> <a class="btn quiet" href={href({ page: 'paths' })}>The whole path</a></p>
     {:else}
       <p><strong>Words: {theme(next.id)?.title}</strong>: {next.why}</p>
       <p><a class="btn primary" href={href({ page: 'vocabulary', theme: next.id })}>Open the theme</a> <a class="btn quiet" href={href({ page: 'paths' })}>The whole path</a></p>

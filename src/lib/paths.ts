@@ -11,7 +11,7 @@ import type { Mode } from './topics.ts';
 export type Level = 'A1' | 'A2' | 'B1';
 export const LEVELS: Level[] = ['A1', 'A2', 'B1'];
 
-export type Step = { kind: 'topic'; id: Mode; why: string } | { kind: 'theme'; id: string; why: string };
+export type Step = { kind: 'topic'; id: Mode; why: string } | { kind: 'theme'; id: string; why: string } | { kind: 'reading'; id: string; why: string };
 
 export interface Path {
   level: Level;
@@ -22,6 +22,7 @@ export interface Path {
 
 const t = (id: Mode, why: string): Step => ({ kind: 'topic', id, why });
 const w = (id: string, why: string): Step => ({ kind: 'theme', id, why });
+const r = (id: string, why: string): Step => ({ kind: 'reading', id, why });
 
 export const PATHS: Path[] = [
   {
@@ -82,6 +83,7 @@ export const PATHS: Path[] = [
       w('verbs2', 'Forty more everyday verbs.'),
       t('perfect', '“I have been to …”: experience.'),
       t('fix', 'Spot a verb that doesn’t agree with its subject.'),
+      r('qarga-qurt', 'Your first real story: a crow, a worm, and flattery.'),
       t('translate', 'Translate real sentences, then compare.'),
       t('mixed', 'Mix the topics you’ve learned, as in real use.'),
       t('vocab', 'Review your words.'),
@@ -97,6 +99,9 @@ export const PATHS: Path[] = [
       w('feelings', 'How you feel, what people are like.'),
       w('work', 'Jobs, meetings, salaries.'),
       w('travel2', 'Passports, directions, abroad.'),
+      r('tulki-eshki', 'A fable: the fox, the goat, and a lie.'),
+      r('asyl-shop', 'Two girls, two heavy boxes, one secret.'),
+      r('ormekshi', 'Three small creatures and a lesson about work.'),
       t('listen', 'Write down what you hear (choose “Write what you hear”).'),
       t('vocab', 'Keep your words fresh: review the ones that are due.'),
     ],
@@ -106,6 +111,8 @@ export const PATHS: Path[] = [
 /** Is a step done? Only with progress on: a topic once drilled, a theme once half its words are in my words. */
 export function stepDone(step: Step, progress: Progress, words: MyWords): boolean {
   if (step.kind === 'topic') return !!progress[step.id];
+  // Reading isn't recorded, so a reading step is never ticked.
+  if (step.kind === 'reading') return false;
   const th = themeById(step.id);
   if (!th) return false;
   return th.words.filter((x) => words[x.kk]).length * 2 >= th.words.length;

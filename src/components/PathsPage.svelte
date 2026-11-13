@@ -1,5 +1,6 @@
 <script lang="ts">
   import { themeById } from '../data/words.ts';
+  import { textById } from '../data/reading.ts';
   import type { MyWords } from '../lib/mywords.ts';
   import { LEVELS, PATHS, stepDone, type Level } from '../lib/paths.ts';
   import type { Progress } from '../lib/progress.ts';
@@ -40,6 +41,10 @@
             {@const tp = topicById(s.id)!}
             <strong>{tp.title}</strong> <span class="muted small"><Kz text={tp.kk} script={settings.script} /></span>
             <span class="links">{#if tp.learn}<a href={href({ page: 'learn', topic: s.id })}>Learn</a> · {/if}<a href={href({ page: 'drill', mode: s.id })}>Drill</a></span>
+          {:else if s.kind === 'reading'}
+            {@const tx = textById(s.id)!}
+            <strong>Read: {tx.en}</strong> <span class="muted small"><Kz text={tx.title} script={settings.script} /></span>
+            <span class="links"><a href={href({ page: 'reading', text: s.id })}>Read</a></span>
           {:else}
             {@const th = themeById(s.id)!}
             <strong>Words: {th.title}</strong> <span class="muted small"><Kz text={th.kkTitle} script={settings.script} /></span>

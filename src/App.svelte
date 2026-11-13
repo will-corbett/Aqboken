@@ -21,6 +21,8 @@
   import StartPage from './components/StartPage.svelte';
   import LevelTest from './components/LevelTest.svelte';
   import Culture from './components/Culture.svelte';
+  import ReadingIndex from './components/ReadingIndex.svelte';
+  import ReadingText from './components/ReadingText.svelte';
   import SearchPage from './components/SearchPage.svelte';
   import PathsPage from './components/PathsPage.svelte';
   import { ALL_WORDS } from './data/words.ts';
@@ -179,6 +181,7 @@
     ['learn', 'Learn'],
     ['drill', 'Drill'],
     ['vocabulary', 'Vocabulary'],
+    ['reading', 'Reading'],
     ['test', 'Test'],
     ['culture', 'Culture'],
   ];
@@ -238,6 +241,10 @@
       <WordsIndex script={settings.script} />
     {:else if route.page === 'settings'}
       <SettingsPage bind:settings onprogress={setProgress} />
+    {:else if route.page === 'reading' && route.text}
+      <ReadingText id={route.text} script={settings.script} progressOn={settings.progress} {myWords} onadd={addToMyWords} onpractise={practise} />
+    {:else if route.page === 'reading'}
+      <ReadingIndex script={settings.script} />
     {:else if route.page === 'culture'}
       <Culture />
     {:else if route.page === 'search'}

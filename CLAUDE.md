@@ -18,7 +18,7 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
 
 ## Decisions (owner, 2026-11-13)
 - Scope (2026-11-13): A1–B1 grammar and vocabulary, listening, a grammar test, learning paths, search and culture
-  links. Reading texts come later (they need a native speaker's review).
+  links, reading.
 - Script: Cyrillic by default, with a Cyrillic / Latin / Both switch in the header (`settings.script`). Latin = the
   April 2021 alphabet (`src/shared/script.ts`); loan-only letters (ё ц ч щ э ю я ъ ь) have no 2021 letter, so we write
   their sounds and say it's an approximation. Answers are accepted in either script (`sameAnswer`).
@@ -72,6 +72,18 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   are left out (келеді agrees with the possessive there). **Mixed review** (`mixed`): chosen topics round-robin, each
   with its own settings. Answer comparison strips final punctuation and spaces (“аламын ?”).
 
+- Reading (`/reading/`, `/reading/<id>/`; owner's request 2026-11-13): short stories by Ybyrai Altynsarin (1879,
+  public domain) from multilingual Wikisource at pinned revisions (`src/data/reading.ts`: id, title, English, level,
+  `revid`, `corrections` for clear typing slips only, each shown on the page, per-text `glosses`, English
+  questions with `kind` gist/detail/inference: every text needs an inference question). `npm run data:fetch-reading`
+  then `npm run data:reading` (`scripts/build-reading.ts`, explainer in `scripts/lib/explainer.ts`): every word gets
+  dictionary form, meaning, form and source (ours > hand > Wiktionary > rule), and the build fails if any word is
+  unexplained. Output `src/data/reading/<id>.json` (committed) and `reports/reading.md` (every word). **Read every
+  automatic explanation** of a new text: Wiktionary often offers the wrong word or sense (қарға read as қар +
+  -ға; ата is “father” in these texts; кешті is “forgave”); fix with `src/data/reading-glosses.ts` (global) or the
+  text's `glosses`. Damaged transcriptions (clipped words) are not published. Questions are English only (no
+  unreviewed Kazakh). Reading steps are on the A2/B1 paths (never ticked). `tests/unit/reading.test.ts`.
+
 ## Layout
 - `src/shared/kazakh.ts` — harmony (`harmonyOf`: last vowel; и/у after a consonant count front/back, after a vowel
   they're glides; 98.3% of Wiktionary plurals), last-sound classes (`finalClass`: V G L N Z K), suffix tables
@@ -99,7 +111,7 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   shown in the reader's script automatically.
 - Pages under `/Aqboken/` (`src/shared/site.ts`): `/`, `/start/`, `/paths/`, `/learn/`, `/learn/<topic>/`, `/drill/`,
   `/drill/<topic>/`, `/vocabulary/`, `/vocabulary/<theme>/`, `/test/`, `/culture/`, `/search/`, `/progress/`,
-  `/settings/`, `/about/`. Header menu: Learn, Drill, Vocabulary, Test, Culture, and the search button.
+  `/settings/`, `/about/`. Header menu: Learn, Drill, Vocabulary, Reading, Test, Culture, and the search button.
 - Start here (`StartPage.svelte`): the beginner's guide. The home page shows a big “New to Kazakh?” card until
   `settings.guideSeen` (opening the guide, starting a drill, or “Got it”), then a small link.
 - Grammar test (`/test/`, `src/lib/levelTest.ts`, `LevelTest.svelte`, in the header menu): 12 multiple-choice

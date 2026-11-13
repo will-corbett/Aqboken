@@ -6,6 +6,8 @@
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { ADJECTIVES, THEMES } from '../src/data/words.ts';
 import { comparative } from '../src/shared/kazakh.ts';
+import { READING_GLOSSES } from '../src/data/reading-glosses.ts';
+import { TEXTS } from '../src/data/reading.ts';
 import { LEARN_WORDS, NOT_IN_WIKTIONARY } from '../src/data/exceptions.ts';
 import { TOPICS } from '../src/lib/topics.ts';
 import { pool, type Question } from '../src/lib/questions.ts';
@@ -115,8 +117,22 @@ p();
 p(ADJECTIVES.map((a) => `${a.kk} → **${comparative(a.kk)}**`).join(' · '));
 p();
 
+// ── Reading ──
+p('## 8. Reading: our explanations of words');
+p();
+p('Words in the Altynsarin stories that our rules and Wiktionary don’t explain (or explained with the wrong sense), with our own gloss. Please check the meaning and the form.');
+p();
+p('| # | Word | Dictionary form | Our explanation | Form |');
+p('|---|---|---|---|---|');
+n = 0;
+for (const [w, g] of Object.entries(READING_GLOSSES)) p(`| R${++n} | ${w} | ${g.lemma} | ${g.en.replace(/\|/g, '/')} | ${(g.form ?? '').replace(/\|/g, '/')} |`);
+for (const t of TEXTS) for (const [w, g] of Object.entries(t.glosses ?? {})) p(`| R${++n} | ${w} (in ${t.en}) | ${g.lemma} | ${g.en.replace(/\|/g, '/')} | ${(g.form ?? '').replace(/\|/g, '/')} |`);
+p();
+p(`Every word of every text, with its explanation and where it came from, is in reports/reading.md. Transcription slips we corrected: ${TEXTS.flatMap((t) => t.corrections.map((c) => `${c.from} → ${c.to}`)).join(', ')}.`);
+p();
+
 // ── Audio ──
-p('## 8. Audio');
+p('## 9. Audio');
 p();
 p(`Most words and answers are read by a computer voice (it says so when it plays); 31 words have native recordings. Please listen to a few pages (e.g. ${SITE_URL}vocabulary/family/ and ${SITE_URL}drill/listen/) and say whether the computer voice is understandable and stresses words correctly, or misleads learners.`);
 p();

@@ -1355,6 +1355,187 @@ Wiktionary has no comparative forms to check against, so these come from the rul
 
 үлкен → **үлкенірек** · кішкентай → **кішірек** · жаңа → **жаңарақ** · ескі → **ескірек** · жас → **жасырақ** · кәрі → **кәрірек** · әдемі → **әдемірек** · жақсы → **жақсырақ** · жаман → **жаманырақ** · ыстық → **ыстығырақ** · суық → **суығырақ** · жылы → **жылырақ** · ұзын → **ұзынырақ** · қысқа → **қысқарақ** · оңай → **оңайырақ** · қиын → **қиынырақ** · тәтті → **тәттірек** · қымбат → **қымбатырақ** · арзан → **арзанырақ** · ақ → **ағырақ** · қара → **қарарақ** · қызыл → **қызылырақ** · көк → **көгірек** · сары → **сарырақ** · жасыл → **жасылырақ** · сау → **сауырақ** · салқын → **салқынырақ** · ашық → **ашығырақ** · бұлтты → **бұлттырақ** · жаңбырлы → **жаңбырлырақ** · қайғылы → **қайғылырақ** · ашулы → **ашулырақ** · мейірімді → **мейірімдірек** · ақылды → **ақылдырақ** · жалқау → **жалқауырақ** · еңбекқор → **еңбекқорырақ** · батыл → **батылырақ** · сенімді → **сенімдірек** · қорқақ → **қорқағырақ** · көңілді → **көңілдірек** · шаршаңқы → **шаршаңқырақ** · жақын → **жақынырақ** · алыс → **алысырақ** · дәмді → **дәмдірек**
 
-## 8. Audio
+## 8. Reading: our explanations of words
+
+Words in the Altynsarin stories that our rules and Wiktionary don’t explain (or explained with the wrong sense), with our own gloss. Please check the meaning and the form.
+
+| # | Word | Dictionary form | Our explanation | Form |
+|---|---|---|---|---|
+| R1 | қарға | қарға | crow | dictionary form |
+| R2 | күшті | күшті | strong | adjective |
+| R3 | төбесіне | төбе | top; crown of the head | its/her …, dative (onto, to) |
+| R4 | төбеңдегі | төбе | top; crown of the head | which is on your … |
+| R5 | ішіне | іш | inside | its …, dative (into) |
+| R6 | іші | іш | inside | its … |
+| R7 | жаздың | жаз | summer | genitive (of) |
+| R8 | біткен | біту | to grow, to take shape (қисық біткен: grown crooked) | -ған form |
+| R9 | бағу-қағумен | бағу-қағу | care and tending | instrumental (with) |
+| R10 | бағу-қағуда | бағу-қағу | care and tending | locative (in) |
+| R11 | шек | шек | limit, end (шек жоқ: there’s no doubt) | dictionary form |
+| R12 | шырағым | шырақ | my dear (literally “my lamp, my light”) | my … |
+| R13 | бетіңмен | бет | face (бетіңмен кету: to go your own way) | your …, instrumental |
+| R14 | жұртында | жұрт | people, nation; country | its …, locative (among) |
+| R15 | кесе-тұғын | кесу | to cut: (they) used to cut | old habitual form (-е тұғын) |
+| R16 | іспен | іс | deed, affair | instrumental (with, for) |
+| R17 | лайық | лайық | deserving, worthy (жазаға лайық: deserving punishment) | adjective |
+| R18 | жазықты | жазықты | guilty | adjective |
+| R19 | атамның | ата | father (in older Kazakh; today usually “grandfather”) | my …, genitive |
+| R20 | атама | ата | father (in older Kazakh; today usually “grandfather”) | my …, dative |
+| R21 | атасына | ата | father (in older Kazakh; today usually “grandfather”) | his/her …, dative |
+| R22 | атасы | ата | father (in older Kazakh; today usually “grandfather”) | his/her … |
+| R23 | атасынан | ата | father (in older Kazakh; today usually “grandfather”) | his/her …, ablative (from, of) |
+| R24 | кешті | кешу | to forgive | past, he/she |
+| R25 | жасар | жасар | aged (он жасар: ten years old) | adjective |
+| R26 | жатып | жату | to lie; (after an -а/-ып form) to be …ing | -ып form |
+| R27 | жатыпты | жату | to lie; (after an -а/-ып form) to be …ing | past (reported) |
+| R28 | жатады | жату | to lie; (after an -а/-ып form) to be …ing | present, he/she/they |
+| R29 | жатқан | жату | to lie; (after an -а/-ып form) to be …ing | -ған form |
+| R30 | жатса | жату | to lie (down) | if/when he … |
+| R31 | жүр | жүру | to go about; (after an -ып form) to be …ing | present, he/she/it |
+| R32 | тұр | тұру | to stand; (after an -ып form) to be …ing | present, he/she/it |
+| R33 | жан | жан | soul; a living being (бір жан: a single soul) | dictionary form |
+| R34 | жаным | жан | soul (жаным жай тауып тұр: I’m at peace) | my … |
+| R35 | жан-жағына | жан-жақ | all around, every side | its …, dative |
+| R36 | жан-жануарының | жан-жануар | living creatures, animals | its …, genitive (of) |
+| R37 | босқа | босқа | in vain, idly | adverb |
+| R38 | жұмыссыз | жұмыс | work: without work, idle | -сыз (without) |
+| R39 | тағы | тағы | again; more | adverb |
+| R40 | асқан | асқан | exceedingly, extremely (асқан жақсы: very fine) | adverb |
+| R41 | асқанда | асқан | exceedingly (асқанда данышпан: exceedingly wise) | adverb |
+| R42 | айналғанын | айналу | to turn, to become (жаманға айналу: to turn bad) | that it …ed, accusative |
+| R43 | әке-шешеңді | әке-шеше | father and mother, parents | your …, accusative |
+| R44 | апа-ағаларыңды | апа-аға | older sisters and brothers | your … (plural), accusative |
+| R45 | еді | е- | was (after a word or an -ып form) | past, he/she/it/they |
+| R46 | қисая-мисая | қисаю | tilting and swaying | -а forms, paired |
+| R47 | шеніне | шен | point, stretch (орта шені: the middle) | its …, dative |
+| R48 | ойға | ой | thought (ойға қалды: fell to thinking) | dative |
+| R49 | кішкентайы | кішкентай | small: the smallest (ең кішкентайы) | its … |
+| R50 | құмырсқа-екеш | құмырсқа | ant: even an ant (-екеш: even) | with -екеш |
+| R51 | қоймай | қою | to put; to stop: without giving up | negative -май form |
+| R52 | білімді | білімді | educated, knowledgeable | adjective |
+| R53 | тамыр | тамыр | friend (old use; also “root, vein”) | dictionary form |
+| R54 | мырза | мырза | sir, master (polite address) | dictionary form |
+| R55 | саны-сапасы | сан-сапа | quantity and quality: worth | its … |
+| R56 | кез | кез | time, moment (кез болу: to come upon) | dictionary form |
+| R57 | жөніне | жөн | way, course (жөніне кету: to go on its way) | its …, dative |
+| R58 | екен | екен | it turns out; (so) it is said | particle |
+| R59 | да | да | also, too; and (a particle) | particle |
+| R60 | де | де | also, too; and (a particle) | particle |
+| R61 | ме | ме | (question particle) | particle |
+| R62 | әй | әй | hey! (calling someone) | exclamation |
+| R63 | ей | ей | hey! | exclamation |
+| R64 | уһ | уһ | oh! (a sound of pleasure) | exclamation |
+| R65 | аһ | аһ | ah! | exclamation |
+| R66 | әрі | әрі | both … and; also | conjunction |
+| R67 | жай | жай | peace, ease (жаным жай тауып тұр: I’m at ease) | noun |
+| R68 | ондай | ондай | such, like that (ондай болса: if so) | pronoun |
+| R69 | осындай | осындай | such, of this kind | pronoun |
+| R70 | олай | олай | so, that way (олай болса: if so, then) | adverb |
+| R71 | мұнша | мұнша | so much, this much | adverb |
+| R72 | онан | онан | from there; then (old form of одан) | ablative of ол |
+| R73 | мінекей | мінекей | here it is, look | exclamation |
+| R74 | әлгі | әлгі | that (one just mentioned) | pronoun |
+| R75 | неліктен | неліктен | why, for what reason | adverb |
+| R76 | манағыдан | манағы | the earlier one; than before (манағыдан гөрі: than before) | ablative |
+| R77 | тұп | тұп | (makes the next word stronger: тұп тұнық, crystal clear) | intensifier |
+| R78 | тұнық | тұнық | clear (of water) | adjective |
+| R79 | тіп-тік | тік | perfectly straight (тік, straight, made stronger) | adjective |
+| R80 | тәуір | тәуір | good, nice (тәуір көріп: liking it) | adjective |
+| R81 | едім | е- | was, had (after the -ып form: көріп едім, I had seen) | past, I |
+| R82 | емессің | емес | not | “you are not …” |
+| R83 | өзің | өз | self: you yourself | with “your” |
+| R84 | өзіңе | өз | self: for yourself | with “your”, dative |
+| R85 | өзі | өз | self: itself, himself | with “his/her/its” |
+| R86 | өзіне | өз | self: for itself, for himself | with “his/her/its”, dative |
+| R87 | өзінің | өз | self: his own, her own | with “his/her/its”, genitive |
+| R88 | біреудің | біреу | someone: someone’s | genitive |
+| R89 | біреуді | біреу | someone (as the object) | accusative |
+| R90 | біреуі | біреу | one of them | with “its” |
+| R91 | екеуі | екеу | the two of them, both | with “their” |
+| R92 | апанға | апан | pit, hollow | dative (into) |
+| R93 | апанның | апан | pit, hollow | genitive (of) |
+| R94 | қырда | қыр | open upland steppe | locative (on) |
+| R95 | мойнына | мойын | neck (мойнына түсу: to be proven against someone) | his …, dative (мойын loses its ы) |
+| R96 | өрмек | өрмек | web; loom | dictionary form |
+| R97 | тұзақ | тұзақ | snare, trap | dictionary form |
+| R98 | ұсағын | ұсақ | small piece, crumb | its …, accusative |
+| R99 | күтім | күтім | care, looking after | dictionary form |
+| R100 | ауырлығы | ауырлық | weight, heaviness | its … |
+| R101 | ауырымды | ауыр | burden (literally “heavy thing”) | my …, accusative |
+| R102 | басымдағыдан | бас | head: than the one on my head | my …, -дағы, ablative |
+| R103 | мейірімділігіне | мейірімділік | kindness, loving care | his/her …, dative |
+| R104 | рақымы | рақым | mercy (рақымы келу: to feel mercy) | his … |
+| R105 | ақысына | ақы | pay, wages (ақысына: as payment) | its …, dative |
+| R106 | әбірет | әбірет | example, lesson (the text’s own footnote: өнеге, үлгі) | dictionary form |
+| R107 | тағала | тағала | the Most High (құдай тағала: God Almighty) | dictionary form |
+| R108 | құдайтағаланың | құдай тағала | God Almighty | genitive (of) |
+| R109 | оқымысты | оқымысты | learned; a scholar | adjective |
+| R110 | молда | молда | mullah; a learned teacher (here: a scholar, as the text’s footnote says) | dictionary form |
+| R111 | тақсыр | тақсыр | Sire, Your Majesty (addressing a ruler) | form of address |
+| R112 | сәтемір | Сәтемір | Sätemir (a boy’s name) | name |
+| R113 | құзғын-қарға | құзғын | raven (құзғын-қарға: a raven, a big crow) | compound |
+| R114 | тынбай | тыну | to rest, to stop: without stopping | negative -май form |
+| R115 | шиқылдай | шиқылдау | to chatter, to squawk | -а form (шиқылдай беру: to keep chattering) |
+| R116 | үндемейсің | үндемеу | to keep silent | present, you |
+| R117 | отырмысың | отыру | to sit; (after -ып) to be …ing | question: are you …ing? |
+| R118 | наныңқырамаймын | нану | to believe: I don’t quite believe | present, negative, I, -ыңқыра (somewhat) |
+| R119 | азайтады | азайту | to make fewer, to reduce | present, he/she/it |
+| R120 | жорғалап | жорғалау | to crawl, to scurry | -ып form |
+| R121 | масаттанып | масаттану | to be pleased with oneself, to swell with pride | -ып form |
+| R122 | ашылып | ашылу | to open, to come open | -ып form |
+| R123 | аһілеп-уһілеп | аһілеу-уһілеу | sighing and groaning | -ып forms |
+| R124 | әзілдесіп | әзілдесу | to joke with each other | -ып form |
+| R125 | жеңілдететін | жеңілдету | to lighten, to make easier | -атын form (which lightens) |
+| R126 | жеңілдетейін | жеңілдету | to lighten, to make easier | command, I (let me …) |
+| R127 | қылып | қылу | to do (не қылып тұрсың: what are you doing?) | -ып form |
+| R128 | тұрсың | тұру | to stand; (after -ып) to be …ing | present, you |
+| R129 | қыласың | қылу | to do (не қыласың: what can you do; what’s it to you) | present, you |
+| R130 | ыстықтап | ыстықтау | to suffer from the heat | -ып form |
+| R131 | салқындайын | салқындау | to cool down | command, I (let me …) |
+| R132 | тірепті | тіреу | to prop, to press against | past (reported) |
+| R133 | ырғып | ырғу | to leap, to jump | -ып form |
+| R134 | алданба | алдану | to be deceived | command, negative (don’t …) |
+| R135 | душар | душар | faced with (душар болу: to run into, to meet with) | adjective |
+| R136 | алдағандығы | алдау | to deceive: his having deceived | -ған + -дық, his … |
+| R137 | айтылған | айтылу | to be said: the said, the one mentioned | -ған form |
+| R138 | келісті | келу | to come (алып келісті: they brought) | past, together (-іс) |
+| R139 | айрылуы | айрылу | to lose, to be parted from: his losing | -у form, his … |
+| R140 | асырауға | асырау | to feed, to provide for | -у form, dative (to …) |
+| R141 | асырайтын | асырау | to feed, to provide for | -атын form (which feeds) |
+| R142 | кесіп | кесу | to cut | -ып form |
+| R143 | жарап | жарау | to be fit, to be of use | -ып form |
+| R144 | қалдыруға | қалдыру | to leave (behind) | -у form, dative (to …) |
+| R145 | көремісің | көру | to see: do you see? | present, you, question (old spelling) |
+| R146 | тоқып | тоқу | to weave, to knit | -ып form |
+| R147 | көрінеді | көріну | to be seen, to appear | present, he/she/it |
+| R148 | жиып | жию | to gather, to collect | -ып form |
+| R149 | әдеттену | әдеттену | to get used to, to make a habit of | dictionary form |
+| R150 | егілген | егілу | to be planted | -ған form (planted) |
+| R151 | өсірген | өсіру | to grow, to raise | -ған form (grown) |
+| R152 | бағусыз | бағу | to tend, to care for: without care | -у form + -сыз (without) |
+| R153 | барында | бар | there is: in there being (барында шек жоқ: there’s no doubt) | its …, locative |
+| R154 | істеріңді | іс | deed, act: your deeds | your … (plural), accusative |
+| R155 | ұғып | ұғу | to understand | -ып form |
+| R156 | келтірсең | келтіру | to bring (орныңа келтіру: to carry out properly) | if you … |
+| R157 | өсерсің | өсу | to grow | -ар future, you (you will …) |
+| R158 | сүйеніп | сүйену | to lean against | -ып form |
+| R159 | өрмелеп | өрмелеу | to climb | -ып form |
+| R160 | өрмелейді | өрмелеу | to climb | present, he/she/it |
+| R161 | тырмысады | тырмысу | to strive, to scramble | present, he/she/it |
+| R162 | жетті | жету | to reach (мұратына жетті: reached its goal) | past, he/she/it |
+| R163 | сыпыруға | сыпыру | to sweep | -у form, dative (to …) |
+| R164 | жалданып | жалдану | to be hired | -ып form |
+| R165 | ала (in The magpie and the crow) | ала | pied, black-and-white (ала сауысқан: the magpie) | adjective |
+| R166 | құрт (in The crow and the worm) | құрт | worm, grub | dictionary form |
+| R167 | құртты (in The crow and the worm) | құрт | worm, grub | accusative (the …) |
+| R168 | ай (in The precious herb) | ай | oh! (an exclamation) | exclamation |
+| R169 | ауырды (in The precious herb) | ауыр | heavy: the heaviness, the load | accusative |
+| R170 | қара (in The spider, the ant and the swallow) | қарау | to look | command, you (look!) |
+| R171 | кесе (in The spider, the ant and the swallow) | кесе | across, crosswise (кесе тістеген: held crosswise in its beak) | adverb |
+| R172 | ана (in The garden trees) | ана | that (one over there) | pronoun |
+
+Every word of every text, with its explanation and where it came from, is in reports/reading.md. Transcription slips we corrected: кұзғын → құзғын, үндемейсін → үндемейсің, жаксы → жақсы, усағын → ұсағын.
+
+## 9. Audio
 
 Most words and answers are read by a computer voice (it says so when it plays); 31 words have native recordings. Please listen to a few pages (e.g. https://will-corbett.github.io/Aqboken/vocabulary/family/ and https://will-corbett.github.io/Aqboken/drill/listen/) and say whether the computer voice is understandable and stresses words correctly, or misleads learners.
