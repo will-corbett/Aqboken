@@ -8,6 +8,7 @@ import { ADJECTIVES, THEMES } from '../src/data/words.ts';
 import { comparative } from '../src/shared/kazakh.ts';
 import { READING_GLOSSES } from '../src/data/reading-glosses.ts';
 import { TEXTS } from '../src/data/reading.ts';
+import { WRITING } from '../src/data/writing.ts';
 import { LEARN_WORDS, NOT_IN_WIKTIONARY } from '../src/data/exceptions.ts';
 import { TOPICS } from '../src/lib/topics.ts';
 import { pool, type Question } from '../src/lib/questions.ts';
@@ -131,8 +132,17 @@ p();
 p(`Every word of every text, with its explanation and where it came from, is in reports/reading.md. Transcription slips we corrected: ${TEXTS.flatMap((t) => t.corrections.map((c) => `${c.from} → ${c.to}`)).join(', ')}.`);
 p();
 
+// ── Writing ──
+p('## 9. Writing tasks');
+p();
+p('The checklists contain short Kazakh examples; please check them.');
+p();
+n = 0;
+for (const w of WRITING) for (const c of w.checklist) if (KK.test(c.text)) p(`- **X${++n}** (${w.level}, ${w.title}) ${c.text}`);
+p();
+
 // ── Audio ──
-p('## 9. Audio');
+p('## 10. Audio');
 p();
 p(`Most words and answers are read by a computer voice (it says so when it plays); 31 words have native recordings. Please listen to a few pages (e.g. ${SITE_URL}vocabulary/family/ and ${SITE_URL}drill/listen/) and say whether the computer voice is understandable and stresses words correctly, or misleads learners.`);
 p();

@@ -907,6 +907,7 @@ Every line of the Learn pages that contains Kazakh, with its English. Tables of 
 | T48 | мамандықтар | мамандық (profession) + the plural -тар. | |
 | T49 | мезгілдері | мезгіл (season) + -дер + -і: жыл мезгілдері, the seasons of the year. | |
 | T50 | құрау | to build, to put together: сөйлем құрау, building a sentence (the name of a drill). | |
+| T51 | ойымша | ой (thought) + -ым (my) + -ша (in the manner of): “in my opinion”, as in Менің ойымша. | |
 
 ## 4. Drill questions and explanations
 
@@ -1536,6 +1537,40 @@ Words in the Altynsarin stories that our rules and Wiktionary don’t explain (o
 
 Every word of every text, with its explanation and where it came from, is in reports/reading.md. Transcription slips we corrected: кұзғын → құзғын, үндемейсін → үндемейсің, жаксы → жақсы, усағын → ұсағын.
 
-## 9. Audio
+## 9. Writing tasks
+
+The checklists contain short Kazakh examples; please check them.
+
+- **X1** (A1, About me) Your name with the possessive: Менің атым …
+- **X2** (A1, About me) What you are, with the “I am” ending: Мен студентпін.
+- **X3** (A1, About me) Where you live, with the locative and the present: … -да тұрамын.
+- **X4** (A1, My family) “I have a brother” is “my brother there is”: Менің ағам бар.
+- **X5** (A1, My family) Ages and how many: numbers, with the noun in the singular (екі аға).
+- **X6** (A1, My family) Jobs with “he/she is”: Әкем дәрігер.
+- **X7** (A1, My day) The present tense for what you usually do: тұрамын, барамын, ішемін.
+- **X8** (A1, My day) Times with “at”: сағат жетіде.
+- **X9** (A1, My day) Where you go, with the dative: жұмысқа, мектепке.
+- **X10** (A2, A trip) The past tense: бардым, көрдік.
+- **X11** (A2, A trip) From and to: the ablative and the dative (Алматыдан Астанаға).
+- **X12** (A2, A trip) How you travelled, with the instrumental: пойызбен, ұшақпен.
+- **X13** (A2, A trip) “With my friend”: possessive + case (досыммен).
+- **X14** (A2, Weekend plans) Plans with -мақ: бармақпын, көрмекпін.
+- **X15** (A2, Weekend plans) “I want to …”: барғым келеді.
+- **X16** (A2, Weekend plans) “I can / can’t …”: бара аламын, бара алмаймын.
+- **X17** (A2, An invitation) Polite requests: келіңіз, отырыңыз.
+- **X18** (A2, An invitation) When: the date and time (он бесінші мамыр, сағат алтыда).
+- **X19** (A2, An invitation) Before or after something: -дан кейін, -ға дейін.
+- **X20** (A2, An invitation) A question with ма: Келесіз бе?
+- **X21** (B1, When I was a child) What you used to do: баратынмын, ойнайтынбыз.
+- **X22** (B1, When I was a child) Experience: “I have been, I have done”: барғанмын.
+- **X23** (B1, When I was a child) Comparisons with then: үлкенірек, -дан гөрі.
+- **X24** (B1, A year off) “If …”: the -са conditional (уақытым болса, …).
+- **X25** (B1, A year off) Wishes: -ғым келеді.
+- **X26** (B1, A year off) Plans: -мақ, and the present for the future.
+- **X27** (B1, Retell a story) The storyteller’s past: -ыпты (барыпты, депті), or the plain past.
+- **X28** (B1, Retell a story) Linking actions with the -ып form: көріп, алып, кетті.
+- **X29** (B1, Retell a story) Your opinion: Менің ойымша, …
+
+## 10. Audio
 
 Most words and answers are read by a computer voice (it says so when it plays); 31 words have native recordings. Please listen to a few pages (e.g. https://will-corbett.github.io/Aqboken/vocabulary/family/ and https://will-corbett.github.io/Aqboken/drill/listen/) and say whether the computer voice is understandable and stresses words correctly, or misleads learners.

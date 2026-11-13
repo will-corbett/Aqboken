@@ -4,6 +4,7 @@
   import { checkAnswer, type CheckResult } from '../lib/check.ts';
   import { speakText, type Question } from '../lib/questions.ts';
   import Hear from './Hear.svelte';
+  import RecordCompare from './RecordCompare.svelte';
   import Sentence from './Sentence.svelte';
   import { sentenceFor, sentenceWithForm } from '../lib/sentences.ts';
   import type { Settings } from '../lib/settings.ts';
@@ -292,7 +293,8 @@
           {#if q.listen && q.answerLang !== 'kk'}<p class="heard">You heard <strong><Kz text={q.listen} {script} /></strong></p>{/if}
           {#if !selfPending && !(q.selfMark && !q.fix)}<p class="explain">{#if script === 'latn'}{toLatin(q.explain)}{:else}{q.explain}{/if}</p>{/if}
           {#if q.mode === 'translate' && q.answerLang === 'kk' && !selfPending}<p class="muted">{q.prompt}</p>{/if}
-          {#if !q.listen && speakText(q)}<p class="hear-line"><Hear text={speakText(q)!} /></p>{/if}
+          {#if !q.listen && speakText(q) && !selfPending}<p class="hear-line"><Hear text={speakText(q)!} /> {#key q.key}<RecordCompare label="Say it, record, compare" />{/key}</p>{/if}
+          {#if q.listen && q.answerLang === 'kk'}<p class="hear-line">{#key q.key}<RecordCompare label="Say it, record, compare" />{/key}</p>{/if}
           {#if example}<Sentence row={example} {script} />{/if}
           {#if q.source}<p class="src muted">Sentence: <a href="https://tatoeba.org/en/sentences/show/{q.source}" rel="noopener" target="_blank">Tatoeba #{q.source}</a>{q.sourceOwner ? `, by ${q.sourceOwner}` : ''} (CC BY 2.0 FR)</p>{/if}
         </div>

@@ -4,7 +4,7 @@ import { fresh, noHorizontalScroll, watchErrors } from './helpers.ts';
 const PAGES = [
   '', 'start/', 'paths/', 'learn/', 'learn/alphabet/', 'learn/cases/', 'learn/present/', 'learn/time/', 'learn/posscases/',
   'drill/', 'drill/cases/', 'drill/vocab/', 'drill/mixed/', 'drill/translate/', 'vocabulary/', 'vocabulary/family/',
-  'vocabulary/feelings/', 'reading/', 'reading/tulki-eshki/', 'test/', 'culture/', 'search/?q=кітап', 'progress/',
+  'vocabulary/feelings/', 'reading/', 'reading/tulki-eshki/', 'writing/', 'test/', 'culture/', 'search/?q=кітап', 'progress/',
   'settings/', 'about/',
 ];
 

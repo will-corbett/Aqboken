@@ -84,6 +84,12 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   text's `glosses`. Damaged transcriptions (clipped words) are not published. Questions are English only (no
   unreviewed Kazakh). Reading steps are on the A2/B1 paths (never ticked). `tests/unit/reading.test.ts`.
 
+- Writing (`/writing/`, `src/data/writing.ts`): 3 tasks per level with a grammar checklist (linked Learn pages) and
+  useful themes; a writing box with the Kazakh keyboard and word count. Nothing typed is stored (not even in
+  localStorage); no model answers until a native speaker can review them. Checklist Kazakh is word-checked.
+- Speaking: `RecordCompare.svelte` (MediaRecorder; in the page's memory only, never stored or sent, no speech
+  recognition) on drill feedback beside “Hear it” and on writing tasks. Hidden where the browser can't record.
+
 ## Layout
 - `src/shared/kazakh.ts` — harmony (`harmonyOf`: last vowel; и/у after a consonant count front/back, after a vowel
   they're glides; 98.3% of Wiktionary plurals), last-sound classes (`finalClass`: V G L N Z K), suffix tables
@@ -111,7 +117,7 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   shown in the reader's script automatically.
 - Pages under `/Aqboken/` (`src/shared/site.ts`): `/`, `/start/`, `/paths/`, `/learn/`, `/learn/<topic>/`, `/drill/`,
   `/drill/<topic>/`, `/vocabulary/`, `/vocabulary/<theme>/`, `/test/`, `/culture/`, `/search/`, `/progress/`,
-  `/settings/`, `/about/`. Header menu: Learn, Drill, Vocabulary, Reading, Test, Culture, and the search button.
+  `/settings/`, `/about/`. Header menu: Learn, Drill, Vocabulary, Reading, Writing, Test, Culture, and the search button.
 - Start here (`StartPage.svelte`): the beginner's guide. The home page shows a big “New to Kazakh?” card until
   `settings.guideSeen` (opening the guide, starting a drill, or “Got it”), then a small link.
 - Grammar test (`/test/`, `src/lib/levelTest.ts`, `LevelTest.svelte`, in the header menu): 12 multiple-choice

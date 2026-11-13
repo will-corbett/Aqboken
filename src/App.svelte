@@ -21,6 +21,7 @@
   import StartPage from './components/StartPage.svelte';
   import LevelTest from './components/LevelTest.svelte';
   import Culture from './components/Culture.svelte';
+  import WritingPage from './components/WritingPage.svelte';
   import ReadingIndex from './components/ReadingIndex.svelte';
   import ReadingText from './components/ReadingText.svelte';
   import SearchPage from './components/SearchPage.svelte';
@@ -176,12 +177,13 @@
     settings.script = s;
   }
 
-  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about' || route.page === 'progress' || route.page === 'start' || route.page === 'paths' || route.page === 'test' || route.page === 'search');
+  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about' || route.page === 'progress' || route.page === 'start' || route.page === 'paths' || route.page === 'test' || route.page === 'search' || route.page === 'writing');
   const navItems: [Route['page'], string][] = [
     ['learn', 'Learn'],
     ['drill', 'Drill'],
     ['vocabulary', 'Vocabulary'],
     ['reading', 'Reading'],
+    ['writing', 'Writing'],
     ['test', 'Test'],
     ['culture', 'Culture'],
   ];
@@ -245,6 +247,8 @@
       <ReadingText id={route.text} script={settings.script} progressOn={settings.progress} {myWords} onadd={addToMyWords} onpractise={practise} />
     {:else if route.page === 'reading'}
       <ReadingIndex script={settings.script} />
+    {:else if route.page === 'writing'}
+      <WritingPage bind:settings />
     {:else if route.page === 'culture'}
       <Culture />
     {:else if route.page === 'search'}

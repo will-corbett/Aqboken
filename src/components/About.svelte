@@ -7,7 +7,7 @@
 
 <h1>About Aqböken</h1>
 <p><strong>Aqböken</strong> (<span lang="kk">ақбөкен</span>) is Kazakh for the saiga antelope, which roams the steppe of Kazakhstan; it’s the animal in the logo. The site was called Körti until November 2026.</p>
-<p>Aqböken helps you learn Kazakh grammar and everyday words: short explanations, tables of real forms, and drills that explain every answer. It is free, has no accounts and no analytics. Settings stay in your browser; so does your progress, if you turn it on: how each drill went, and the words you’re learning with when each is next due. Nothing is sent anywhere.</p>
+<p>Aqböken helps you learn Kazakh grammar and everyday words: short explanations, tables of real forms, and drills that explain every answer. It is free, has no accounts and no analytics. Settings stay in your browser; so does your progress, if you turn it on: how each drill went, and the words you’re learning with when each is next due. What you write and record stays in the page and is gone when you leave it. Nothing is sent anywhere.</p>
 
 <h2>Where the Kazakh comes from</h2>
 <p>Kazakh endings follow sound rules: vowel harmony and the sound a word ends in. Aqböken makes forms with those rules, and checks them against <a href="https://en.wiktionary.org" rel="noopener">Wiktionary</a>’s Kazakh tables (via <a href="https://kaikki.org" rel="noopener">kaikki.org</a>, CC BY-SA 4.0):</p>

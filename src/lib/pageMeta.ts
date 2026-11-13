@@ -20,6 +20,8 @@ export function pageTitle(r: Route): string {
       return 'Your progress · Aqböken';
     case 'reading':
       return r.text && textById(r.text) ? `${textById(r.text)!.title} (${textById(r.text)!.en}) · Kazakh reading · Aqböken` : 'Read Kazakh: stories with every word explained · Aqböken';
+    case 'writing':
+      return 'Writing in Kazakh: tasks from A1 to B1 · Aqböken';
     case 'culture':
       return 'Kazakh culture: courses, podcasts, films and books · Aqböken';
     case 'search':

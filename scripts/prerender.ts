@@ -13,6 +13,7 @@ import { href, pathOf, type Route } from '../src/lib/router.ts';
 import { GROUPS, TOPICS } from '../src/lib/topics.ts';
 import { PATHS } from '../src/lib/paths.ts';
 import { AUTHOR, TEXTS } from '../src/data/reading.ts';
+import { WRITING } from '../src/data/writing.ts';
 import { CULTURE, TYPE_NAME } from '../src/data/culture.ts';
 import { CASE_NAME } from '../src/lib/labels.ts';
 import { ALPHABET } from '../src/lib/questions.ts';
@@ -163,6 +164,7 @@ const pages: Page[] = [
   { route: { page: 'drill' }, description: 'Drills for every Kazakh grammar topic.', body: `<h1>Drills</h1>${topicList}`, index: false },
   { route: { page: 'vocabulary' }, description: `${ALL_WORDS.length} everyday Kazakh words in ${THEMES.length} themes, with their forms and practice both ways round.`, body: `<h1>Vocabulary</h1>${themeList}`, index: true },
   { route: { page: 'settings' }, description: 'Aqböken settings: script, keyboard, progress and theme.', body: '<h1>Settings</h1>', index: false },
+  { route: { page: 'writing' }, description: 'Kazakh writing tasks from A1 to B1, each with a grammar checklist and the vocabulary to use.', body: `<h1>Writing</h1><ul>${WRITING.map((w) => `<li>${w.level}: <strong>${esc(w.title)}</strong>. ${esc(w.brief)}</li>`).join('')}</ul>`, index: true },
   { route: { page: 'culture' }, description: 'Where to read, watch and listen to Kazakh: free courses, a podcast, children’s TV, films, books and a dictionary, each checked by hand.', body: `<h1>Culture and more Kazakh</h1><ul>${CULTURE.map((c) => `<li><a href="${esc(c.url)}" rel="noopener">${esc(c.title)}</a> (${esc(TYPE_NAME[c.type])}, ${esc(c.level)}): ${esc(c.about)}${c.note ? ` ${esc(c.note)}` : ''}</li>`).join('')}</ul>`, index: true },
   { route: { page: 'search' }, description: 'Search Aqböken: lessons, drills, themes and words.', body: '<h1>Search</h1>', index: false },
   { route: { page: 'test' }, description: 'A free Kazakh grammar test: 36 multiple-choice questions from A1 to B1, every wrong answer explained.', body: '<h1>Grammar test</h1><p>36 questions, 12 each at A1, A2 and B1, easiest first, with every wrong answer explained and the lessons worth reviewing.</p>', index: true },

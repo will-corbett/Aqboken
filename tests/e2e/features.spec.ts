@@ -40,3 +40,12 @@ test('reading: a word explains itself; the questions answer back', async ({ page
   await page.locator('.q').first().locator('.opt').nth(1).click();
   await expect(page.locator('.why').first()).toContainText('Right');
 });
+
+test('writing: open a task, type, count words; nothing is stored', async ({ page }) => {
+  await page.goto('writing/');
+  await page.getByRole('button', { name: 'Write this' }).first().click();
+  await page.getByRole('textbox', { name: 'Your text' }).fill('Менің атым Айгүл. Мен студентпін.');
+  await expect(page.getByText('5 words', { exact: true })).toBeVisible();
+  const stored = await page.evaluate(() => JSON.stringify(localStorage));
+  expect(stored).not.toContain('Айгүл');
+});

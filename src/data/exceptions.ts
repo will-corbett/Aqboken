@@ -52,6 +52,7 @@ export const LEARN_WORDS: Record<string, string> = {
   мамандықтар: 'мамандық (profession) + the plural -тар.',
   мезгілдері: 'мезгіл (season) + -дер + -і: жыл мезгілдері, the seasons of the year.',
   құрау: 'to build, to put together: сөйлем құрау, building a sentence (the name of a drill).',
+  ойымша: 'ой (thought) + -ым (my) + -ша (in the manner of): “in my opinion”, as in Менің ойымша.',
 };
 
 /** Tatoeba sentences never shown as examples, by id, with the reason. */

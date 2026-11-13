@@ -15,6 +15,7 @@ import { createInterface } from 'node:readline';
 import { ORDINAL, can, comparative, conditional, habitualPast, ordinalWords, perfect, timeWords, negativeStem, CASES, PERSONS, POSS_PERSONS, POSTPOSITIONS, PRONOUN_CASES, caseForm, continuous, converb, possessiveCase, copula, imperative, intention, numberWords, past, pastNeg, plural, possessive, present, presentNeg, want, type Case, type Person } from '../src/shared/kazakh.ts';
 import { ALL_WORDS, THEMES, type Word } from '../src/data/words.ts';
 import { TOPICS } from '../src/lib/topics.ts';
+import { WRITING } from '../src/data/writing.ts';
 import { LEARN_WORDS, NOT_IN_WIKTIONARY, WIKTIONARY_ERRORS, nounOptions } from '../src/data/exceptions.ts';
 
 const FILE = 'data-raw/kaikki-kazakh.jsonl';
@@ -230,6 +231,13 @@ for (let h = 0; h < 24; h++) for (const m of [0, 30] as const) [timeWords(h, m),
 ['ма', 'ме', 'ба', 'бе', 'па', 'пе'].forEach(add);
 POSTPOSITIONS.forEach((pp) => add(pp.word));
 const unknownLearn = new Map<string, Set<string>>();
+// Kazakh in the writing checklists.
+for (const t of WRITING) for (const c of t.checklist) for (const m of c.text.matchAll(/[А-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі]+/g)) {
+  const w = m[0].toLowerCase();
+  const before = c.text.slice(Math.max(0, m.index! - 2), m.index!);
+  if (/[-]\s?$/.test(before) || c.text[m.index! + m[0].length] === '-' || anyForm.has(w) || made.has(w) || LEARN_WORDS[w]) continue;
+  (unknownLearn.get(w) ?? unknownLearn.set(w, new Set()).get(w)!).add('writing.ts');
+}
 // Topic and theme names in Kazakh (shown on every Learn, Drill and Vocabulary page).
 for (const [where, name] of [...TOPICS.map((t) => ['topics.ts', t.kk]), ...THEMES.map((t) => ['words.ts', t.kkTitle])]) {
   for (const m of name!.matchAll(/[А-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі]+/g)) {
