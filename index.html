@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Learn and practise Kazakh: grammar explained simply, instant drills for suffixes, cases and verbs, and vocabulary by theme. Cyrillic or Latin script. Free, no login." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="/brand/korti.svg" />
+    <meta name="theme-color" content="#f4f9fa" />
+    <title>Körti</title>
+    <script>
+      try {
+        const t = JSON.parse(localStorage.getItem('korti.settings.v1') || '{}').theme || 'korti';
+        if (t === 'light' || t === 'dark' || t === 'korti') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

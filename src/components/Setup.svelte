@@ -1,0 +1,156 @@
+<script lang="ts">
+  import { CASES, PERSONS, POSS_PERSONS, type Case, type Person } from '../shared/kazakh.ts';
+  import { THEMES } from '../data/words.ts';
+  import { CASE_NAME, PERSON_NAME } from '../lib/labels.ts';
+  import { href } from '../lib/router.ts';
+  import { topicById } from '../lib/topics.ts';
+  import type { Settings } from '../lib/settings.ts';
+  import Kz from './Kz.svelte';
+
+  let { settings = $bindable(), loading, error, onstart }: { settings: Settings; loading: boolean; error: string; onstart: () => void } = $props();
+  const t = $derived(topicById(settings.mode)!);
+  const CASE_OPTS = CASES.filter((c) => c !== 'nom');
+
+  function toggle<T>(list: T[], x: T): T[] {
+    return list.includes(x) ? list.filter((y) => y !== x) : [...list, x];
+  }
+  const empty = $derived(
+    (settings.mode === 'cases' && !settings.cases.cases.length) ||
+      (settings.mode === 'pronouns' && !settings.pronouns.cases.length) ||
+      (settings.mode === 'possessive' && !settings.possessive.persons.length) ||
+      (settings.mode === 'copula' && !settings.copula.persons.length) ||
+      (settings.mode === 'present' && !settings.present.persons.length) ||
+      (settings.mode === 'past' && !settings.past.persons.length) ||
+      (settings.mode === 'vocab' && !settings.vocab.themes.length),
+  );
+</script>
+
+{#snippet persons(list: Person[], all: readonly Person[], set: (l: Person[]) => void)}
+  <fieldset>
+    <legend>Who</legend>
+    <div class="opts">
+      {#each all as p (p)}
+        <label class="opt"><input type="checkbox" checked={list.includes(p)} onchange={() => set(toggle(list, p))} /> {PERSON_NAME[p]}</label>
+      {/each}
+    </div>
+  </fieldset>
+{/snippet}
+{#snippet caseList(list: Case[], set: (l: Case[]) => void)}
+  <fieldset>
+    <legend>Cases</legend>
+    <div class="opts">
+      {#each CASE_OPTS as c (c)}
+        <label class="opt"><input type="checkbox" checked={list.includes(c)} onchange={() => set(toggle(list, c))} /> {CASE_NAME[c].en} <span class="muted">({CASE_NAME[c].meaning})</span></label>
+      {/each}
+    </div>
+  </fieldset>
+{/snippet}
+{#snippet radios(legend: string, value: string, options: [string, string][], set: (v: string) => void)}
+  <fieldset>
+    <legend>{legend}</legend>
+    <div class="opts">
+      {#each options as [v, label] (v)}
+        <label class="opt"><input type="radio" name={legend} checked={value === v} onchange={() => set(v)} /> {label}</label>
+      {/each}
+    </div>
+  </fieldset>
+{/snippet}
+
+<section class="setup">
+  <p class="crumbs"><a href={href({ page: 'drill' })}>Drill</a> · {t.group}</p>
+  <h1>{t.title} <span class="kk-title"><Kz text={t.kk} script={settings.script} /></span></h1>
+  <p>{t.blurb} {#if t.learn}<a href={href({ page: 'learn', topic: t.id })}>Read the Learn page</a> first if it’s new.{/if}</p>
+
+  <form
+    class="card"
+    onsubmit={(e) => {
+      e.preventDefault();
+      onstart();
+    }}
+  >
+    {#if settings.mode === 'alphabet'}
+      {@render radios('Direction', settings.alphabet.direction, [['toLatin', 'Cyrillic → Latin'], ['toCyrillic', 'Latin → Cyrillic']], (v) => (settings.alphabet.direction = v as 'toLatin'))}
+    {:else if settings.mode === 'cases'}
+      {@render caseList(settings.cases.cases, (l) => (settings.cases.cases = l))}
+      {@render radios('Number', settings.cases.number, [['sg', 'Singular'], ['pl', 'Plural'], ['both', 'Both']], (v) => (settings.cases.number = v as 'sg'))}
+    {:else if settings.mode === 'pronouns'}
+      {@render caseList(settings.pronouns.cases, (l) => (settings.pronouns.cases = l))}
+    {:else if settings.mode === 'possessive'}
+      {@render persons(settings.possessive.persons, POSS_PERSONS, (l) => (settings.possessive.persons = l as typeof settings.possessive.persons))}
+    {:else if settings.mode === 'copula'}
+      {@render persons(settings.copula.persons, PERSONS, (l) => (settings.copula.persons = l))}
+    {:else if settings.mode === 'present' || settings.mode === 'past'}
+      {@const m = settings.mode}
+      {@render persons(settings[m].persons, PERSONS, (l) => (settings[m].persons = l))}
+      {@render radios('Positive or negative', settings[m].polarity, [['pos', 'Positive'], ['neg', 'Negative'], ['both', 'Both']], (v) => (settings[m].polarity = v as 'pos'))}
+    {:else if settings.mode === 'numbers'}
+      {@render radios('Numbers', settings.numbers.range, [['to10', '0–10'], ['to100', '11–100'], ['to1000', '101–999'], ['years', 'Years (1900–2030)']], (v) => (settings.numbers.range = v as 'to10'))}
+      {@render radios('Direction', settings.numbers.direction, [['write', 'Digits → words'], ['read', 'Words → digits']], (v) => (settings.numbers.direction = v as 'write'))}
+    {:else if settings.mode === 'vocab'}
+      {@render radios('Direction', settings.vocab.direction, [['recognise', 'Kazakh → English (choose)'], ['recall', 'English → Kazakh (type)']], (v) => (settings.vocab.direction = v as 'recognise'))}
+      <fieldset>
+        <legend>Themes</legend>
+        <div class="opts">
+          {#each THEMES as th (th.id)}
+            <label class="opt"><input type="checkbox" checked={settings.vocab.themes.includes(th.id)} onchange={() => (settings.vocab.themes = toggle(settings.vocab.themes, th.id))} /> {th.title} <span class="muted">{th.level}</span></label>
+          {/each}
+        </div>
+      </fieldset>
+    {/if}
+
+    {@render radios('Questions', String(settings.count), [['10', '10'], ['20', '20'], ['30', '30'], ['0', 'Unlimited']], (v) => (settings.count = Number(v)))}
+
+    {#if error}<p class="error" role="alert">{error}</p>{/if}
+    <button class="btn primary start" type="submit" disabled={loading || empty}>{empty ? 'Choose at least one option' : 'Start'}</button>
+  </form>
+</section>
+
+<style>
+  .crumbs {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  h1 {
+    margin: 6px 0 8px;
+  }
+  .kk-title {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0 0 18px;
+  }
+  legend {
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+  .opt {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-2);
+    cursor: pointer;
+  }
+  .opt input {
+    accent-color: var(--accent);
+  }
+  .start {
+    min-width: 160px;
+  }
+  .error {
+    color: var(--wrong);
+  }
+</style>

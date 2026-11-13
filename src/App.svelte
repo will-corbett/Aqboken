@@ -1,0 +1,358 @@
+<script lang="ts">
+  import About from './components/About.svelte';
+  import Drill from './components/Drill.svelte';
+  import EndScreen from './components/EndScreen.svelte';
+  import Home from './components/Home.svelte';
+  import LearnIndex from './components/LearnIndex.svelte';
+  import LearnPage from './components/LearnPage.svelte';
+  import SettingsPage from './components/SettingsPage.svelte';
+  import Setup from './components/Setup.svelte';
+  import WordsIndex from './components/WordsIndex.svelte';
+  import WordsTheme from './components/WordsTheme.svelte';
+  import { loadSettings, saveSettings, type Settings } from './lib/settings.ts';
+  import { href, navigate, parsePath, type Route } from './lib/router.ts';
+  import { createRound, score, type Round } from './lib/queue.ts';
+  import { drawer, pool, type Question } from './lib/questions.ts';
+  import { mulberry32 } from './lib/rng.ts';
+  import { clearProgress, loadProgress, recordRound, saveProgress, type Progress } from './lib/progress.ts';
+  import { isMode, topicById } from './lib/topics.ts';
+  import { SITE_BASE } from './shared/site.ts';
+  import type { Script } from './shared/script.ts';
+  import type { Word } from './data/words.ts';
+
+  const initialRoute = parsePath(location.pathname);
+  const initialSettings = loadSettings();
+  if (initialRoute.page === 'drill' && initialRoute.mode && isMode(initialRoute.mode)) initialSettings.mode = initialRoute.mode;
+  let settings = $state<Settings>(initialSettings);
+  let route = $state<Route>(initialRoute);
+  let screen = $state<'setup' | 'drill' | 'end'>('setup');
+  let round = $state<Round<Question> | null>(null);
+  let more = $state<((n: number) => Question[]) | null>(null);
+  let error = $state('');
+  let progress = $state<Progress>(loadProgress());
+  /** A theme's words to practise (from a Vocabulary page), kept for "Another round". */
+  let practice = $state<{ words: Word[]; direction: 'recognise' | 'recall' } | null>(null);
+
+  $effect(() => {
+    saveSettings($state.snapshot(settings) as Settings);
+    const root = document.documentElement;
+    if (settings.theme === 'system') delete root.dataset.theme;
+    else root.dataset.theme = settings.theme;
+  });
+  $effect(() => {
+    const t = route.page === 'learn' && route.topic ? topicById(route.topic)?.title : route.page === 'drill' && route.mode ? `${topicById(route.mode)?.title ?? ''} drill` : { home: '', learn: 'Learn', drill: 'Drill', vocabulary: 'Vocabulary', settings: 'Settings', about: 'About' }[route.page];
+    document.title = t ? `${t} · Körti` : 'Körti · Learn Kazakh';
+  });
+
+  function applyRoute(next: Route) {
+    if (next.page === 'drill') {
+      screen = 'setup';
+      practice = null;
+      if (next.mode && isMode(next.mode)) settings.mode = next.mode;
+    }
+    route = next;
+    window.scrollTo({ top: 0 });
+  }
+  $effect(() => {
+    const onPop = () => applyRoute(parsePath(location.pathname));
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  });
+
+  /** Links inside the site change page without reloading. */
+  function onLinkClick(e: MouseEvent) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = (e.target as Element | null)?.closest?.('a');
+    if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || !url.pathname.startsWith(SITE_BASE)) return;
+    if (url.pathname === location.pathname && url.hash) return;
+    e.preventDefault();
+    navigate(url.pathname + url.search);
+  }
+
+  function seed(): number {
+    const p = new URLSearchParams(location.search).get('seed');
+    return p ? Number(p) : Math.floor(Math.random() * 2 ** 31);
+  }
+
+  function start() {
+    error = '';
+    const rng = mulberry32(seed());
+    const s = $state.snapshot(settings) as Settings;
+    const all = practice ? pool('vocab', { ...s, vocab: { ...s.vocab, direction: practice.direction } }, rng, practice.words) : pool(s.mode, s, rng);
+    const draw = drawer(all, rng);
+    const unlimited = s.count === 0 && !practice;
+    const qs = draw(practice ? practice.words.length : unlimited ? 15 : s.count);
+    if (!qs.length) {
+      error = 'No questions match these settings.';
+      return;
+    }
+    more = unlimited ? draw : null;
+    round = createRound(qs);
+    screen = 'drill';
+    if (!practice) settings.lastDrill = s.mode;
+    window.scrollTo({ top: 0 });
+  }
+
+  function practise(words: Word[], direction: 'recognise' | 'recall') {
+    settings.mode = 'vocab';
+    navigate(href({ page: 'drill', mode: 'vocab' }));
+    practice = { words, direction };
+    start();
+  }
+
+  function continueDrill() {
+    if (settings.lastDrill) settings.mode = settings.lastDrill;
+    navigate(href({ page: 'drill', mode: settings.mode }));
+    start();
+  }
+
+  function finish(r: Round<Question>) {
+    round = r;
+    screen = 'end';
+    const sc = score(r);
+    if (settings.progress && sc.attempted && !practice) {
+      progress = recordRound(progress, settings.mode, sc.percent);
+      saveProgress(progress);
+    }
+  }
+
+  function setProgress(on: boolean) {
+    settings.progress = on;
+    if (!on) {
+      clearProgress();
+      progress = {};
+    }
+  }
+
+  function setScript(s: Script) {
+    settings.script = s;
+  }
+
+  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about');
+  const navItems: [Route['page'], string][] = [
+    ['learn', 'Learn'],
+    ['drill', 'Drill'],
+    ['vocabulary', 'Vocabulary'],
+  ];
+</script>
+
+<svelte:document onclick={onLinkClick} />
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+  <header class="top">
+    <a class="brand" href={href({ page: 'home' })} aria-label="Körti, home">
+      <img src="{import.meta.env.BASE_URL}brand/korti.svg" alt="" width="40" height="40" />
+      <span>Körti</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      {#each navItems as [page, label] (page)}
+        <a href={href({ page } as Route)} aria-current={route.page === page ? 'page' : undefined}>{label}</a>
+      {/each}
+    </nav>
+    <div class="script" role="group" aria-label="Script">
+      {#each [['cyrl', 'Кирил'], ['latn', 'Latyn'], ['both', 'Both']] as [v, label] (v)}
+        <button type="button" aria-pressed={settings.script === v} onclick={() => setScript(v as Script)} title={v === 'cyrl' ? 'Cyrillic' : v === 'latn' ? 'Latin (2021 alphabet)' : 'Cyrillic and Latin'}>{label}</button>
+      {/each}
+    </div>
+  </header>
+
+  {#if !settings.betaNoteHidden}
+    <aside class="beta" aria-label="Beta">
+      <p><strong>Körti is new.</strong> The Kazakh is checked against Wiktionary but not yet by a native speaker: if you spot a mistake, please say.</p>
+      <button type="button" class="beta-close" aria-label="Hide this note" onclick={() => (settings.betaNoteHidden = true)}>×</button>
+    </aside>
+  {/if}
+
+  <main id="main" class:narrow>
+    {#if route.page === 'home'}
+      <Home {settings} oncontinue={continueDrill} />
+    {:else if route.page === 'learn' && route.topic}
+      <LearnPage topic={route.topic} {settings} />
+    {:else if route.page === 'learn' || (route.page === 'drill' && !route.mode)}
+      <LearnIndex {settings} {progress} />
+    {:else if route.page === 'vocabulary' && route.theme}
+      <WordsTheme id={route.theme} script={settings.script} onpractise={practise} />
+    {:else if route.page === 'vocabulary'}
+      <WordsIndex script={settings.script} />
+    {:else if route.page === 'settings'}
+      <SettingsPage bind:settings onprogress={setProgress} />
+    {:else if route.page === 'about'}
+      <About />
+    {:else if route.page === 'drill' && route.mode && !isMode(route.mode)}
+      <p>There is no drill called “{route.mode}”. <a href={href({ page: 'drill' })}>All drills</a></p>
+    {:else if screen === 'drill' && round}
+      {#key round}
+        <Drill {round} bind:settings {more} onfinish={finish} />
+      {/key}
+    {:else if screen === 'end' && round}
+      <EndScreen {round} script={settings.script} onagain={start} onsettings={() => { screen = 'setup'; practice = null; }} />
+    {:else}
+      <Setup bind:settings loading={false} {error} onstart={start} />
+    {/if}
+  </main>
+
+  <footer class="foot">
+    <a class="btn quiet" href={href({ page: 'settings' })}>Settings</a>
+    <a class="btn quiet" href={href({ page: 'about' })}>About &amp; sources</a>
+    <label class="theme">
+      Theme
+      <select bind:value={settings.theme}>
+        <option value="korti">Körti</option>
+        <option value="system">System</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
+    <p class="credit muted">Forms checked against <a href="https://en.wiktionary.org" rel="noopener">Wiktionary</a> via kaikki.org (CC BY-SA 4.0). Fonts: PT Sans, PT Serif (OFL).</p>
+  </footer>
+</div>
+
+<style>
+  .skip {
+    position: absolute;
+    left: -999px;
+  }
+  .skip:focus {
+    left: 16px;
+    top: 8px;
+    z-index: 10;
+    background: var(--surface);
+    padding: 6px 10px;
+  }
+  .shell {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 12px 16px 32px;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    padding: 4px 0 16px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .brand img {
+    border-radius: 10px;
+  }
+  .nav {
+    display: flex;
+    gap: 4px;
+  }
+  .nav a {
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .nav a:hover {
+    background: var(--surface-2);
+  }
+  .nav a[aria-current='page'] {
+    background: var(--primary-bg);
+    color: var(--primary-text);
+  }
+  .script {
+    margin-left: auto;
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .script button {
+    border: 0;
+    background: none;
+    padding: 6px 10px;
+    min-height: 36px;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .script button + button {
+    border-left: 1px solid var(--border);
+  }
+  .script button[aria-pressed='true'] {
+    background: var(--accent);
+    color: var(--accent-text);
+    font-weight: 700;
+  }
+  @media (max-width: 560px) {
+    .script {
+      margin-left: 0;
+    }
+    .nav {
+      order: 3;
+      width: 100%;
+    }
+  }
+  main {
+    flex: 1;
+  }
+  main.narrow {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .beta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: -6px 0 16px;
+    padding: 6px 6px 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    font-size: 0.9rem;
+  }
+  .beta p {
+    margin: 0;
+    flex: 1;
+  }
+  .beta-close {
+    flex: none;
+    min-width: 36px;
+    min-height: 36px;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    color: var(--muted);
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+  .foot {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 16px;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+  .theme {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+  }
+  .credit {
+    flex-basis: 100%;
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+  }
+</style>

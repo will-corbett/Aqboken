@@ -1,0 +1,278 @@
+:root {
+  --bg: #eef1f5;
+  --surface: #ffffff;
+  --surface-2: #f5f7fa;
+  --border: #d5dbe4;
+  --text: #1b2230;
+  --muted: #535d6e;
+  --accent: #1f4fd1;
+  --accent-text: #ffffff;
+  --accent-soft: #e5ecfc;
+  --correct: #1b6e37;
+  --correct-soft: #e3f3e8;
+  --wrong: #b42318;
+  --wrong-soft: #fbe8e6;
+  --score-red: #b42318;
+  --score-orange: #b54708;
+  --score-yellow: #866400;
+  --score-green: #1b6e37;
+  --mark: #fff0b3;
+  --focus: #1f4fd1;
+  /* Filled buttons and bars. Separate from --accent so a theme can fill with a colour that is too light for text. */
+  --primary-bg: var(--accent);
+  --primary-text: var(--accent-text);
+  --shadow: 0 1px 2px rgb(20 30 50 / 0.06), 0 4px 16px rgb(20 30 50 / 0.06);
+  --serif: 'PT Serif', Georgia, 'Times New Roman', serif;
+  --sans: 'PT Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radius: 12px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not([data-theme='korti']) {
+    --bg: #11151c;
+    --surface: #1a2029;
+    --surface-2: #212833;
+    --border: #333c4a;
+    --text: #e7eaf0;
+    --muted: #a6afbd;
+    --accent: #86a8ff;
+    --accent-text: #0d1424;
+    --accent-soft: #24304a;
+    --correct: #6fd394;
+    --correct-soft: #18301f;
+    --wrong: #ff958a;
+    --wrong-soft: #3a1e1c;
+    --score-red: #ff958a;
+    --score-orange: #ffb36b;
+    --score-yellow: #f2d14b;
+    --score-green: #6fd394;
+    --mark: #5a4a12;
+    --focus: #86a8ff;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #11151c;
+  --surface: #1a2029;
+  --surface-2: #212833;
+  --border: #333c4a;
+  --text: #e7eaf0;
+  --muted: #a6afbd;
+  --accent: #86a8ff;
+  --accent-text: #0d1424;
+  --accent-soft: #24304a;
+  --correct: #6fd394;
+  --correct-soft: #18301f;
+  --wrong: #ff958a;
+  --wrong-soft: #3a1e1c;
+  --score-red: #ff958a;
+  --score-orange: #ffb36b;
+  --score-yellow: #f2d14b;
+  --score-green: #6fd394;
+  --mark: #5a4a12;
+  --focus: #86a8ff;
+  --shadow: none;
+  color-scheme: dark;
+}
+
+/*
+ * Körti theme: steppe sky blue and sun gold (the colours of the Kazakh sky), on a pale, cool background.
+ * The sky blue is too light for text on white, so it fills buttons and bars (with near-black text, 7:1);
+ * links and small accent text use a deep teal (#00586a, 7:1 on the background).
+ */
+:root[data-theme='korti'] {
+  --bg: #f4f9fa;
+  --surface: #ffffff;
+  --surface-2: #e8f3f5;
+  --border: #c8dfe4;
+  --text: #0b1d24;
+  --muted: #45585f;
+  --accent: #00586a;
+  --accent-text: #ffffff;
+  --accent-soft: #d3eef3;
+  --primary-bg: #2ec4dc;
+  --primary-text: #061a20;
+  --correct: #1b6a35;
+  --correct-soft: #e2f1e2;
+  --wrong: #a8261a;
+  --wrong-soft: #fbe3dc;
+  --score-red: #b42318;
+  --score-orange: #b54708;
+  --score-yellow: #866400;
+  --score-green: #1b6e37;
+  --mark: #fde9a6;
+  --gold: #fec50c;
+  --focus: #0b1d24;
+  --shadow: 0 1px 2px rgb(11 29 36 / 0.06), 0 4px 16px rgb(11 29 36 / 0.06);
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.5 var(--sans);
+  overflow-x: hidden;
+}
+:lang(kk) {
+  font-family: var(--serif);
+}
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+a {
+  color: var(--accent);
+}
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+/* Dropdowns take the theme's colours; left to the browser, some (Linux Chromium in dark mode) keep a light
+   background under light text. */
+select {
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-height: 44px;
+  padding: 0.5em 1.1em;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  font-weight: 700;
+}
+/* Links styled as buttons look like buttons: no underline, button text colour. */
+a.btn {
+  color: var(--text);
+  text-decoration: none;
+}
+.btn:hover {
+  border-color: var(--accent);
+}
+.btn.primary {
+  background: var(--primary-bg);
+  border-color: var(--primary-bg);
+  color: var(--primary-text);
+}
+.btn.quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 400;
+}
+.btn.quiet:hover {
+  color: var(--text);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.muted {
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: fade 160ms ease-out;
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+}
+
+/* Scores coloured by achievement (src/lib/scoreBand.ts). */
+.score-red { color: var(--score-red); }
+.score-orange { color: var(--score-orange); }
+.score-yellow { color: var(--score-yellow); }
+.score-green { color: var(--score-green); }
+
+.kk {
+  font-family: var(--serif);
+}
+.latin-sub {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.8em;
+  color: var(--muted);
+  font-weight: 400;
+}
+.chip {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 1px 9px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+table.forms {
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 1rem;
+}
+table.forms th,
+table.forms td {
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  text-align: left;
+}
+table.forms th {
+  background: var(--surface-2);
+  font-weight: 700;
+}
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+mark.sfx {
+  background: var(--mark);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 1px;
+}

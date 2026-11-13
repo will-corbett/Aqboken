@@ -1,0 +1,35 @@
+{
+  "name": "korti",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Learn and practise Kazakh: grammar explained, instant drills and vocabulary by theme.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/spa-fallback.mjs",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "test": "vitest run",
+    "data:fetch": "mkdir -p data-raw && curl -sSL -o data-raw/kaikki-kazakh.jsonl https://kaikki.org/dictionary/Kazakh/kaikki.org-dictionary-Kazakh.jsonl",
+    "data:check": "tsx scripts/check-wiktionary.ts"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "@tsconfig/svelte": "^5.0.9",
+    "@types/node": "^22.20.5",
+    "svelte": "^5.57.3",
+    "svelte-check": "^4.7.8",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  },
+  "dependencies": {
+    "@fontsource/pt-sans": "^5.3.0",
+    "@fontsource/pt-serif": "^5.3.0"
+  }
+}
