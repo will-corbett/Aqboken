@@ -1,5 +1,5 @@
 /**
- * The native-speaker review: everything on Körti written by us rather than taken from a source, in one Markdown file
+ * The native-speaker review: everything on Aqböken written by us rather than taken from a source, in one Markdown file
  * a Kazakh speaker can work through and annotate: reports/for-review.md (`npm run review`). Regenerate after any
  * content change. Items are numbered so comments can refer to them ("W12: …").
  */
@@ -17,9 +17,9 @@ const KK = /[А-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі]/;
 const out: string[] = [];
 const p = (s = '') => out.push(s);
 
-p('# Körti: for review by a Kazakh speaker');
+p('# Aqböken: for review by a Kazakh speaker');
 p();
-p(`Körti (${SITE_URL}) teaches Kazakh to English speakers. Its word forms are made by rule and checked against Wiktionary, but everything listed here was written by us and hasn’t been checked by a native speaker. Please mark anything that is wrong, unnatural, or not how people say it, and give the better version if you can. Comments can refer to item numbers (W12, L3, D40 …).`);
+p(`Aqböken (${SITE_URL}) teaches Kazakh to English speakers. Its word forms are made by rule and checked against Wiktionary, but everything listed here was written by us and hasn’t been checked by a native speaker. Please mark anything that is wrong, unnatural, or not how people say it, and give the better version if you can. Comments can refer to item numbers (W12, L3, D40 …).`);
 p();
 p('What matters most: **is the Kazakh correct and natural?** Is the English meaning right? Would a teacher explain it this way?');
 p();

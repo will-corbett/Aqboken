@@ -5,11 +5,12 @@
   import { SENTENCES } from '../lib/sentences.ts';
 </script>
 
-<h1>About Körti</h1>
-<p>Körti helps you learn Kazakh grammar and everyday words: short explanations, tables of real forms, and drills that explain every answer. It is free, has no accounts and no analytics. Settings stay in your browser; so does your progress, if you turn it on: how each drill went, and the words you’re learning with when each is next due. Nothing is sent anywhere.</p>
+<h1>About Aqböken</h1>
+<p><strong>Aqböken</strong> (<span lang="kk">ақбөкен</span>) is Kazakh for the saiga antelope, which roams the steppe of Kazakhstan; it’s the animal in the logo. The site was called Körti until November 2026.</p>
+<p>Aqböken helps you learn Kazakh grammar and everyday words: short explanations, tables of real forms, and drills that explain every answer. It is free, has no accounts and no analytics. Settings stay in your browser; so does your progress, if you turn it on: how each drill went, and the words you’re learning with when each is next due. Nothing is sent anywhere.</p>
 
 <h2>Where the Kazakh comes from</h2>
-<p>Kazakh endings follow sound rules: vowel harmony and the sound a word ends in. Körti makes forms with those rules, and checks them against <a href="https://en.wiktionary.org" rel="noopener">Wiktionary</a>’s Kazakh tables (via <a href="https://kaikki.org" rel="noopener">kaikki.org</a>, CC BY-SA 4.0):</p>
+<p>Kazakh endings follow sound rules: vowel harmony and the sound a word ends in. Aqböken makes forms with those rules, and checks them against <a href="https://en.wiktionary.org" rel="noopener">Wiktionary</a>’s Kazakh tables (via <a href="https://kaikki.org" rel="noopener">kaikki.org</a>, CC BY-SA 4.0):</p>
 <ul>
   <li>Every noun and verb in our lists that Wiktionary has a table for matches it form by form.</li>
   <li>Across all of Wiktionary’s Kazakh noun tables (about 4,600), the rules agree with every form for 96% of nouns; most of the rest are Russian loanwords, which we override one by one.</li>
@@ -21,10 +22,10 @@
 <p>Example sentences come from <a href="https://tatoeba.org" rel="noopener">Tatoeba</a> (CC BY 2.0 FR), each linked to its page and credited to its contributor. Tatoeba has few Kazakh sentences with English translations (about 620), so {Object.keys(SENTENCES).length} of our words have one. Every match was read: sentences where the word is used in another sense, or that are crude, unkind, political or misspelt, are left out. They are volunteers’ sentences, not checked by us for style.</p>
 
 <h2>The Latin alphabet</h2>
-<p>The Latin letters follow the alphabet approved in April 2021. Letters used only in Russian loanwords (ё, ц, ч, щ, э, ю, я, ъ, ь) have no letter of their own; Körti writes their sounds, which is an approximation.</p>
+<p>The Latin letters follow the alphabet approved in April 2021. Letters used only in Russian loanwords (ё, ц, ч, щ, э, ю, я, ъ, ь) have no letter of their own; Aqböken writes their sounds, which is an approximation.</p>
 
 <h2>Audio</h2>
-<p>Open recordings of Kazakh by native speakers are still rare. Where one exists for a word ({Object.keys(RECORDINGS).length} words so far), Körti plays it; everything else is read by a <strong>computer voice</strong>, and the page says which you’re hearing.</p>
+<p>Open recordings of Kazakh by native speakers are still rare. Where one exists for a word ({Object.keys(RECORDINGS).length} words so far), Aqböken plays it; everything else is read by a <strong>computer voice</strong>, and the page says which you’re hearing.</p>
 <ul>
   <li>Native recordings: from <a href="https://lingualibre.org" rel="noopener">Lingua Libre</a> via Wikimedia Commons, hosted with the site:
     <ul class="recs">

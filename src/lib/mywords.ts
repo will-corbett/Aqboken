@@ -1,6 +1,6 @@
 /**
  * "My words": spaced repetition, opt-in (only with settings.progress on). Per word only its dictionary form, its
- * Leitner box and the dates added and next due, in this browser (localStorage `korti.words.v1`); never sent, and
+ * Leitner box and the dates added and next due, in this browser (localStorage `aqboken.words.v1`); never sent, and
  * deleted when progress is turned off. Right first time → next box (due after 1, 3, 7, 14, 30, then 60 days);
  * wrong → box 0, due tomorrow.
  */
@@ -12,7 +12,7 @@ export interface WordState {
 export type MyWords = Record<string, WordState>;
 
 export const INTERVALS = [1, 3, 7, 14, 30, 60];
-const KEY = 'korti.words.v1';
+const KEY = 'aqboken.words.v1';
 
 export function addDays(date: string, days: number): string {
   const d = new Date(`${date}T00:00:00Z`);

@@ -28,7 +28,7 @@
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']):not([data-theme='korti']) {
+  :root:not([data-theme='light']):not([data-theme='aqboken']) {
     --bg: #0b1a16;
     --surface: #10261f;
     --surface-2: #163129;
@@ -77,11 +77,11 @@
 }
 
 /*
- * Körti theme, from the logo: deep steppe green #014336, sun gold #FDB93C, cream #FAF1EB. The green is dark enough
+ * Aqböken theme, from the logo: deep steppe green #014336, sun gold #FDB93C, cream #FAF1EB. The green is dark enough
  * for text and button fills on cream (11:1); the gold is too light for text on cream, so it only fills (with green
  * text) and marks highlights.
  */
-:root[data-theme='korti'] {
+:root[data-theme='aqboken'] {
   --bg: #faf1eb;
   --surface: #fffaf5;
   --surface-2: #f3e7da;

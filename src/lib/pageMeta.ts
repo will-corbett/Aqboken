@@ -6,18 +6,18 @@ import { topicById } from './topics.ts';
 export function pageTitle(r: Route): string {
   switch (r.page) {
     case 'home':
-      return 'Körti · Learn Kazakh';
+      return 'Aqböken · Learn Kazakh';
     case 'learn':
-      return r.topic && topicById(r.topic) ? `${topicById(r.topic)!.title} · Learn Kazakh · Körti` : 'Learn and drill · Körti';
+      return r.topic && topicById(r.topic) ? `${topicById(r.topic)!.title} · Learn Kazakh · Aqböken` : 'Learn and drill · Aqböken';
     case 'drill':
-      return r.mode && topicById(r.mode) ? `${topicById(r.mode)!.title} drill · Körti` : 'Drills · Körti';
+      return r.mode && topicById(r.mode) ? `${topicById(r.mode)!.title} drill · Aqböken` : 'Drills · Aqböken';
     case 'vocabulary':
-      return r.theme && themeById(r.theme) ? `${themeById(r.theme)!.title} · Kazakh vocabulary · Körti` : 'Kazakh vocabulary · Körti';
+      return r.theme && themeById(r.theme) ? `${themeById(r.theme)!.title} · Kazakh vocabulary · Aqböken` : 'Kazakh vocabulary · Aqböken';
     case 'settings':
-      return 'Settings · Körti';
+      return 'Settings · Aqböken';
     case 'progress':
-      return 'Your progress · Körti';
+      return 'Your progress · Aqböken';
     case 'about':
-      return 'About and sources · Körti';
+      return 'About and sources · Aqböken';
   }
 }

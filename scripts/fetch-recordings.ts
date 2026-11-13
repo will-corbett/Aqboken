@@ -10,7 +10,7 @@ import { ALL_WORDS } from '../src/data/words.ts';
 import { audioKey } from '../src/shared/audio.ts';
 
 const API = 'https://commons.wikimedia.org/w/api.php';
-const UA = 'Korti-build/0.1 (Kazakh learning site; https://github.com/will-corbett/Korti)';
+const UA = 'Aqboken-build/0.1 (Kazakh learning site; https://github.com/will-corbett/Aqboken)';
 const CATEGORIES = ['Category:Lingua Libre pronunciation-kaz', 'Category:Kazakh pronunciation'];
 const OK_LICENCE = /^(CC0|CC BY(-SA)? [0-9.]+|Public domain)/i;
 

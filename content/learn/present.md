@@ -21,6 +21,6 @@ Put **-ма/-ме** (or **-ба/-бе**, **-па/-пе**, by the stem's last sou
 
 ## Happening right now
 
-For “I'm reading (at this moment)”, Kazakh adds a helper verb: Мен кітап оқып отырмын. Körti's drills practise the simple present first.
+For “I'm reading (at this moment)”, Kazakh adds a helper verb: Мен кітап оқып отырмын. Aqböken's drills practise the simple present first.
 
 ::drill present

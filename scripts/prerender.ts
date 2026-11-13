@@ -127,7 +127,7 @@ interface Page {
   index: boolean;
 }
 const a = (r: Route, text: string) => `<a href="${href(r)}">${text}</a>`;
-const nav = `<nav aria-label="Main"><a href="${href({ page: 'home' })}">Körti</a> · ${a({ page: 'learn' }, 'Learn')} · ${a({ page: 'drill' }, 'Drill')} · ${a({ page: 'vocabulary' }, 'Vocabulary')}</nav>`;
+const nav = `<nav aria-label="Main"><a href="${href({ page: 'home' })}">Aqböken</a> · ${a({ page: 'learn' }, 'Learn')} · ${a({ page: 'drill' }, 'Drill')} · ${a({ page: 'vocabulary' }, 'Vocabulary')}</nav>`;
 const topicList = `${GROUPS.map((g) => `<h2>${esc(g)}</h2><ul>${TOPICS.filter((t) => t.group === g)
   .map((t) => `<li>${t.learn ? a({ page: 'learn', topic: t.id }, esc(t.title)) : esc(t.title)} (${kk(t.kk)}, ${t.level}): ${esc(t.blurb)} ${a({ page: 'drill', mode: t.id }, 'Drill')}</li>`)
   .join('')}</ul>`).join('')}`;
@@ -137,18 +137,18 @@ const pages: Page[] = [
   {
     route: { page: 'home' },
     description: 'Learn Kazakh grammar and vocabulary: short lessons with tables of forms, instant drills that explain every answer, and words by theme. Cyrillic or Latin script. Free, no login.',
-    body: `<h1>Learn Kazakh, one ending at a time</h1><p>Kazakh builds words from a stem and a chain of endings, and each ending follows a handful of sound rules. Körti explains the rules simply, shows them at work in tables, and drills them until they’re automatic.</p>${topicList}<h2>Vocabulary</h2>${themeList}`,
+    body: `<h1>Learn Kazakh, one ending at a time</h1><p>Kazakh builds words from a stem and a chain of endings, and each ending follows a handful of sound rules. Aqböken explains the rules simply, shows them at work in tables, and drills them until they’re automatic.</p>${topicList}<h2>Vocabulary</h2>${themeList}`,
     index: true,
   },
-  { route: { page: 'learn' }, description: 'Every Kazakh grammar topic on Körti, easiest first: the alphabet, vowel harmony, plurals, cases, possessives, verbs and numbers.', body: `<h1>Learn and drill</h1>${topicList}`, index: true },
+  { route: { page: 'learn' }, description: 'Every Kazakh grammar topic on Aqböken, easiest first: the alphabet, vowel harmony, plurals, cases, possessives, verbs and numbers.', body: `<h1>Learn and drill</h1>${topicList}`, index: true },
   { route: { page: 'drill' }, description: 'Drills for every Kazakh grammar topic.', body: `<h1>Drills</h1>${topicList}`, index: false },
   { route: { page: 'vocabulary' }, description: `${ALL_WORDS.length} everyday Kazakh words in ${THEMES.length} themes, with their forms and practice both ways round.`, body: `<h1>Vocabulary</h1>${themeList}`, index: true },
-  { route: { page: 'settings' }, description: 'Körti settings: script, keyboard, progress and theme.', body: '<h1>Settings</h1>', index: false },
-  { route: { page: 'progress' }, description: 'Your progress on Körti, kept only in your browser.', body: '<h1>Your progress</h1>', index: false },
+  { route: { page: 'settings' }, description: 'Aqböken settings: script, keyboard, progress and theme.', body: '<h1>Settings</h1>', index: false },
+  { route: { page: 'progress' }, description: 'Your progress on Aqböken, kept only in your browser.', body: '<h1>Your progress</h1>', index: false },
   {
     route: { page: 'about' },
-    description: 'About Körti: how its Kazakh is made by rule and checked against Wiktionary, the Latin alphabet, and sources.',
-    body: '<h1>About Körti</h1><p>Körti makes Kazakh forms with the language’s sound rules and checks them against Wiktionary’s Kazakh tables (via kaikki.org, CC BY-SA 4.0). Meanings, explanations and Learn pages are our own.</p>',
+    description: 'About Aqböken: how its Kazakh is made by rule and checked against Wiktionary, the Latin alphabet, and sources.',
+    body: '<h1>About Aqböken</h1><p>Aqböken makes Kazakh forms with the language’s sound rules and checks them against Wiktionary’s Kazakh tables (via kaikki.org, CC BY-SA 4.0). Meanings, explanations and Learn pages are our own.</p>',
     index: true,
   },
 ];
@@ -197,7 +197,7 @@ for (const p of pages) {
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, render(p));
 }
-writeFileSync(join(DIST, '404.html'), template.replace(/<title>.*?<\/title>/, '<title>Page not found · Körti</title>\n    <meta name="robots" content="noindex" />'));
+writeFileSync(join(DIST, '404.html'), template.replace(/<title>.*?<\/title>/, '<title>Page not found · Aqböken</title>\n    <meta name="robots" content="noindex" />'));
 writeFileSync(
   join(DIST, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages

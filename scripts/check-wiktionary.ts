@@ -1,5 +1,5 @@
 /**
- * Checks Körti's Kazakh against Wiktionary (the kaikki.org extract in data-raw/, `npm run data:fetch`).
+ * Checks Aqböken's Kazakh against Wiktionary (the kaikki.org extract in data-raw/, `npm run data:fetch`).
  *
  * 1. Every word in our lists (src/data/words.ts) must have a Kazakh Wiktionary entry of the same part of speech
  *    (or be listed in exceptions.ts `notInWiktionary` with a reason).

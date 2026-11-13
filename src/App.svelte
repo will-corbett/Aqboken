@@ -180,9 +180,9 @@
 <a class="skip" href="#main">Skip to content</a>
 <div class="shell">
   <header class="top">
-    <a class="brand" href={href({ page: 'home' })} aria-label="Körti, home">
-      <img src="{import.meta.env.BASE_URL}brand/korti-128.png" alt="" width="44" height="44" />
-      <span>Körti</span>
+    <a class="brand" href={href({ page: 'home' })} aria-label="Aqböken, home">
+      <img src="{import.meta.env.BASE_URL}brand/aqboken-128.png" alt="" width="44" height="44" />
+      <span>Aqböken</span>
     </a>
     <nav class="nav" aria-label="Main">
       {#each navItems as [page, label] (page)}
@@ -198,7 +198,7 @@
 
   {#if !settings.betaNoteHidden}
     <aside class="beta" aria-label="Beta">
-      <p><strong>Körti is new.</strong> The Kazakh is checked against Wiktionary but not yet by a native speaker: if you spot a mistake, please say.</p>
+      <p><strong>Aqböken is new.</strong> The Kazakh is checked against Wiktionary but not yet by a native speaker: if you spot a mistake, please say.</p>
       <button type="button" class="beta-close" aria-label="Hide this note" onclick={() => (settings.betaNoteHidden = true)}>×</button>
     </aside>
   {/if}
@@ -240,7 +240,7 @@
     <label class="theme">
       Theme
       <select bind:value={settings.theme}>
-        <option value="korti">Körti</option>
+        <option value="aqboken">Aqböken</option>
         <option value="system">System</option>
         <option value="light">Light</option>
         <option value="dark">Dark</option>

@@ -9,10 +9,11 @@
 </script>
 
 <section class="hero">
-  <img class="hero-logo" src="{import.meta.env.BASE_URL}brand/korti-logo.webp" alt="Körti: a saiga antelope leaping over the steppe, under the sun and mountains" width="168" height="168" />
+  <img class="hero-logo" src="{import.meta.env.BASE_URL}brand/aqboken-logo.webp" alt="A saiga antelope leaping over the steppe, under the sun and mountains" width="168" height="168" />
   <h1>Learn Kazakh, one ending at a time</h1>
-  <p class="lead">Kazakh builds words from a stem and a chain of endings, and each ending follows a handful of sound rules. Körti explains the rules simply, shows them at work in tables, and drills them until they’re automatic.</p>
+  <p class="lead">Kazakh builds words from a stem and a chain of endings, and each ending follows a handful of sound rules. Aqböken explains the rules simply, shows them at work in tables, and drills them until they’re automatic.</p>
   <p class="greeting"><Kz text="Қош келдіңіз!" script={settings.script} /> <span class="muted">Welcome!</span></p>
+  <p class="name muted">Aqböken (<span lang="kk">ақбөкен</span>) is Kazakh for the saiga, the antelope of the steppe.</p>
 </section>
 
 {#if settings.lastDrill && topicById(settings.lastDrill)}
@@ -82,6 +83,10 @@
   .lead {
     font-size: 1.1rem;
     max-width: 44rem;
+  }
+  .name {
+    font-size: 0.95rem;
+    margin-top: -8px;
   }
   .greeting {
     font-size: 1.3rem;

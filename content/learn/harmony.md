@@ -21,7 +21,7 @@ Native Kazakh words usually have only back or only front vowels (бала, қа�
 ## Two tricky letters
 
 - **у** and **и** can belong to either family. After a consonant, **у** usually counts as back (су → сулар, минут → минуттар) and **и** as front (би → билер). After a vowel they are just consonant sounds, and the vowel before them decides: күйеу (husband) → күйеулер.
-- Some **Russian loanwords** are pronounced with front vowels whatever their spelling: банк → банкте, банктер. Körti lists these one by one.
+- Some **Russian loanwords** are pronounced with front vowels whatever their spelling: банк → банкте, банктер. Aqböken lists these one by one.
 
 ## The other half: the last sound
 

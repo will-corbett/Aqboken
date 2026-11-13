@@ -1,4 +1,4 @@
-# Körti
+# Aqböken
 
 Learn and practise Kazakh: short grammar lessons with tables of forms, instant drills that explain every answer, and
 vocabulary by theme. Cyrillic, Latin (the 2021 alphabet) or both, switchable at any time; answers can be typed in
@@ -30,7 +30,7 @@ Needs Node 22.12 or newer.
 
 ```bash
 npm install
-npm run dev          # http://localhost:5173/Korti/
+npm run dev          # http://localhost:5173/Aqboken/
 npm test             # unit tests (engine + every drill's questions)
 npm run check        # type checks
 npm run data:fetch   # once: the Kazakh Wiktionary extract (38 MB) into data-raw/
@@ -42,7 +42,7 @@ npm run build        # dist/: the app plus a prerendered HTML file for every pag
 ## Deploy
 
 Every push to `main` runs `.github/workflows/deploy.yml`: type checks, unit tests, the Wiktionary check, the build,
-then GitHub Pages: https://will-corbett.github.io/Korti/
+then GitHub Pages: https://will-corbett.github.io/Aqboken/
 
 ## Licences
 

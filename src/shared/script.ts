@@ -1,5 +1,5 @@
 /**
- * Scripts. Kazakh is written in Cyrillic today; the Latin alphabet of April 2021 is to replace it gradually. Körti
+ * Scripts. Kazakh is written in Cyrillic today; the Latin alphabet of April 2021 is to replace it gradually. Aqböken
  * shows Cyrillic, Latin or both (settings.script) and accepts answers typed in either.
  *
  * The 2021 alphabet gives Latin letters for the Kazakh letters (Ә → Ä, Ғ → Ğ, Қ → Q, Ң → Ñ, Ө → Ö, Ұ → Ū, Ү → Ü,

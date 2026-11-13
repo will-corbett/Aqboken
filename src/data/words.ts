@@ -1,5 +1,5 @@
 /**
- * Körti's word lists: vocabulary themes, and the words the grammar drills use. Meanings are our own.
+ * Aqböken's word lists: vocabulary themes, and the words the grammar drills use. Meanings are our own.
  * `npm run data:check` checks every word against Wiktionary (and each noun's and verb's forms against its tables).
  *
  * Verbs are listed by dictionary form (the -у form: бару) with their stem (бар). Options on nouns (harmony,

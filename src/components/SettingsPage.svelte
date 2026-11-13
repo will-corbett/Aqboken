@@ -23,13 +23,13 @@
 </section>
 <section class="card">
   <h2>Your progress</h2>
-  <p>If you turn this on, Körti remembers, for each drill, how many rounds you’ve played, your last score and the date; and for each word you practise, when it’s next due for review (“my words”). Only in this browser: nothing is sent anywhere. Turning it off deletes it. See it on <a href={href({ page: 'progress' })}>Your progress</a>.</p>
+  <p>If you turn this on, Aqböken remembers, for each drill, how many rounds you’ve played, your last score and the date; and for each word you practise, when it’s next due for review (“my words”). Only in this browser: nothing is sent anywhere. Turning it off deletes it. See it on <a href={href({ page: 'progress' })}>Your progress</a>.</p>
   <label class="opt"><input type="checkbox" checked={settings.progress} onchange={(e) => onprogress((e.currentTarget as HTMLInputElement).checked)} /> Keep my progress</label>
 </section>
 <section class="card">
   <h2>Theme</h2>
   <select bind:value={settings.theme}>
-    <option value="korti">Körti</option>
+    <option value="aqboken">Aqböken</option>
     <option value="system">System</option>
     <option value="light">Light</option>
     <option value="dark">Dark</option>

@@ -1,9 +1,9 @@
-# Körti — Kazakh learning site
+# Aqböken — Kazakh learning site
 
 Static, no-login app (Svelte 5 + Vite + TypeScript strict), the Kazakh sibling of ../Krotik (Russian): same stack,
-layout and conventions, much smaller so far. No backend, no analytics. Settings in localStorage `korti.settings.v1`;
+layout and conventions, much smaller so far. No backend, no analytics. Settings in localStorage `aqboken.settings.v1`;
 progress is **opt-in** (`settings.progress`, off by default): per drill only rounds, last score and date
-(`korti.progress.v1`), and “my words” (`src/lib/mywords.ts`, `korti.words.v1`: per word only its Leitner box and the
+(`aqboken.progress.v1`), and “my words” (`src/lib/mywords.ts`, `aqboken.words.v1`: per word only its Leitner box and the
 dates added and due; right first time → next box, 1/3/7/14/30/60 days; wrong → box 0, tomorrow). Words answered in
 vocabulary and listening drills are scheduled; themes have “Add all to my words”; the vocabulary drill can take “My
 words that are due”; `/progress/` lists both. All deleted when progress is turned off. Never store answers or typed
@@ -11,7 +11,7 @@ text, and keep the Settings and progress pages' description of what is kept exac
 
 ## Commands (Node ≥ 22.12)
 On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PATH` first.
-- `npm run dev` (http://localhost:5173/Korti/; `.claude/launch.json` uses port 5174), `npm run build`, `npm test`,
+- `npm run dev` (http://localhost:5173/Aqboken/; `.claude/launch.json` uses port 5174), `npm run build`, `npm test`,
   `npm run check`
 - `npm run data:fetch` then `npm run data:check` — the Wiktionary check (writes `reports/wiktionary-check.md`, exit 1
   on any failure). Run it after changing the rules, the word lists or a Learn page.
@@ -82,7 +82,7 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   cases, possessive, copula, present, presentNeg, past, pastNeg, pronouns, numbers, alphabet, question, rule
   <suffix>) and `::drill <mode>`. Links: `[text](learn:id)`, `drill:id`, `vocabulary:id`. Cyrillic in the text is
   shown in the reader's script automatically.
-- Pages under `/Korti/` (`src/shared/site.ts`): `/`, `/learn/`, `/learn/<topic>/`, `/drill/`, `/drill/<topic>/`,
+- Pages under `/Aqboken/` (`src/shared/site.ts`): `/`, `/learn/`, `/learn/<topic>/`, `/drill/`, `/drill/<topic>/`,
   `/vocabulary/`, `/vocabulary/<theme>/`, `/settings/`, `/about/`. Titles in `src/lib/pageMeta.ts` (app and
   prerender share them).
 - Prerendering (`scripts/prerender.ts`, run by `npm run build` after `vite build`): every page gets its own
@@ -91,15 +91,15 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   needs a case there. Submit the sitemap in Google Search Console (a project site can't have its own robots.txt).
 - Deploy: every push to `main` runs `.github/workflows/deploy.yml`: type checks, unit tests, the Wiktionary check
   (extract cached per month; report uploaded as an artifact), build, then GitHub Pages
-  (https://will-corbett.github.io/Korti/, repo will-corbett/Korti). A stuck Pages deployment is retried once.
+  (https://will-corbett.github.io/Aqboken/, repo will-corbett/Aqboken). A stuck Pages deployment is retried once.
 - Tests: `tests/unit/kazakh.test.ts` (textbook forms, Latin), `tests/unit/questions.test.ts` (every drill and settings
   variant builds well-formed questions whose answers are accepted, in Cyrillic and Latin).
 
 ## Conventions
-- Theme `korti` (default), from the logo (a saiga antelope over the steppe): deep green #014336 for text accents and
+- Theme `aqboken` (default), from the logo (a saiga antelope over the steppe): deep green #014336 for text accents and
   button fills (cream text), sun gold #FDB93C only as fills and highlights (too light for text on cream), cream
   #FAF1EB background. The dark theme uses the same family (green-black background, gold accent). Also system/light.
-  Logo files in `public/brand/` (korti-logo.webp for the home page; korti-32/128/180/192/512.png for icons, cut from
+  Logo files in `public/brand/` (aqboken-logo.webp for the home page; aqboken-32/128/180/192/512.png for icons, cut from
   the original with rounded transparent corners).
 - Every answer is explained; a wrong typed form that is another form of the word is named ("which is the dative").
 - Accessibility as Krotik: keyboard flow (Enter, 1–n for choices), aria-live feedback, visible focus, no horizontal

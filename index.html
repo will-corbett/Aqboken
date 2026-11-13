@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Learn and practise Kazakh: grammar explained simply, instant drills for suffixes, cases and verbs, and vocabulary by theme. Cyrillic or Latin script. Free, no login." />
     <meta name="color-scheme" content="light dark" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/brand/korti-32.png" />
-    <link rel="apple-touch-icon" href="/brand/korti-180.png" />
-    <meta property="og:image" content="https://will-corbett.github.io/Korti/brand/korti-512.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/aqboken-32.png" />
+    <link rel="apple-touch-icon" href="/brand/aqboken-180.png" />
+    <meta property="og:image" content="https://will-corbett.github.io/Aqboken/brand/aqboken-512.png" />
     <meta name="theme-color" content="#faf1eb" />
-    <title>Körti</title>
+    <title>Aqböken</title>
     <script>
       try {
-        const t = JSON.parse(localStorage.getItem('korti.settings.v1') || '{}').theme || 'korti';
-        if (t === 'light' || t === 'dark' || t === 'korti') document.documentElement.dataset.theme = t;
+        // The site was called Körti until 2026-11-13: move its saved settings, progress and words to the new names.
+        for (const k of ['settings', 'progress', 'words']) {
+          const old = localStorage.getItem('korti.' + k + '.v1');
+          if (old !== null && localStorage.getItem('aqboken.' + k + '.v1') === null) localStorage.setItem('aqboken.' + k + '.v1', old.replace('"theme":"korti"', '"theme":"aqboken"'));
+          localStorage.removeItem('korti.' + k + '.v1');
+        }
+        const t = JSON.parse(localStorage.getItem('aqboken.settings.v1') || '{}').theme || 'aqboken';
+        if (t === 'light' || t === 'dark' || t === 'aqboken') document.documentElement.dataset.theme = t;
       } catch {}
     </script>
   </head>

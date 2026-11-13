@@ -16,7 +16,7 @@
 
 <h1>Your progress</h1>
 {#if !settings.progress}
-  <p>Progress is off. If you turn it on, Körti remembers, in this browser only, how each drill went and the words you’ve practised, and brings words back for review when they’re due. Nothing is sent anywhere; turning it off deletes it.</p>
+  <p>Progress is off. If you turn it on, Aqböken remembers, in this browser only, how each drill went and the words you’ve practised, and brings words back for review when they’re due. Nothing is sent anywhere; turning it off deletes it.</p>
   <button class="btn primary" onclick={() => onprogress(true)}>Turn on progress</button>
 {:else}
   <p class="muted">Kept in this browser only. <a href={href({ page: 'settings' })}>Turn it off</a> to delete it.</p>

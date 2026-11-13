@@ -8,7 +8,7 @@ The 9 letters special to Kazakh are highlighted. Under each letter is its Latin 
 
 ::forms alphabet
 
-Letters marked * appear only in words borrowed from Russian (цирк, чемпион, юрист) and have no Latin letter of their own; Körti writes their sounds.
+Letters marked * appear only in words borrowed from Russian (цирк, чемпион, юрист) and have no Latin letter of their own; Aqböken writes their sounds.
 
 ## The nine Kazakh letters
 

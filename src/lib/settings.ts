@@ -1,10 +1,10 @@
-/** UI settings, kept in this browser only (localStorage `korti.settings.v1`). */
+/** UI settings, kept in this browser only (localStorage `aqboken.settings.v1`). */
 import { CASES, PERSONS, POSS_PERSONS, type Case, type Person, type PossPerson } from '../shared/kazakh.ts';
 import type { Script } from '../shared/script.ts';
 import { THEMES } from '../data/words.ts';
 import type { Mode } from './topics.ts';
 
-export type Theme = 'korti' | 'system' | 'light' | 'dark';
+export type Theme = 'aqboken' | 'system' | 'light' | 'dark';
 
 export interface Settings {
   theme: Theme;
@@ -34,12 +34,12 @@ export interface Settings {
   posscases: { persons: PossPerson[]; cases: Case[] };
 }
 
-const KEY = 'korti.settings.v1';
+const KEY = 'aqboken.settings.v1';
 const BASIC_PERSONS: Person[] = ['1sg', '2sg', '2sgf', '3', '1pl'];
 
 export function defaults(): Settings {
   return {
-    theme: 'korti',
+    theme: 'aqboken',
     script: 'cyrl',
     count: 10,
     mode: 'plural',
@@ -76,6 +76,8 @@ export function loadSettings(): Settings {
       out[k] = def && typeof def === 'object' && !Array.isArray(def) ? { ...def, ...(v as object) } : v;
     }
     const s = out as unknown as Settings;
+    // The theme was called "korti" before the site was renamed (index.html also migrates it).
+    if ((s.theme as string) === 'korti') s.theme = 'aqboken';
     s.vocab.themes = s.vocab.themes.filter((id) => THEMES.some((t) => t.id === id));
     if (!s.vocab.themes.length) s.vocab.themes = d.vocab.themes;
     s.listen.themes = s.listen.themes.filter((id) => THEMES.some((t) => t.id === id));

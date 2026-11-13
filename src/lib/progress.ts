@@ -1,6 +1,6 @@
 /**
  * Progress, opt-in only (settings.progress, off by default): per drill, the rounds played, the last score and the date
- * last practised, kept in this browser (localStorage `korti.progress.v1`), never sent anywhere, and deleted when
+ * last practised, kept in this browser (localStorage `aqboken.progress.v1`), never sent anywhere, and deleted when
  * progress is turned off. Nothing else (answers, typed text, times) is kept.
  */
 import type { Mode } from './topics.ts';
@@ -12,7 +12,7 @@ export interface TopicProgress {
 }
 export type Progress = Partial<Record<Mode, TopicProgress>>;
 
-const KEY = 'korti.progress.v1';
+const KEY = 'aqboken.progress.v1';
 
 export function loadProgress(): Progress {
   try {
