@@ -32,6 +32,18 @@ export const LEARN_WORDS: Record<string, string> = {
   асқардың: 'Асқар, a man’s name, + the genitive -дың (after р), by the rules.',
   астанасы: 'астана (capital city) + the 3rd-person possessive -сы, by the rules.',
   отырмын: 'отыр- (sit, used as a helper for “right now”) + -мын: “Мен кітап оқып отырмын”.',
+  // Kazakh grammar terms in topic names (to confirm in the native-speaker review).
+  үндестік: 'grammar term: үндестік заңы, the law of (vowel) harmony.',
+  заңы: 'заң (law) + the 3rd-person possessive -ы, as in үндестік заңы.',
+  жіктік: 'grammar term: жіктік жалғау, the personal ending.',
+  тәуелдік: 'grammar term: тәуелдік жалғау, the possessive ending.',
+  пен: 'and; the form of мен after a voiceless consonant (тәуелдік пен септік).',
+  септеулік: 'grammar term: септеулік шылаулар, postpositions.',
+  жіктеу: 'grammar term: жіктеу есімдіктері, personal pronouns.',
+  есімдіктері: 'есімдік (pronoun) + -тер + -і, as in жіктеу есімдіктері.',
+  сұраулық: 'grammar term: сұраулық шылау, the question particle.',
+  тыңдалым: 'listening (as a language skill).',
+  мамандықтар: 'мамандық (profession) + the plural -тар.',
 };
 
 /** The options a noun's forms are made with (from its entry in words.ts). */

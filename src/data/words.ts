@@ -20,6 +20,8 @@ export interface Word {
   harmony?: Harmony;
   noVoicing?: boolean;
   possStem?: string;
+  /** Verbs of going and coming: “right now” uses the -а/-е form (бара жатыр), not -ып. */
+  motion?: boolean;
   /** Not used in the possessive and case drills (a mass noun, a name of a day, a word that reads oddly there). */
   noDrill?: boolean;
   /** A compound already ending in the 3rd-person possessive (отбасы = от + басы): its cases are отбасына, отбасын … */
@@ -293,8 +295,8 @@ export const THEMES: Theme[] = [
     w('adv', 'аз', 'few, little'),
   ]),
   theme('verbs', 'Everyday verbs', 'Етістіктер', 'A1', 'The verbs the drills use. The dictionary form ends in -у; the endings go on the stem.', () => [
-    v('бару', 'бар', 'to go (there)'),
-    v('келу', 'кел', 'to come'),
+    v('бару', 'бар', 'to go (there)', { motion: true }),
+    v('келу', 'кел', 'to come', { motion: true }),
     v('оқу', 'оқы', 'to read; to study'),
     v('жазу', 'жаз', 'to write'),
     v('айту', 'айт', 'to say, to tell'),

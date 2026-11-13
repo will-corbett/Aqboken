@@ -306,3 +306,125 @@ export const PRONOUN_CASES: Record<'мен' | 'сен' | 'сіз' | 'ол' | 'б
   біз: { nom: 'біз', gen: 'біздің', dat: 'бізге', acc: 'бізді', loc: 'бізде', abl: 'бізден', ins: 'бізбен' },
   олар: { nom: 'олар', gen: 'олардың', dat: 'оларға', acc: 'оларды', loc: 'оларда', abl: 'олардан', ins: 'олармен' },
 };
+
+// ─── More verb forms ────────────────────────────────────────────────────────────────────────────────────────
+
+/**
+ * The -ып converb (the form before an auxiliary): оқы → оқып, бар → барып, шық → шығып, and a final п after a vowel
+ * becomes у: тап → тауып, жап → жауып. Checked against Wiktionary's renarrative forms (тауыпты).
+ */
+export function converb(stem: string, h: Harmony = harmonyOf(stem)): string {
+  const last = stem[stem.length - 1]!;
+  if ('аәеоөұүыі'.includes(last)) return stem + 'п';
+  const y = h === 'back' ? 'ып' : 'іп';
+  if (last === 'п' && 'аәеоөұүыіиуэюя'.includes(stem[stem.length - 2] ?? '')) return stem.slice(0, -1) + 'у' + y;
+  return voiceFinal(stem) + y;
+}
+
+const JATYR: Record<Person, string> = {
+  '1sg': 'жатырмын',
+  '2sg': 'жатырсың',
+  '2sgf': 'жатырсыз',
+  '3': 'жатыр',
+  '1pl': 'жатырмыз',
+  '2pl': 'жатырсыңдар',
+  '2plf': 'жатырсыздар',
+};
+
+/**
+ * “Doing right now”: converb + жатыр + personal ending: Мен кітап оқып жатырмын. Verbs of going and coming use the
+ * -а/-е form instead (`motion`): Мен бара жатырмын, Ол келе жатыр.
+ */
+export function continuous(stem: string, p: Person, o: VerbOptions & { motion?: boolean } = {}): string {
+  const h = o.harmony ?? harmonyOf(stem);
+  const first = o.motion ? presentBase(stem, h) : converb(stem, h);
+  return `${first} ${JATYR[p]}`;
+}
+
+const OPT_POSS: Record<Person, Pair> = {
+  '1sg': ['м', 'м'],
+  '2sg': ['ң', 'ң'],
+  '2sgf': ['ңыз', 'ңіз'],
+  '3': ['сы', 'сі'],
+  '1pl': ['мыз', 'міз'],
+  '2pl': ['ларың', 'лерің'],
+  '2plf': ['ларыңыз', 'леріңіз'],
+};
+
+/** “Want to”: stem + -ғы/-қы + possessive + келеді: барғым келеді, айтқысы келеді. */
+export function want(stem: string, p: Person, o: VerbOptions = {}): string {
+  const h = o.harmony ?? harmonyOf(stem);
+  const i = h === 'back' ? 0 : 1;
+  const gy = finalClass(stem) === 'K' ? (['қы', 'кі'] as const)[i] : (['ғы', 'гі'] as const)[i];
+  return `${stem}${gy}${OPT_POSS[p][i]} келеді`;
+}
+
+/**
+ * The imperative and its persons: (мен) барайын “let me go”, (сен) бар, (сіз) барыңыз, (ол) барсын, (біз)
+ * барайық, (сендер) барыңдар, (сіздер) барыңыздар.
+ */
+export function imperative(stem: string, p: Person, o: VerbOptions = {}): string {
+  const h = o.harmony ?? harmonyOf(stem);
+  const i = h === 'back' ? 0 : 1;
+  const base = presentBase(stem, h);
+  const endsY = /[йи]$/.test(base);
+  const vowelStem = finalClass(stem) === 'V';
+  const cons = voiceFinal(stem);
+  switch (p) {
+    case '1sg':
+      return base + (endsY ? (['ын', 'ін'] as const)[i] : (['йын', 'йін'] as const)[i]);
+    case '1pl':
+      return base + (endsY ? (['ық', 'ік'] as const)[i] : (['йық', 'йік'] as const)[i]);
+    case '2sg':
+      return stem;
+    case '2sgf':
+      return vowelStem ? stem + (['ңыз', 'ңіз'] as const)[i] : cons + (['ыңыз', 'іңіз'] as const)[i];
+    case '2pl':
+      return vowelStem ? stem + (['ңдар', 'ңдер'] as const)[i] : cons + (['ыңдар', 'іңдер'] as const)[i];
+    case '2plf':
+      return vowelStem ? stem + (['ңыздар', 'ңіздер'] as const)[i] : cons + (['ыңыздар', 'іңіздер'] as const)[i];
+    case '3':
+      return stem + (['сын', 'сін'] as const)[i];
+  }
+}
+
+/** The intention future “going to”: stem + -мақ/-бақ/-пақ + personal ending: бармақпын, айтпақсың, келмек. */
+export function intention(stem: string, p: Person, o: VerbOptions = {}): string {
+  const h = o.harmony ?? harmonyOf(stem);
+  const m = suffix(SUFFIX.question, stem, h); // ма/ба/па: the same consonant rule
+  const form = stem + m + (h === 'back' ? 'қ' : 'к');
+  return copula(form, p, { harmony: h });
+}
+
+// ─── Possessive + case ──────────────────────────────────────────────────────────────────────────────────────
+
+/**
+ * A case form of a possessed noun: кітабымда (in my book), кітабыңнан, кітабыңызға, кітабымызды, кітабында.
+ * After the 1st and 2nd person singular endings (-м, -ң) the dative is -а/-е (кітабыма, кітабыңа); after the 3rd
+ * person the cases take н (possessedCase); otherwise the usual endings follow the possessive's last sound.
+ */
+export function possessiveCase(noun: string, p: PossPerson, c: Case, o: NounOptions = {}): string {
+  const h = o.harmony ?? harmonyOf(noun);
+  const form = possessive(noun, p, o);
+  if (c === 'nom') return form;
+  if (p === '3') return possessedCase(form, c, h);
+  if (c === 'dat' && (p === '1sg' || p === '2sg')) return form + (h === 'back' ? 'а' : 'е');
+  return caseForm(form, c, { harmony: h });
+}
+
+// ─── Postpositions ──────────────────────────────────────────────────────────────────────────────────────────
+
+/** Common postpositions and the case they take (the noun before them goes in that case). */
+export const POSTPOSITIONS: { word: string; case: Case; en: string }[] = [
+  { word: 'үшін', case: 'nom', en: 'for' },
+  { word: 'туралы', case: 'nom', en: 'about' },
+  { word: 'арқылы', case: 'nom', en: 'through, by way of' },
+  { word: 'сияқты', case: 'nom', en: 'like' },
+  { word: 'дейін', case: 'dat', en: 'until, as far as' },
+  { word: 'қарай', case: 'dat', en: 'towards' },
+  { word: 'қарсы', case: 'dat', en: 'against, opposite' },
+  { word: 'кейін', case: 'abl', en: 'after' },
+  { word: 'бұрын', case: 'abl', en: 'before' },
+  { word: 'бері', case: 'abl', en: 'since' },
+  { word: 'бірге', case: 'ins', en: 'together with' },
+];

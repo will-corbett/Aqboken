@@ -22,7 +22,9 @@
       (settings.mode === 'present' && !settings.present.persons.length) ||
       (settings.mode === 'past' && !settings.past.persons.length) ||
       (settings.mode === 'vocab' && !settings.vocab.themes.length) ||
-      (settings.mode === 'listen' && !settings.listen.themes.length),
+      (settings.mode === 'listen' && !settings.listen.themes.length) ||
+      ((settings.mode === 'continuous' || settings.mode === 'future' || settings.mode === 'want' || settings.mode === 'imperative') && !settings[settings.mode].persons.length) ||
+      (settings.mode === 'posscases' && (!settings.posscases.persons.length || !settings.posscases.cases.length)),
   );
 </script>
 
@@ -84,6 +86,12 @@
       {@const m = settings.mode}
       {@render persons(settings[m].persons, PERSONS, (l) => (settings[m].persons = l))}
       {@render radios('Positive or negative', settings[m].polarity, [['pos', 'Positive'], ['neg', 'Negative'], ['both', 'Both']], (v) => (settings[m].polarity = v as 'pos'))}
+    {:else if settings.mode === 'continuous' || settings.mode === 'future' || settings.mode === 'want' || settings.mode === 'imperative'}
+      {@const m = settings.mode}
+      {@render persons(settings[m].persons, PERSONS, (l) => (settings[m].persons = l))}
+    {:else if settings.mode === 'posscases'}
+      {@render persons(settings.posscases.persons, POSS_PERSONS, (l) => (settings.posscases.persons = l as typeof settings.posscases.persons))}
+      {@render caseList(settings.posscases.cases, (l) => (settings.posscases.cases = l))}
     {:else if settings.mode === 'numbers'}
       {@render radios('Numbers', settings.numbers.range, [['to10', '0–10'], ['to100', '11–100'], ['to1000', '101–999'], ['years', 'Years (1900–2030)']], (v) => (settings.numbers.range = v as 'to10'))}
       {@render radios('Direction', settings.numbers.direction, [['write', 'Digits → words'], ['read', 'Words → digits']], (v) => (settings.numbers.direction = v as 'write'))}

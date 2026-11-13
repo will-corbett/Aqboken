@@ -33,6 +33,12 @@ import {
   present,
   presentNeg,
   questionParticle,
+  POSTPOSITIONS,
+  continuous,
+  imperative,
+  intention,
+  possessiveCase,
+  want,
   type Person,
 } from '../src/shared/kazakh.ts';
 import { toLatin } from '../src/shared/script.ts';
@@ -52,7 +58,8 @@ const table = (head: string[], rows: string[][], caption = '') =>
 
 /** The `::forms` tables as plain HTML (the app draws its own, with the endings highlighted). */
 function forms(kind: string, words: string[]): string {
-  const VERB: Record<string, (s: string, p: Person) => string> = { present, presentNeg, past, pastNeg };
+  const motion = (inf: string) => !!ALL_WORDS.find((w) => w.kk === inf)?.motion;
+  const VERB: Record<string, (s: string, p: Person) => string> = { present, presentNeg, past, pastNeg, want, imperative, intention };
   switch (kind) {
     case 'plural':
       return table(['Word', 'Meaning', 'Plural'], words.map((w) => [kk(w), esc(en(w)), kk(plural(w, nounOptions(w)))]));
@@ -76,6 +83,12 @@ function forms(kind: string, words: string[]): string {
       return table(['Number', 'In words'], words.map((n) => [n, kk(numberWords(Number(n)))]));
     case 'alphabet':
       return table(['Cyrillic', 'Latin (2021)'], ALPHABET.map((c) => [kk(`${c.toUpperCase()} ${c}`), esc(toLatin(c.toUpperCase()) || '–')]));
+    case 'continuous':
+      return table(['', ...words.map(kk)], PERSONS.map((p) => [kk(PRONOUN[p]), ...words.map((w) => kk(continuous(stemOf(w), p, { motion: motion(w) })))]));
+    case 'posscases':
+      return words.map((w) => table(['Case', ...POSS_PERSONS.map((p) => kk(PRONOUN_GEN[p]))], CASES.map((c) => [CASE_NAME[c].en, ...POSS_PERSONS.map((p) => kk(possessiveCase(w, p, c, nounOptions(w))))]), `${kk(w)} · ${esc(en(w))}`)).join('');
+    case 'postpositions':
+      return table(['Postposition', 'Meaning', 'Takes', 'Example'], POSTPOSITIONS.map((pp) => [kk(pp.word), esc(pp.en), pp.case === 'nom' ? 'the plain form' : CASE_NAME[pp.case].en.toLowerCase(), kk(`${caseForm(words[0] ?? 'мектеп', pp.case)} ${pp.word}`)]));
     case 'rule': {
       const t = (SUFFIX as Record<string, Record<string, readonly [string, string]>>)[words[0] ?? ''];
       if (!t) return '';

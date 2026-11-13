@@ -123,3 +123,43 @@ describe('Latin script (2021)', () => {
     expect(toLatin('ұл')).toBe('ūl');
   });
 });
+
+import { continuous, converb, imperative, intention, possessiveCase, want } from '../../src/shared/kazakh.ts';
+describe('more verb forms', () => {
+  it('converb', () => {
+    expect(['оқы', 'бар', 'тап', 'жап', 'шық', 'жу', 'ки', 'той', 'же', 'сөйле'].map((s) => converb(s))).toEqual(['оқып', 'барып', 'тауып', 'жауып', 'шығып', 'жуып', 'киіп', 'тойып', 'жеп', 'сөйлеп']);
+  });
+  it('continuous', () => {
+    expect(continuous('оқы', '1sg')).toBe('оқып жатырмын');
+    expect(continuous('бар', '1sg', { motion: true })).toBe('бара жатырмын');
+    expect(continuous('кел', '3', { motion: true })).toBe('келе жатыр');
+  });
+  it('want', () => {
+    expect(want('бар', '1sg')).toBe('барғым келеді');
+    expect(want('айт', '3')).toBe('айтқысы келеді');
+    expect(want('іш', '1sg')).toBe('ішкім келеді');
+    expect(want('оқы', '1sg')).toBe('оқығым келеді');
+  });
+  it('imperative', () => {
+    expect(['1sg', '2sg', '2sgf', '3', '1pl', '2pl', '2plf'].map((p) => imperative('тап', p as never))).toEqual(['табайын', 'тап', 'табыңыз', 'тапсын', 'табайық', 'табыңдар', 'табыңыздар']);
+    expect(imperative('оқы', '1sg')).toBe('оқиын');
+    expect(imperative('оқы', '2sgf')).toBe('оқыңыз');
+    expect(imperative('ойна', '1sg')).toBe('ойнайын');
+    expect(imperative('кел', '2sgf')).toBe('келіңіз');
+  });
+  it('intention', () => {
+    expect(intention('тап', '1sg')).toBe('таппақпын');
+    expect(intention('кет', '1sg')).toBe('кетпекпін');
+    expect(intention('оқы', '3')).toBe('оқымақ');
+    expect(intention('бар', '2sg')).toBe('бармақсың');
+  });
+  it('possessive + case', () => {
+    expect(possessiveCase('кітап', '1sg', 'loc')).toBe('кітабымда');
+    expect(possessiveCase('кітап', '1sg', 'dat')).toBe('кітабыма');
+    expect(possessiveCase('кітап', '2sg', 'dat')).toBe('кітабыңа');
+    expect(possessiveCase('кітап', '1pl', 'dat')).toBe('кітабымызға');
+    expect(possessiveCase('кітап', '3', 'loc')).toBe('кітабында');
+    expect(possessiveCase('үй', '1sg', 'abl')).toBe('үйімнен');
+    expect(possessiveCase('дос', '1sg', 'ins')).toBe('досыммен');
+  });
+});

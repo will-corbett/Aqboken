@@ -48,7 +48,14 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
 - `src/shared/kazakh.ts` — harmony (`harmonyOf`: last vowel; и/у after a consonant count front/back, after a vowel
   they're glides; 98.3% of Wiktionary plurals), last-sound classes (`finalClass`: V G L N Z K), suffix tables
   (`SUFFIX`), plural, cases (+ `possessedCase` for -ы/-сы forms), possessives (voicing п/к/қ → б/г/ғ, `possStem` for
-  vowel loss), copula endings, question particle, present/past (+ negatives), numbers, pronoun declension.
+  vowel loss), possessive + case (`possessiveCase`: dative -а/-е after -м/-ң), copula endings, question particle,
+  present/past (+ negatives), the -ып converb (тап → тауып), “right now” (converb + жатыр; `motion` verbs бару/келу
+  use -а/-е: бара жатыр), “want to” (-ғы + possessive + келеді), the imperative in all persons, the -мақ intention
+  future, postpositions with their cases (`POSTPOSITIONS`), numbers, pronoun declension.
+- The Wiktionary check compares, for every verb table (~165): present, past, converb (from the renarrative), want
+  (optative), imperative (Wiktionary's untagged "error-unrecognized-form" rows, in person order) and intention
+  (intentive; its 2nd plurals are skipped, Wiktionary repeats the singular). The Learn-page check also covers the
+  Kazakh topic and theme names; grammar terms Wiktionary lacks are in `LEARN_WORDS` for the native-speaker review.
 - `src/data/words.ts` — themes and words (verbs with `stem`; noun options `harmony`, `noVoicing`, `possStem`,
   `possessed`, `noDrill`). Meanings are our own.
 - `src/lib/questions.ts` — one generator per drill, each question with its `explain`; `labels.ts` case/person names

@@ -12,8 +12,9 @@
  */
 import { createReadStream, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createInterface } from 'node:readline';
-import { CASES, PERSONS, POSS_PERSONS, PRONOUN_CASES, caseForm, copula, numberWords, past, pastNeg, plural, possessive, present, presentNeg, type Case, type Person } from '../src/shared/kazakh.ts';
-import { ALL_WORDS, type Word } from '../src/data/words.ts';
+import { negativeStem, CASES, PERSONS, POSS_PERSONS, POSTPOSITIONS, PRONOUN_CASES, caseForm, continuous, converb, possessiveCase, copula, imperative, intention, numberWords, past, pastNeg, plural, possessive, present, presentNeg, want, type Case, type Person } from '../src/shared/kazakh.ts';
+import { ALL_WORDS, THEMES, type Word } from '../src/data/words.ts';
+import { TOPICS } from '../src/lib/topics.ts';
 import { LEARN_WORDS, NOT_IN_WIKTIONARY, WIKTIONARY_ERRORS, nounOptions } from '../src/data/exceptions.ts';
 
 const FILE = 'data-raw/kaikki-kazakh.jsonl';
@@ -125,6 +126,7 @@ for (const [word, es] of entries) {
 
 // ── 3. Verb tables ──
 const verbMis: Mismatch[] = [];
+const formsChecked: Record<string, number> = {};
 let verbsChecked = 0;
 const verbWordsWrong = new Set<string>();
 const ourVerbsChecked = new Set<string>();
@@ -147,17 +149,34 @@ for (const [word, es] of entries) {
     const stem = mine?.stem ?? pret3.form.replace(/(ды|ді|ты|ті)$/, '');
     verbsChecked++;
     if (mine) ourVerbsChecked.add(word);
+    // The converb, from the renarrative 3rd person (тауыпты → тауып).
+    const ren = e.forms.find((f) => has(f, 'renarrative', 'third-person', 'singular'));
+    if (ren) {
+      formsChecked.converb = (formsChecked.converb ?? 0) + 1;
+      const theirs = ren.form.replace(/(ты|ті)$/, '');
+      if (clean(converb(stem)) !== clean(theirs)) {
+        verbMis.push({ word, what: 'converb', ours: converb(stem), wiktionary: theirs });
+        verbWordsWrong.add(word);
+      }
+    }
     for (const [p, tags] of PERSON_TAGS) {
-      for (const [tense, fn] of [
-        ['aorist', present],
-        ['preterite', past],
+      // Wiktionary's tag → our form. The imperative rows are tagged "error-unrecognized-form" (the extractor doesn't
+      // name them) but are the imperative in person order. Intentive 2nd plurals are left out: Wiktionary repeats
+      // the singular there (таппақсың).
+      for (const [tense, name, fn] of [
+        ['aorist', 'present', present],
+        ['preterite', 'past', past],
+        ['optative', 'want', want],
+        ['error-unrecognized-form', 'imperative', imperative],
+        ['intentive', 'intention', intention],
       ] as const) {
-        const f = e.forms.find((x) => has(x, tense, ...tags) && !(p === '1sg' && x.tags?.includes('plural')) && !(p === '1pl' && x.tags?.includes('singular')));
+        if (tense === 'intentive' && (p === '2pl' || p === '2plf')) continue;
+        const f = e.forms.find((x) => has(x, tense, ...tags) && !(p === '1sg' && x.tags?.includes('plural')) && !(p === '1pl' && x.tags?.includes('singular')) && !(p === '3' && x.tags?.includes('plural')));
         if (!f) continue;
-        // Wiktionary's 2nd person tables don't always say formal/informal for one form: skip if ambiguous.
         const ours = fn(stem, p);
+        formsChecked[name] = (formsChecked[name] ?? 0) + 1;
         if (clean(ours) !== clean(f.form)) {
-          verbMis.push({ word, what: `${tense === 'aorist' ? 'present' : 'past'} ${p}`, ours, wiktionary: f.form });
+          verbMis.push({ word, what: `${name} ${p}`, ours, wiktionary: f.form });
           verbWordsWrong.add(word);
         }
       }
@@ -181,15 +200,33 @@ for (const w of ALL_WORDS) {
     const o = nounOptions(w.kk);
     const pl = plural(w.kk, o);
     for (const c of CASES) [caseForm(w.kk, c, o), caseForm(pl, c, { harmony: o.harmony })].forEach(add);
-    for (const p of POSS_PERSONS) add(possessive(w.kk, p, o));
+    for (const p of POSS_PERSONS) {
+      add(possessive(w.kk, p, o));
+      for (const c of CASES) add(possessiveCase(w.kk, p, c, o));
+    }
     for (const p of PERSONS) add(copula(w.kk, p, o));
   }
-  if (w.pos === 'v') for (const p of PERSONS) [present, presentNeg, past, pastNeg].forEach((fn) => add(fn(w.stem!, p)));
+  if (w.pos === 'v') {
+    for (const p of PERSONS) [present, presentNeg, past, pastNeg, want, imperative, intention].forEach((fn) => add(fn(w.stem!, p)));
+    for (const p of PERSONS) add(continuous(w.stem!, p, { motion: w.motion }));
+    add(converb(w.stem!));
+    // Negative imperatives: барма, бармаңыз.
+    for (const p of PERSONS) add(imperative(negativeStem(w.stem!), p));
+  }
 }
 for (const forms of Object.values(PRONOUN_CASES)) Object.values(forms).forEach(add);
 for (let i = 0; i <= 1000; i++) add(numberWords(i));
 ['ма', 'ме', 'ба', 'бе', 'па', 'пе'].forEach(add);
+POSTPOSITIONS.forEach((pp) => add(pp.word));
 const unknownLearn = new Map<string, Set<string>>();
+// Topic and theme names in Kazakh (shown on every Learn, Drill and Vocabulary page).
+for (const [where, name] of [...TOPICS.map((t) => ['topics.ts', t.kk]), ...THEMES.map((t) => ['words.ts', t.kkTitle])]) {
+  for (const m of name!.matchAll(/[А-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі]+/g)) {
+    const t = m[0].toLowerCase();
+    if (anyForm.has(t) || made.has(t) || LEARN_WORDS[t]) continue;
+    (unknownLearn.get(t) ?? unknownLearn.set(t, new Set()).get(t)!).add(where!);
+  }
+}
 for (const f of readdirSync('content/learn').filter((x) => x.endsWith('.md'))) {
   const text = readFileSync(`content/learn/${f}`, 'utf8').replace(/^::forms .*$/gm, '').replace(/^::drill .*$/gm, '').replace(/\*+/g, '');
   for (const m of text.matchAll(/[А-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі]+/g)) {
@@ -198,6 +235,8 @@ for (const f of readdirSync('content/learn').filter((x) => x.endsWith('.md'))) {
     if (anyForm.has(t) || made.has(t) || LEARN_WORDS[t]) continue;
     // A suffix quoted on its own (-лар, кітап + тар + да) is fine.
     if (/[-+]\s?$/.test(text.slice(Math.max(0, m.index! - 2), m.index!))) continue;
+    // Part of a quoted suffix like -(ы)ңыз, or a stem quoted with a hyphen after it (барғы-).
+    if (/-\([^)]*\)?$/.test(text.slice(Math.max(0, m.index! - 6), m.index!)) || text[m.index! + m[0].length] === '-') continue;
     (unknownLearn.get(t) ?? unknownLearn.set(t, new Set()).get(t)!).add(f);
   }
 }
@@ -234,7 +273,7 @@ ${unknownLearn.size ? `${unknownLearn.size} words are neither in Wiktionary nor 
 ## The rules against every table
 
 - Nouns: ${nounsChecked} tables, ${nounFormsChecked} forms; ${nounWordsWrong.size} nouns (${pct(nounWordsWrong.size, nounsChecked)}%) have at least one form that differs.
-- Verbs: ${verbsChecked} tables; ${verbWordsWrong.size} verbs (${pct(verbWordsWrong.size, verbsChecked)}%) have at least one form that differs.
+- Verbs: ${verbsChecked} tables; ${verbWordsWrong.size} verbs (${pct(verbWordsWrong.size, verbsChecked)}%) have at least one form that differs. Forms compared: ${Object.entries(formsChecked).map(([k, n]) => `${k} ${n}`).join(', ')}.
 
 ### Noun differences (first 400)
 
@@ -253,6 +292,7 @@ writeFileSync('reports/wiktionary-check.md', report);
 
 console.log(`Our words: ${ALL_WORDS.length}, missing from Wiktionary: ${missing.length}`);
 console.log(`Nouns: ${nounsChecked} tables, ${nounWordsWrong.size} differ (${pct(nounWordsWrong.size, nounsChecked)}%); ours checked ${ourNounsChecked.size}/${ourNouns.size}, failing ${new Set(ourNounFails.map((m) => m.word)).size}`);
+console.log(`Verb forms compared: ${JSON.stringify(formsChecked)}`);
 console.log(`Verbs: ${verbsChecked} tables, ${verbWordsWrong.size} differ (${pct(verbWordsWrong.size, verbsChecked)}%); ours checked ${ourVerbsChecked.size}/${ourVerbs.size}, failing ${new Set(ourVerbFails.map((m) => m.word)).size}`);
 console.log(`Learn pages: ${unknownLearn.size} unknown words${unknownLearn.size ? ': ' + [...unknownLearn.keys()].join(', ') : ''}`);
 console.log('Report: reports/wiktionary-check.md');

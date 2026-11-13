@@ -21,6 +21,14 @@ import {
   presentNeg,
   questionParticle,
   voiceFinal,
+  POSTPOSITIONS,
+  continuous,
+  converb,
+  imperative,
+  intention,
+  possessiveCase,
+  want,
+  type PossPerson,
   type Case,
   type Harmony,
   type Person,
@@ -354,6 +362,161 @@ function verbs(s: Settings, tense: 'present' | 'past'): Question[] {
 const negSuffix = (stem: string) => SUFFIX.question[finalClass(stem)][back(harmonyOf(stem))];
 const capital = (s: string) => s[0]!.toUpperCase() + s.slice(1);
 
+// ─── More verb forms ──
+
+type VerbFn = (stem: string, p: Person) => string;
+const ALL_PERSONS = ['1sg', '2sg', '2sgf', '3', '1pl', '2pl', '2plf'] as const;
+
+function converbWhy(stem: string): string {
+  const cv = converb(stem);
+  const last = stem.at(-1)!;
+  if ('аәеоөұүыі'.includes(last)) return `${stem}- ends in a vowel, so just -п: ${cv}`;
+  if (last === 'п' && (cv.endsWith('уып') || cv.endsWith('уіп'))) return `${stem}- ends in п after a vowel, which becomes у before -ып: ${cv}`;
+  return `${stem}- ends in a consonant, so -${harmonyOf(stem) === 'back' ? 'ып' : 'іп'}${voiceFinal(stem) !== stem ? ` (and ${last} becomes ${voiceFinal(stem).at(-1)})` : ''}: ${cv}`;
+}
+
+const IMP_EN: Record<Person, string> = {
+  '1sg': 'let me …',
+  '2sg': '(to a friend) …!',
+  '2sgf': '(polite) please …',
+  '3': 'let him/her …',
+  '1pl': 'let’s …',
+  '2pl': '(to friends) …!',
+  '2plf': '(polite, to several) please …',
+};
+
+function verbForms(mode: Mode, persons: readonly Person[], name: string, make: (v: Word) => VerbFn, why: (v: Word, p: Person, form: string) => string, frame: (p: Person) => [string, string]): Question[] {
+  return VERBS.flatMap((v) =>
+    persons.map((p) => {
+      const fn = make(v);
+      const form = fn(v.stem!, p);
+      return {
+        key: `${mode}:${v.kk}:${p}`,
+        mode,
+        task: `${name}: ${PERSON_NAME[p]}`,
+        prompt: v.kk,
+        promptLang: 'kk' as const,
+        gloss: v.en,
+        frame: frame(p),
+        answer: form,
+        answerLang: 'kk' as const,
+        base: v.stem!.includes(' ') ? v.stem! : v.stem!,
+        others: ALL_PERSONS.filter((x) => x !== p).map((x) => ({ label: `form for ${PRONOUN[x]}`, form: fn(v.stem!, x) })),
+        explain: why(v, p, form),
+      };
+    }),
+  );
+}
+const withPronoun = (p: Person): [string, string] => [capital(PRONOUN[p]), '.'];
+
+function continuousQs(s: Settings): Question[] {
+  return verbForms('continuous', s.continuous.persons.length ? s.continuous.persons : ['1sg'], 'Right now', (v) => (stem, p) => continuous(stem, p, { motion: v.motion }), (v, p, form) =>
+    v.motion
+      ? `Verbs of going and coming use the -а/-е form before жатыр: ${form.split(' ').slice(-2).join(' ')}.`
+      : `${converbWhy(v.stem!.split(' ').at(-1)!)}; then жатыр with the ending for ${PRONOUN[p]}: ${form}.`,
+  withPronoun);
+}
+function futureQs(s: Settings): Question[] {
+  return verbForms('future', s.future.persons.length ? s.future.persons : ['1sg'], 'Going to', () => intention, (v, p, form) => {
+    const stem = v.stem!;
+    const m = form.split(' ').at(-1)!.slice(stem.split(' ').at(-1)!.length, stem.split(' ').at(-1)!.length + 3);
+    return `${stem.split(' ').at(-1)}- ${endingText(stem)}, so -${m}; then the “I am” ending for ${PRONOUN[p]}${p === '3' ? ' (none)' : ''}: ${form}.`;
+  }, withPronoun);
+}
+function wantQs(s: Settings): Question[] {
+  return verbForms('want', s.want.persons.length ? s.want.persons : ['1sg'], 'Want to', () => want, (v, p, form) => {
+    const stem = v.stem!.split(' ').at(-1)!;
+    const k = finalClass(stem) === 'K';
+    return `${stem}- ${endingText(stem)}, so -${k ? (harmonyOf(stem) === 'back' ? 'қы' : 'кі') : harmonyOf(stem) === 'back' ? 'ғы' : 'гі'}-; then the possessive for ${PRONOUN[p]} and келеді: ${form}.`;
+  }, (p) => [capital(PRONOUN_GEN_ALL[p]), '.']);
+}
+const PRONOUN_GEN_ALL: Record<Person, string> = { '1sg': 'менің', '2sg': 'сенің', '2sgf': 'сіздің', '3': 'оның', '1pl': 'біздің', '2pl': 'сендердің', '2plf': 'сіздердің' };
+function imperativeQs(s: Settings): Question[] {
+  return verbForms('imperative', s.imperative.persons.length ? s.imperative.persons : ['2sg'], 'Command or request', () => imperative, (v, p, form) => {
+    const stem = v.stem!.split(' ').at(-1)!;
+    const why: Record<Person, string> = {
+      '1sg': `“let me”: the present base + -йын/-ын (-йін/-ін)`,
+      '2sg': `to a friend, the bare stem is the command`,
+      '2sgf': `polite: -ңыз after a vowel, -ыңыз/-іңіз after a consonant`,
+      '3': `“let him/her”: -сын/-сін`,
+      '1pl': `“let’s”: the present base + -йық/-ық (-йік/-ік)`,
+      '2pl': `to several friends: -ңдар after a vowel, -ыңдар/-іңдер after a consonant`,
+      '2plf': `polite, to several people: -(ы)ңыздар/-(і)ңіздер`,
+    };
+    return `${why[p]}${voiceFinal(stem) !== stem && ['1sg', '1pl', '2sgf', '2pl', '2plf'].includes(p) ? ` (${stem.at(-1)} becomes ${voiceFinal(stem).at(-1)} before a vowel)` : ''}: ${form}.`;
+  }, (p) => [`(${PRONOUN[p]})`, '']).map((q) => {
+    const v = VERBS.find((x) => x.kk === q.prompt)!;
+    const p = q.key.split(':').at(-1) as Person;
+    return { ...q, cue: IMP_EN[p].replace('…', firstMeaning(v.en).replace(/^to /, '')) };
+  });
+}
+
+// ─── Possessive + case, postpositions ──
+
+function posscasesQs(s: Settings): Question[] {
+  const persons = s.posscases.persons.length ? s.posscases.persons : (['1sg'] as PossPerson[]);
+  const cases = s.posscases.cases.length ? s.posscases.cases : (['loc'] as Case[]);
+  const MY: Record<PossPerson, string> = { '1sg': 'my', '2sg': 'your', '2sgf': 'your', '3': 'his/her', '1pl': 'our' };
+  return drillNouns()
+    .filter((w) => !w.possessed && w.kk !== 'ас үй' && w.theme !== 'people')
+    .flatMap((w) =>
+      persons.flatMap((p) =>
+        cases.map((c) => {
+          const o = nounOptions(w.kk);
+          const poss = possessive(w.kk, p, o);
+          const form = possessiveCase(w.kk, p, c, o);
+          const ending = form.slice(poss.length);
+          const why =
+            p === '3'
+              ? `after the 3rd-person possessive, the case ending takes н: -${ending}`
+              : c === 'dat' && (p === '1sg' || p === '2sg')
+                ? `after -м and -ң of “my”/“your”, the dative is just -${ending}`
+                : `${poss} ${endingText(poss)}, so the ${CASE_NAME[c].en.toLowerCase()} is -${ending}`;
+          return {
+            key: `pc:${w.kk}:${p}:${c}`,
+            mode: 'posscases' as const,
+            task: `${CASE_NAME[c].en} (${CASE_NAME[c].meaning}) of “${PRONOUN_GEN[p]} …”`,
+            prompt: w.kk,
+            promptLang: 'kk' as const,
+            gloss: w.en,
+            frame: [PRONOUN_GEN[p], ''] as [string, string],
+            cue: caseCue(c, meaning(w)).replace(' the ', ` ${MY[p]} `),
+            answer: form,
+            answerLang: 'kk' as const,
+            base: poss,
+            others: [{ label: 'possessive without the case', form: poss }, ...CASES.filter((x) => x !== c && x !== 'nom').map((x) => ({ label: CASE_NAME[x].en.toLowerCase(), form: possessiveCase(w.kk, p, x, o) }))],
+            explain: `First the possessive: ${PRONOUN_GEN[p]} ${poss}. Then ${why}: ${form}.`,
+          };
+        }),
+      ),
+    );
+}
+
+function postpositionQs(): Question[] {
+  const nouns = drillNouns().filter((w) => ['city', 'school', 'time', 'people', 'family', 'home'].includes(w.theme) && !w.possessed && w.kk !== 'ас үй');
+  return nouns.flatMap((w) =>
+    POSTPOSITIONS.map((pp) => {
+      const o = nounOptions(w.kk);
+      const form = caseForm(w.kk, pp.case, o);
+      return {
+        key: `pp:${w.kk}:${pp.word}`,
+        mode: 'postpositions' as const,
+        task: `Before ${pp.word} (${pp.en})`,
+        prompt: w.kk,
+        promptLang: 'kk' as const,
+        gloss: w.en,
+        frame: ['', ` ${pp.word}`] as [string, string],
+        cue: `${pp.en.split(',')[0]} the ${meaning(w)}`,
+        answer: form,
+        answerLang: 'kk' as const,
+        base: w.kk,
+        others: CASES.filter((x) => x !== pp.case).map((x) => ({ label: x === 'nom' ? 'plain form' : CASE_NAME[x].en.toLowerCase(), form: caseForm(w.kk, x, o) })),
+        explain: pp.case === 'nom' ? `${pp.word} takes the plain form: ${form} ${pp.word}.` : `${pp.word} takes the ${CASE_NAME[pp.case].en.toLowerCase()}: ${form} ${pp.word}.`,
+      };
+    }),
+  );
+}
+
 // ─── Questions with ма/ме ──────────────────────────────────────────────────────────────────────────────────
 
 const PARTICLES = ['ма', 'ме', 'ба', 'бе', 'па', 'пе'];
@@ -457,6 +620,8 @@ export function speakText(q: Question): string | undefined {
   if (q.mode === 'alphabet') return undefined;
   if (q.listen) return q.listen;
   if (q.mode === 'questions') return `${q.frame![0]} ${q.answer}${q.frame![1]}`;
+  if (q.mode === 'imperative') return q.answer;
+  if (q.mode === 'postpositions') return `${q.answer}${q.frame![1]}`;
   if (q.answerLang === 'kk') return q.frame ? `${q.frame[0]} ${q.answer}${q.frame[1]}`.trim() : q.answer;
   return q.promptLang === 'kk' ? q.prompt : undefined;
 }
@@ -518,6 +683,18 @@ export function pool(mode: Mode, s: Settings, rng: Rng, words?: Word[]): Questio
       return vocabQs(s, rng, words);
     case 'listen':
       return listenQs(s, rng);
+    case 'continuous':
+      return continuousQs(s);
+    case 'future':
+      return futureQs(s);
+    case 'want':
+      return wantQs(s);
+    case 'imperative':
+      return imperativeQs(s);
+    case 'posscases':
+      return posscasesQs(s);
+    case 'postpositions':
+      return postpositionQs();
   }
 }
 

@@ -27,6 +27,11 @@ export interface Settings {
   numbers: { range: 'to10' | 'to100' | 'to1000' | 'years'; direction: 'write' | 'read' };
   vocab: { direction: 'recognise' | 'recall'; themes: string[] };
   listen: { kind: 'meaning' | 'dictation'; themes: string[] };
+  continuous: { persons: Person[] };
+  future: { persons: Person[] };
+  want: { persons: Person[] };
+  imperative: { persons: Person[] };
+  posscases: { persons: PossPerson[]; cases: Case[] };
 }
 
 const KEY = 'korti.settings.v1';
@@ -51,6 +56,11 @@ export function defaults(): Settings {
     numbers: { range: 'to100', direction: 'write' },
     vocab: { direction: 'recognise', themes: THEMES.filter((t) => t.level === 'A1').map((t) => t.id) },
     listen: { kind: 'meaning', themes: THEMES.filter((t) => t.level === 'A1').map((t) => t.id) },
+    continuous: { persons: BASIC_PERSONS },
+    future: { persons: BASIC_PERSONS },
+    want: { persons: BASIC_PERSONS },
+    imperative: { persons: ['1sg', '2sg', '2sgf', '3', '1pl'] },
+    posscases: { persons: ['1sg', '2sg', '3', '1pl'], cases: ['dat', 'loc', 'abl'] },
   };
 }
 
@@ -70,7 +80,7 @@ export function loadSettings(): Settings {
     if (!s.vocab.themes.length) s.vocab.themes = d.vocab.themes;
     s.listen.themes = s.listen.themes.filter((id) => THEMES.some((t) => t.id === id));
     if (!s.listen.themes.length) s.listen.themes = d.listen.themes;
-    for (const k of ['copula', 'present', 'past'] as const) s[k].persons = s[k].persons.filter((p) => PERSONS.includes(p));
+    for (const k of ['copula', 'present', 'past', 'continuous', 'future', 'want', 'imperative'] as const) s[k].persons = s[k].persons.filter((p) => PERSONS.includes(p));
     return s;
   } catch {
     return d;

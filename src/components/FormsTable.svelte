@@ -19,6 +19,12 @@
     presentNeg,
     questionParticle,
     voiceFinal,
+    POSTPOSITIONS,
+    continuous,
+    imperative,
+    intention,
+    possessiveCase,
+    want,
     type Person,
   } from '../shared/kazakh.ts';
   import { APPROXIMATE, toLatin, type Script } from '../shared/script.ts';
@@ -32,7 +38,9 @@
 
   const en = (kk: string) => ALL_WORDS.find((w) => w.kk === kk)?.en ?? '';
   const stemOf = (inf: string) => ALL_WORDS.find((w) => w.kk === inf && w.pos === 'v')?.stem ?? inf.replace(/у$/, '');
-  const VERB_FN = { present, presentNeg, past, pastNeg } as Record<string, (s: string, p: Person) => string>;
+  const motion = (inf: string) => !!ALL_WORDS.find((w) => w.kk === inf)?.motion;
+  const VERB_FN = { present, presentNeg, past, pastNeg, want, imperative, intention } as Record<string, (s: string, p: Person) => string>;
+  const IMP_LABEL: Record<Person, string> = { '1sg': 'let me', '2sg': 'сен', '2sgf': 'сіз', '3': 'let him/her', '1pl': 'let’s', '2pl': 'сендер', '2plf': 'сіздер' };
   const RULE_ROWS: [string, string][] = [
     ['V', 'a vowel'],
     ['G', 'р, й, у, и'],
@@ -107,13 +115,55 @@
         {/each}
       </tbody>
     </table>
-  {:else if kind in VERB_FN}
+  {:else if kind === 'continuous'}
     <table class="forms">
       <thead><tr><th></th>{#each words as w (w)}<th><Kz text={w} {script} /> <span class="muted small">{en(w)}</span></th>{/each}</tr></thead>
       <tbody>
         {#each PERSONS as p (p)}
           <tr>
             <th scope="row"><Kz text={PRONOUN[p]} {script} /></th>
+            {#each words as w (w)}<td><Kz text={continuous(stemOf(w), p, { motion: motion(w) })} mark={stemOf(w)} {script} /></td>{/each}
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  {:else if kind === 'posscases'}
+    {#each words as w (w)}
+      {@const o = nounOptions(w)}
+      <table class="forms">
+        <caption><Kz text={w} {script} /> <span class="muted">· {en(w)}</span></caption>
+        <thead><tr><th>Case</th>{#each POSS_PERSONS as p (p)}<th><Kz text={PRONOUN_GEN[p]} {script} /></th>{/each}</tr></thead>
+        <tbody>
+          {#each CASES as c (c)}
+            <tr>
+              <th scope="row">{CASE_NAME[c].en}</th>
+              {#each POSS_PERSONS as p (p)}<td><Kz text={possessiveCase(w, p, c, o)} mark={possessive(w, p, o)} {script} /></td>{/each}
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    {/each}
+  {:else if kind === 'postpositions'}
+    <table class="forms">
+      <thead><tr><th>Postposition</th><th>Meaning</th><th>Takes</th><th>Example</th></tr></thead>
+      <tbody>
+        {#each POSTPOSITIONS as pp (pp.word)}
+          <tr>
+            <td><Kz text={pp.word} {script} /></td>
+            <td class="muted">{pp.en}</td>
+            <td>{pp.case === 'nom' ? 'the plain form' : CASE_NAME[pp.case].en.toLowerCase()}</td>
+            <td><Kz text={`${caseForm(words[0] ?? 'мектеп', pp.case)} ${pp.word}`} mark={words[0] ?? 'мектеп'} {script} /></td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  {:else if kind in VERB_FN}
+    <table class="forms">
+      <thead><tr><th></th>{#each words as w (w)}<th><Kz text={w} {script} /> <span class="muted small">{en(w)}</span></th>{/each}</tr></thead>
+      <tbody>
+        {#each PERSONS as p (p)}
+          <tr>
+            <th scope="row">{#if kind === 'imperative'}{IMP_LABEL[p]}{:else if kind === 'want'}<Kz text={{ '1sg': 'менің', '2sg': 'сенің', '2sgf': 'сіздің', '3': 'оның', '1pl': 'біздің', '2pl': 'сендердің', '2plf': 'сіздердің' }[p]} {script} />{:else}<Kz text={PRONOUN[p]} {script} />{/if}</th>
             {#each words as w (w)}<td><Kz text={VERB_FN[kind]!(stemOf(w), p)} mark={stemOf(w)} {script} /></td>{/each}
           </tr>
         {/each}
