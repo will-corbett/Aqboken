@@ -17,6 +17,7 @@
     <li><a href={href({ page: 'drill' })}><strong>Drill</strong></a>: a drill for every lesson, for vocabulary and for listening. Wrong answers come back until you get them right, and every answer is explained.</li>
     <li><a href={href({ page: 'vocabulary' })}><strong>Vocabulary</strong></a>: {ALL_WORDS.length} everyday words in {THEMES.length} themes, each with its forms, audio, and often a real example sentence.</li>
     <li><a href={href({ page: 'paths' })}><strong>Learning paths</strong></a>: a recommended route for A1, A2 and B1.</li>
+    <li><a href={href({ page: 'test' })}><strong>Grammar test</strong></a>: 36 questions to find your level and what to review. If you know some Kazakh already, start here.</li>
   </ul>
 
   <h2>Your first hour</h2>

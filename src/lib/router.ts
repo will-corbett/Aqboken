@@ -15,6 +15,7 @@ export type Route =
   | { page: 'settings' }
   | { page: 'progress' }
   | { page: 'start' }
+  | { page: 'test' }
   | { page: 'paths' }
   | { page: 'about' };
 
@@ -34,6 +35,8 @@ export function parsePath(pathname: string): Route {
       return { page: 'progress' };
     case 'start':
       return { page: 'start' };
+    case 'test':
+      return { page: 'test' };
     case 'paths':
       return { page: 'paths' };
     case 'about':
@@ -59,6 +62,8 @@ export function pathOf(r: Route): string {
       return 'progress/';
     case 'start':
       return 'start/';
+    case 'test':
+      return 'test/';
     case 'paths':
       return 'paths/';
     case 'about':

@@ -90,6 +90,11 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   `/drill/<topic>/`, `/vocabulary/`, `/vocabulary/<theme>/`, `/progress/`, `/settings/`, `/about/`.
 - Start here (`StartPage.svelte`): the beginner's guide. The home page shows a big “New to Kazakh?” card until
   `settings.guideSeen` (opening the guide, starting a drill, or “Got it”), then a small link.
+- Grammar test (`/test/`, `src/lib/levelTest.ts`, `LevelTest.svelte`, in the header menu): 12 multiple-choice
+  questions each at A1, A2, B1 (`TEST_TOPICS`), drawn from the drills; at most 2 per topic per level. Wrong options
+  are only other real forms of the same word (`Question.others`) or a drill's own choices, never invented forms, so
+  a drill without `others` can't feed the test. Reach a level with ≥9/12 there and ≥8/12 at each level below
+  (`scoreTest`); every wrong answer explained; “Set my learning path to …”. In memory only. Grammar only, and says so.
 - Learning paths (`src/lib/paths.ts`, `PathsPage.svelte`): A1, A2 and B1 routes of topic and theme steps, each with a
   why; `settings.pathLevel`. With progress on, a topic is ticked once drilled and a theme once half its words are in
   my words, and the home page shows “Your next step”. `tests/unit/paths.test.ts`: every step exists and isn't from a

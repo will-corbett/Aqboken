@@ -278,6 +278,7 @@ function copulas(s: Settings): Question[] {
         answer: form,
         answerLang: 'kk' as const,
         base: w.kk,
+        others: (['1sg', '2sg', '2sgf', '3', '1pl', '2pl', '2plf'] as const).filter((x) => x !== p).map((x) => ({ label: `form for ${PRONOUN[x]}`, form: copula(w.kk, x) })),
         explain:
           p === '3'
             ? `With ол (he, she) there is no ending: Ол ${form}.`

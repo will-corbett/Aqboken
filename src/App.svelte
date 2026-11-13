@@ -19,6 +19,7 @@
   import { addWords, clearWords, dueWords, loadWords, review as scheduleWords, saveWords, type MyWords } from './lib/mywords.ts';
   import ProgressPage from './components/ProgressPage.svelte';
   import StartPage from './components/StartPage.svelte';
+  import LevelTest from './components/LevelTest.svelte';
   import PathsPage from './components/PathsPage.svelte';
   import { ALL_WORDS } from './data/words.ts';
   import { isMode, topicById } from './lib/topics.ts';
@@ -171,11 +172,12 @@
     settings.script = s;
   }
 
-  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about' || route.page === 'progress' || route.page === 'start' || route.page === 'paths');
+  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about' || route.page === 'progress' || route.page === 'start' || route.page === 'paths' || route.page === 'test');
   const navItems: [Route['page'], string][] = [
     ['learn', 'Learn'],
     ['drill', 'Drill'],
     ['vocabulary', 'Vocabulary'],
+    ['test', 'Test'],
   ];
 </script>
 
@@ -220,6 +222,8 @@
       <WordsIndex script={settings.script} />
     {:else if route.page === 'settings'}
       <SettingsPage bind:settings onprogress={setProgress} />
+    {:else if route.page === 'test'}
+      <LevelTest bind:settings />
     {:else if route.page === 'start'}
       <StartPage {settings} />
     {:else if route.page === 'paths'}
