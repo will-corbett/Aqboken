@@ -43,6 +43,8 @@ import {
 } from '../src/shared/kazakh.ts';
 import { toLatin } from '../src/shared/script.ts';
 import { SITE_URL } from '../src/shared/site.ts';
+import sentences from '../src/data/sentences.json' with { type: 'json' };
+const SENT = sentences as unknown as Record<string, [number, string, string]>;
 
 const DIST = 'dist';
 const template = readFileSync(join(DIST, 'index.html'), 'utf8');
@@ -169,7 +171,7 @@ for (const t of THEMES)
   pages.push({
     route: { page: 'vocabulary', theme: t.id },
     description: `${t.title} in Kazakh (${t.kkTitle}): ${t.words.length} words with meanings and forms. ${t.blurb}`.slice(0, 158),
-    body: `<h1>${esc(t.title)} <span lang="kk">${esc(t.kkTitle)}</span></h1><p>${esc(t.blurb)}</p>${table(['Kazakh', 'Latin', 'Meaning'], t.words.map((w) => [kk(w.kk), esc(toLatin(w.kk)), esc(w.en)]))}`,
+    body: `<h1>${esc(t.title)} <span lang="kk">${esc(t.kkTitle)}</span></h1><p>${esc(t.blurb)}</p>${table(['Kazakh', 'Latin', 'Meaning', 'Example'], t.words.map((w) => [kk(w.kk), esc(toLatin(w.kk)), esc(w.en), SENT[w.kk] ? `${kk(SENT[w.kk]![1])}<br>${esc(SENT[w.kk]![2])} <a href="https://tatoeba.org/en/sentences/show/${SENT[w.kk]![0]}" rel="noopener">Tatoeba</a>` : '']))}`,
     index: true,
   });
 

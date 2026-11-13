@@ -44,6 +44,15 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   - `Hear.svelte` plays native first, else the computer voice ("Computer voice, not a native speaker"), and says
     "No audio yet" if the file is missing. Listening drill (`listen`): hear a word, choose its meaning or write it.
 
+- Example sentences (Tatoeba, CC BY 2.0 FR): `npm run data:fetch-tatoeba` then `npm run data:sentences`
+  (`scripts/build-sentences.ts`) writes `src/data/sentences.json` (committed; review the diff): for each word, the
+  shortest Kazakh sentence with an English translation containing one of the word's forms (adjectives: plain and
+  “I am” forms only). Tatoeba's Kazakh is thin (~620 with English, many by one contributor) and uneven, so every
+  match is read by a person: `TATOEBA_DENY` (by id: wrong sense, crude, unkind, political, misspelt),
+  `TATOEBA_AMBIGUOUS_FORMS` (басқа, жаста, сатып) and `TATOEBA_SKIP_WORDS` (алу) in exceptions.ts, each with its
+  reason. Shown under each word on theme pages, in vocabulary/listening feedback, and in other drills only when the
+  highlighted word is exactly the answer form. Sentences are voiced too.
+
 ## Layout
 - `src/shared/kazakh.ts` — harmony (`harmonyOf`: last vowel; и/у after a consonant count front/back, after a vowel
   they're glides; 98.3% of Wiktionary plurals), last-sound classes (`finalClass`: V G L N Z K), suffix tables

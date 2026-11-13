@@ -4,6 +4,8 @@
   import { checkAnswer, type CheckResult } from '../lib/check.ts';
   import { speakText, type Question } from '../lib/questions.ts';
   import Hear from './Hear.svelte';
+  import Sentence from './Sentence.svelte';
+  import { sentenceFor, sentenceWithForm } from '../lib/sentences.ts';
   import type { Settings } from '../lib/settings.ts';
   import { toLatin } from '../shared/script.ts';
   import Keyboard from './Keyboard.svelte';
@@ -35,6 +37,12 @@
   const cleared = $derived(clearedCount(round));
   const script = $derived(settings.script);
   /** Kazakh text shown in the reader's script (for choice buttons and the solution line). */
+  /** An example sentence: for vocabulary and listening, the word's; elsewhere only one using exactly the answer. */
+  const example = $derived.by(() => {
+    if (!q) return undefined;
+    if (q.mode === 'vocab' || q.mode === 'listen') return sentenceFor(q.answerLang === 'kk' ? q.answer : (q.listen ?? q.prompt));
+    return q.answerLang === 'kk' && q.promptLang === 'kk' ? sentenceWithForm(q.prompt, q.answer) : undefined;
+  });
   const show = (t: string) => (script === 'latn' ? toLatin(t) : t);
 
   async function focusField() {
@@ -201,6 +209,7 @@
           {#if q.listen && q.answerLang !== 'kk'}<p class="heard">You heard <strong><Kz text={q.listen} {script} /></strong></p>{/if}
           <p class="explain">{#if script === 'latn'}{toLatin(q.explain)}{:else}{q.explain}{/if}</p>
           {#if !q.listen && speakText(q)}<p class="hear-line"><Hear text={speakText(q)!} /></p>{/if}
+          {#if example}<Sentence row={example} {script} />{/if}
         </div>
       {/if}
     </div>

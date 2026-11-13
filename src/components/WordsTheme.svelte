@@ -6,6 +6,8 @@
   import type { Script } from '../shared/script.ts';
   import Kz from './Kz.svelte';
   import Hear from './Hear.svelte';
+  import Sentence from './Sentence.svelte';
+  import { sentenceFor } from '../lib/sentences.ts';
   let { id, script, onpractise }: { id: string; script: Script; onpractise: (words: Word[], direction: 'recognise' | 'recall') => void } = $props();
   const t = $derived(themeById(id));
   const POS: Record<string, string> = { n: 'noun', v: 'verb', adj: 'adjective', adv: 'adverb', pron: 'pronoun', phr: 'phrase', num: 'number', post: 'postposition', conj: 'conjunction' };
@@ -26,7 +28,10 @@
         {#each t.words as w (w.kk)}
           <tr>
             <td class="kkw"><Hear text={w.kk} icon credit={false} /> <Kz text={w.kk} {script} /></td>
-            <td>{w.en} <span class="muted small">{POS[w.pos]}</span></td>
+            <td>
+              {w.en} <span class="muted small">{POS[w.pos]}</span>
+              {#if sentenceFor(w.kk)}<Sentence row={sentenceFor(w.kk)!} {script} compact />{/if}
+            </td>
             <td class="small">
               {#if w.pos === 'n' && !w.noDrill && !w.kk.includes(' ')}<Kz text={plural(w.kk, nounOptions(w.kk))} mark={w.kk} {script} />
               {:else if w.pos === 'v' && w.stem}<Kz text={present(w.stem, '1sg')} mark={w.stem} {script} />, <Kz text={past(w.stem, '1sg')} mark={w.stem} {script} />

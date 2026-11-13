@@ -206,7 +206,7 @@
         <option value="dark">Dark</option>
       </select>
     </label>
-    <p class="credit muted">Forms checked against <a href="https://en.wiktionary.org" rel="noopener">Wiktionary</a> via kaikki.org (CC BY-SA 4.0). Fonts: PT Sans, PT Serif (OFL).</p>
+    <p class="credit muted">Forms checked against <a href="https://en.wiktionary.org" rel="noopener">Wiktionary</a> via kaikki.org (CC BY-SA 4.0). Example sentences: <a href="https://tatoeba.org" rel="noopener">Tatoeba</a> (CC BY 2.0 FR). Fonts: PT Sans, PT Serif (OFL).</p>
   </footer>
 </div>
 

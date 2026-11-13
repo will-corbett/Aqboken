@@ -1,6 +1,6 @@
 /**
  * Lists every Kazakh text the site can play in the computer voice: each vocabulary word, and the spoken answer of
- * every question every drill can ask (under the widest settings). Writes audio-tts/wanted.tsv (key, text), which
+ * every question every drill can ask (under the widest settings), and every example sentence. Writes audio-tts/wanted.tsv (key, text), which
  * scripts/tts.py voices; words with a native recording (src/data/recordings.json) are left out.
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -12,9 +12,12 @@ import { ALL_WORDS } from '../src/data/words.ts';
 import { CASES, PERSONS, POSS_PERSONS } from '../src/shared/kazakh.ts';
 import { audioKey, speakable } from '../src/shared/audio.ts';
 import recordings from '../src/data/recordings.json' with { type: 'json' };
+import sentences from '../src/data/sentences.json' with { type: 'json' };
 
 const native = new Set(Object.keys(recordings));
 const texts = new Set<string>(ALL_WORDS.map((w) => speakable(w.kk)));
+// Example sentences (Tatoeba).
+for (const row of Object.values(sentences) as [number, string][]) texts.add(speakable(row[1]));
 const wide = (): Settings => {
   const s = defaults();
   s.cases = { cases: CASES.filter((c) => c !== 'nom'), number: 'both' };
