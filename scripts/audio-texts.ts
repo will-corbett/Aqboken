@@ -25,7 +25,7 @@ const wide = (): Settings => {
   s.copula.persons = [...PERSONS];
   s.present = { persons: [...PERSONS], polarity: 'both' };
   s.past = { persons: [...PERSONS], polarity: 'both' };
-  s.vocab = { direction: 'recall', themes: [] };
+  s.vocab = { direction: 'recall', themes: [], source: 'themes' };
   return s;
 };
 for (const t of TOPICS) {

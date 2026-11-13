@@ -644,7 +644,7 @@ function listenQs(s: Settings, rng: Rng): Question[] {
       explain: `You heard ${w.kk}, “${w.en}”.`,
     }));
   }
-  return vocabQs({ ...s, vocab: { direction: 'recognise', themes: ids } }, rng, words).map((q) => ({
+  return vocabQs({ ...s, vocab: { direction: 'recognise', themes: ids, source: 'themes' } }, rng, words).map((q) => ({
     ...q,
     key: q.key.replace(/^vocab:/, 'listen:'),
     mode: 'listen' as const,

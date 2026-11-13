@@ -15,6 +15,8 @@ export function pageTitle(r: Route): string {
       return r.theme && themeById(r.theme) ? `${themeById(r.theme)!.title} · Kazakh vocabulary · Körti` : 'Kazakh vocabulary · Körti';
     case 'settings':
       return 'Settings · Körti';
+    case 'progress':
+      return 'Your progress · Körti';
     case 'about':
       return 'About and sources · Körti';
   }

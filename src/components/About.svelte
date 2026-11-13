@@ -6,7 +6,7 @@
 </script>
 
 <h1>About Körti</h1>
-<p>Körti helps you learn Kazakh grammar and everyday words: short explanations, tables of real forms, and drills that explain every answer. It is free, has no accounts and no analytics. Settings (and progress, if you turn it on) stay in your browser.</p>
+<p>Körti helps you learn Kazakh grammar and everyday words: short explanations, tables of real forms, and drills that explain every answer. It is free, has no accounts and no analytics. Settings stay in your browser; so does your progress, if you turn it on: how each drill went, and the words you’re learning with when each is next due. Nothing is sent anywhere.</p>
 
 <h2>Where the Kazakh comes from</h2>
 <p>Kazakh endings follow sound rules: vowel harmony and the sound a word ends in. Körti makes forms with those rules, and checks them against <a href="https://en.wiktionary.org" rel="noopener">Wiktionary</a>’s Kazakh tables (via <a href="https://kaikki.org" rel="noopener">kaikki.org</a>, CC BY-SA 4.0):</p>

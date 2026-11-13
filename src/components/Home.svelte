@@ -4,7 +4,7 @@
   import type { Settings } from '../lib/settings.ts';
   import { THEMES } from '../data/words.ts';
   import Kz from './Kz.svelte';
-  let { settings, oncontinue }: { settings: Settings; oncontinue: () => void } = $props();
+  let { settings, oncontinue, due = 0, onreview }: { settings: Settings; oncontinue: () => void; due?: number; onreview: () => void } = $props();
   const FIRST = ['alphabet', 'harmony', 'plural', 'copula', 'cases', 'present'] as const;
 </script>
 
@@ -18,6 +18,13 @@
   <div class="card last">
     <span>Your last drill: <strong>{topicById(settings.lastDrill)!.title}</strong></span>
     <button class="btn primary" onclick={oncontinue}>Continue</button>
+  </div>
+{/if}
+
+{#if settings.progress && due}
+  <div class="card last">
+    <span><strong>{due}</strong> of your words {due === 1 ? 'is' : 'are'} due for review.</span>
+    <button class="btn primary" onclick={onreview}>Review them</button>
   </div>
 {/if}
 

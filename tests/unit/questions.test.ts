@@ -22,7 +22,7 @@ function variants(): [string, Settings][] {
   all.copula.persons = [...PERSONS];
   out.push(['cases-both', { ...all, mode: 'cases' }], ['present-all', { ...all, mode: 'present' }], ['past-all', { ...all, mode: 'past' }], ['copula-all', { ...all, mode: 'copula' }]);
   for (const r of ['to10', 'to1000', 'years'] as const) for (const d of ['write', 'read'] as const) out.push([`numbers-${r}-${d}`, { ...defaults(), mode: 'numbers', numbers: { range: r, direction: d } }]);
-  out.push(['vocab-recall', { ...defaults(), mode: 'vocab', vocab: { direction: 'recall', themes: [] } }], ['alphabet-back', { ...defaults(), mode: 'alphabet', alphabet: { direction: 'toCyrillic' } }]);
+  out.push(['vocab-recall', { ...defaults(), mode: 'vocab', vocab: { direction: 'recall', themes: [], source: 'themes' } }], ['alphabet-back', { ...defaults(), mode: 'alphabet', alphabet: { direction: 'toCyrillic' } }]);
   return out;
 }
 

@@ -7,9 +7,11 @@
   import Kz from './Kz.svelte';
   import Hear from './Hear.svelte';
   import Sentence from './Sentence.svelte';
+  import type { MyWords } from '../lib/mywords.ts';
   import { sentenceFor } from '../lib/sentences.ts';
-  let { id, script, onpractise }: { id: string; script: Script; onpractise: (words: Word[], direction: 'recognise' | 'recall') => void } = $props();
+  let { id, script, onpractise, progressOn = false, myWords = {}, onadd }: { id: string; script: Script; onpractise: (words: Word[], direction: 'recognise' | 'recall') => void; progressOn?: boolean; myWords?: MyWords; onadd?: (words: string[]) => void } = $props();
   const t = $derived(themeById(id));
+  const inMine = $derived(t ? t.words.filter((w) => myWords[w.kk]).length : 0);
   const POS: Record<string, string> = { n: 'noun', v: 'verb', adj: 'adjective', adv: 'adverb', pron: 'pronoun', phr: 'phrase', num: 'number', post: 'postposition', conj: 'conjunction' };
 </script>
 
@@ -20,6 +22,10 @@
   <div class="actions">
     <button class="btn primary" onclick={() => onpractise(t.words, 'recognise')}>Practise: what does it mean?</button>
     <button class="btn" onclick={() => onpractise(t.words, 'recall')}>Practise: say it in Kazakh</button>
+    {#if progressOn}
+      {#if inMine < t.words.length}<button class="btn quiet" onclick={() => onadd?.(t.words.map((w) => w.kk))}>Add all to my words</button>{/if}
+      <span class="muted small mine">{inMine} of {t.words.length} in <a href={href({ page: 'progress' })}>my words</a></span>
+    {/if}
   </div>
   <div class="table-scroll">
     <table class="forms words">
@@ -58,6 +64,9 @@
     font-size: 1.1rem;
     font-weight: 400;
     color: var(--muted);
+  }
+  .mine {
+    align-self: center;
   }
   .actions {
     display: flex;

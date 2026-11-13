@@ -25,7 +25,7 @@ export interface Settings {
   present: { persons: Person[]; polarity: 'pos' | 'neg' | 'both' };
   past: { persons: Person[]; polarity: 'pos' | 'neg' | 'both' };
   numbers: { range: 'to10' | 'to100' | 'to1000' | 'years'; direction: 'write' | 'read' };
-  vocab: { direction: 'recognise' | 'recall'; themes: string[] };
+  vocab: { direction: 'recognise' | 'recall'; themes: string[]; source: 'themes' | 'mine' };
   listen: { kind: 'meaning' | 'dictation'; themes: string[] };
   continuous: { persons: Person[] };
   future: { persons: Person[] };
@@ -54,7 +54,7 @@ export function defaults(): Settings {
     present: { persons: BASIC_PERSONS, polarity: 'pos' },
     past: { persons: BASIC_PERSONS, polarity: 'pos' },
     numbers: { range: 'to100', direction: 'write' },
-    vocab: { direction: 'recognise', themes: THEMES.filter((t) => t.level === 'A1').map((t) => t.id) },
+    vocab: { direction: 'recognise', themes: THEMES.filter((t) => t.level === 'A1').map((t) => t.id), source: 'themes' },
     listen: { kind: 'meaning', themes: THEMES.filter((t) => t.level === 'A1').map((t) => t.id) },
     continuous: { persons: BASIC_PERSONS },
     future: { persons: BASIC_PERSONS },

@@ -15,7 +15,10 @@
   import { createRound, score, type Round } from './lib/queue.ts';
   import { drawer, pool, type Question } from './lib/questions.ts';
   import { mulberry32 } from './lib/rng.ts';
-  import { clearProgress, loadProgress, recordRound, saveProgress, type Progress } from './lib/progress.ts';
+  import { clearProgress, loadProgress, recordRound, saveProgress, today, type Progress } from './lib/progress.ts';
+  import { addWords, clearWords, dueWords, loadWords, review as scheduleWords, saveWords, type MyWords } from './lib/mywords.ts';
+  import ProgressPage from './components/ProgressPage.svelte';
+  import { ALL_WORDS } from './data/words.ts';
   import { isMode, topicById } from './lib/topics.ts';
   import { SITE_BASE } from './shared/site.ts';
   import type { Script } from './shared/script.ts';
@@ -31,6 +34,8 @@
   let more = $state<((n: number) => Question[]) | null>(null);
   let error = $state('');
   let progress = $state<Progress>(loadProgress());
+  let myWords = $state<MyWords>(loadWords());
+  const due = $derived(settings.progress ? dueWords(myWords, today()) : []);
   /** A theme's words to practise (from a Vocabulary page), kept for "Another round". */
   let practice = $state<{ words: Word[]; direction: 'recognise' | 'recall' } | null>(null);
 
@@ -80,15 +85,21 @@
     error = '';
     const rng = mulberry32(seed());
     const s = $state.snapshot(settings) as Settings;
-    const all = practice ? pool('vocab', { ...s, vocab: { ...s.vocab, direction: practice.direction } }, rng, practice.words) : pool(s.mode, s, rng);
+    // “My words that are due”: the vocabulary drill on those words only.
+    const mine = !practice && s.mode === 'vocab' && s.vocab.source === 'mine' ? due.map((w) => ALL_WORDS.find((x) => x.kk === w)).filter((w) => !!w) : undefined;
+    if (mine && !mine.length) {
+      error = 'None of your words are due today. Come back tomorrow, or practise a theme.';
+      return;
+    }
+    const all = practice ? pool('vocab', { ...s, vocab: { ...s.vocab, direction: practice.direction } }, rng, practice.words) : pool(s.mode, s, rng, mine);
     const draw = drawer(all, rng);
     const unlimited = s.count === 0 && !practice;
-    const qs = draw(practice ? practice.words.length : unlimited ? 15 : s.count);
+    const qs = draw(practice ? practice.words.length : mine ? mine.length : unlimited ? 15 : s.count);
     if (!qs.length) {
       error = 'No questions match these settings.';
       return;
     }
-    more = unlimited ? draw : null;
+    more = unlimited && !mine ? draw : null;
     round = createRound(qs);
     screen = 'drill';
     if (!practice) settings.lastDrill = s.mode;
@@ -116,21 +127,47 @@
       progress = recordRound(progress, settings.mode, sc.percent);
       saveProgress(progress);
     }
+    // Opt-in: every vocabulary and listening word answered is scheduled for review (src/lib/mywords.ts).
+    if (settings.progress) {
+      const results = r.entries.filter((e) => e.attempts > 0 && /^(vocab|listen):/.test(e.q.key)).map((e) => ({ word: e.q.key.replace(/^(vocab|listen):/, ''), right: e.firstTryCorrect === true }));
+      if (results.length) {
+        myWords = scheduleWords(myWords, results, today());
+        saveWords(myWords);
+      }
+    }
   }
 
   function setProgress(on: boolean) {
     settings.progress = on;
     if (!on) {
       clearProgress();
+      clearWords();
       progress = {};
+      myWords = {};
     }
+  }
+
+  function addToMyWords(list: string[]) {
+    myWords = addWords(myWords, list, today());
+    saveWords(myWords);
+  }
+  function removeWord(w: string) {
+    const { [w]: _, ...rest } = myWords;
+    myWords = rest;
+    saveWords(myWords);
+  }
+  function reviewDue() {
+    settings.mode = 'vocab';
+    settings.vocab.source = 'mine';
+    navigate(href({ page: 'drill', mode: 'vocab' }));
+    start();
   }
 
   function setScript(s: Script) {
     settings.script = s;
   }
 
-  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about');
+  const narrow = $derived(route.page === 'drill' || route.page === 'settings' || route.page === 'about' || route.page === 'progress');
   const navItems: [Route['page'], string][] = [
     ['learn', 'Learn'],
     ['drill', 'Drill'],
@@ -168,17 +205,19 @@
 
   <main id="main" class:narrow>
     {#if route.page === 'home'}
-      <Home {settings} oncontinue={continueDrill} />
+      <Home {settings} oncontinue={continueDrill} due={due.length} onreview={reviewDue} />
     {:else if route.page === 'learn' && route.topic}
       <LearnPage topic={route.topic} {settings} />
     {:else if route.page === 'learn' || (route.page === 'drill' && !route.mode)}
       <LearnIndex {settings} {progress} />
     {:else if route.page === 'vocabulary' && route.theme}
-      <WordsTheme id={route.theme} script={settings.script} onpractise={practise} />
+      <WordsTheme id={route.theme} script={settings.script} onpractise={practise} progressOn={settings.progress} {myWords} onadd={addToMyWords} />
     {:else if route.page === 'vocabulary'}
       <WordsIndex script={settings.script} />
     {:else if route.page === 'settings'}
       <SettingsPage bind:settings onprogress={setProgress} />
+    {:else if route.page === 'progress'}
+      <ProgressPage {settings} {progress} {myWords} {due} onprogress={setProgress} onremove={removeWord} onreview={reviewDue} />
     {:else if route.page === 'about'}
       <About />
     {:else if route.page === 'drill' && route.mode && !isMode(route.mode)}
@@ -190,11 +229,12 @@
     {:else if screen === 'end' && round}
       <EndScreen {round} script={settings.script} onagain={start} onsettings={() => { screen = 'setup'; practice = null; }} />
     {:else}
-      <Setup bind:settings loading={false} {error} onstart={start} />
+      <Setup bind:settings loading={false} {error} onstart={start} due={due.length} />
     {/if}
   </main>
 
   <footer class="foot">
+    <a class="btn quiet" href={href({ page: 'progress' })}>Your progress</a>
     <a class="btn quiet" href={href({ page: 'settings' })}>Settings</a>
     <a class="btn quiet" href={href({ page: 'about' })}>About &amp; sources</a>
     <label class="theme">

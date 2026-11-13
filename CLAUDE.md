@@ -2,8 +2,12 @@
 
 Static, no-login app (Svelte 5 + Vite + TypeScript strict), the Kazakh sibling of ../Krotik (Russian): same stack,
 layout and conventions, much smaller so far. No backend, no analytics. Settings in localStorage `korti.settings.v1`;
-progress is **opt-in** (`settings.progress`, off by default): per drill only rounds, last score and date, under
-`korti.progress.v1`, deleted when turned off. Never store answers or typed text.
+progress is **opt-in** (`settings.progress`, off by default): per drill only rounds, last score and date
+(`korti.progress.v1`), and “my words” (`src/lib/mywords.ts`, `korti.words.v1`: per word only its Leitner box and the
+dates added and due; right first time → next box, 1/3/7/14/30/60 days; wrong → box 0, tomorrow). Words answered in
+vocabulary and listening drills are scheduled; themes have “Add all to my words”; the vocabulary drill can take “My
+words that are due”; `/progress/` lists both. All deleted when progress is turned off. Never store answers or typed
+text, and keep the Settings and progress pages' description of what is kept exact.
 
 ## Commands (Node ≥ 22.12)
 On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PATH` first.

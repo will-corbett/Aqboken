@@ -3,7 +3,7 @@
  *   /                 Home                 /learn/  /learn/<topic>/
  *   /drill/           Choose a drill       /drill/<topic>/  that drill's settings
  *   /vocabulary/      Themes               /vocabulary/<theme>/
- *   /settings/  /about/
+ *   /settings/  /progress/ (opt-in, this browser only)  /about/
  */
 import { SITE_BASE } from '../shared/site.ts';
 
@@ -13,6 +13,7 @@ export type Route =
   | { page: 'drill'; mode?: string }
   | { page: 'vocabulary'; theme?: string }
   | { page: 'settings' }
+  | { page: 'progress' }
   | { page: 'about' };
 
 export function parsePath(pathname: string): Route {
@@ -27,6 +28,8 @@ export function parsePath(pathname: string): Route {
       return b ? { page: 'vocabulary', theme: b } : { page: 'vocabulary' };
     case 'settings':
       return { page: 'settings' };
+    case 'progress':
+      return { page: 'progress' };
     case 'about':
       return { page: 'about' };
     default:
@@ -46,6 +49,8 @@ export function pathOf(r: Route): string {
       return r.theme ? `vocabulary/${r.theme}/` : 'vocabulary/';
     case 'settings':
       return 'settings/';
+    case 'progress':
+      return 'progress/';
     case 'about':
       return 'about/';
   }

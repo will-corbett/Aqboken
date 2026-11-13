@@ -144,6 +144,7 @@ const pages: Page[] = [
   { route: { page: 'drill' }, description: 'Drills for every Kazakh grammar topic.', body: `<h1>Drills</h1>${topicList}`, index: false },
   { route: { page: 'vocabulary' }, description: `${ALL_WORDS.length} everyday Kazakh words in ${THEMES.length} themes, with their forms and practice both ways round.`, body: `<h1>Vocabulary</h1>${themeList}`, index: true },
   { route: { page: 'settings' }, description: 'Körti settings: script, keyboard, progress and theme.', body: '<h1>Settings</h1>', index: false },
+  { route: { page: 'progress' }, description: 'Your progress on Körti, kept only in your browser.', body: '<h1>Your progress</h1>', index: false },
   {
     route: { page: 'about' },
     description: 'About Körti: how its Kazakh is made by rule and checked against Wiktionary, the Latin alphabet, and sources.',

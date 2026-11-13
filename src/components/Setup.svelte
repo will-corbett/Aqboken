@@ -7,7 +7,7 @@
   import type { Settings } from '../lib/settings.ts';
   import Kz from './Kz.svelte';
 
-  let { settings = $bindable(), loading, error, onstart }: { settings: Settings; loading: boolean; error: string; onstart: () => void } = $props();
+  let { settings = $bindable(), loading, error, onstart, due = 0 }: { settings: Settings; loading: boolean; error: string; onstart: () => void; due?: number } = $props();
   const t = $derived(topicById(settings.mode)!);
   const CASE_OPTS = CASES.filter((c) => c !== 'nom');
 
@@ -107,8 +107,11 @@
       </fieldset>
       <p class="muted small">Most words are read by a computer voice (it says so when it plays); a few are native recordings.</p>
     {:else if settings.mode === 'vocab'}
+      {#if settings.progress}
+        {@render radios('Words', settings.vocab.source, [['themes', 'From themes'], ['mine', `My words that are due (${due})`]], (v) => (settings.vocab.source = v as 'themes'))}
+      {/if}
       {@render radios('Direction', settings.vocab.direction, [['recognise', 'Kazakh → English (choose)'], ['recall', 'English → Kazakh (type)']], (v) => (settings.vocab.direction = v as 'recognise'))}
-      <fieldset>
+      <fieldset hidden={settings.progress && settings.vocab.source === 'mine'}>
         <legend>Themes</legend>
         <div class="opts">
           {#each THEMES as th (th.id)}

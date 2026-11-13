@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Settings } from '../lib/settings.ts';
   import Kz from './Kz.svelte';
+  import { href } from '../lib/router.ts';
   let { settings = $bindable(), onprogress }: { settings: Settings; onprogress: (on: boolean) => void } = $props();
 </script>
 
@@ -22,7 +23,7 @@
 </section>
 <section class="card">
   <h2>Your progress</h2>
-  <p>If you turn this on, Körti remembers, for each drill, how many rounds you’ve played, your last score and the date. Only in this browser: nothing is sent anywhere. Turning it off deletes it.</p>
+  <p>If you turn this on, Körti remembers, for each drill, how many rounds you’ve played, your last score and the date; and for each word you practise, when it’s next due for review (“my words”). Only in this browser: nothing is sent anywhere. Turning it off deletes it. See it on <a href={href({ page: 'progress' })}>Your progress</a>.</p>
   <label class="opt"><input type="checkbox" checked={settings.progress} onchange={(e) => onprogress((e.currentTarget as HTMLInputElement).checked)} /> Keep my progress</label>
 </section>
 <section class="card">
