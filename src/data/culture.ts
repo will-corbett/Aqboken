@@ -49,16 +49,6 @@ export const CULTURE: CultureLink[] = [
     checked: '2026-11-13',
   },
   {
-    title: 'Tilqural',
-    url: 'https://tilqural.kz/',
-    type: 'course',
-    level: 'A1–C1',
-    topic: 'language',
-    about: 'An interactive self-study course with lessons, texts, videos, phrases and a dictionary, and a mobile app.',
-    note: 'Free; an account keeps your progress. Interface in Kazakh, Russian or English.',
-    checked: '2026-11-13',
-  },
-  {
     title: '50LANGUAGES: Kazakh for English speakers',
     url: 'https://www.goethe-verlag.com/book2/EN/ENKK/ENKK002.HTM',
     type: 'course',
