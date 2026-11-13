@@ -11,6 +11,9 @@ The Kazakh sibling of Krotik (Russian), on the same stack and design.
 - **Drill**: one drill per topic, with settings (which cases, persons, positive/negative, number ranges…). A wrong
   answer comes back 10 cards later; a round ends when everything has been answered right once.
 - **Vocabulary**: 283 words in 14 themes (A1–A2), each with its forms, practised both ways round.
+- **Audio**: every word and every drill answer can be heard: native recordings (Lingua Libre, 31 words so far),
+  otherwise a labelled computer voice (Piper, trained on ISSAI's KazakhTTS2). A **Listening** drill: hear a word,
+  choose its meaning or write it down.
 
 ## How the Kazakh is made and checked
 
@@ -32,6 +35,7 @@ npm test             # unit tests (engine + every drill's questions)
 npm run check        # type checks
 npm run data:fetch   # once: the Kazakh Wiktionary extract (38 MB) into data-raw/
 npm run data:check   # the Wiktionary check
+npm run audio:tts    # computer-voice audio (needs Python with scripts/requirements-audio.txt and the voice in data-raw/piper/)
 npm run build        # dist/: the app plus a prerendered HTML file for every page, sitemap.xml, 404.html
 ```
 

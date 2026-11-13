@@ -2,7 +2,8 @@
   import { tick } from 'svelte';
   import { RETRY_GAP, answer, clearedCount, current, endRound, extendRound, isFinished, type Round } from '../lib/queue.ts';
   import { checkAnswer, type CheckResult } from '../lib/check.ts';
-  import type { Question } from '../lib/questions.ts';
+  import { speakText, type Question } from '../lib/questions.ts';
+  import Hear from './Hear.svelte';
   import type { Settings } from '../lib/settings.ts';
   import { toLatin } from '../shared/script.ts';
   import Keyboard from './Keyboard.svelte';
@@ -25,6 +26,7 @@
   let field = $state<HTMLInputElement>();
   let nextButton = $state<HTMLButtonElement>();
   let choiceButtons = $state<HTMLButtonElement[]>([]);
+  let player = $state<Hear>();
 
   const entry = $derived(current(round));
   const q = $derived(entry?.q);
@@ -102,9 +104,17 @@
 
     <div class="card prompt">
       <p class="task">{q.task}</p>
-      <h1 id="prompt" class="word" class:en={q.promptLang === 'en'}>
-        {#if q.promptLang === 'kk'}<Kz text={q.prompt} {script} stacked />{:else}{q.prompt}{/if}
-      </h1>
+      {#if q.listen}
+        <h1 id="prompt" class="visually-hidden">Listen</h1>
+        <div class="listen">
+          {#key q.key}<Hear bind:this={player} text={q.listen} autoplay label="Play again" credit={phase === 'feedback'} />{/key}
+          <button type="button" class="btn quiet" onclick={() => player?.play(0.7)}>Slower</button>
+        </div>
+      {:else}
+        <h1 id="prompt" class="word" class:en={q.promptLang === 'en'}>
+          {#if q.promptLang === 'kk'}<Kz text={q.prompt} {script} stacked />{:else}{q.prompt}{/if}
+        </h1>
+      {/if}
       {#if q.gloss}<p class="gloss">{q.gloss}</p>{/if}
       {#if q.cue}<p class="cue">“{q.cue}”</p>{/if}
 
@@ -188,7 +198,9 @@
           {:else if !result.correct}
             <p class="typed">It comes back {round.queue.length > RETRY_GAP ? `in ${RETRY_GAP} cards` : 'at the end of the round'}.</p>
           {/if}
+          {#if q.listen && q.answerLang !== 'kk'}<p class="heard">You heard <strong><Kz text={q.listen} {script} /></strong></p>{/if}
           <p class="explain">{#if script === 'latn'}{toLatin(q.explain)}{:else}{q.explain}{/if}</p>
+          {#if !q.listen && speakText(q)}<p class="hear-line"><Hear text={speakText(q)!} /></p>{/if}
         </div>
       {/if}
     </div>
@@ -399,5 +411,25 @@
   }
   .explain {
     margin: 8px 0 0;
+  }
+  .hear-line {
+    margin: 8px 0 0;
+  }
+  .heard {
+    margin: 4px 0;
+    font-size: 1.2rem;
+  }
+  .listen {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0;
+  }
+  .listen :global(.hear-btn) {
+    font-size: 1.15rem;
+    min-height: 52px;
+    padding: 0.4em 1.1em;
+    border-color: var(--accent);
   }
 </style>

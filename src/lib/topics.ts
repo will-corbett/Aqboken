@@ -1,5 +1,5 @@
 /** The one list of topics (Home, Learn index and Drill page all use it). Within a group: most basic first. */
-export type Mode = 'alphabet' | 'harmony' | 'plural' | 'copula' | 'possessive' | 'cases' | 'pronouns' | 'present' | 'past' | 'questions' | 'numbers' | 'vocab';
+export type Mode = 'alphabet' | 'harmony' | 'plural' | 'copula' | 'possessive' | 'cases' | 'pronouns' | 'present' | 'past' | 'questions' | 'numbers' | 'vocab' | 'listen';
 
 export interface Topic {
   id: Mode;
@@ -25,6 +25,7 @@ export const TOPICS: Topic[] = [
   { id: 'past', title: 'Past tense', kk: 'Жедел өткен шақ', group: 'Verbs', level: 'A1', blurb: 'бардым, келдік, айтты, and the negative бармадым.', learn: true },
   { id: 'questions', title: 'Yes/no questions', kk: 'Сұраулық шылау', group: 'Sentences', level: 'A1', blurb: 'The particle ма/ме/ба/бе/па/пе: Бұл кітап па?', learn: true },
   { id: 'numbers', title: 'Numbers', kk: 'Сан есім', group: 'Numbers', level: 'A1', blurb: 'From бір to мың, and years: екі мың жиырма алты.', learn: true },
+  { id: 'listen', title: 'Listening', kk: 'Тыңдалым', group: 'Listening', level: 'A1–A2', blurb: 'Hear a word, then choose its meaning or write it down.', learn: false },
   { id: 'vocab', title: 'Vocabulary', kk: 'Сөздік', group: 'Words', level: 'A1–A2', blurb: 'The words of the Vocabulary themes, both ways round.', learn: false },
 ];
 

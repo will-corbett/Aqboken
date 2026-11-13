@@ -55,6 +55,8 @@ export interface Question {
   choiceLang?: 'kk' | 'en';
   /** Other forms of the same word, to say what a wrong answer was. */
   others?: { label: string; form: string }[];
+  /** Listening: the Kazakh played as the prompt (the prompt itself is hidden until answered). */
+  listen?: string;
   /** The part before the ending, to highlight the ending in the answer. */
   base?: string;
   explain: string;
@@ -445,6 +447,47 @@ export function vocabQs(s: Settings, rng: Rng, words?: Word[]): Question[] {
   });
 }
 
+// ─── What to say aloud ──
+
+/**
+ * The Kazakh a question's audio says: the answer in its frame (Мен барамын., менің кітабым, Бұл кітап па?), or the
+ * Kazakh prompt for questions answered in English or digits. Undefined for the alphabet.
+ */
+export function speakText(q: Question): string | undefined {
+  if (q.mode === 'alphabet') return undefined;
+  if (q.listen) return q.listen;
+  if (q.mode === 'questions') return `${q.frame![0]} ${q.answer}${q.frame![1]}`;
+  if (q.answerLang === 'kk') return q.frame ? `${q.frame[0]} ${q.answer}${q.frame[1]}`.trim() : q.answer;
+  return q.promptLang === 'kk' ? q.prompt : undefined;
+}
+
+// ─── Listening ─────────────────────────────────────────────────────────────────────────────────────────────
+
+function listenQs(s: Settings, rng: Rng): Question[] {
+  const ids = s.listen.themes.length ? s.listen.themes : THEMES.map((t) => t.id);
+  const words = THEMES.filter((t) => ids.includes(t.id)).flatMap((t) => t.words);
+  if (s.listen.kind === 'dictation') {
+    return words.map((w) => ({
+      key: `listen:${w.kk}`,
+      mode: 'listen' as const,
+      task: 'Write what you hear',
+      prompt: w.kk,
+      promptLang: 'kk' as const,
+      listen: w.kk,
+      answer: w.kk,
+      answerLang: 'kk' as const,
+      explain: `You heard ${w.kk}, “${w.en}”.`,
+    }));
+  }
+  return vocabQs({ ...s, vocab: { direction: 'recognise', themes: ids } }, rng, words).map((q) => ({
+    ...q,
+    key: q.key.replace(/^vocab:/, 'listen:'),
+    mode: 'listen' as const,
+    task: 'What did you hear? Choose the meaning',
+    listen: q.prompt,
+  }));
+}
+
 // ─── Rounds ────────────────────────────────────────────────────────────────────────────────────────────────
 
 export function pool(mode: Mode, s: Settings, rng: Rng, words?: Word[]): Question[] {
@@ -473,6 +516,8 @@ export function pool(mode: Mode, s: Settings, rng: Rng, words?: Word[]): Questio
       return numbers(s);
     case 'vocab':
       return vocabQs(s, rng, words);
+    case 'listen':
+      return listenQs(s, rng);
   }
 }
 

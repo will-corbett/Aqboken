@@ -28,6 +28,22 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
 - Kazakh hasn't been reviewed by a native speaker yet (the beta note says so). Our own sentences stay short and
   pattern-based; don't write long Kazakh prose until a reviewer is available.
 
+- Audio (owner's decision 2026-11-13): open native recordings of Kazakh are rare (Wikimedia Commons had 142, 31 of
+  our words), so: **native recordings where they exist, else a computer voice, always labelled as such**.
+  - Native: `npm run audio:native` (`scripts/fetch-recordings.ts`) takes Lingua Libre / Category:Kazakh pronunciation
+    files that record exactly one of our words, CC0 / CC BY / CC BY-SA / public domain only, into
+    `public/audio/native/` with credits in `src/data/recordings.json` (both committed; it keeps earlier downloads
+    and waits out Commons' rate limits). Credited where it plays and on the About page.
+  - Computer voice: Piper with kk_KZ-issai-high (voice MIT; trained on ISSAI KazakhTTS2, CC BY 4.0), speaker 4.
+    `npm run audio:texts` lists every vocabulary word and the spoken answer of every drill question
+    (`speakText` in questions.ts) in `audio-tts/wanted.tsv`; `scripts/tts.py` voices the missing ones into
+    `public/audio/tts/<audioKey>.mp3` (gitignored; 40 kbps mono). File names are a hash of the text
+    (`src/shared/audio.ts`), so the app needs no list; bump `VOICE` there to remake every file. Locally: a Python venv
+    with `pip install -r scripts/requirements-audio.txt` and the voice in `data-raw/piper/` (see the workflow).
+    In CI the files are cached between runs and only new texts are voiced; a failure there never blocks a deploy.
+  - `Hear.svelte` plays native first, else the computer voice ("Computer voice, not a native speaker"), and says
+    "No audio yet" if the file is missing. Listening drill (`listen`): hear a word, choose its meaning or write it.
+
 ## Layout
 - `src/shared/kazakh.ts` — harmony (`harmonyOf`: last vowel; и/у after a consonant count front/back, after a vowel
   they're glides; 98.3% of Wiktionary plurals), last-sound classes (`finalClass`: V G L N Z K), suffix tables

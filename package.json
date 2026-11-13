@@ -15,7 +15,10 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "test": "vitest run",
     "data:fetch": "mkdir -p data-raw && curl -sSL -o data-raw/kaikki-kazakh.jsonl https://kaikki.org/dictionary/Kazakh/kaikki.org-dictionary-Kazakh.jsonl",
-    "data:check": "tsx scripts/check-wiktionary.ts"
+    "data:check": "tsx scripts/check-wiktionary.ts",
+    "audio:texts": "tsx scripts/audio-texts.ts",
+    "audio:tts": "npm run audio:texts && python3 scripts/tts.py data-raw/piper",
+    "audio:native": "tsx scripts/fetch-recordings.ts"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^7.3.1",

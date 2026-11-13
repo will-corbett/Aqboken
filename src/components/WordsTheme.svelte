@@ -5,6 +5,7 @@
   import { plural, present, past } from '../shared/kazakh.ts';
   import type { Script } from '../shared/script.ts';
   import Kz from './Kz.svelte';
+  import Hear from './Hear.svelte';
   let { id, script, onpractise }: { id: string; script: Script; onpractise: (words: Word[], direction: 'recognise' | 'recall') => void } = $props();
   const t = $derived(themeById(id));
   const POS: Record<string, string> = { n: 'noun', v: 'verb', adj: 'adjective', adv: 'adverb', pron: 'pronoun', phr: 'phrase', num: 'number', post: 'postposition', conj: 'conjunction' };
@@ -24,7 +25,7 @@
       <tbody>
         {#each t.words as w (w.kk)}
           <tr>
-            <td class="kkw"><Kz text={w.kk} {script} /></td>
+            <td class="kkw"><Hear text={w.kk} icon credit={false} /> <Kz text={w.kk} {script} /></td>
             <td>{w.en} <span class="muted small">{POS[w.pos]}</span></td>
             <td class="small">
               {#if w.pos === 'n' && !w.noDrill && !w.kk.includes(' ')}<Kz text={plural(w.kk, nounOptions(w.kk))} mark={w.kk} {script} />
@@ -36,7 +37,7 @@
       </tbody>
     </table>
   </div>
-  <p class="muted small">Forms: nouns in the plural; verbs as “I do” and “I did” (stem + ending highlighted).</p>
+  <p class="muted small">Forms: nouns in the plural; verbs as “I do” and “I did” (stem + ending highlighted). Audio: native recordings where there are any (credited on the <a href={href({ page: 'about' })}>About page</a>); otherwise a computer voice trained on ISSAI’s KazakhTTS2 (CC BY 4.0), which can sound unnatural.</p>
 {:else}
   <p>No theme called “{id}”. <a href={href({ page: 'vocabulary' })}>All themes</a></p>
 {/if}
@@ -64,6 +65,7 @@
   }
   .kkw {
     font-size: 1.15rem;
+    white-space: nowrap;
   }
   .small {
     font-size: 0.85rem;

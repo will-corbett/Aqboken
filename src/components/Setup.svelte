@@ -21,7 +21,8 @@
       (settings.mode === 'copula' && !settings.copula.persons.length) ||
       (settings.mode === 'present' && !settings.present.persons.length) ||
       (settings.mode === 'past' && !settings.past.persons.length) ||
-      (settings.mode === 'vocab' && !settings.vocab.themes.length),
+      (settings.mode === 'vocab' && !settings.vocab.themes.length) ||
+      (settings.mode === 'listen' && !settings.listen.themes.length),
   );
 </script>
 
@@ -86,6 +87,17 @@
     {:else if settings.mode === 'numbers'}
       {@render radios('Numbers', settings.numbers.range, [['to10', '0–10'], ['to100', '11–100'], ['to1000', '101–999'], ['years', 'Years (1900–2030)']], (v) => (settings.numbers.range = v as 'to10'))}
       {@render radios('Direction', settings.numbers.direction, [['write', 'Digits → words'], ['read', 'Words → digits']], (v) => (settings.numbers.direction = v as 'write'))}
+    {:else if settings.mode === 'listen'}
+      {@render radios('What to do', settings.listen.kind, [['meaning', 'Choose the meaning'], ['dictation', 'Write what you hear']], (v) => (settings.listen.kind = v as 'meaning'))}
+      <fieldset>
+        <legend>Themes</legend>
+        <div class="opts">
+          {#each THEMES as th (th.id)}
+            <label class="opt"><input type="checkbox" checked={settings.listen.themes.includes(th.id)} onchange={() => (settings.listen.themes = toggle(settings.listen.themes, th.id))} /> {th.title} <span class="muted">{th.level}</span></label>
+          {/each}
+        </div>
+      </fieldset>
+      <p class="muted small">Most words are read by a computer voice (it says so when it plays); a few are native recordings.</p>
     {:else if settings.mode === 'vocab'}
       {@render radios('Direction', settings.vocab.direction, [['recognise', 'Kazakh → English (choose)'], ['recall', 'English → Kazakh (type)']], (v) => (settings.vocab.direction = v as 'recognise'))}
       <fieldset>
@@ -149,6 +161,9 @@
   }
   .start {
     min-width: 160px;
+  }
+  .small {
+    font-size: 0.9rem;
   }
   .error {
     color: var(--wrong);

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ALL_WORDS } from '../data/words.ts';
   import { NOT_IN_WIKTIONARY, WIKTIONARY_ERRORS } from '../data/exceptions.ts';
+  import { RECORDINGS } from '../lib/audio.ts';
 </script>
 
 <h1>About Körti</h1>
@@ -18,5 +19,25 @@
 <h2>The Latin alphabet</h2>
 <p>The Latin letters follow the alphabet approved in April 2021. Letters used only in Russian loanwords (ё, ц, ч, щ, э, ю, я, ъ, ь) have no letter of their own; Körti writes their sounds, which is an approximation.</p>
 
+<h2>Audio</h2>
+<p>Open recordings of Kazakh by native speakers are still rare. Where one exists for a word ({Object.keys(RECORDINGS).length} words so far), Körti plays it; everything else is read by a <strong>computer voice</strong>, and the page says which you’re hearing.</p>
+<ul>
+  <li>Native recordings: from <a href="https://lingualibre.org" rel="noopener">Lingua Libre</a> via Wikimedia Commons, hosted with the site:
+    <ul class="recs">
+      {#each Object.entries(RECORDINGS) as [word, r] (word)}
+        <li><span lang="kk">{word}</span>: {r.author}, <a href={r.page} rel="noopener">file</a>, {#if r.licenceUrl}<a href={r.licenceUrl} rel="noopener">{r.licence}</a>{:else}{r.licence}{/if}</li>
+      {/each}
+    </ul>
+  </li>
+  <li>Computer voice: <a href="https://github.com/OHF-Voice/piper1-gpl" rel="noopener">Piper</a> with the Kazakh voice kk_KZ-issai-high (MIT), trained on <a href="https://github.com/IS2AI/Kazakh_TTS" rel="noopener">KazakhTTS2</a> by ISSAI, Nazarbayev University (CC BY 4.0). It is made when the site is built; it can stress or pronounce a word wrongly, so trust a native recording over it.</li>
+</ul>
+
 <h2>Fonts</h2>
 <p>PT Sans and PT Serif (ParaType, SIL Open Font License), which include every Kazakh letter.</p>
+
+<style>
+  .recs {
+    columns: 2 16rem;
+    font-size: 0.9rem;
+  }
+</style>

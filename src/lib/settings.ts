@@ -26,6 +26,7 @@ export interface Settings {
   past: { persons: Person[]; polarity: 'pos' | 'neg' | 'both' };
   numbers: { range: 'to10' | 'to100' | 'to1000' | 'years'; direction: 'write' | 'read' };
   vocab: { direction: 'recognise' | 'recall'; themes: string[] };
+  listen: { kind: 'meaning' | 'dictation'; themes: string[] };
 }
 
 const KEY = 'korti.settings.v1';
@@ -49,6 +50,7 @@ export function defaults(): Settings {
     past: { persons: BASIC_PERSONS, polarity: 'pos' },
     numbers: { range: 'to100', direction: 'write' },
     vocab: { direction: 'recognise', themes: THEMES.filter((t) => t.level === 'A1').map((t) => t.id) },
+    listen: { kind: 'meaning', themes: THEMES.filter((t) => t.level === 'A1').map((t) => t.id) },
   };
 }
 
@@ -66,6 +68,8 @@ export function loadSettings(): Settings {
     const s = out as unknown as Settings;
     s.vocab.themes = s.vocab.themes.filter((id) => THEMES.some((t) => t.id === id));
     if (!s.vocab.themes.length) s.vocab.themes = d.vocab.themes;
+    s.listen.themes = s.listen.themes.filter((id) => THEMES.some((t) => t.id === id));
+    if (!s.listen.themes.length) s.listen.themes = d.listen.themes;
     for (const k of ['copula', 'present', 'past'] as const) s[k].persons = s[k].persons.filter((p) => PERSONS.includes(p));
     return s;
   } catch {

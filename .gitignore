@@ -4,3 +4,5 @@ data-raw/
 test-results/
 .DS_Store
 *.log
+audio-tts/
+public/audio/tts/
