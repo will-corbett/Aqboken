@@ -42,13 +42,13 @@ const LATIN = /[a-zäğıñöşūü]/i;
 
 /** Answer comparison: NFC, lower case, spaces collapsed; Latin input is compared with the answer in Latin. */
 export function normalise(input: string): string {
-  return input.normalize('NFC').trim().replace(/\s+/g, ' ').replace(/[?!.,]+$/, '').toLowerCase();
+  return input.normalize('NFC').replace(/[\s?!.,]+$/, '').trim().replace(/\s+/g, ' ').toLowerCase();
 }
 
 export function sameAnswer(input: string, answer: string): boolean {
-  const i = input.normalize('NFC').trim().replace(/\s+/g, ' ').replace(/[?!.,]+$/, '');
+  const i = input.normalize('NFC').replace(/[\s?!.,]+$/, '').trim().replace(/\s+/g, ' ');
   if (!i) return false;
-  if (LATIN.test(i) && !/[а-яәғқңөұүһі]/i.test(i)) return latinLower(i) === latinLower(toLatin(answer.trim()));
+  if (LATIN.test(i) && !/[а-яәғқңөұүһі]/i.test(i)) return latinLower(i) === latinLower(toLatin(answer.normalize('NFC').replace(/[\s?!.,]+$/, '').trim().replace(/\s+/g, ' ')));
   return normalise(i) === normalise(answer);
 }
 

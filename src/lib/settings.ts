@@ -41,6 +41,8 @@ export interface Settings {
   conditional: { persons: Person[] };
   can: { persons: Person[]; polarity: 'pos' | 'neg' | 'both' };
   time: { kinds: ('time' | 'at' | 'ordinal' | 'date')[] };
+  translate: { direction: 'en-kk' | 'kk-en' | 'both' };
+  mixed: { topics: Mode[] };
 }
 
 const KEY = 'aqboken.settings.v1';
@@ -77,6 +79,8 @@ export function defaults(): Settings {
     conditional: { persons: BASIC_PERSONS },
     can: { persons: BASIC_PERSONS, polarity: 'both' },
     time: { kinds: ['time', 'at', 'ordinal', 'date'] },
+    translate: { direction: 'en-kk' },
+    mixed: { topics: ['plural', 'cases', 'possessive', 'present', 'past'] },
   };
 }
 

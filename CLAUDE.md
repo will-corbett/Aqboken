@@ -61,6 +61,17 @@ On this Mac, Node 22 is keg-only: `export PATH=/opt/homebrew/opt/node@22/bin:$PA
   reason. Shown under each word on theme pages, in vocabulary/listening feedback, and in other drills only when the
   highlighted word is exactly the answer form. Sentences are voiced too.
 
+- Sentence practice (group "Review"): `src/data/pairs.json` (written by `npm run data:sentences`) holds every
+  Kazakh–English Tatoeba pair of 2–10 words that a person has read and not excluded (`TATOEBA_DENY`: slogans, news
+  and politics, misspellings or Latin letters in Cyrillic, violence, alcohol, religion, mistranslations, in-jokes).
+  **Translate and compare** (`translate`, both directions; `selfMark`: exact match right, otherwise the learner compares
+  with the model and marks it; other Kazakh sentences with the same English are accepted). **Build the sentence**
+  (`build`, 3–8 words, never shown in order; the original order right, any other self-marked). **Find the mistake**
+  (`fix`): a real sentence with a subject pronoun whose present/past verb agrees with it; the verb is swapped for
+  another person's form; tap it and type it (changing the pronoun to agree is accepted too); “want to” constructions
+  are left out (келеді agrees with the possessive there). **Mixed review** (`mixed`): chosen topics round-robin, each
+  with its own settings. Answer comparison strips final punctuation and spaces (“аламын ?”).
+
 ## Layout
 - `src/shared/kazakh.ts` — harmony (`harmonyOf`: last vowel; и/у after a consonant count front/back, after a vowel
   they're glides; 98.3% of Wiktionary plurals), last-sound classes (`finalClass`: V G L N Z K), suffix tables

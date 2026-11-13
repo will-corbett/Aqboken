@@ -7,7 +7,7 @@
   import Sentence from './Sentence.svelte';
   import { sentenceFor, sentenceWithForm } from '../lib/sentences.ts';
   import type { Settings } from '../lib/settings.ts';
-  import { toLatin } from '../shared/script.ts';
+  import { sameAnswer, toLatin } from '../shared/script.ts';
   import Keyboard from './Keyboard.svelte';
   import Kz from './Kz.svelte';
 
@@ -29,6 +29,13 @@
   let nextButton = $state<HTMLButtonElement>();
   let choiceButtons = $state<HTMLButtonElement[]>([]);
   let player = $state<Hear>();
+  /** Self-marked questions (translate, build) waiting for the learner's own verdict. */
+  let selfPending = $state(false);
+  let markButton = $state<HTMLButtonElement>();
+  /** Build the sentence: indices into q.build, in the order placed. */
+  let built = $state<number[]>([]);
+  /** Find the mistake: the word tapped. */
+  let picked = $state<number | null>(null);
 
   const entry = $derived(current(round));
   const q = $derived(entry?.q);
@@ -47,7 +54,8 @@
 
   async function focusField() {
     await tick();
-    if (phase === 'feedback') nextButton?.focus();
+    if (phase === 'feedback') (selfPending ? markButton : nextButton)?.focus();
+    else if (q?.build) document.querySelector<HTMLButtonElement>('.pool .wchip:not([disabled])')?.focus();
     else if (q?.choices) choiceButtons[0]?.focus();
     else field?.focus({ preventScroll: true });
   }
@@ -60,16 +68,41 @@
   function grade(value: string) {
     if (!q || phase !== 'answering') return;
     typed = value;
-    result = value ? checkAnswer(q, value) : { correct: false };
+    if (q.fix) {
+      const f = q.fix;
+      const ok = !!value && ((picked === f.wrong && sameAnswer(value, q.answer)) || (!!f.alt && picked === f.alt.word && sameAnswer(value, f.alt.form)));
+      result = { correct: ok };
+    } else if (q.build) {
+      result = { correct: value === q.answer };
+      selfPending = !!value && !result.correct;
+    } else {
+      result = value ? checkAnswer(q, value) : { correct: false };
+      // Translate: anything but an exact match is compared with the model and marked by the learner.
+      selfPending = !!q.selfMark && !!value && !result.correct;
+    }
     wasRetry = (entry?.attempts ?? 0) > 0;
     phase = 'feedback';
+  }
+  function mark(right: boolean) {
+    result = { correct: right };
+    selfPending = false;
+    tick().then(() => nextButton?.focus());
+  }
+  function place(i: number) {
+    if (!q?.build || built.includes(i) || phase !== 'answering') return;
+    built = [...built, i];
+    if (built.length === q.build.length) tick().then(() => document.querySelector<HTMLButtonElement>('.check-build')?.focus());
   }
   function submit(e: Event) {
     e.preventDefault();
     if (phase === 'answering') {
-      if (!input.trim() || q?.choices) return;
+      if (q?.build) {
+        if (built.length === q.build.length) grade(built.map((i) => q!.build![i]).join(' '));
+        return;
+      }
+      if (!input.trim() || q?.choices || (q?.fix && picked === null)) return;
       grade(input);
-    } else next();
+    } else if (!selfPending) next();
   }
   function next() {
     if (!result) return;
@@ -79,6 +112,9 @@
     input = '';
     typed = '';
     result = null;
+    built = [];
+    picked = null;
+    selfPending = false;
     phase = 'answering';
     if (isFinished(r)) onfinish(r);
   }
@@ -145,8 +181,38 @@
               >
             {/each}
           </div>
+        {:else if q.build}
+          <p class="built" lang="kk" aria-label="Your sentence">
+            {#if !built.length}<span class="muted placeholder" lang="en">Tap the words in order</span>{/if}
+            {#each built as bi, k (bi)}<button type="button" class="wchip placed" disabled={phase === 'feedback'} onclick={() => (built = built.filter((_, j) => j !== k))} aria-label="{q.build[bi]} (take it out)">{show(q.build[bi]!)}</button>{/each}{#if built.length === q.build.length && q.buildEnd}<span class="end-punct">{q.buildEnd}</span>{/if}
+          </p>
+          <div class="pool" role="group" aria-label="Words to put in order" lang="kk">
+            {#each q.build as w, bi (bi)}
+              <button type="button" class="wchip" disabled={built.includes(bi) || phase === 'feedback'} onclick={() => place(bi)}>{show(w)}</button>
+            {/each}
+          </div>
+          {#if built.length && phase === 'answering'}<button type="button" class="btn quiet" onclick={() => (built = [])}>Start again</button>{/if}
+        {:else if q.fix}
+          <p class="fix-sentence" lang="kk" role="group" aria-label="The sentence: tap the wrong word">
+            {#each q.fix.pieces as pc, pi (pi)}{#if pc.word === undefined}{show(pc.text)}{:else}{@const w = pc.word}<button
+                  type="button"
+                  class="fw"
+                  class:on={picked === w}
+                  class:was-wrong={phase === 'feedback' && w === q.fix.wrong}
+                  disabled={phase === 'feedback'}
+                  aria-pressed={picked === w}
+                  onclick={() => {
+                    picked = w;
+                    field?.focus();
+                  }}>{show(pc.text)}</button
+                >{/if}{/each}
+          </p>
+          <label class="frame fix-input">
+            <span class="fix-label">{picked === null ? 'Tap the wrong word, then type it correctly:' : 'The right form:'}</span>
+            <input bind:this={field} bind:value={input} class:right={phase === 'feedback' && result?.correct} class:wrong={phase === 'feedback' && !result?.correct} readonly={phase === 'feedback'} lang="kk" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode={settings.keyboard ? 'none' : 'text'} />
+          </label>
         {:else}
-          <label class="frame">
+          <label class="frame" class:sentence-answer={q.selfMark}>
             <span class="visually-hidden">Your answer</span>
             {#if q.frame?.[0]}<span class="frame-text"><Kz text={q.frame[0]} {script} /></span>{/if}
             <input
@@ -167,38 +233,55 @@
         {/if}
         <div class="actions">
           {#if phase === 'answering'}
-            {#if !q.choices}<button class="btn primary" type="submit" disabled={!input.trim()}>Check</button>{/if}
+            {#if q.build}<button class="btn primary check-build" type="submit" disabled={built.length < q.build.length}>Check</button>
+            {:else if q.fix}<button class="btn primary" type="submit" disabled={picked === null || !input.trim()}>Check</button>
+            {:else if !q.choices}<button class="btn primary" type="submit" disabled={!input.trim()}>Check</button>{/if}
             <button class="btn quiet" type="button" onclick={() => grade('')}>I don’t know</button>
             {#if q.choices}<span class="muted hint">or press 1–{q.choices.length}</span>{/if}
-            {#if !q.choices && q.answerLang === 'kk'}
+            {#if !q.choices && !q.build && q.answerLang === 'kk'}
               <button class="btn quiet" type="button" aria-pressed={settings.keyboard} onclick={() => { settings.keyboard = !settings.keyboard; field?.focus(); }}>
                 <span aria-hidden="true">⌨</span> {settings.keyboard ? 'Hide keyboard' : 'Kazakh keyboard'}
               </button>
             {/if}
+          {:else if selfPending}
+            <span class="muted hint">Compare with the model below, then mark it.</span>
           {:else}
             <button class="btn primary" type="submit" bind:this={nextButton}>{!unlimited && result && isFinished(answer(round, result.correct, typed)) ? 'See results' : 'Next'}</button>
             <span class="muted hint">or press Enter</span>
           {/if}
         </div>
       </form>
-      {#if settings.keyboard && phase === 'answering' && !q.choices && q.answerLang === 'kk'}
+      {#if settings.keyboard && phase === 'answering' && !q.choices && !q.build && q.answerLang === 'kk'}
         <Keyboard oninsert={insert} onbackspace={() => (input = input.slice(0, -1))} {script} />
       {/if}
-      {#if phase === 'answering' && !q.choices && q.answerLang === 'kk'}
+      {#if phase === 'answering' && !q.choices && !q.build && q.answerLang === 'kk'}
         <p class="type-note muted">Type in Cyrillic or in the Latin alphabet.</p>
       {/if}
     </div>
 
     <div id="feedback" role="status" aria-live="polite">
       {#if phase === 'feedback' && result}
-        <div class="card feedback fade-in" class:ok={result.correct} class:bad={!result.correct}>
-          <p class="verdict">{result.correct ? 'Correct' : typed ? 'Not quite' : 'Answer'}</p>
+        <div class="card feedback fade-in" class:ok={!selfPending && result.correct} class:bad={!selfPending && !result.correct}>
+          <p class="verdict">{selfPending ? (q.build ? 'The original order' : 'A model answer') : result.correct ? (q.selfMark && typed ? 'Right' : 'Correct') : typed ? 'Not quite' : 'Answer'}</p>
           <p class="solution">
-            {#if q.answerLang === 'kk'}<strong><Kz text={q.answer} {script} mark={q.base ?? ''} /></strong>{#each q.accept ?? [] as a (a)}<span class="muted"> or </span><strong><Kz text={a} {script} /></strong>{/each}
+            {#if q.fix}<strong><Kz text={q.fix.original} {script} /></strong>
+            {:else if q.build}<strong><Kz text={q.answer + (q.buildEnd ?? '')} {script} /></strong>
+            {:else if q.answerLang === 'kk'}<strong><Kz text={q.answer} {script} mark={q.base ?? ''} /></strong>{#each q.accept ?? [] as a (a)}<span class="muted"> or </span><strong><Kz text={a} {script} /></strong>{/each}
             {:else if q.choiceLang === 'kk'}<strong>{show(q.answer)}</strong>
             {:else}<strong>{q.answer}</strong>{/if}
           </p>
-          {#if !result.correct && typed}
+          {#if q.selfMark && typed && (selfPending || !q.fix)}
+            <p class="typed">You wrote <span lang={q.answerLang === 'en' ? 'en' : 'kk'}>{q.answerLang === 'en' ? typed : show(typed)}</span>{selfPending ? '' : '.'}</p>
+            {#if selfPending}
+              <p class="muted">{q.explain}</p>
+              <div class="mark">
+                <button class="btn primary" type="button" bind:this={markButton} onclick={() => mark(true)}>I got it right</button>
+                <button class="btn" type="button" onclick={() => mark(false)}>Not quite: ask again later</button>
+              </div>
+            {/if}
+          {:else if q.fix && !result.correct}
+            <p class="typed">{#if picked !== null && picked !== q.fix.wrong && picked !== q.fix.alt?.word}You picked «{show(q.fix.pieces.find((p) => p.word === picked)?.text ?? '')}», but that word was right. {/if}The wrong word was «{show(q.fix.wrongForm)}»; it should be <strong lang="kk">{show(q.answer)}</strong>.</p>
+          {:else if !result.correct && typed}
             <p class="typed">
               You {q.choices ? 'chose' : 'typed'} <span lang="kk">{q.choiceLang === 'kk' ? show(typed) : typed}</span>{#if result.otherForm}, which is the <strong>{result.otherForm}</strong>{/if}.
               {#if !wasRetry}It comes back {round.queue.length > RETRY_GAP ? `in ${RETRY_GAP} cards` : 'at the end of the round'}.{/if}
@@ -207,9 +290,11 @@
             <p class="typed">It comes back {round.queue.length > RETRY_GAP ? `in ${RETRY_GAP} cards` : 'at the end of the round'}.</p>
           {/if}
           {#if q.listen && q.answerLang !== 'kk'}<p class="heard">You heard <strong><Kz text={q.listen} {script} /></strong></p>{/if}
-          <p class="explain">{#if script === 'latn'}{toLatin(q.explain)}{:else}{q.explain}{/if}</p>
+          {#if !selfPending && !(q.selfMark && !q.fix)}<p class="explain">{#if script === 'latn'}{toLatin(q.explain)}{:else}{q.explain}{/if}</p>{/if}
+          {#if q.mode === 'translate' && q.answerLang === 'kk' && !selfPending}<p class="muted">{q.prompt}</p>{/if}
           {#if !q.listen && speakText(q)}<p class="hear-line"><Hear text={speakText(q)!} /></p>{/if}
           {#if example}<Sentence row={example} {script} />{/if}
+          {#if q.source}<p class="src muted">Sentence: <a href="https://tatoeba.org/en/sentences/show/{q.source}" rel="noopener" target="_blank">Tatoeba #{q.source}</a>{q.sourceOwner ? `, by ${q.sourceOwner}` : ''} (CC BY 2.0 FR)</p>{/if}
         </div>
       {/if}
     </div>
@@ -420,6 +505,85 @@
   }
   .explain {
     margin: 8px 0 0;
+  }
+  .sentence-answer input {
+    flex-basis: 100%;
+    font-size: 1.25rem;
+  }
+  .built {
+    min-height: 3rem;
+    padding: 8px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .placeholder {
+    font-size: 0.95rem;
+  }
+  .pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 12px 0 8px;
+  }
+  .wchip {
+    font: 1.15rem var(--serif);
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    cursor: pointer;
+    min-height: 40px;
+  }
+  .wchip:disabled:not(.placed) {
+    opacity: 0.35;
+  }
+  .wchip.placed {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+  .end-punct {
+    font: 1.15rem var(--serif);
+  }
+  .fix-sentence {
+    font: 1.4rem/2 var(--serif);
+  }
+  .fw {
+    font: inherit;
+    border: 0;
+    border-bottom: 2px dotted var(--muted);
+    background: none;
+    color: var(--text);
+    padding: 0 2px;
+    cursor: pointer;
+  }
+  .fw.on {
+    background: var(--accent-soft);
+    border-bottom-color: var(--accent);
+  }
+  .fw.was-wrong {
+    background: var(--wrong-soft);
+    border-bottom: 2px solid var(--wrong);
+  }
+  .fix-input {
+    font-size: 1.2rem;
+  }
+  .fix-label {
+    font: 0.95rem var(--sans);
+    color: var(--muted);
+    flex-basis: 100%;
+  }
+  .mark {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 4px;
+  }
+  .src {
+    font-size: 0.85rem;
   }
   .hear-line {
     margin: 8px 0 0;

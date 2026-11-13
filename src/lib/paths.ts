@@ -52,6 +52,7 @@ export const PATHS: Path[] = [
       w('food', 'Bread, tea, and Kazakh favourites.'),
       w('describing', 'Big and small, hot and cold, colours.'),
       t('listen', 'Hear the words you’ve learned.'),
+      t('build', 'Put real sentences in order: see how Kazakh builds them.'),
     ],
   },
   {
@@ -80,6 +81,9 @@ export const PATHS: Path[] = [
       w('school', 'Study and work.'),
       w('verbs2', 'Forty more everyday verbs.'),
       t('perfect', '“I have been to …”: experience.'),
+      t('fix', 'Spot a verb that doesn’t agree with its subject.'),
+      t('translate', 'Translate real sentences, then compare.'),
+      t('mixed', 'Mix the topics you’ve learned, as in real use.'),
       t('vocab', 'Review your words.'),
     ],
   },

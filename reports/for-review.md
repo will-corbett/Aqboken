@@ -881,27 +881,31 @@ Every line of the Learn pages that contains Kazakh, with its English. Tables of 
 | T22 | Сан есім | Numbers | |
 | T23 | Уақыт пен күн | Time and dates | |
 | T24 | Тыңдалым | Listening | |
-| T25 | Сөздік | Vocabulary | |
-| T26 | чемпион | a Russian loanword (champion), quoted on the alphabet page for its letter ч. | |
-| T27 | юрист | a Russian loanword (lawyer), quoted on the alphabet page for its letter ю. | |
-| T28 | көмектес | the Kazakh name of the instrumental case (Көмектес септік). | |
-| T29 | досыммен | дос + -ым (my) + -мен (with): the possessive, then the case ending, each by the rules. | |
-| T30 | емеспін | емес (not) + -пін, the “I am” ending after a voiceless consonant, by the rules. | |
-| T31 | асқардың | Асқар, a man’s name, + the genitive -дың (after р), by the rules. | |
-| T32 | астанасы | астана (capital city) + the 3rd-person possessive -сы, by the rules. | |
-| T33 | отырмын | отыр- (sit, used as a helper for “right now”) + -мын: “Мен кітап оқып отырмын”. | |
-| T34 | үндестік | grammar term: үндестік заңы, the law of (vowel) harmony. | |
-| T35 | заңы | заң (law) + the 3rd-person possessive -ы, as in үндестік заңы. | |
-| T36 | жіктік | grammar term: жіктік жалғау, the personal ending. | |
-| T37 | тәуелдік | grammar term: тәуелдік жалғау, the possessive ending. | |
-| T38 | пен | and; the form of мен after a voiceless consonant (тәуелдік пен септік). | |
-| T39 | септеулік | grammar term: септеулік шылаулар, postpositions. | |
-| T40 | жіктеу | grammar term: жіктеу есімдіктері, personal pronouns. | |
-| T41 | есімдіктері | есімдік (pronoun) + -тер + -і, as in жіктеу есімдіктері. | |
-| T42 | сұраулық | grammar term: сұраулық шылау, the question particle. | |
-| T43 | тыңдалым | listening (as a language skill). | |
-| T44 | мамандықтар | мамандық (profession) + the plural -тар. | |
-| T45 | мезгілдері | мезгіл (season) + -дер + -і: жыл мезгілдері, the seasons of the year. | |
+| T25 | Аударма | Translate and compare | |
+| T26 | Сөйлем құрау | Build the sentence | |
+| T27 | Қатені тап | Find the mistake | |
+| T28 | Аралас қайталау | Mixed review | |
+| T29 | Сөздік | Vocabulary | |
+| T30 | чемпион | a Russian loanword (champion), quoted on the alphabet page for its letter ч. | |
+| T31 | юрист | a Russian loanword (lawyer), quoted on the alphabet page for its letter ю. | |
+| T32 | көмектес | the Kazakh name of the instrumental case (Көмектес септік). | |
+| T33 | досыммен | дос + -ым (my) + -мен (with): the possessive, then the case ending, each by the rules. | |
+| T34 | емеспін | емес (not) + -пін, the “I am” ending after a voiceless consonant, by the rules. | |
+| T35 | асқардың | Асқар, a man’s name, + the genitive -дың (after р), by the rules. | |
+| T36 | астанасы | астана (capital city) + the 3rd-person possessive -сы, by the rules. | |
+| T37 | отырмын | отыр- (sit, used as a helper for “right now”) + -мын: “Мен кітап оқып отырмын”. | |
+| T38 | үндестік | grammar term: үндестік заңы, the law of (vowel) harmony. | |
+| T39 | заңы | заң (law) + the 3rd-person possessive -ы, as in үндестік заңы. | |
+| T40 | жіктік | grammar term: жіктік жалғау, the personal ending. | |
+| T41 | тәуелдік | grammar term: тәуелдік жалғау, the possessive ending. | |
+| T42 | пен | and; the form of мен after a voiceless consonant (тәуелдік пен септік). | |
+| T43 | септеулік | grammar term: септеулік шылаулар, postpositions. | |
+| T44 | жіктеу | grammar term: жіктеу есімдіктері, personal pronouns. | |
+| T45 | есімдіктері | есімдік (pronoun) + -тер + -і, as in жіктеу есімдіктері. | |
+| T46 | сұраулық | grammar term: сұраулық шылау, the question particle. | |
+| T47 | тыңдалым | listening (as a language skill). | |
+| T48 | мамандықтар | мамандық (profession) + the plural -тар. | |
+| T49 | мезгілдері | мезгіл (season) + -дер + -і: жыл мезгілдері, the seasons of the year. | |
 
 ## 4. Drill questions and explanations
 
@@ -1105,6 +1109,42 @@ A sample of each drill: the task, the prompt, the hint, the expected answer, and
 - **D131** At what time? Write it in words (“at …”): *at 19:00* → **сағат он тоғызда**. сағат + the hour, and “at” is the locative on the last word: сағат он тоғызда. Times are said on the 24-hour clock.
 - **D132** What time is it? Write it in words: *02:00* → **сағат екі**. сағат + the hour: сағат екі. Times are said on the 24-hour clock.
 
+### Translate and compare (https://will-corbett.github.io/Aqboken/drill/translate/)
+
+- **D133** Say it in Kazakh: *This problem isn't easy to solve.* → **Бұл мәселені шешу оңай емес.**. Compare your sentence with this one. Other words and word orders can be just as right: count it right if it says the same thing with correct endings.
+- **D134** Say it in Kazakh: *The two are not comparable.* → **Екеуін салыстыруға болмайды.**. Compare your sentence with this one. Other words and word orders can be just as right: count it right if it says the same thing with correct endings.
+- **D135** Say it in Kazakh: *Goodnight!* → **Қайырлы түн!**. Compare your sentence with this one. Other words and word orders can be just as right: count it right if it says the same thing with correct endings.
+- **D136** Say it in Kazakh: *Is this your name?* → **Бұл сіздің атыңыз ба?**. Compare your sentence with this one. Other words and word orders can be just as right: count it right if it says the same thing with correct endings.
+- **D137** Say it in Kazakh: *The capital of Azerbaijan is Baku.* → **Әзірбайжанның басқаласы – Баку.**. Compare your sentence with this one. Other words and word orders can be just as right: count it right if it says the same thing with correct endings.
+- **D138** Say it in Kazakh: *I came earlier than him.* → **Мен одан ертерек келдім.**. Compare your sentence with this one. Other words and word orders can be just as right: count it right if it says the same thing with correct endings.
+
+### Build the sentence (https://will-corbett.github.io/Aqboken/drill/build/)
+
+- **D139** Put the words in order: *A dog ran.* → **Ит жүгіріп келе жатты**. Kazakh usually puts the verb last and the subject first, and a word that describes another comes before it. Other orders can be right too: count it right if it says the same thing.
+- **D140** Put the words in order: *I never actually wanted to go there.* → **Ол жерге ешқашан барғым келмеген**. Kazakh usually puts the verb last and the subject first, and a word that describes another comes before it. Other orders can be right too: count it right if it says the same thing.
+- **D141** Put the words in order: *This shop does not sell women's clothing.* → **Бұл дүкенде әйелдер киімдері сатылмайды**. Kazakh usually puts the verb last and the subject first, and a word that describes another comes before it. Other orders can be right too: count it right if it says the same thing.
+- **D142** Put the words in order: *There are lots of animals in the park.* → **Саябақта көп жануарлар бар**. Kazakh usually puts the verb last and the subject first, and a word that describes another comes before it. Other orders can be right too: count it right if it says the same thing.
+- **D143** Put the words in order: *I downloaded this book from the Internet.* → **Бұл кітапты интернеттен жүктеп алдым**. Kazakh usually puts the verb last and the subject first, and a word that describes another comes before it. Other orders can be right too: count it right if it says the same thing.
+- **D144** Put the words in order: *Will you eat dinner?* → **Кешкі тамақ ішесің бе**. Kazakh usually puts the verb last and the subject first, and a word that describes another comes before it. Other orders can be right too: count it right if it says the same thing.
+
+### Find the mistake (https://will-corbett.github.io/Aqboken/drill/fix/)
+
+- **D145** One word doesn’t agree: tap it, then type it correctly: *I work as a cook.* → **істеймін**. The subject is мен, so the present form is істеймін, not істейсің (the form for сен).
+- **D146** One word doesn’t agree: tap it, then type it correctly: *What languages do you know?* → **білесіз**. The subject is сіз, so the present form is білесіз, not білеміз (the form for біз).
+- **D147** One word doesn’t agree: tap it, then type it correctly: *I'm watching TV.* → **көремін**. The subject is мен, so the present form is көремін, not көресің (the form for сен).
+- **D148** One word doesn’t agree: tap it, then type it correctly: *I don't know.* → **білмеймін**. The subject is мен, so the negative present form is білмеймін, not білмейсің (the form for сен).
+- **D149** One word doesn’t agree: tap it, then type it correctly: *He made good use of the opportunity.* → **білді**. The subject is ол, so the past form is білді, not білдім (the form for мен).
+- **D150** One word doesn’t agree: tap it, then type it correctly: *Do you speak Spanish?* → **сөйлейсіз**. The subject is сіз, so the present form is сөйлейсіз, not сөйлейміз (the form for біз).
+
+### Mixed review (https://will-corbett.github.io/Aqboken/drill/mixed/)
+
+- **D151** Ablative (Шығыс): from, out of: *хат* (letter); hint “from the letter” → **хаттан**. Ablative (from, out of): хат ends in т, a voiceless consonant, and its last vowel, а, is a back vowel (so а/ы in the ending). So -тан: хаттан.
+- **D152** Accusative (Табыс): the (definite object): *ас үй* (kitchen); hint “the kitchen (as the object: I see the kitchen)” → **ас үйді**. Accusative (the (definite object)): ас үй ends in й, a sonorant (р, й, у, и), and its last vowel, ү, is a front vowel (so е/і in the ending). So -ді: ас үйді.
+- **D153** Possessive: біз · we: *киім* (clothes); hint “our clothes”; біздің ___ → **киіміміз**. киім ends in a consonant, so the ending starts with a vowel; its last vowel, і, is a front vowel (so е/і in the ending): біздің киіміміз.
+- **D154** Possessive: сіз · you (polite): *бұрыш* (pepper; corner); hint “your pepper”; сіздің ___ → **бұрышыңыз**. бұрыш ends in a consonant, so the ending starts with a vowel; its last vowel, ы, is a back vowel (so а/ы in the ending): сіздің бұрышыңыз.
+- **D155** Accusative (Табыс): the (definite object): *қол* (hand, arm); hint “the hand (as the object: I see the hand)” → **қолды**. Accusative (the (definite object)): қол ends in л, and its last vowel, о, is a back vowel (so а/ы in the ending). So -ды: қолды.
+- **D156** Locative (Жатыс): in, at, on: *студент* (student); hint “in / at the student” → **студентте**. Locative (in, at, on): студент ends in т, a voiceless consonant, and its last vowel, е, is a front vowel (so е/і in the ending). So -те: студентте.
+
 ## 5. Example sentences (from Tatoeba)
 
 Sentences written by Tatoeba volunteers, chosen by us as examples. Please flag any that are wrong, unnatural, or a poor example of the word.
@@ -1112,34 +1152,34 @@ Sentences written by Tatoeba volunteers, chosen by us as examples. Please flag a
 | # | Word | Sentence | English | Comment |
 |---|---|---|---|---|
 | S1 | автобус | Ол мектепке автобуспен ешқашан бармайды. | He never goes to school on the bus. | |
-| S2 | аға | Том түрмеде жатқан ағасына барады. | Tom is going to visit his brother in prison. | |
-| S3 | ағаш | Үйлер жап-жасыл ағаштарға бөленген. | Houses are surrounded by green trees. | |
-| S4 | ағылшын | Әкем - ағылшын тілі мұғалімі. | My father is an English language teacher. | |
-| S5 | адам | Үш адам жеңіл жарақаттанды. | Three people were slightly injured. | |
-| S6 | аз | Біз тым аз су ішеміз. | We drink too little water. | |
-| S7 | ай | Айда ауа жоқ. | There is no air on the moon. | |
-| S8 | айту | Дұрыс айтасың. | You are right. | |
-| S9 | ақ | Бүркіт ақ. | The eagle is white. | |
-| S10 | ақша | Бұл менің ақшам. | This is my money. | |
-| S11 | ана | Сен менің анам. | You are my mother. | |
-| S12 | апта | Ауруханада бір апта жаттым. | I stayed in the hospital for a week. | |
-| S13 | аспан | Құс аспанда. | The bird is in the sky. | |
-| S14 | ат | Мынау - ат. | This is a name. | |
-| S15 | ата | Атамның қардай ақ шашы бар. | My grandfather has snowy white hair. | |
-| S16 | аудармашы | Маған аудармашы керек. | I need a translator. | |
-| S17 | аудару | Сөзді аударыңыз. | Translate the word. | |
-| S18 | аурухана | Ауруханада бір апта жаттым. | I stayed in the hospital for a week. | |
-| S19 | ауыл | Менің үйім осы ауылда. | My house is in this village. | |
-| S20 | ашу | Өз мейрамханаңды ашқың келе ме? | Do you want to open up your own restaurant? | |
-| S21 | аяқ | Мен аяғымды жудым. | I washed my feet. | |
-| S22 | әдемі | Ол әдемі әйел. | She is a beautiful woman. | |
-| S23 | әйел | Мен әйел. | I am a woman. | |
-| S24 | әке | Ол менің әкем емес. | That is not my father. | |
-| S25 | бала | Шарап балалар үшін емес. | Wine is not for children. | |
-| S26 | бару | Сен қайда барасың? | Where are you going? | |
-| S27 | беру | Мен вазаны оған бердім. | I gave her the vase. | |
-| S28 | біз | Біз үйде тұрамыз. | We live in a house. | |
-| S29 | білу | Мен білмеймін. | I don't know. | |
+| S2 | ағаш | Үйлер жап-жасыл ағаштарға бөленген. | Houses are surrounded by green trees. | |
+| S3 | ағылшын | Әкем - ағылшын тілі мұғалімі. | My father is an English language teacher. | |
+| S4 | адам | Мен бұл адамды танимын деп ойлаймын. | I think I know that man. | |
+| S5 | аз | Біз тым аз су ішеміз. | We drink too little water. | |
+| S6 | ай | Айда ауа жоқ. | There is no air on the moon. | |
+| S7 | айту | Дұрыс айтасың. | You are right. | |
+| S8 | ақ | Бүркіт ақ. | The eagle is white. | |
+| S9 | ақша | Бұл менің ақшам. | This is my money. | |
+| S10 | ана | Сен менің анам. | You are my mother. | |
+| S11 | апта | Ауруханада бір апта жаттым. | I stayed in the hospital for a week. | |
+| S12 | аспан | Құс аспанда. | The bird is in the sky. | |
+| S13 | ат | Мынау - ат. | This is a name. | |
+| S14 | ата | Атамның қардай ақ шашы бар. | My grandfather has snowy white hair. | |
+| S15 | аудармашы | Маған аудармашы керек. | I need a translator. | |
+| S16 | аудару | Сөзді аударыңыз. | Translate the word. | |
+| S17 | аурухана | Ауруханада бір апта жаттым. | I stayed in the hospital for a week. | |
+| S18 | ауыл | Менің үйім осы ауылда. | My house is in this village. | |
+| S19 | ашу | Өз мейрамханаңды ашқың келе ме? | Do you want to open up your own restaurant? | |
+| S20 | аяқ | Мен аяғымды жудым. | I washed my feet. | |
+| S21 | әдемі | Ол әдемі әйел. | She is a beautiful woman. | |
+| S22 | әйел | Мен әйел. | I am a woman. | |
+| S23 | әке | Ол менің әкем емес. | That is not my father. | |
+| S24 | бала | Балалар өміріміздің гүлдері. | Children are the flowers of our lives. | |
+| S25 | бару | Сен қайда барасың? | Where are you going? | |
+| S26 | беру | Мен вазаны оған бердім. | I gave her the vase. | |
+| S27 | біз | Біз үйде тұрамыз. | We live in a house. | |
+| S28 | білу | Мен білмеймін. | I don't know. | |
+| S29 | болу | Қош бол! | Goodbye! | |
 | S30 | бүгін | Бүгін Дүйсенбі. | Today is Monday. | |
 | S31 | бұл | Бұл не? | What is this? | |
 | S32 | дайындау | Мен кейде кешкі ас дайындаймын. | I sometimes cook dinner. | |
@@ -1195,106 +1235,103 @@ Sentences written by Tatoeba volunteers, chosen by us as examples. Please flag a
 | S82 | кіру | Ол жұмысқа кірді. | He has got a job. | |
 | S83 | кітап | Бұл кітап менікі. | This book is mine. | |
 | S84 | кішкентай | Том кішкентай кезінде астронавт болғысы келді. | Tom wanted to be an astronaut when he was young. | |
-| S85 | көлік | Менің үлкен көлігім бар. | I have a big car. | |
-| S86 | көмектесу | Көмектесіңдер! | Help! | |
-| S87 | көп | Олар көп сөйлесті. | They talked a lot. | |
-| S88 | көру | Не көрдің? | What did you watch? | |
-| S89 | көрші | Эльмира үнемі көршісімен ұрысып жүреді. | Elmira is always having a row with her neighbour. | |
-| S90 | көтеру | Сұрақ қою үшін қолын көтерді. | He raised his hand to ask a question. | |
-| S91 | көше | Бұл көшеде екі шіркеу бар. | There are two churches on this street. | |
-| S92 | күлкі | Мені күлкі қылғанды ұнатпаймын. | I don't like being laughed at. | |
-| S93 | күлу | Бәрі неге күліп жатыр? | Why is everybody laughing? | |
-| S94 | күн | Қайырлы күн! | Good day! | |
-| S95 | күту | Тыста күтемін. | I will wait outside. | |
-| S96 | қазақ | Ол қазақ тілін білмейді. | He doesn't know the Kazakh language. | |
-| S97 | қазір | Қазір болмаса, енді қашан? | If not now, when? | |
-| S98 | қай | Қай гитара сенікі? | Which guitar is yours? | |
-| S99 | қайда | Газет қайда? | Where is the newspaper? | |
-| S100 | қала | Оның Токио қаласына кеткеніне сенімдімін. | I'm sure that he went to Tokyo. | |
-| S101 | қалай | Денсаулығыңыз қалай? | How is your health? | |
-| S102 | қант | Қант суда еритін. | Sugar is soluble in water. | |
-| S103 | қанша | Бұл суретте қанша қыз бар? | How many girls are there in this picture? | |
-| S104 | қашан | Қашан келдіңіз? | When did you come? | |
-| S105 | қиын | Бұл көптеген адамдар ойлағаннан да қиын. | It's harder than most people think. | |
-| S106 | қол | Сұрақ қою үшін қолын көтерді. | He raised his hand to ask a question. | |
-| S107 | құс | Құс аспанда. | The bird is in the sky. | |
-| S108 | қыз | Бұл менің қызым. | This is my daughter. | |
-| S109 | қыс | Қыста жүзу сау адамдар үшін қауіпті емес. | Winter swimming isn't dangerous for healthy people. | |
-| S110 | махаббат | Қандай махаббат! | What love! | |
-| S111 | мейірімді | Алматылықтар, балалар үшін мейірімді қала жасайық! | People of Almaty, let us create a child-friendly city! | |
+| S85 | кофе | Кофе ыстық па? | Is the coffee hot? | |
+| S86 | көлік | Менің үлкен көлігім бар. | I have a big car. | |
+| S87 | көмектесу | Көмектесіңдер! | Help! | |
+| S88 | көп | Олар көп сөйлесті. | They talked a lot. | |
+| S89 | көру | Не көрдің? | What did you watch? | |
+| S90 | көрші | Эльмира үнемі көршісімен ұрысып жүреді. | Elmira is always having a row with her neighbour. | |
+| S91 | көтеру | Сұрақ қою үшін қолын көтерді. | He raised his hand to ask a question. | |
+| S92 | көше | Бұл көшеде екі шіркеу бар. | There are two churches on this street. | |
+| S93 | күлкі | Мені күлкі қылғанды ұнатпаймын. | I don't like being laughed at. | |
+| S94 | күлу | Бәрі неге күліп жатыр? | Why is everybody laughing? | |
+| S95 | күн | Қайырлы күн! | Good day! | |
+| S96 | күту | Тыста күтемін. | I will wait outside. | |
+| S97 | қазақ | Ол қазақ тілін білмейді. | He doesn't know the Kazakh language. | |
+| S98 | қазір | Қазір болмаса, енді қашан? | If not now, when? | |
+| S99 | қай | Қай гитара сенікі? | Which guitar is yours? | |
+| S100 | қайда | Газет қайда? | Where is the newspaper? | |
+| S101 | қала | Оның Токио қаласына кеткеніне сенімдімін. | I'm sure that he went to Tokyo. | |
+| S102 | қалай | Денсаулығыңыз қалай? | How is your health? | |
+| S103 | қант | Қант суда еритін. | Sugar is soluble in water. | |
+| S104 | қанша | Бұл суретте қанша қыз бар? | How many girls are there in this picture? | |
+| S105 | қашан | Қашан келдіңіз? | When did you come? | |
+| S106 | қиын | Бұл көптеген адамдар ойлағаннан да қиын. | It's harder than most people think. | |
+| S107 | қол | Сұрақ қою үшін қолын көтерді. | He raised his hand to ask a question. | |
+| S108 | құс | Құс аспанда. | The bird is in the sky. | |
+| S109 | қыз | Бұл менің қызым. | This is my daughter. | |
+| S110 | қыс | Қыста жүзу сау адамдар үшін қауіпті емес. | Winter swimming isn't dangerous for healthy people. | |
+| S111 | махаббат | Қандай махаббат! | What love! | |
 | S112 | мейрамхана | Өз мейрамханаңды ашқың келе ме? | Do you want to open up your own restaurant? | |
 | S113 | мектеп | Інім мектепке кетті. | My younger brother went to school. | |
 | S114 | мен | Мен әйел. | I am a woman. | |
 | S115 | минут | Мен он минут бойы күтіп тұра алмаймын. | I can't wait ten minutes. | |
-| S116 | музыка | Музыка – құдайдың берген сыйы. | Music is a God given gift. | |
-| S117 | мұғалім | Ол мұғалім. | He is a teacher. | |
-| S118 | мұрын | Құдай саған мұрын берген. | God gave you a nose. | |
-| S119 | мысық | Төрт мысығым бар. | I have four cats. | |
-| S120 | не | Не? | What? | |
-| S121 | неге | Неге? | Why? | |
-| S122 | ойлау | Ол бес жаста деп ойлаймын. | I think it is five years old. | |
-| S123 | ойнау | Мен күнде футбол ойнаймын. | I play football every day. | |
-| S124 | оқу | Оқы! | Study! | |
-| S125 | ол | Ол мұғалім. | He is a teacher. | |
-| S126 | олар | Олар қорқа ма? | Are they afraid? | |
-| S127 | оңай | Бұл мәселені шешу оңай емес. | This problem isn't easy to solve. | |
-| S128 | орын | Ол қарт кісіге орынды берді. | He gave his place to an old man. | |
-| S129 | орыс | Балаларына орыс тілін үйретті. | He taught his children Russian. | |
-| S130 | отыру | Студенттер аудиторияда отыр ма? | Are the students sitting in the auditorium? | |
-| S131 | пісіру | Сенің тамақ пісіріп жатқаныңды көрдім. | I saw you cooking. | |
-| S132 | пойыз | Бұл пойыз мұнда тоқтамайды. | This train does not stop here. | |
-| S133 | рахмет | Рахмет! | Thanks! | |
-| S134 | сағат | Бұл сағат маған ұнайды. | I like this watch. | |
-| S135 | салқын | Оңтүстік полюс солтүстік полюстен әлдеқайда салқын. | The South Pole is a lot colder than the North Pole. | |
-| S136 | сау | Қыста жүзу сау адамдар үшін қауіпті емес. | Winter swimming isn't dangerous for healthy people. | |
-| S137 | саябақ | Саябақта көп жануарлар бар. | There are lots of animals in the park. | |
-| S138 | сәлем | Сәлем. | Hello! | |
-| S139 | сәуір | 25 сәуір - бүкіләлемдік безгекке қарсы күрес күні. | April 25th is World Malaria Day. | |
-| S140 | сендер | Сендер қазақша сөйлейсіңдер ме? | Do you speak Kazakh? | |
-| S141 | сенімді | Мен сенімдімін. | I'm confident. | |
-| S142 | сену | Не? Бұған сенбеймін! | What? I can't believe it! | |
-| S143 | сіз | Сіз кімсіз? | Who are you? | |
-| S144 | сіздер | Сіздер қазақша сөйлейсіздер ме? | Do you speak Kazakh? | |
-| S145 | сол | Сол түнде, Әсем бес ыдысты сындырды. | That night, Asem broke five dishes. | |
-| S146 | сөз | Бос сөз! | Nonsense! | |
-| S147 | сөйлесу | Олар көп сөйлесті. | They talked a lot. | |
-| S148 | сөйлеу | Голландша сөйлейсіз бе? | Do you speak Dutch? | |
-| S149 | студент | Ол студент емес. | He is not a student. | |
-| S150 | су | Су суық емес. | The water isn't cold. | |
-| S151 | сурет | Бұл суретте қанша қыз бар? | How many girls are there in this picture? | |
-| S152 | суық | Су суық емес. | The water isn't cold. | |
-| S153 | сүю | Мен сені сүйемін. | I love you. | |
-| S154 | сұрақ | Ол сұраққа жауап берді. | He answered the question. | |
-| S155 | табу | Мен әлі жұмыс таппадым. | I still haven't found work. | |
-| S156 | тамақ | Бұл тамақ. | This is food. | |
-| S157 | таң | Қайырлы таң! | Good morning! | |
-| S158 | теледидар | Мен теледидар көремін. | I'm watching TV. | |
-| S159 | тіл | Тіліңді ұнатамын. | I like your language. | |
-| S160 | тоқтау | Бұл пойыз мұнда тоқтамайды. | This train does not stop here. | |
-| S161 | тоңазытқыш | Біз тоңазытқыш сатып ала аламыз. | We can buy a refrigerator. | |
-| S162 | түн | Қайырлы түн! | Goodnight! | |
-| S163 | тұру | Біз үйде тұрамыз. | We live in a house. | |
-| S164 | уақыт | Сіз бос уақытыңызда не істейсіз? | What do you do in your free time? | |
-| S165 | университет | Университет қайда? | Where is the university? | |
-| S166 | үй | Мамаң үйде ме? | Is your mother at home? | |
-| S167 | үйрену | Бүгін мектепте не үйрендің? | What did you learn at school today? | |
-| S168 | үйрету | Балаларына орыс тілін үйретті. | He taught his children Russian. | |
-| S169 | үлкен | Қазақстан өте үлкен ел. | Kazakhstan is a very large country. | |
-| S170 | үстел | Бізде төрткіл үстел бар. | We have a square table. | |
-| S171 | ұйықтау | Ұйықтайық. | Let's sleep. | |
-| S172 | ұмыту | Мен бұл күнді ешқашан ұмытпаймын. | I will never forget this day. | |
-| S173 | ұнау | Бұл маған ұнап тұр. | I like it. | |
-| S174 | ұшақ | Мен ұшақпен ұшпаймын | I don't fly. | |
-| S175 | ұшу | Мен ұшақпен ұшпаймын | I don't fly. | |
-| S176 | футбол | Мен күнде футбол ойнаймын. | I play football every day. | |
-| S177 | хат | Анама хат жазып отырмын. | I am writing a letter to my mom. | |
-| S178 | шай | Сенің жігітіңе шай ұнай ма? | Does your boyfriend like tea? | |
-| S179 | шаршау | Мен шаршадым. | I'm tired. | |
-| S180 | шаш | Атамның қардай ақ шашы бар. | My grandfather has snowy white hair. | |
-| S181 | шетел | Келесі жылы демалысымды шетелде өткіземін. | I will spend my next year vacation abroad. | |
-| S182 | шешу | Бұл мәселені шешу оңай емес. | This problem isn't easy to solve. | |
-| S183 | шығу | Тұрмысқа шығамын. | I'm getting married. | |
-| S184 | ыстық | Кофе ыстық па? | Is the coffee hot? | |
+| S116 | мұғалім | Ол мұғалім. | He is a teacher. | |
+| S117 | мысық | Төрт мысығым бар. | I have four cats. | |
+| S118 | не | Не? | What? | |
+| S119 | неге | Неге? | Why? | |
+| S120 | ойлау | Ол бес жаста деп ойлаймын. | I think it is five years old. | |
+| S121 | ойнау | Мен күнде футбол ойнаймын. | I play football every day. | |
+| S122 | оқу | Оқы! | Study! | |
+| S123 | ол | Ол мұғалім. | He is a teacher. | |
+| S124 | олар | Олар қорқа ма? | Are they afraid? | |
+| S125 | оңай | Бұл мәселені шешу оңай емес. | This problem isn't easy to solve. | |
+| S126 | орын | Ол қарт кісіге орынды берді. | He gave his place to an old man. | |
+| S127 | орыс | Балаларына орыс тілін үйретті. | He taught his children Russian. | |
+| S128 | отыру | Студенттер аудиторияда отыр ма? | Are the students sitting in the auditorium? | |
+| S129 | пісіру | Сенің тамақ пісіріп жатқаныңды көрдім. | I saw you cooking. | |
+| S130 | пойыз | Бұл пойыз мұнда тоқтамайды. | This train does not stop here. | |
+| S131 | рахмет | Рахмет! | Thanks! | |
+| S132 | сағат | Бұл сағат маған ұнайды. | I like this watch. | |
+| S133 | салқын | Оңтүстік полюс солтүстік полюстен әлдеқайда салқын. | The South Pole is a lot colder than the North Pole. | |
+| S134 | сау | Қыста жүзу сау адамдар үшін қауіпті емес. | Winter swimming isn't dangerous for healthy people. | |
+| S135 | саябақ | Саябақта көп жануарлар бар. | There are lots of animals in the park. | |
+| S136 | сәлем | Сәлем. | Hello! | |
+| S137 | сендер | Сендер қазақша сөйлейсіңдер ме? | Do you speak Kazakh? | |
+| S138 | сенімді | Мен сенімдімін. | I'm confident. | |
+| S139 | сену | Не? Бұған сенбеймін! | What? I can't believe it! | |
+| S140 | сіз | Сіз кімсіз? | Who are you? | |
+| S141 | сіздер | Сіздер қазақша сөйлейсіздер ме? | Do you speak Kazakh? | |
+| S142 | сол | Сол түнде, Әсем бес ыдысты сындырды. | That night, Asem broke five dishes. | |
+| S143 | сөз | Бос сөз! | Nonsense! | |
+| S144 | сөйлесу | Олар көп сөйлесті. | They talked a lot. | |
+| S145 | сөйлеу | Голландша сөйлейсіз бе? | Do you speak Dutch? | |
+| S146 | студент | Ол студент емес. | He is not a student. | |
+| S147 | су | Су суық емес. | The water isn't cold. | |
+| S148 | сурет | Бұл суретте қанша қыз бар? | How many girls are there in this picture? | |
+| S149 | суық | Су суық емес. | The water isn't cold. | |
+| S150 | сүю | Мен сені сүйемін. | I love you. | |
+| S151 | сұрақ | Ол сұраққа жауап берді. | He answered the question. | |
+| S152 | табу | Мен әлі жұмыс таппадым. | I still haven't found work. | |
+| S153 | тамақ | Бұл тамақ. | This is food. | |
+| S154 | таң | Қайырлы таң! | Good morning! | |
+| S155 | теледидар | Мен теледидар көремін. | I'm watching TV. | |
+| S156 | тіл | Тіліңді ұнатамын. | I like your language. | |
+| S157 | тоқтау | Бұл пойыз мұнда тоқтамайды. | This train does not stop here. | |
+| S158 | тоңазытқыш | Біз тоңазытқыш сатып ала аламыз. | We can buy a refrigerator. | |
+| S159 | түн | Қайырлы түн! | Goodnight! | |
+| S160 | тұру | Біз үйде тұрамыз. | We live in a house. | |
+| S161 | уақыт | Сіз бос уақытыңызда не істейсіз? | What do you do in your free time? | |
+| S162 | университет | Университет қайда? | Where is the university? | |
+| S163 | үй | Мамаң үйде ме? | Is your mother at home? | |
+| S164 | үйрену | Бүгін мектепте не үйрендің? | What did you learn at school today? | |
+| S165 | үйрету | Балаларына орыс тілін үйретті. | He taught his children Russian. | |
+| S166 | үлкен | Қазақстан өте үлкен ел. | Kazakhstan is a very large country. | |
+| S167 | үстел | Бізде төрткіл үстел бар. | We have a square table. | |
+| S168 | ұйықтау | Ұйықтайық. | Let's sleep. | |
+| S169 | ұмыту | Мен бұл күнді ешқашан ұмытпаймын. | I will never forget this day. | |
+| S170 | ұнау | Бұл маған ұнап тұр. | I like it. | |
+| S171 | ұшақ | Мен ұшақпен ұшпаймын | I don't fly. | |
+| S172 | ұшу | Мен ұшақпен ұшпаймын | I don't fly. | |
+| S173 | футбол | Мен күнде футбол ойнаймын. | I play football every day. | |
+| S174 | хат | Анама хат жазып отырмын. | I am writing a letter to my mom. | |
+| S175 | шай | Сенің жігітіңе шай ұнай ма? | Does your boyfriend like tea? | |
+| S176 | шаршау | Мен шаршадым. | I'm tired. | |
+| S177 | шаш | Атамның қардай ақ шашы бар. | My grandfather has snowy white hair. | |
+| S178 | шетел | Келесі жылы демалысымды шетелде өткіземін. | I will spend my next year vacation abroad. | |
+| S179 | шешу | Бұл мәселені шешу оңай емес. | This problem isn't easy to solve. | |
+| S180 | шығу | Тұрмысқа шығамын. | I'm getting married. | |
+| S181 | ыстық | Кофе ыстық па? | Is the coffee hot? | |
 
 ## 6. Words Wiktionary doesn’t have
 

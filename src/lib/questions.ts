@@ -46,6 +46,7 @@ import {
 import { APPROXIMATE, toLatin } from '../shared/script.ts';
 import { ADJECTIVES, ALL_WORDS, NOUNS, THEMES, VERBS, type Word } from '../data/words.ts';
 import { nounOptions } from '../data/exceptions.ts';
+import pairsData from '../data/pairs.json';
 import { CASE_NAME, PERSON_NAME, caseCue, endingText, firstMeaning, harmonyText } from './labels.ts';
 import { shuffle, type Rng } from './rng.ts';
 import type { Settings } from './settings.ts';
@@ -73,6 +74,17 @@ export interface Question {
   choiceLang?: 'kk' | 'en';
   /** Other forms of the same word, to say what a wrong answer was. */
   others?: { label: string; form: string }[];
+  /** Self-marked (translate, build): an exact match is right; otherwise the learner compares with the model. */
+  selfMark?: boolean;
+  /** Build the sentence: the words, shuffled (the answer is the sentence in order). */
+  build?: string[];
+  /** Build the sentence: punctuation after the last word, shown fixed. */
+  buildEnd?: string;
+  /** Find the mistake: the sentence in pieces (words numbered), the wrong word, and the right sentence. */
+  fix?: { pieces: { text: string; word?: number }[]; wrong: number; wrongForm: string; original: string; alt?: { word: number; form: string } };
+  /** A Tatoeba sentence id, credited after answering. */
+  source?: number;
+  sourceOwner?: string;
   /** Listening: the Kazakh played as the prompt (the prompt itself is hidden until answered). */
   listen?: string;
   /** The part before the ending, to highlight the ending in the answer. */
@@ -728,6 +740,8 @@ export function vocabQs(s: Settings, rng: Rng, words?: Word[]): Question[] {
 export function speakText(q: Question): string | undefined {
   if (q.mode === 'alphabet') return undefined;
   if (q.listen) return q.listen;
+  if (q.mode === 'translate' || q.mode === 'build') return q.answerLang === 'kk' ? `${q.answer}${q.buildEnd ?? ''}` : q.prompt;
+  if (q.fix) return q.fix.original;
   if (q.mode === 'questions') return `${q.frame![0]} ${q.answer}${q.frame![1]}`;
   if (q.mode === 'imperative' || q.mode === 'conditional' || q.mode === 'time' || q.mode === 'comparative') return q.answer;
   if (q.mode === 'postpositions') return `${q.answer}${q.frame![1]}`;
@@ -760,6 +774,118 @@ function listenQs(s: Settings, rng: Rng): Question[] {
     task: 'What did you hear? Choose the meaning',
     listen: q.prompt,
   }));
+}
+
+// ─── Sentences (Tatoeba pairs) ──────────────────────────────────────────────────────────────────────────────
+
+/** [id, Kazakh, English, contributor] — every pair read by a person (scripts/build-sentences.ts). */
+export const PAIRS = pairsData as [number, string, string, string][];
+const endPunct = /[.!?…]+$/;
+
+function translateQs(s: Settings): Question[] {
+  const dirs = s.translate.direction === 'both' ? (['en-kk', 'kk-en'] as const) : [s.translate.direction];
+  const seen = new Set<string>();
+  const out: Question[] = [];
+  for (const [id, kk, en, owner] of PAIRS) {
+    if (seen.has(kk)) continue;
+    seen.add(kk);
+    // Other Kazakh sentences with the same English are right too (Сіз / Сен қазақша сөйлейсіз бе?).
+    const sameEn = PAIRS.filter((p) => p[2] === en && p[1] !== kk).map((p) => p[1]);
+    const sameKk = PAIRS.filter((p) => p[1] === kk && p[2] !== en).map((p) => p[2]);
+    for (const d of dirs)
+      out.push(
+        d === 'en-kk'
+          ? { key: `tr:${id}:en`, mode: 'translate', task: 'Say it in Kazakh', prompt: en, promptLang: 'en', answer: kk, accept: sameEn, answerLang: 'kk', selfMark: true, source: id, sourceOwner: owner, explain: 'Compare your sentence with this one. Other words and word orders can be just as right: count it right if it says the same thing with correct endings.' }
+          : { key: `tr:${id}:kk`, mode: 'translate', task: 'What does it mean? Write it in English', prompt: kk, promptLang: 'kk', answer: en, accept: sameKk, answerLang: 'en', selfMark: true, source: id, sourceOwner: owner, explain: 'Count it right if your English says the same thing, in your own words.' },
+      );
+  }
+  return out;
+}
+
+function buildQs(rng: Rng): Question[] {
+  const seen = new Set<string>();
+  return PAIRS.flatMap(([id, kk, en, owner]) => {
+    const body = kk.replace(endPunct, '').trim();
+    const end = kk.slice(body.length).trim();
+    const words = body.split(/\s+/);
+    if (words.length < 3 || words.length > 8 || seen.has(body) || /[«»"–—-]/.test(body)) return [];
+    seen.add(body);
+    let shuffled = shuffle(rng, words);
+    for (let i = 0; i < 5 && shuffled.join(' ') === words.join(' '); i++) shuffled = shuffle(rng, words);
+    if (shuffled.join(' ') === words.join(' ')) return [];
+    return [{ key: `build:${id}`, mode: 'build' as const, task: 'Put the words in order', prompt: en, promptLang: 'en' as const, answer: body, answerLang: 'kk' as const, build: shuffled, buildEnd: end, selfMark: true, source: id, sourceOwner: owner, explain: 'Kazakh usually puts the verb last and the subject first, and a word that describes another comes before it. Other orders can be right too: count it right if it says the same thing.' }];
+  });
+}
+
+const SUBJECT: Record<string, Person> = { мен: '1sg', сен: '2sg', сіз: '2sgf', ол: '3', біз: '1pl', сендер: '2pl', сіздер: '2plf' };
+
+/**
+ * Find the mistake: a real sentence with a subject pronoun and one of our verbs in the matching present or past
+ * form; the verb is swapped for another person's form of the same tense (Мен барасың). Changing the pronoun to agree
+ * with the wrong verb is accepted too.
+ */
+function fixQs(): Question[] {
+  const out: Question[] = [];
+  for (const [id, kk, en, owner] of PAIRS) {
+    const tokens = [...kk.matchAll(/[А-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі]+/g)];
+    const subj = tokens.find((t) => SUBJECT[t[0].toLowerCase()]);
+    if (!subj) continue;
+    const p = SUBJECT[subj[0].toLowerCase()]!;
+    for (const [ti, t] of tokens.entries()) {
+      if (t.index! <= subj.index!) continue;
+      // In “барғым келеді” (want to), келеді agrees with the possessive -м, not with a subject: leave it out.
+      if (/^кел/.test(t[0].toLowerCase()) && /(ғ|г|қ|к)(ы|і)(м|ң|ңыз|ңіз|сы|сі|мыз|міз)$/.test(tokens[ti - 1]?.[0].toLowerCase() ?? '')) continue;
+      for (const v of VERBS) {
+        if (v.stem!.includes(' ')) continue;
+        for (const [tense, fn] of [['present', present], ['past', past], ['negative', presentNeg]] as const) {
+          if (fn(v.stem!, p) !== t[0].toLowerCase()) continue;
+          const wrongP = (p === '1sg' ? '2sg' : p === '2sg' ? '1sg' : p === '3' ? '1sg' : p === '1pl' ? '2sgf' : '1pl') as Person;
+          const wrong = fn(v.stem!, wrongP);
+          if (wrong === t[0].toLowerCase()) continue;
+          const sentence = kk.slice(0, t.index!) + wrong + kk.slice(t.index! + t[0].length);
+          // Pieces: every word tappable, numbered in order.
+          const pieces: { text: string; word?: number }[] = [];
+          let last = 0;
+          let w = 0;
+          let wrongIdx = -1;
+          let subjIdx = -1;
+          for (const m of sentence.matchAll(/[А-Яа-яЁёӘәҒғҚқҢңӨөҰұҮүҺһІі]+/g)) {
+            if (m.index! > last) pieces.push({ text: sentence.slice(last, m.index!) });
+            if (m.index === t.index) wrongIdx = w;
+            if (m.index === subj.index) subjIdx = w;
+            pieces.push({ text: m[0], word: w++ });
+            last = m.index! + m[0].length;
+          }
+          if (last < sentence.length) pieces.push({ text: sentence.slice(last) });
+          const rightPron = PRONOUN[wrongP];
+          out.push({
+            key: `fix:${id}`,
+            mode: 'fix',
+            task: 'One word doesn’t agree: tap it, then type it correctly',
+            prompt: en,
+            promptLang: 'en',
+            answer: t[0],
+            answerLang: 'kk',
+            fix: { pieces, wrong: wrongIdx, wrongForm: wrong, original: kk, alt: { word: subjIdx, form: subj[0][0] === subj[0][0]!.toUpperCase() ? capital(rightPron) : rightPron } },
+            source: id,
+            sourceOwner: owner,
+            explain: `The subject is ${subj[0].toLowerCase()}, so the ${tense === 'negative' ? 'negative present' : tense} form is ${t[0]}, not ${wrong} (the form for ${PRONOUN[wrongP]}).`,
+          });
+        }
+      }
+    }
+  }
+  // One question per sentence.
+  return out.filter((q, i) => out.findIndex((x) => x.key === q.key) === i);
+}
+
+function mixedQs(s: Settings, rng: Rng): Question[] {
+  const topics = s.mixed.topics.length ? s.mixed.topics : (['plural', 'present'] as Mode[]);
+  const lists = topics.filter((m) => m !== 'mixed').map((m) => shuffle(rng, pool(m, s, rng)));
+  // Round-robin, so the topics alternate.
+  const out: Question[] = [];
+  for (let i = 0; lists.some((l) => i < l.length); i++) for (const l of lists) if (i < l.length) out.push(l[i]!);
+  return out;
 }
 
 // ─── Rounds ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -816,6 +942,14 @@ export function pool(mode: Mode, s: Settings, rng: Rng, words?: Word[]): Questio
       return comparativeQs();
     case 'time':
       return timeQs(s);
+    case 'translate':
+      return translateQs(s);
+    case 'build':
+      return buildQs(rng);
+    case 'fix':
+      return fixQs();
+    case 'mixed':
+      return mixedQs(s, rng);
   }
 }
 

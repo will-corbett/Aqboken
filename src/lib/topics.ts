@@ -1,5 +1,5 @@
 /** The one list of topics (Home, Learn index and Drill page all use it). Within a group: most basic first. */
-export type Mode = 'alphabet' | 'harmony' | 'plural' | 'copula' | 'possessive' | 'cases' | 'pronouns' | 'present' | 'past' | 'questions' | 'numbers' | 'vocab' | 'listen' | 'continuous' | 'future' | 'want' | 'imperative' | 'posscases' | 'postpositions' | 'perfect' | 'habitual' | 'conditional' | 'can' | 'comparative' | 'time';
+export type Mode = 'alphabet' | 'harmony' | 'plural' | 'copula' | 'possessive' | 'cases' | 'pronouns' | 'present' | 'past' | 'questions' | 'numbers' | 'vocab' | 'listen' | 'continuous' | 'future' | 'want' | 'imperative' | 'posscases' | 'postpositions' | 'perfect' | 'habitual' | 'conditional' | 'can' | 'comparative' | 'time' | 'translate' | 'build' | 'mixed' | 'fix';
 
 export interface Topic {
   id: Mode;
@@ -38,6 +38,10 @@ export const TOPICS: Topic[] = [
   { id: 'numbers', title: 'Numbers', kk: 'Сан есім', group: 'Numbers', level: 'A1', blurb: 'From бір to мың, and years: екі мың жиырма алты.', learn: true },
   { id: 'time', title: 'Time and dates', kk: 'Уақыт пен күн', group: 'Numbers', level: 'A1–A2', blurb: 'сағат жеті жарым, бірінші мамыр: the clock, ordinals and dates.', learn: true },
   { id: 'listen', title: 'Listening', kk: 'Тыңдалым', group: 'Listening', level: 'A1–A2', blurb: 'Hear a word, then choose its meaning or write it down.', learn: false },
+  { id: 'translate', title: 'Translate and compare', kk: 'Аударма', group: 'Review', level: 'A1–B1', blurb: 'Real sentences, English to Kazakh or Kazakh to English: write yours, then compare with the original.', learn: false },
+  { id: 'build', title: 'Build the sentence', kk: 'Сөйлем құрау', group: 'Review', level: 'A1–B1', blurb: 'Put the words of a real sentence in order: the verb usually comes last.', learn: false },
+  { id: 'fix', title: 'Find the mistake', kk: 'Қатені тап', group: 'Review', level: 'A1–A2', blurb: 'One word in the sentence doesn’t agree: find it and put it right.', learn: false },
+  { id: 'mixed', title: 'Mixed review', kk: 'Аралас қайталау', group: 'Review', level: 'A1–B1', blurb: 'Questions from several topics, shuffled together, each with its own settings.', learn: false },
   { id: 'vocab', title: 'Vocabulary', kk: 'Сөздік', group: 'Words', level: 'A1–A2', blurb: 'The words of the Vocabulary themes, both ways round.', learn: false },
 ];
 

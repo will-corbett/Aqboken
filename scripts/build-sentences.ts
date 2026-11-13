@@ -86,7 +86,7 @@ const single = ALL_WORDS.filter((w) => !w.kk.includes(' '));
 const skip = new Set(Object.keys(TATOEBA_SKIP_WORDS));
 for (const w of single) for (const f of formsOf(w)) (owners.get(f) ?? owners.set(f, new Set()).get(f)!).add(w.kk);
 
-const LATIN = /[a-z]/i;
+const LATIN = /[a-zƏə0-9]/i;
 const words = (s: string) => s.toLowerCase().match(/[а-яёәғқңөұүһі]+/g) ?? [];
 type Row = [id: number, kk: string, en: string, owner: string, start: number, end: number];
 const best = new Map<string, Row>();
@@ -107,4 +107,16 @@ for (const [id, s] of kaz) {
 }
 const out = Object.fromEntries([...best].sort(([a], [b]) => a.localeCompare(b)));
 writeFileSync('src/data/sentences.json', JSON.stringify(out, null, 1) + '\n');
+
+// Every clean pair (2–10 words, read by a person: TATOEBA_DENY), for Translate and compare and Build the sentence.
+const pairs: [number, string, string, string][] = [];
+for (const [id, s] of [...kaz].sort(([a], [b]) => Number(a) - Number(b))) {
+  const e = link.get(id);
+  const en = e && eng.get(e);
+  const n = words(s.text).length;
+  if (!en || LATIN.test(s.text) || TATOEBA_DENY[Number(id)] || n < 2 || n > 10) continue;
+  pairs.push([Number(id), s.text.trim(), en.trim(), s.owner]);
+}
+writeFileSync('src/data/pairs.json', JSON.stringify(pairs) + '\n');
+console.log(`${pairs.length} sentence pairs for the sentence drills.`);
 console.log(`${kaz.size} Kazakh sentences, ${[...kaz.keys()].filter((k) => link.has(k)).length} with English; example sentences for ${best.size} of ${ALL_WORDS.length} words.`);

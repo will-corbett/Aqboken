@@ -3,7 +3,7 @@
   import { THEMES } from '../data/words.ts';
   import { CASE_NAME, PERSON_NAME } from '../lib/labels.ts';
   import { href } from '../lib/router.ts';
-  import { topicById } from '../lib/topics.ts';
+  import { TOPICS, topicById } from '../lib/topics.ts';
   import type { Settings } from '../lib/settings.ts';
   import Kz from './Kz.svelte';
 
@@ -25,6 +25,7 @@
       (settings.mode === 'listen' && !settings.listen.themes.length) ||
       ((settings.mode === 'continuous' || settings.mode === 'future' || settings.mode === 'want' || settings.mode === 'imperative' || settings.mode === 'perfect' || settings.mode === 'habitual' || settings.mode === 'conditional' || settings.mode === 'can') && !settings[settings.mode].persons.length) ||
       (settings.mode === 'time' && !settings.time.kinds.length) ||
+      (settings.mode === 'mixed' && !settings.mixed.topics.length) ||
       (settings.mode === 'posscases' && (!settings.posscases.persons.length || !settings.posscases.cases.length)),
   );
 </script>
@@ -87,6 +88,22 @@
       {@const m = settings.mode}
       {@render persons(settings[m].persons, PERSONS, (l) => (settings[m].persons = l))}
       {@render radios('Positive or negative', settings[m].polarity, [['pos', 'Positive'], ['neg', 'Negative'], ['both', 'Both']], (v) => (settings[m].polarity = v as 'pos'))}
+    {:else if settings.mode === 'translate'}
+      {@render radios('Direction', settings.translate.direction, [['en-kk', 'English → Kazakh'], ['kk-en', 'Kazakh → English'], ['both', 'Both']], (v) => (settings.translate.direction = v as 'en-kk'))}
+      <p class="muted small">Real sentences from Tatoeba. An exact match is marked right; otherwise you compare yours with the original and mark it yourself.</p>
+    {:else if settings.mode === 'build'}
+      <p class="muted small">Real sentences from Tatoeba with their words shuffled. The original order is marked right; any other order you mark yourself, since Kazakh word order has some freedom.</p>
+    {:else if settings.mode === 'fix'}
+      <p class="muted small">Real sentences with one verb changed to the wrong person. Tap it and type the right form.</p>
+    {:else if settings.mode === 'mixed'}
+      <fieldset>
+        <legend>Topics to mix (each uses its own settings)</legend>
+        <div class="opts">
+          {#each TOPICS.filter((t) => t.learn) as t (t.id)}
+            <label class="opt"><input type="checkbox" checked={settings.mixed.topics.includes(t.id)} onchange={() => (settings.mixed.topics = toggle(settings.mixed.topics, t.id))} /> {t.title}</label>
+          {/each}
+        </div>
+      </fieldset>
     {:else if settings.mode === 'can'}
       {@render persons(settings.can.persons, PERSONS, (l) => (settings.can.persons = l))}
       {@render radios('Positive or negative', settings.can.polarity, [['pos', 'Can'], ['neg', 'Can’t'], ['both', 'Both']], (v) => (settings.can.polarity = v as 'pos'))}

@@ -15,7 +15,9 @@ Source: Kazakh Wiktionary entries from kaikki.org (`data-raw/kaikki-kazakh.jsonl
 
 ## Kazakh in the Learn pages
 
-Every word is in Wiktionary or made by the rules from our lists.
+1 words are neither in Wiktionary nor made by the rules from our lists (these fail the check):
+
+- құрау (topics.ts)
 
 ## The rules against every table
 
